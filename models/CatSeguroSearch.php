@@ -12,6 +12,7 @@ use app\models\CatSeguro;
 class CatSeguroSearch extends CatSeguro
 {
     public $nombreRegion;
+    public $nombreAseguradora;
     /**
      * {@inheritdoc}
      */
@@ -19,7 +20,7 @@ class CatSeguroSearch extends CatSeguro
     {
         return [
             [['seg_id', 'seg_fkregion', 'seg_fkaseguradora'], 'integer'],
-            [['seg_nombre', 'nombreRegion'], 'safe'],
+            [['seg_nombre', 'nombreRegion', 'nombreAseguradora'], 'safe'],
             [['seg_precio'], 'number'],
         ];
     }
@@ -46,6 +47,7 @@ class CatSeguroSearch extends CatSeguro
 
         // add conditions that should always apply here
         $query->joinWith('segFkregion');
+        $query->joinWith('segFkaseguradora');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -68,7 +70,8 @@ class CatSeguroSearch extends CatSeguro
         ]);
 
         $query->andFilterWhere(['like', 'seg_nombre', $this->seg_nombre])
-        ->andFilterWhere(['like', 'reg_region', $this->nombreRegion]);
+        ->andFilterWhere(['like', 'reg_region', $this->nombreRegion])
+        ->andFilterWhere(['like', 'ase_nombre', $this->nombreAseguradora]);
 
         return $dataProvider;
     }
