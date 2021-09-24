@@ -18,7 +18,7 @@ class CatAeropuertoSearch extends CatAeropuerto
     {
         return [
             [['aero_id', 'aero_fkubicacion'], 'integer'],
-            [['aero_nombre', 'aero_direccion', 'aero_pagina'], 'safe'],
+            [['aero_nombre', 'aero_direccion', 'aero_pagina', 'aero_url'], 'safe'],
         ];
     }
 
@@ -64,7 +64,8 @@ class CatAeropuertoSearch extends CatAeropuerto
 
         $query->andFilterWhere(['like', 'aero_nombre', $this->aero_nombre])
             ->andFilterWhere(['like', 'aero_direccion', $this->aero_direccion])
-            ->andFilterWhere(['like', 'aero_pagina', $this->aero_pagina]);
+            ->andFilterWhere(['like', 'aero_pagina', $this->aero_pagina])
+            ->andFilterWhere(['like', 'aero_url', $this->aero_url]);
 
         return $dataProvider;
     }

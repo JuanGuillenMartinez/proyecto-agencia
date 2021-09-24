@@ -11,6 +11,7 @@ use Yii;
  * @property string $aero_nombre Nombre
  * @property string $aero_direccion Dirección
  * @property string $aero_pagina Página
+ * @property string $aero_url Imagen
  * @property int $aero_fkubicacion Ubicación
  *
  * @property CatUbicacion $aeroFkubicacion
@@ -33,10 +34,10 @@ class CatAeropuerto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['aero_nombre', 'aero_direccion', 'aero_pagina', 'aero_fkubicacion'], 'required'],
+            [['aero_nombre', 'aero_direccion', 'aero_pagina', 'aero_url', 'aero_fkubicacion'], 'required'],
             [['aero_fkubicacion'], 'integer'],
             [['aero_nombre'], 'string', 'max' => 45],
-            [['aero_direccion'], 'string', 'max' => 100],
+            [['aero_direccion', 'aero_url'], 'string', 'max' => 100],
             [['aero_pagina'], 'string', 'max' => 55],
             [['aero_fkubicacion'], 'exist', 'skipOnError' => true, 'targetClass' => CatUbicacion::className(), 'targetAttribute' => ['aero_fkubicacion' => 'ubi_id']],
         ];
@@ -52,6 +53,7 @@ class CatAeropuerto extends \yii\db\ActiveRecord
             'aero_nombre' => 'Nombre',
             'aero_direccion' => 'Dirección',
             'aero_pagina' => 'Página',
+            'aero_url' => 'Imagen',
             'aero_fkubicacion' => 'Ubicación',
         ];
     }

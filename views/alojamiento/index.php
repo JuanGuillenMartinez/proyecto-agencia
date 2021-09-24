@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'alo_direccion',
             'alo_precio',
             'alo_url:url',
-            //'alo_fkubucacion',
+            'alo_fkubucacion',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

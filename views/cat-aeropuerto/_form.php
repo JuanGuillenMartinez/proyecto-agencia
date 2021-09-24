@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'aero_pagina')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'aero_url')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'aero_fkubicacion')->textInput() ?>
 
     <div class="form-group">

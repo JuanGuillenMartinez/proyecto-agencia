@@ -23,7 +23,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'aero_pagina') ?>
 
-    <?= $form->field($model, 'aero_fkubicacion') ?>
+    <?= $form->field($model, 'aero_url') ?>
+
+    <?php // echo $form->field($model, 'aero_fkubicacion') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
