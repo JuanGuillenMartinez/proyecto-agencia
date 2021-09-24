@@ -11,6 +11,7 @@ use Yii;
  * @property int $alo_habitacion Habitación
  * @property string $alo_direccion Dirección
  * @property float $alo_precio Precio
+ * @property string $alo_url Imagen
  * @property int $alo_fkubucacion Ubicación
  *
  * @property CatUbicacion $aloFkubucacion
@@ -32,10 +33,10 @@ class Alojamiento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['alo_habitacion', 'alo_direccion', 'alo_precio', 'alo_fkubucacion'], 'required'],
+            [['alo_habitacion', 'alo_direccion', 'alo_precio', 'alo_url', 'alo_fkubucacion'], 'required'],
             [['alo_habitacion', 'alo_fkubucacion'], 'integer'],
             [['alo_precio'], 'number'],
-            [['alo_direccion'], 'string', 'max' => 100],
+            [['alo_direccion', 'alo_url'], 'string', 'max' => 100],
             [['alo_fkubucacion'], 'exist', 'skipOnError' => true, 'targetClass' => CatUbicacion::className(), 'targetAttribute' => ['alo_fkubucacion' => 'ubi_id']],
         ];
     }
@@ -50,6 +51,7 @@ class Alojamiento extends \yii\db\ActiveRecord
             'alo_habitacion' => 'Habitación',
             'alo_direccion' => 'Dirección',
             'alo_precio' => 'Precio',
+            'alo_url' => 'Imagen',
             'alo_fkubucacion' => 'Ubicación',
         ];
     }

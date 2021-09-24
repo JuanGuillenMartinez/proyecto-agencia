@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'alo_habitacion',
             'alo_direccion',
             'alo_precio',
+            'alo_url:url',
             'alo_fkubucacion',
         ],
     ]) ?>

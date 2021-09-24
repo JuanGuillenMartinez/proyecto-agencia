@@ -23,7 +23,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'alo_precio') ?>
 
-    <?= $form->field($model, 'alo_fkubucacion') ?>
+    <?= $form->field($model, 'alo_url') ?>
+
+    <?php // echo $form->field($model, 'alo_fkubucacion') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'alo_precio')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'alo_url')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'alo_fkubucacion')->textInput() ?>
 
     <div class="form-group">

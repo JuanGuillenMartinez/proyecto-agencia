@@ -18,7 +18,7 @@ class AlojamientoSearch extends Alojamiento
     {
         return [
             [['alo_id', 'alo_habitacion', 'alo_fkubucacion'], 'integer'],
-            [['alo_direccion'], 'safe'],
+            [['alo_direccion', 'alo_url'], 'safe'],
             [['alo_precio'], 'number'],
         ];
     }
@@ -65,7 +65,8 @@ class AlojamientoSearch extends Alojamiento
             'alo_fkubucacion' => $this->alo_fkubucacion,
         ]);
 
-        $query->andFilterWhere(['like', 'alo_direccion', $this->alo_direccion]);
+        $query->andFilterWhere(['like', 'alo_direccion', $this->alo_direccion])
+            ->andFilterWhere(['like', 'alo_url', $this->alo_url]);
 
         return $dataProvider;
     }
