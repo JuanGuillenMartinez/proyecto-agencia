@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatSeguro */
 
-$this->title = $model->seg_nombre;
+$this->title = $model->nombreAseguradora . " - " . $model->seg_nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Seguros', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -33,6 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'seg_nombre',
             'seg_precio',
             'seg_fkaseguradora',
+            'nombreAseguradora',
+            'seg_fkregion',
             'nombreRegion'
         ],
     ]) ?>
