@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'aero_direccion',
             'aero_pagina',
             'aero_url:url',
-            //'aero_fkubicacion',
+            'aero_fkubicacion',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
