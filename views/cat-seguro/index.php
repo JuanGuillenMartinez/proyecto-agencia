@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'seg_nombre',
             'seg_precio',
             'nombreRegion',
-            'seg_fkaseguradora',
+            'nombreAseguradora',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

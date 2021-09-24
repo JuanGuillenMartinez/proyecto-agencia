@@ -53,7 +53,8 @@ class CatSeguro extends \yii\db\ActiveRecord
             'seg_precio' => 'Precio ',
             'seg_fkregion' => 'Región',
             'seg_fkaseguradora' => 'Aseguradora',
-            'nombreRegion' => 'Región'
+            'nombreRegion' => 'Región',
+            'nombreAseguradora' => 'Aseguradora'
         ];
     }
 
@@ -89,5 +90,9 @@ class CatSeguro extends \yii\db\ActiveRecord
 
     public function getNombreRegion() {
         return $this->segFkregion->reg_region;
+    }
+
+    public function getNombreAseguradora() {
+        return $this->segFkaseguradora->ase_nombre;
     }
 }
