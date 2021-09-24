@@ -1,0 +1,133 @@
+<?php
+
+namespace app\controllers;
+
+use app\models\CatAeropuerto;
+use app\models\CatAeropuertoSearch;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
+/**
+ * CatAeropuertoController implements the CRUD actions for CatAeropuerto model.
+ */
+class CatAeropuertoController extends Controller
+{
+    /**
+     * @inheritDoc
+     */
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            [
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['POST'],
+                    ],
+                ],
+            ]
+        );
+    }
+
+    /**
+     * Lists all CatAeropuerto models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new CatAeropuertoSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Displays a single CatAeropuerto model.
+     * @param int $aero_id Id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($aero_id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($aero_id),
+        ]);
+    }
+
+    /**
+     * Creates a new CatAeropuerto model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new CatAeropuerto();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'aero_id' => $model->aero_id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Updates an existing CatAeropuerto model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param int $aero_id Id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdate($aero_id)
+    {
+        $model = $this->findModel($aero_id);
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'aero_id' => $model->aero_id]);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Deletes an existing CatAeropuerto model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param int $aero_id Id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDelete($aero_id)
+    {
+        $this->findModel($aero_id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the CatAeropuerto model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param int $aero_id Id
+     * @return CatAeropuerto the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($aero_id)
+    {
+        if (($model = CatAeropuerto::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+}
