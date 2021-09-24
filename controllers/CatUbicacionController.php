@@ -52,10 +52,10 @@ class CatUbicacionController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($ubi_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($ubi_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class CatUbicacionController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'ubi_id' => $model->ubi_id]);
+                return $this->redirect(['view', 'id' => $model->ubi_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class CatUbicacionController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($ubi_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($ubi_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ubi_id' => $model->ubi_id]);
+            return $this->redirect(['view', 'id' => $model->ubi_id]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class CatUbicacionController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($ubi_id)
+    public function actionDelete($id)
     {
-        $this->findModel($ubi_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class CatUbicacionController extends Controller
      * @return CatUbicacion the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ubi_id)
+    protected function findModel($id)
     {
         if (($model = CatUbicacion::findOne($id)) !== null) {
             return $model;
