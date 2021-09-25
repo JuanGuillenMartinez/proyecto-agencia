@@ -100,4 +100,8 @@ class CatSeguro extends \yii\db\ActiveRecord
     public static function getRegionesMap() {
         return ArrayHelper::map(CatRegion::find()->all(), 'reg_id', 'reg_region');
     }
+
+    public static function getAseguradorasMap() {
+        return ArrayHelper::map(CatAseguradora::find()->all(), 'ase_id', 'ase_nombre');
+    }
 }

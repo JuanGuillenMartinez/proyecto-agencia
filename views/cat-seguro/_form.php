@@ -1,5 +1,6 @@
 <?php
 
+use app\models\CatAseguradora;
 use app\models\CatSeguro;
 use kartik\select2\Select2;
 use yii\helpers\Html;
@@ -27,7 +28,14 @@ use yii\widgets\ActiveForm;
         ]); 
     ?>
 
-    <?= $form->field($model, 'seg_fkaseguradora')->textInput() ?>
+    <?= $form->field($model, 'seg_fkaseguradora')->widget(Select2::classname(), [
+        'data' => CatSeguro::getAseguradorasMap(),
+        'options' => ['placeholder' => 'Selecciona una aseguradora ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+        ]);
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
