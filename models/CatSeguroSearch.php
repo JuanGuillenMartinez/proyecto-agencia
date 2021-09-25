@@ -53,6 +53,24 @@ class CatSeguroSearch extends CatSeguro
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' => [
+                'seg_id',
+                'seg_precio',
+                'seg_nombre',
+                'nombreRegion' => [
+                    'asc' => ['reg_region' => SORT_ASC],
+                    'desc' => ['reg_region' => SORT_DESC],
+                    'default' => ['reg_region' => SORT_ASC]
+                ],
+                'nombreAseguradora' => [
+                    'asc' => ['ase_nombre' => SORT_ASC],
+                    'desc' => ['ase_nombre' => SORT_DESC],
+                    'default' => ['ase_nombre' => SORT_ASC]
+                ],
+            ]
+        ]);
+
         $this->load($params);
 
         if (!$this->validate()) {
