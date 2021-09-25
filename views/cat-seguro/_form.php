@@ -1,5 +1,7 @@
 <?php
 
+use app\models\CatSeguro;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -16,7 +18,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'seg_precio')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'seg_fkregion')->textInput() ?>
+    <?= $form->field($model, 'seg_fkregion')->widget(Select2::classname(), [
+        'data' => CatSeguro::getRegionesMap(),
+        'options' => ['placeholder' => 'Selecciona una región ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+        ]); 
+    ?>
 
     <?= $form->field($model, 'seg_fkaseguradora')->textInput() ?>
 
