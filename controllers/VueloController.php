@@ -52,10 +52,10 @@ class VueloController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($vue_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($vue_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class VueloController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'vue_id' => $model->vue_id]);
+                return $this->redirect(['view', 'id' => $model->vue_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class VueloController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($vue_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($vue_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'vue_id' => $model->vue_id]);
+            return $this->redirect(['view', 'id' => $model->vue_id]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class VueloController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($vue_id)
+    public function actionDelete($id)
     {
-        $this->findModel($vue_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class VueloController extends Controller
      * @return Vuelo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($vue_id)
+    protected function findModel($id)
     {
         if (($model = Vuelo::findOne($id)) !== null) {
             return $model;

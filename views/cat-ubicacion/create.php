@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatUbicacion */
 
-$this->title = 'Create Cat Ubicacion';
+$this->title = 'Añadir Ubicacion';
 $this->params['breadcrumbs'][] = ['label' => 'Cat Ubicacions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

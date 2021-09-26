@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatAeropuerto */
 
-$this->title = 'Update Cat Aeropuerto: ' . $model->aero_id;
+$this->title = 'Editar Aeropuerto: ' . $model->aero_id;
 $this->params['breadcrumbs'][] = ['label' => 'Cat Aeropuertos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->aero_id, 'url' => ['view', 'aero_id' => $model->aero_id]];
 $this->params['breadcrumbs'][] = 'Update';

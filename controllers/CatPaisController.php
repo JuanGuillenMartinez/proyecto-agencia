@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\CatPais;
+use app\models\CatPais;  
 use app\models\CatPaisSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

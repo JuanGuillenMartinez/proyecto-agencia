@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CatAeropuertoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cat Aeropuertos';
+$this->title = 'Aeropuertos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-aeropuerto-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cat Aeropuerto', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Añadir Aeropuerto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

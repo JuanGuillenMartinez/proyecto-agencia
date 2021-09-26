@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CatUbicacionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cat Ubicacions';
+$this->title = 'Ubicacions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-ubicacion-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cat Ubicacion', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Añadir Ubicacion', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

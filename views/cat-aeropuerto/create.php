@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatAeropuerto */
 
-$this->title = 'Create Cat Aeropuerto';
+$this->title = 'Añadir Aeropuerto';
 $this->params['breadcrumbs'][] = ['label' => 'Cat Aeropuertos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
