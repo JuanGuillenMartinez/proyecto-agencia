@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'paq_nombre',
             'paq_subtotal',
             'paq_url:url',
-            'paq_fkvuelo',
             'tipoVuelo',
             'destinoVuelo',
             'paq_fkalojamiento',
