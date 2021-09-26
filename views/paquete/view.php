@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Paquete */
-
+// Aqui va la vista de informacion de cada registro
 $this->title = $model->paq_nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Paquetes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'paq_subtotal',
             'paq_url:url',
             'paq_fkvuelo',
+            'tipoVuelo',
             'paq_fkalojamiento',
             'paq_fkseguro',
             'paq_fktraslado',

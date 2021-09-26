@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PaqueteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+// Aqui va la vista de el index con todos los registros
 $this->title = 'Paquetes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -31,6 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'paq_subtotal',
             'paq_url:url',
             'paq_fkvuelo',
+            'tipoVuelo',
+            'destinoVuelo',
             'paq_fkalojamiento',
             'paq_fkseguro',
             'paq_fktraslado',
