@@ -35,8 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'vue_precio',
             'vue_estatus',
             'vue_fkaerolinea',
+            'aerolineaNombre',
             'vue_fkaeroorigen',
+            'origenVuelo',
             'vue_fkaerodestino',
+            'destinoVuelo',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

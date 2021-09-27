@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'ubi_id',
             'ubi_capital',
             'ubi_fkpais',
+            'paisNombre',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
