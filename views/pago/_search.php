@@ -24,8 +24,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'pag_entidad') ?>
 
     <?= $form->field($model, 'pag_tarjeta') ?>
-
-    <?php // echo $form->field($model, 'pag_expiracion') ?>
+    
+    <?php // echo $form->field($model, 'pag_expiracion') ?> <!-- Es necesario hacer el search? -->
 
     <?php // echo $form->field($model, 'pag_estatus') ?>
 
