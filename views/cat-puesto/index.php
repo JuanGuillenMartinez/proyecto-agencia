@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CatAerolineaSearch */
+/* @var $searchModel app\models\CatPuestoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Aerolineas';
+$this->title = 'Cat Puestos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-aerolinea-index">
+<div class="cat-puesto-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Crear Aerolinea', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Cat Puesto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,10 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'aer_id',
-            'aer_nombre',
-            'aer_tipo',
-            'aer_pagina',
+            'pue_id',
+            'pue_puesto',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
