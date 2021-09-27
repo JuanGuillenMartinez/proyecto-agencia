@@ -9,6 +9,8 @@ use Yii;
  *
  * @property int $aer_id Id
  * @property string $aer_nombre Aerolínea
+ * @property string $aer_tipo Tipo
+ * @property string $aer_pagina Página
  *
  * @property Vuelo[] $vuelos
  */
@@ -28,8 +30,10 @@ class CatAerolinea extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['aer_nombre'], 'required'],
+            [['aer_nombre', 'aer_tipo', 'aer_pagina'], 'required'],
+            [['aer_tipo'], 'string'],
             [['aer_nombre'], 'string', 'max' => 45],
+            [['aer_pagina'], 'string', 'max' => 55],
         ];
     }
 
@@ -41,6 +45,8 @@ class CatAerolinea extends \yii\db\ActiveRecord
         return [
             'aer_id' => 'Id',
             'aer_nombre' => 'Aerolínea',
+            'aer_tipo' => 'Tipo',
+            'aer_pagina' => 'Página',
         ];
     }
 
