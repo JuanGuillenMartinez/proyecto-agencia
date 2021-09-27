@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CatPuestoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cat Puestos';
+$this->title = 'Puestos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-puesto-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cat Puesto', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear puesto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

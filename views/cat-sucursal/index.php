@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CatSucursalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cat Sucursals';
+$this->title = 'Sucursales';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-sucursal-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cat Sucursal', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Sucursal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

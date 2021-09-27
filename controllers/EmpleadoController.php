@@ -52,10 +52,10 @@ class EmpleadoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($emp_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($emp_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -88,12 +88,12 @@ class EmpleadoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($emp_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($emp_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'emp_id' => $model->emp_id]);
+            return $this->redirect(['view', 'id' => $model->emp_id]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class EmpleadoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($emp_id)
+    public function actionDelete($id)
     {
-        $this->findModel($emp_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class EmpleadoController extends Controller
      * @return Empleado the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($emp_id)
+    protected function findModel($id)
     {
         if (($model = Empleado::findOne($id)) !== null) {
             return $model;

@@ -52,10 +52,10 @@ class PersonaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($per_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($per_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -88,12 +88,12 @@ class PersonaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($per_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($per_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'per_id' => $model->per_id]);
+            return $this->redirect(['view', 'id' => $model->per_id]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class PersonaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($per_id)
+    public function actionDelete($id)
     {
-        $this->findModel($per_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class PersonaController extends Controller
      * @return Persona the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($per_id)
+    protected function findModel($id)
     {
         if (($model = Persona::findOne($id)) !== null) {
             return $model;

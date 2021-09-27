@@ -63,7 +63,7 @@ class Persona extends \yii\db\ActiveRecord
             'per_direccion' => 'Dirección',
             'per_correo' => 'Correo',
             'per_telefono' => 'Teléfono',
-            'per_url' => 'Perfil',
+            'per_url' => 'Foto de perfil',
             'per_fkuser' => 'User',
         ];
     }

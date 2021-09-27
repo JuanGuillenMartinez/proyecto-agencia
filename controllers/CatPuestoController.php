@@ -52,10 +52,10 @@ class CatPuestoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($pue_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($pue_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class CatPuestoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'pue_id' => $model->pue_id]);
+                return $this->redirect(['view', 'id' => $model->pue_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class CatPuestoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($pue_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($pue_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'pue_id' => $model->pue_id]);
+            return $this->redirect(['view', 'id' => $model->pue_id]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class CatPuestoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($pue_id)
+    public function actionDelete($id)
     {
-        $this->findModel($pue_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class CatPuestoController extends Controller
      * @return CatPuesto the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($pue_id)
+    protected function findModel($id)
     {
         if (($model = CatPuesto::findOne($id)) !== null) {
             return $model;
