@@ -128,11 +128,11 @@ class Paquete extends \yii\db\ActiveRecord
     }
 
     public function getDestinoVuelo() {
-        return $this->paqFkvuelo->getAeropuertoDestino()->aero_nombre;
+        return $this->paqFkvuelo->vueFkaerodestino->aero_nombre;
     }
 
     public function getOrigenVuelo() {
-        return $this->paqFkvuelo->getAeropuertoOrigen()->aero_nombre;
+        return $this->paqFkvuelo->vueFkaeroorigen->aero_nombre;
     }
 
     public function getNumeroHabitacion() {

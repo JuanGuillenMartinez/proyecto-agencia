@@ -44,9 +44,54 @@ class PaqueteSearch extends Paquete
         $query = Paquete::find();
 
         // add conditions that should always apply here
+            $query->joinWith('paqFkseguro');
+            $query->joinWith('paqFkvuelo');
+            $query->joinWith('paqFkalojamiento');
+            $query->joinWith('paqFktraslado');
+            $query->joinWith(['paqFkvuelo.vueFkaerodestino']);
+            $query->joinWith(['paqFkvuelo.vueFkaeroorigen']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+        ]);
+
+        $dataProvider->setSort([
+            'attributes' => [
+                'paq_id',
+                'paq_nombre',
+                'paq_subtotal',
+                'paq_url',
+                'nombreSeguro' => [
+                    'asc' => ['seg_nombre' => SORT_ASC],
+                    'desc' => ['seg_nombre' => SORT_DESC],
+                    'default' => ['seg_nombre' => SORT_ASC]
+                ],
+                'tipoVuelo' => [
+                    'asc' => ['vue_tipo' => SORT_ASC],
+                    'desc' => ['vue_tipo' => SORT_DESC],
+                    'default' => ['vue_tipo' => SORT_ASC]
+                ],
+                'numeroHabitacion' => [
+                    'asc' => ['alo_habitacion' => SORT_ASC],
+                    'desc' => ['alo_habitacion' => SORT_DESC],
+                    'default' => ['alo_habitacion' => SORT_ASC]
+                ],
+                'precioTraslado' => [
+                    'asc' => ['tra_precio' => SORT_ASC],
+                    'desc' => ['tra_precio' => SORT_DESC],
+                    'default' => ['tra_precio' => SORT_ASC]
+                ],
+                'destinoVuelo' => [
+                    'asc' => ['aero_nombre' => SORT_ASC],
+                    'desc' => ['aero_nombre' => SORT_DESC],
+                    'default' => ['aero_nombre' => SORT_ASC]
+                ],
+                'origenVuelo' => [
+                    'asc' => ['aero_nombre' => SORT_ASC],
+                    'desc' => ['aero_nombre' => SORT_DESC],
+                    'default' => ['aero_nombre' => SORT_ASC]
+                ],
+            ]
         ]);
 
         $this->load($params);
