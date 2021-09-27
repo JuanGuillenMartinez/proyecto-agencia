@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\CatAerolinea;
+use app\models\Pago;
 
 /**
- * CatAerolineaSearch represents the model behind the search form of `app\models\CatAerolinea`.
+ * PagoSearch represents the model behind the search form of `app\models\Pago`.
  */
-class CatAerolineaSearch extends CatAerolinea
+class PagoSearch extends Pago
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CatAerolineaSearch extends CatAerolinea
     public function rules()
     {
         return [
-            [['aer_id'], 'integer'],
-            [['aer_nombre', 'aer_tipo', 'aer_pagina'], 'safe'],
+            [['pag_id', 'pag_fkreservacion'], 'integer'],
+            [['pag_direccion', 'pag_tipo', 'pag_entidad', 'pag_tarjeta', 'pag_expiracion', 'pag_estatus'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CatAerolineaSearch extends CatAerolinea
      */
     public function search($params)
     {
-        $query = CatAerolinea::find();
+        $query = Pago::find();
 
         // add conditions that should always apply here
 
@@ -58,12 +58,16 @@ class CatAerolineaSearch extends CatAerolinea
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'aer_id' => $this->aer_id,
+            'pag_id' => $this->pag_id,
+            'pag_fkreservacion' => $this->pag_fkreservacion,
         ]);
 
-        $query->andFilterWhere(['like', 'aer_nombre', $this->aer_nombre])
-            ->andFilterWhere(['like', 'aer_tipo', $this->aer_tipo])
-            ->andFilterWhere(['like', 'aer_pagina', $this->aer_pagina]);
+        $query->andFilterWhere(['like', 'pag_direccion', $this->pag_direccion])
+            ->andFilterWhere(['like', 'pag_tipo', $this->pag_tipo])
+            ->andFilterWhere(['like', 'pag_entidad', $this->pag_entidad])
+            ->andFilterWhere(['like', 'pag_tarjeta', $this->pag_tarjeta])
+            ->andFilterWhere(['like', 'pag_expiracion', $this->pag_expiracion])
+            ->andFilterWhere(['like', 'pag_estatus', $this->pag_estatus]);
 
         return $dataProvider;
     }

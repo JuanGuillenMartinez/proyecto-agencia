@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\CatAerolinea;
-use app\models\CatAerolineaSearch;
+use app\models\Pago;
+use app\models\PagoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CatAerolineaController implements the CRUD actions for CatAerolinea model.
+ * PagoController implements the CRUD actions for Pago model.
  */
-class CatAerolineaController extends Controller
+class PagoController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,12 +32,12 @@ class CatAerolineaController extends Controller
     }
 
     /**
-     * Lists all CatAerolinea models.
+     * Lists all Pago models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CatAerolineaSearch();
+        $searchModel = new PagoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +47,7 @@ class CatAerolineaController extends Controller
     }
 
     /**
-     * Displays a single CatAerolinea model.
+     * Displays a single Pago model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,17 +60,17 @@ class CatAerolineaController extends Controller
     }
 
     /**
-     * Creates a new CatAerolinea model.
+     * Creates a new Pago model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CatAerolinea();
+        $model = new Pago();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->aer_id]);
+                return $this->redirect(['view', 'id' => $model->pag_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -82,7 +82,7 @@ class CatAerolineaController extends Controller
     }
 
     /**
-     * Updates an existing CatAerolinea model.
+     * Updates an existing Pago model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -93,7 +93,7 @@ class CatAerolineaController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->aer_id]);
+            return $this->redirect(['view', 'id' => $model->pag_id]);
         }
 
         return $this->render('update', [
@@ -102,7 +102,7 @@ class CatAerolineaController extends Controller
     }
 
     /**
-     * Deletes an existing CatAerolinea model.
+     * Deletes an existing Pago model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -116,15 +116,15 @@ class CatAerolineaController extends Controller
     }
 
     /**
-     * Finds the CatAerolinea model based on its primary key value.
+     * Finds the Pago model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CatAerolinea the loaded model
+     * @return Pago the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CatAerolinea::findOne($id)) !== null) {
+        if (($model = Pago::findOne($id)) !== null) {
             return $model;
         }
 
