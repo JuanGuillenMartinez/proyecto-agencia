@@ -31,9 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'pag_tipo',
             'pag_entidad',
             'pag_tarjeta',
-            //'pag_expiracion',
-            //'pag_estatus',
-            //'pag_fkreservacion',
+            'pag_expiracion',
+            'pag_estatus',
+            'pag_fkreservacion',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
