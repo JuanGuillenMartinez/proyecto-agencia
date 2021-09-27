@@ -61,6 +61,8 @@ class Paquete extends \yii\db\ActiveRecord
             'paq_subtotal' => 'Subtotal',
             'paq_url' => 'Imagen',
             'paq_fkvuelo' => 'Vuelo',
+            'tipoVuelo' => 'Vuelo',
+            'destino_Vuelo' => 'Destino titulo',
             'paq_fkalojamiento' => 'Alojamiento',
             'paq_fkseguro' => 'Seguro',
             'paq_fktraslado' => 'Traslado',
@@ -115,5 +117,17 @@ class Paquete extends \yii\db\ActiveRecord
     public function getReservacionpaquetes()
     {
         return $this->hasMany(Reservacionpaquete::className(), ['recpaq_fkpaquete' => 'paq_id']);
+    }
+
+    public function getNombreVuelo() {
+        return $this->paqFkvuelo->paq_nombre;
+    }
+
+    public function getTipoVuelo() {
+        return $this->paqFkvuelo->vue_tipo;
+    }
+
+    public function getDestinoVuelo() {
+        return $this->paqFkvuelo->vue_id;
     }
 }
