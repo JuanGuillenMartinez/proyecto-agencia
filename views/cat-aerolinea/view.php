@@ -31,6 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'aer_id',
             'aer_nombre',
+            'aer_tipo',
+            'aer_pagina',
         ],
     ]) ?>
 

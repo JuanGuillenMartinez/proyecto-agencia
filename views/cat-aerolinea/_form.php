@@ -14,6 +14,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'aer_nombre')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'aer_tipo')->dropDownList([ 'regional' => 'Regional', 'red' => 'Red', 'gran escala' => 'Gran escala', ], ['prompt' => '']) ?>
+
+    <?= $form->field($model, 'aer_pagina')->textInput(['maxlength' => true]) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

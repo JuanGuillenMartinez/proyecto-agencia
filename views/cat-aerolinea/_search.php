@@ -19,6 +19,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'aer_nombre') ?>
 
+    <?= $form->field($model, 'aer_tipo') ?>
+
+    <?= $form->field($model, 'aer_pagina') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>

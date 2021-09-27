@@ -37,8 +37,6 @@ class CatAerolineaController extends Controller
      */
     public function actionIndex()
     {
-        
-        
         $searchModel = new CatAerolineaSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -50,7 +48,7 @@ class CatAerolineaController extends Controller
 
     /**
      * Displays a single CatAerolinea model.
-     * @param int $aer_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -86,7 +84,7 @@ class CatAerolineaController extends Controller
     /**
      * Updates an existing CatAerolinea model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $aer_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -106,7 +104,7 @@ class CatAerolineaController extends Controller
     /**
      * Deletes an existing CatAerolinea model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $aer_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -120,7 +118,7 @@ class CatAerolineaController extends Controller
     /**
      * Finds the CatAerolinea model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $aer_id Id
+     * @param integer $id
      * @return CatAerolinea the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
