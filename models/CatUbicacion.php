@@ -47,6 +47,7 @@ class CatUbicacion extends \yii\db\ActiveRecord
             'ubi_id' => 'Id',
             'ubi_capital' => 'Capital',
             'ubi_fkpais' => 'País',
+            'paisNombre' => 'Pais',
         ];
     }
 
@@ -78,5 +79,9 @@ class CatUbicacion extends \yii\db\ActiveRecord
     public function getUbiFkpais()
     {
         return $this->hasOne(CatPais::className(), ['pai_id' => 'ubi_fkpais']);
+    }
+    public function getPaisNombre()
+    {
+        return $this->ubiFkpais->pai_pais;
     }
 }
