@@ -24,12 +24,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'pag_entidad') ?>
 
     <?= $form->field($model, 'pag_tarjeta') ?>
+    
+    <?php echo $form->field($model, 'pag_expiracion') ?> <!-- Es necesario hacer el search? -->
 
-    <?php // echo $form->field($model, 'pag_expiracion') ?>
+    <?php echo $form->field($model, 'pag_estatus') ?>
 
-    <?php // echo $form->field($model, 'pag_estatus') ?>
-
-    <?php // echo $form->field($model, 'pag_fkreservacion') ?>
+    <?php echo $form->field($model, 'pag_fkreservacion') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

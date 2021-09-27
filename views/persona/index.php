@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PagoSearch */
+/* @var $searchModel app\models\PersonaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pagos';
+$this->title = 'Personas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pago-index">
+<div class="persona-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Pago', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Persona', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,14 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'pag_id',
-            'pag_direccion',
-            'pag_tipo',
-            'pag_entidad',
-            'pag_tarjeta',
-            'pag_expiracion',
-            'pag_estatus',
-            'pag_fkreservacion',
+            'per_id',
+            'per_nombre',
+            'per_paterno',
+            'per_materno',
+            'per_nacimiento',
+            //'per_direccion',
+            //'per_correo',
+            //'per_telefono',
+            //'per_url:url',
+            //'per_fkuser',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
