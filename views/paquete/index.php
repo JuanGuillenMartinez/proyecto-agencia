@@ -32,9 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'paq_url:url',
             'tipoVuelo',
             'destinoVuelo',
-            'paq_fkalojamiento',
-            'paq_fkseguro',
-            'paq_fktraslado',
+            'origenVuelo',
+            'numeroHabitacion',
+            'nombreSeguro',
+            'precioTraslado',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

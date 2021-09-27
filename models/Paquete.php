@@ -63,6 +63,10 @@ class Paquete extends \yii\db\ActiveRecord
             'paq_fkvuelo' => 'Vuelo',
             'tipoVuelo' => 'Tipo de Vuelo',
             'destinoVuelo' => 'Destino',
+            'origenVuelo' => 'Origen',
+            'numeroHabitacion' => '# Habitacion',
+            'nombreSeguro' => 'Seguro',
+            'precioTraslado' => 'Precio traslado',
             'paq_fkalojamiento' => 'Alojamiento',
             'paq_fkseguro' => 'Seguro',
             'paq_fktraslado' => 'Traslado',
@@ -124,6 +128,22 @@ class Paquete extends \yii\db\ActiveRecord
     }
 
     public function getDestinoVuelo() {
-        return $this->paqFkvuelo->vue_id;
+        return $this->paqFkvuelo->getAeropuertoDestino()->aero_nombre;
+    }
+
+    public function getOrigenVuelo() {
+        return $this->paqFkvuelo->getAeropuertoOrigen()->aero_nombre;
+    }
+
+    public function getNumeroHabitacion() {
+        return $this->paqFkalojamiento->alo_habitacion;
+    }
+
+    public function getNombreSeguro() {
+        return $this->paqFkseguro->seg_nombre;
+    }
+    
+    public function getPrecioTraslado() {
+        return $this->paqFktraslado->tra_precio;
     }
 }
