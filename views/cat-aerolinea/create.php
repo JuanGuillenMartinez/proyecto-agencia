@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatAerolinea */
 
-$this->title = 'Create Cat Aerolinea';
-$this->params['breadcrumbs'][] = ['label' => 'Cat Aerolineas', 'url' => ['index']];
+$this->title = 'Crear Aerolinea';
+$this->params['breadcrumbs'][] = ['label' => 'Aerolineas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-aerolinea-create">

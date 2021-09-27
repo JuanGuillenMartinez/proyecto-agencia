@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "paquete".
@@ -128,11 +129,11 @@ class Paquete extends \yii\db\ActiveRecord
     }
 
     public function getDestinoVuelo() {
-        return $this->paqFkvuelo->getAeropuertoDestino()->aero_nombre;
+        return $this->paqFkvuelo->vueFkaerodestino->aero_nombre;
     }
 
     public function getOrigenVuelo() {
-        return $this->paqFkvuelo->getAeropuertoOrigen()->aero_nombre;
+        return $this->paqFkvuelo->vueFkaeroorigen->aero_nombre;
     }
 
     public function getNumeroHabitacion() {
@@ -145,5 +146,21 @@ class Paquete extends \yii\db\ActiveRecord
     
     public function getPrecioTraslado() {
         return $this->paqFktraslado->tra_precio;
+    }
+
+    public static function getVuelosMap() {
+        return ArrayHelper::map(Vuelo::find()->all(), 'vue_id', 'vue_fkaeroorigen');
+    }
+
+    public static function getAlojamientosMap() {
+        return ArrayHelper::map(Alojamiento::find()->all(), 'alo_id', 'alo_habitacion');
+    }
+
+    public static function getSegurosMap() {
+        return ArrayHelper::map(CatSeguro::find()->all(), 'seg_id', 'seg_nombre');
+    }
+
+    public static function getTrasladosMap() {
+        return ArrayHelper::map(Traslado::find()->all(), 'tra_id', 'tra_precio');
     }
 }

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\CatAeropuerto */
 
 $this->title = $model->aero_id;
-$this->params['breadcrumbs'][] = ['label' => 'Cat Aeropuertos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Aeropuertos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
