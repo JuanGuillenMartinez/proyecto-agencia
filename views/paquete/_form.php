@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Paquete;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,13 +20,41 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'paq_url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'paq_fkvuelo')->textInput() ?>
+    <?= $form->field($model, 'paq_fkvuelo')->widget(Select2::classname(), [
+        'data' => Paquete::getVuelosMap(),
+        'options' => ['placeholder' => 'Selecciona un vuelo ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+        ]); 
+    ?>
 
-    <?= $form->field($model, 'paq_fkalojamiento')->textInput() ?>
+    <?= $form->field($model, 'paq_fkalojamiento')->widget(Select2::classname(), [
+        'data' => Paquete::getAlojamientosMap(),
+        'options' => ['placeholder' => 'Selecciona un alojamiento ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+        ]); 
+    ?>
 
-    <?= $form->field($model, 'paq_fkseguro')->textInput() ?>
+    <?= $form->field($model, 'paq_fkseguro')->widget(Select2::classname(), [
+        'data' => Paquete::getSegurosMap(),
+        'options' => ['placeholder' => 'Selecciona un seguro ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+        ]); 
+    ?>
 
-    <?= $form->field($model, 'paq_fktraslado')->textInput() ?>
+    <?= $form->field($model, 'paq_fktraslado')->widget(Select2::classname(), [
+        'data' => Paquete::getTrasladosMap(),
+        'options' => ['placeholder' => 'Selecciona un traslado ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+        ]); 
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
