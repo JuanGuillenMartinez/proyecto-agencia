@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Editar País: ' . $model->pai_id;
 $this->params['breadcrumbs'][] = ['label' => 'País', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->pai_id, 'url' => ['view', 'pai_id' => $model->pai_id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Editar';
 ?>
 <div class="cat-pais-update">
 
