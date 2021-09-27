@@ -48,7 +48,7 @@ class CatAseguradoraController extends Controller
 
     /**
      * Displays a single CatAseguradora model.
-     * @param int $ase_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -84,7 +84,7 @@ class CatAseguradoraController extends Controller
     /**
      * Updates an existing CatAseguradora model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $ase_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -104,7 +104,7 @@ class CatAseguradoraController extends Controller
     /**
      * Deletes an existing CatAseguradora model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $ase_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -118,7 +118,7 @@ class CatAseguradoraController extends Controller
     /**
      * Finds the CatAseguradora model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $ase_id Id
+     * @param integer $id
      * @return CatAseguradora the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
