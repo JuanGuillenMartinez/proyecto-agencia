@@ -110,4 +110,10 @@ class Vuelo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(CatAeropuerto::className(), ['aero_id' => 'vue_fkaeroorigen']);
     }
+    public function getAeropuertoOrigen() {
+        return $this->vueFkaeroorigen;
+    }
+    public function getAeropuertoDestino() {
+        return $this->vueFkaerodestino;
+    }
 }
