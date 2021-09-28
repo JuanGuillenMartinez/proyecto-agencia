@@ -104,4 +104,8 @@ class CatSeguro extends \yii\db\ActiveRecord
     public static function getAseguradorasMap() {
         return ArrayHelper::map(CatAseguradora::find()->all(), 'ase_id', 'ase_nombre');
     }
+
+    public function getSeguroInfo() {
+        return $this->seg_nombre . ' - ' . $this->nombreAseguradora;
+    }
 }
