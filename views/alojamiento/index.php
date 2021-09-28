@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Añadir Alojamiento', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Alojamiento', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,13 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'alo_id',
+            'alo_nombre',
             'alo_habitacion',
             'alo_direccion',
             'alo_precio',
             'alo_url:url',
             'alo_fkubucacion',
-            'alojamientoUbicacion',
-            'alojamientoPais',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

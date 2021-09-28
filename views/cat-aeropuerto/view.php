@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\CatAeropuerto */
 
 $this->title = $model->aero_id;
-$this->params['breadcrumbs'][] = ['label' => 'Aeropuertos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Cat Aeropuertos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Editar', ['update', 'id' => $model->aero_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->aero_id], [
+        <?= Html::a('Update', ['update', 'aero_id' => $model->aero_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'aero_id' => $model->aero_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Está seguro de que quiere eliminar este artículo?',
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>

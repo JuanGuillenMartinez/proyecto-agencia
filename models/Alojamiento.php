@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "alojamiento".
  *
  * @property int $alo_id Id
+ * @property string $alo_nombre Hotel
  * @property int $alo_habitacion Habitación
  * @property string $alo_direccion Dirección
  * @property float $alo_precio Precio
@@ -33,9 +34,10 @@ class Alojamiento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['alo_habitacion', 'alo_direccion', 'alo_precio', 'alo_url', 'alo_fkubucacion'], 'required'],
+            [['alo_nombre', 'alo_habitacion', 'alo_direccion', 'alo_precio', 'alo_url', 'alo_fkubucacion'], 'required'],
             [['alo_habitacion', 'alo_fkubucacion'], 'integer'],
             [['alo_precio'], 'number'],
+            [['alo_nombre'], 'string', 'max' => 55],
             [['alo_direccion', 'alo_url'], 'string', 'max' => 100],
             [['alo_fkubucacion'], 'exist', 'skipOnError' => true, 'targetClass' => CatUbicacion::className(), 'targetAttribute' => ['alo_fkubucacion' => 'ubi_id']],
         ];
@@ -48,13 +50,12 @@ class Alojamiento extends \yii\db\ActiveRecord
     {
         return [
             'alo_id' => 'Id',
+            'alo_nombre' => 'Hotel',
             'alo_habitacion' => 'Habitación',
             'alo_direccion' => 'Dirección',
             'alo_precio' => 'Precio',
             'alo_url' => 'Imagen',
             'alo_fkubucacion' => 'Ubicación',
-            'alojamientoUbicacion' => 'Ubicación',
-            'alojamientoPais' => 'Pais',
         ];
     }
 
@@ -76,13 +77,5 @@ class Alojamiento extends \yii\db\ActiveRecord
     public function getPaquetes()
     {
         return $this->hasMany(Paquete::className(), ['paq_fkalojamiento' => 'alo_id']);
-    }
-    public function getAlojamientoUbicacion()
-    {
-        return $this->aloFkubucacion->ubi_capital;
-    }
-    public function getAlojamientoPais()
-    {
-        return $this->aloFkubucacion->ubiFkpais->pai_pais;
     }
 }

@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'alo_nombre')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'alo_habitacion')->textInput() ?>
 
     <?= $form->field($model, 'alo_direccion')->textInput(['maxlength' => true]) ?>
@@ -23,7 +25,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'alo_fkubucacion')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

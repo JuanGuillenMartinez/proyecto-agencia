@@ -52,10 +52,10 @@ class AlojamientoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($alo_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($alo_id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class AlojamientoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->alo_id]);
+                return $this->redirect(['view', 'alo_id' => $model->alo_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class AlojamientoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($alo_id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($alo_id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->alo_id]);
+            return $this->redirect(['view', 'alo_id' => $model->alo_id]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class AlojamientoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($alo_id)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($alo_id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class AlojamientoController extends Controller
      * @return Alojamiento the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($alo_id)
     {
         if (($model = Alojamiento::findOne($id)) !== null) {
             return $model;
