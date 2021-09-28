@@ -11,6 +11,7 @@ use app\models\CatUbicacion;
  */
 class CatUbicacionSearch extends CatUbicacion
 {
+    public $paisNombre;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +19,7 @@ class CatUbicacionSearch extends CatUbicacion
     {
         return [
             [['ubi_id', 'ubi_fkpais'], 'integer'],
-            [['ubi_capital'], 'safe'],
+            [['ubi_capital', 'paisNombre'], 'safe'],
         ];
     }
 
@@ -43,6 +44,7 @@ class CatUbicacionSearch extends CatUbicacion
         $query = CatUbicacion::find();
 
         // add conditions that should always apply here
+        $query->joinWith('ubiFkpais');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -62,7 +64,8 @@ class CatUbicacionSearch extends CatUbicacion
             'ubi_fkpais' => $this->ubi_fkpais,
         ]);
 
-        $query->andFilterWhere(['like', 'ubi_capital', $this->ubi_capital]);
+        $query->andFilterWhere(['like', 'ubi_capital', $this->ubi_capital])
+        ->andFilterWhere(['like', 'pai_pais', $this->paisNombre]);
 
         return $dataProvider;
     }
