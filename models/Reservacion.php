@@ -52,7 +52,8 @@ class Reservacion extends \yii\db\ActiveRecord
             'res_creacion' => 'Creación',
             'res_estatus' => 'Estatus',
             'res_subtotal' => 'Subtotal',
-            'res_fkpersona' => 'Persona',
+            'res_fkpersona' => 'Cliente',
+            'clienteNombre' => 'Nombre del cliente'
         ];
     }
 
