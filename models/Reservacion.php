@@ -85,4 +85,9 @@ class Reservacion extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Reservacionpaquete::className(), ['recpaq_fkreservacion' => 'res_id']);
     }
+
+    public function getClienteNombre() {
+        $persona = $this->resFkpersona;
+        return $persona->per_nombre . ' ' . $persona->per_paterno . ' ' . $persona->per_materno; 
+    }
 }
