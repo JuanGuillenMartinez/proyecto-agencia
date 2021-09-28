@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatSucursal */
 
-$this->title = 'Create Cat Sucursal';
+$this->title = 'Añadir Sucursal';
 $this->params['breadcrumbs'][] = ['label' => 'Cat Sucursals', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
