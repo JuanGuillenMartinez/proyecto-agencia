@@ -54,6 +54,8 @@ class CatAeropuerto extends \yii\db\ActiveRecord
             'aero_pagina' => 'Página',
             'aero_url' => 'Imagen',
             'aero_fkubicacion' => 'Ubicación',
+            'capitalNombre' => 'Capital',
+            'nombrePais' => 'País',
         ];
     }
 
@@ -85,5 +87,13 @@ class CatAeropuerto extends \yii\db\ActiveRecord
     public function getVuelos0()
     {
         return $this->hasMany(Vuelo::className(), ['vue_fkaerodestino' => 'aero_id']);
+    }
+    public function getCapitalNombre()
+    {
+        return $this->aeroFkubicacion->ubi_capital;
+    }
+    public function getNombrePais()
+    {
+        return $this->aeroFkubicacion->ubiFkpais->pai_pais;
     }
 }

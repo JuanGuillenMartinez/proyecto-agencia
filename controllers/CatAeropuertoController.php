@@ -52,10 +52,10 @@ class CatAeropuertoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($aero_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($aero_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class CatAeropuertoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'aero_id' => $model->aero_id]);
+                return $this->redirect(['view', 'id' => $model->aero_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class CatAeropuertoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($aero_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($aero_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'aero_id' => $model->aero_id]);
+            return $this->redirect(['view', 'id' => $model->aero_id]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class CatAeropuertoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($aero_id)
+    public function actionDelete($id)
     {
-        $this->findModel($aero_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class CatAeropuertoController extends Controller
      * @return CatAeropuerto the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($aero_id)
+    protected function findModel($id)
     {
         if (($model = CatAeropuerto::findOne($id)) !== null) {
             return $model;
