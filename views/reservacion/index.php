@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ReservacionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Reservacions';
+$this->title = 'Reservaciones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reservacion-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Reservacion', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Reservación', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
