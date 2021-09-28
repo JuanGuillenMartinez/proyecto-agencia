@@ -56,6 +56,8 @@ class Alojamiento extends \yii\db\ActiveRecord
             'alo_precio' => 'Precio',
             'alo_url' => 'Imagen',
             'alo_fkubucacion' => 'Ubicación',
+            'capitalNombre' => 'Capital',
+            'nombrePais' => 'País',
         ];
     }
 
@@ -77,5 +79,13 @@ class Alojamiento extends \yii\db\ActiveRecord
     public function getPaquetes()
     {
         return $this->hasMany(Paquete::className(), ['paq_fkalojamiento' => 'alo_id']);
+    }
+    public function getCapitalNombre()
+    {
+        return $this->aloFkubucacion->ubi_capital;
+    }
+    public function getNombrePais()
+    {
+        return $this->aloFkubucacion->ubiFkpais->pai_pais;
     }
 }

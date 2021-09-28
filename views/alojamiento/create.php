@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Alojamiento */
 
-$this->title = 'Create Alojamiento';
+$this->title = 'Añadir Alojamiento';
 $this->params['breadcrumbs'][] = ['label' => 'Alojamientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
