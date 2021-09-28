@@ -157,7 +157,7 @@ class Paquete extends \yii\db\ActiveRecord
     }
 
     public static function getSegurosMap() {
-        return ArrayHelper::map(CatSeguro::find()->all(), 'seg_id', 'seg_nombre');
+        return ArrayHelper::map(CatSeguro::find()->all(), 'seg_id', 'seguroInfo');
     }
 
     public static function getTrasladosMap() {
