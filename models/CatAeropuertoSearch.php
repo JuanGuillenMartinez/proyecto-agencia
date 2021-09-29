@@ -11,6 +11,8 @@ use app\models\CatAeropuerto;
  */
 class CatAeropuertoSearch extends CatAeropuerto
 {
+    public $capitalNombre;
+    public $nombrePais;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +20,7 @@ class CatAeropuertoSearch extends CatAeropuerto
     {
         return [
             [['aero_id', 'aero_fkubicacion'], 'integer'],
-            [['aero_nombre', 'aero_direccion', 'aero_pagina', 'aero_url'], 'safe'],
+            [['aero_nombre', 'aero_direccion', 'aero_pagina', 'aero_url', 'capitalNombre', 'nombrePais'], 'safe'],
         ];
     }
 
@@ -43,6 +45,8 @@ class CatAeropuertoSearch extends CatAeropuerto
         $query = CatAeropuerto::find();
 
         // add conditions that should always apply here
+        $query->joinWith('aeroFkubicacion');
+        $query->joinWith('aeroFkubicacion.ubiFkpais'); 
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -65,7 +69,9 @@ class CatAeropuertoSearch extends CatAeropuerto
         $query->andFilterWhere(['like', 'aero_nombre', $this->aero_nombre])
             ->andFilterWhere(['like', 'aero_direccion', $this->aero_direccion])
             ->andFilterWhere(['like', 'aero_pagina', $this->aero_pagina])
-            ->andFilterWhere(['like', 'aero_url', $this->aero_url]);
+            ->andFilterWhere(['like', 'aero_url', $this->aero_url])
+            ->andFilterWhere(['like', 'ubi_capital', $this->capitalNombre])
+            ->andFilterWhere(['like', 'pai_pais', $this->nombrePais]);
 
         return $dataProvider;
     }
