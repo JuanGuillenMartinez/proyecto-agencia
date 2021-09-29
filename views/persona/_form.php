@@ -1,5 +1,6 @@
 <?php
 
+use app\controllers\PersonaController;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
@@ -32,7 +33,7 @@ use kartik\select2\Select2;
      <?php /*= $form->field($model, 'per_fkuser')->textInput() */?>
    
     <?= $form->field($model, 'per_fkuser')->widget(Select2::classname(), [
-    'data' =>[] ,
+    'data' => $users,
     'language' => 'es', 
     'options' => ['placeholder' => 'Seleccione un usuario...'],
     'pluginOptions' => [

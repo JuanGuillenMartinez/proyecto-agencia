@@ -16,9 +16,9 @@ use kartik\select2\Select2;
     <?php /*= $form->field($model, 'emp_fksucursal')->textInput() */?>
 
     <?= $form->field($model, 'emp_fksucursal')->widget(Select2::classname(), [
-    'data' =>[] ,
+    'data' => $sucursal,
     'language' => 'es', 
-    'options' => ['placeholder' => 'Seleccione un puesto...'],
+    'options' => ['placeholder' => 'Seleccione una sucursal...'],
     'pluginOptions' => [
         'allowClear' => true
     ],
@@ -28,7 +28,7 @@ use kartik\select2\Select2;
     <?php /*= $form->field($model, 'emp_fkpersona')->textInput() */?>
 
     <?= $form->field($model, 'emp_fkpersona')->widget(Select2::classname(), [
-    'data' =>[] ,
+    'data' => $persona,
     'language' => 'es', 
     'options' => ['placeholder' => 'Seleccione una persona...'],
     'pluginOptions' => [
@@ -40,7 +40,7 @@ use kartik\select2\Select2;
     <?php /*= $form->field($model, 'emp_fkpuesto')->textInput() */?>
 
     <?= $form->field($model, 'emp_fkpuesto')->widget(Select2::classname(), [
-    'data' =>[] ,
+    'data' => $puesto,
     'language' => 'es', 
     'options' => ['placeholder' => 'Seleccione un puesto...'],
     'pluginOptions' => [

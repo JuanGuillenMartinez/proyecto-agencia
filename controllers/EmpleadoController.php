@@ -2,11 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\CatPuesto;
+use app\models\Persona;
+use app\models\CatSucursal;
 use app\models\Empleado;
 use app\models\EmpleadoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * EmpleadoController implements the CRUD actions for Empleado model.
@@ -67,9 +71,18 @@ class EmpleadoController extends Controller
             $model->loadDefaultValues();
         }
 
+        $sucursal = ArrayHelper::map(CatSucursal::find()->all(),'suc_id', 'suc_nombre');
+        $persona = ArrayHelper::map(Persona::find()->all(),'per_id', 'per_nombre');
+        $puesto = ArrayHelper::map(CatPuesto::find()->all(),'pue_id', 'pue_puesto');
+
         return $this->render('create', [
             'model' => $model,
+            'sucursal' => $sucursal,
+            'persona' => $persona,
+            'puesto' => $puesto,
+
         ]);
+       
     }
 
     /**
