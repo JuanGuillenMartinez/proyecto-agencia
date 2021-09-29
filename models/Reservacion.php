@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "reservacion".
@@ -90,5 +91,9 @@ class Reservacion extends \yii\db\ActiveRecord
     public function getClienteNombre() {
         $persona = $this->resFkpersona;
         return $persona->per_nombre . ' ' . $persona->per_paterno . ' ' . $persona->per_materno; 
+    }
+
+    public static function getClientesNombresMap() {
+        return ArrayHelper::map(Persona::find()->all(), 'per_id', 'per_nombre');
     }
 }
