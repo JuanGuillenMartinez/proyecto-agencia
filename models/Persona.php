@@ -97,4 +97,8 @@ class Persona extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Reservacion::className(), ['res_fkpersona' => 'per_id']);
     }
+
+    public function getNombrePersona() {
+        return $this->per_nombre . ' ' . per_paterno . ' ' . per_materno;
+    }
 }
