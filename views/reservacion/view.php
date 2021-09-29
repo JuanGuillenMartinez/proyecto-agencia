@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Reservacion */
 
-$this->title = $model->res_id;
-$this->params['breadcrumbs'][] = ['label' => 'Reservacions', 'url' => ['index']];
+$this->title = 'Reservación #' . $model->res_id;
+$this->params['breadcrumbs'][] = ['label' => 'Reservaciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'res_id' => $model->res_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'res_id' => $model->res_id], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->res_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->res_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Estas seguro de eliminar la reservación?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'res_estatus',
             'res_subtotal',
             'res_fkpersona',
+            'clienteNombre',
         ],
     ]) ?>
 

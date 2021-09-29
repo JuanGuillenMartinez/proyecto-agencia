@@ -1,5 +1,8 @@
 <?php
 
+use app\models\Paquete;
+use app\models\Reservacion;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,10 +21,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'res_subtotal')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'res_fkpersona')->textInput() ?>
+    <?= $form->field($model, 'res_fkpersona')->widget(Select2::classname(), [
+        'data' => Reservacion::getClientesNombresMap(),
+        'options' => ['placeholder' => 'Selecciona el cliente ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+        ]);
+    ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Empleado */
@@ -12,11 +13,40 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'emp_fksucursal')->textInput() ?>
+    <?php /*= $form->field($model, 'emp_fksucursal')->textInput() */?>
 
-    <?= $form->field($model, 'emp_fkpersona')->textInput() ?>
+    <?= $form->field($model, 'emp_fksucursal')->widget(Select2::classname(), [
+    'data' =>[] ,
+    'language' => 'es', 
+    'options' => ['placeholder' => 'Seleccione un puesto...'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+    ]); ?>
 
-    <?= $form->field($model, 'emp_fkpuesto')->textInput() ?>
+
+    <?php /*= $form->field($model, 'emp_fkpersona')->textInput() */?>
+
+    <?= $form->field($model, 'emp_fkpersona')->widget(Select2::classname(), [
+    'data' =>[] ,
+    'language' => 'es', 
+    'options' => ['placeholder' => 'Seleccione una persona...'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+    ]); ?>
+    
+
+    <?php /*= $form->field($model, 'emp_fkpuesto')->textInput() */?>
+
+    <?= $form->field($model, 'emp_fkpuesto')->widget(Select2::classname(), [
+    'data' =>[] ,
+    'language' => 'es', 
+    'options' => ['placeholder' => 'Seleccione un puesto...'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

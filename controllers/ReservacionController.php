@@ -52,10 +52,10 @@ class ReservacionController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($res_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($res_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class ReservacionController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'res_id' => $model->res_id]);
+                return $this->redirect(['view', 'id' => $model->res_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class ReservacionController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($res_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($res_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'res_id' => $model->res_id]);
+            return $this->redirect(['view', 'id' => $model->res_id]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class ReservacionController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($res_id)
+    public function actionDelete($id)
     {
-        $this->findModel($res_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class ReservacionController extends Controller
      * @return Reservacion the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($res_id)
+    protected function findModel($id)
     {
         if (($model = Reservacion::findOne($id)) !== null) {
             return $model;

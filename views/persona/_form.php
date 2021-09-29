@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Persona */
@@ -28,7 +29,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'per_url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'per_fkuser')->textInput() ?>
+     <?php /*= $form->field($model, 'per_fkuser')->textInput() */?>
+   
+    <?= $form->field($model, 'per_fkuser')->widget(Select2::classname(), [
+    'data' =>[] ,
+    'language' => 'es', 
+    'options' => ['placeholder' => 'Seleccione un usuario...'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+    ]); ?>
+
+
+
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

@@ -70,7 +70,7 @@ class PersonaController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'per_id' => $model->per_id]);
+                return $this->redirect(['view', 'id' => $model->per_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -129,5 +129,11 @@ class PersonaController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionRegistrarPersona(){
+
+
+        return $this->render('registrar'); 
     }
 }
