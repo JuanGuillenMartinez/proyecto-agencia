@@ -13,22 +13,13 @@ use yii\filters\VerbFilter;
  */
 class EmpleadoController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     /**
