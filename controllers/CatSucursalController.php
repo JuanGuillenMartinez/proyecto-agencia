@@ -13,22 +13,13 @@ use yii\filters\VerbFilter;
  */
 class CatSucursalController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     /**
@@ -75,7 +66,7 @@ class CatSucursalController extends Controller
         } else {
             $model->loadDefaultValues();
         }
-
+        
         return $this->render('create', [
             'model' => $model,
         ]);

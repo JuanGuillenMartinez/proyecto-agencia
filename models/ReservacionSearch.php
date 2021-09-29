@@ -11,6 +11,7 @@ use app\models\Reservacion;
  */
 class ReservacionSearch extends Reservacion
 {
+    public $clienteNombre;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +19,7 @@ class ReservacionSearch extends Reservacion
     {
         return [
             [['res_id', 'res_fkpersona'], 'integer'],
-            [['res_creacion', 'res_estatus'], 'safe'],
+            [['res_creacion', 'res_estatus', 'clienteNombre'], 'safe'],
             [['res_subtotal'], 'number'],
         ];
     }
@@ -79,7 +80,8 @@ class ReservacionSearch extends Reservacion
             ]
         ]);
 
-        $query->andFilterWhere(['like', 'res_estatus', $this->res_estatus]);
+        $query->andFilterWhere(['like', 'res_estatus', $this->res_estatus])
+        ->andFilterWhere(['like', 'per_nombre', $this->clienteNombre]);
 
         return $dataProvider;
     }

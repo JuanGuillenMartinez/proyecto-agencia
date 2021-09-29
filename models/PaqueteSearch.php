@@ -11,14 +11,18 @@ use app\models\Paquete;
  */
 class PaqueteSearch extends Paquete
 {
+    public $tipoVuelo;
+    public $destinoVuelo;
+    public $origenVuelo;
+    public $numeroHabitacion;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['paq_id', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado'], 'integer'],
-            [['paq_nombre', 'paq_url'], 'safe'],
+            [['paq_id', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'numeroHabitacion'], 'integer'],
+            [['paq_nombre', 'paq_url', 'tipoVuelo', 'destinoVuelo', 'origenVuelo'], 'safe'],
             [['paq_subtotal'], 'number'],
         ];
     }
@@ -110,10 +114,14 @@ class PaqueteSearch extends Paquete
             'paq_fkalojamiento' => $this->paq_fkalojamiento,
             'paq_fkseguro' => $this->paq_fkseguro,
             'paq_fktraslado' => $this->paq_fktraslado,
+            'alo_habitacion' => $this->numeroHabitacion,
         ]);
 
         $query->andFilterWhere(['like', 'paq_nombre', $this->paq_nombre])
-            ->andFilterWhere(['like', 'paq_url', $this->paq_url]);
+            ->andFilterWhere(['like', 'paq_url', $this->paq_url])
+            ->andFilterWhere(['like', 'vue_tipo', $this->tipoVuelo])
+            ->andFilterWhere(['like', 'aero_nombre', $this->destinoVuelo])
+            ->andFilterWhere(['like', 'aero_nombre', $this->origenVuelo]);
 
         return $dataProvider;
     }

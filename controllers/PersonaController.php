@@ -2,33 +2,26 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use app\models\Persona;
 use app\models\PersonaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * PersonaController implements the CRUD actions for Persona model.
  */
 class PersonaController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     /**
@@ -75,9 +68,11 @@ class PersonaController extends Controller
         } else {
             $model->loadDefaultValues();
         }
+        $users = ArrayHelper::map(User::find()->all(),'id', 'username');
 
         return $this->render('create', [
             'model' => $model,
+            'users' => $users,
         ]);
     }
 
