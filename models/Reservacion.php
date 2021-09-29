@@ -94,6 +94,6 @@ class Reservacion extends \yii\db\ActiveRecord
     }
 
     public static function getClientesNombresMap() {
-        return ArrayHelper::map(Persona::find()->all(), 'per_id', 'per_nombre');
+        return ArrayHelper::map(Persona::find()->all(), 'per_id', 'nombrePersona');
     }
 }
