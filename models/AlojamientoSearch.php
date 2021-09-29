@@ -11,6 +11,8 @@ use app\models\Alojamiento;
  */
 class AlojamientoSearch extends Alojamiento
 {
+    public $capitalNombre;
+    public $nombrePais;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +20,7 @@ class AlojamientoSearch extends Alojamiento
     {
         return [
             [['alo_id', 'alo_habitacion', 'alo_fkubucacion'], 'integer'],
-            [['alo_nombre', 'alo_direccion', 'alo_url'], 'safe'],
+            [['alo_nombre', 'alo_direccion', 'alo_url', 'capitalNombre', 'nombrePais'], 'safe'],
             [['alo_precio'], 'number'],
         ];
     }
@@ -44,6 +46,8 @@ class AlojamientoSearch extends Alojamiento
         $query = Alojamiento::find();
 
         // add conditions that should always apply here
+        $query->joinWith('aloFkubucacion');
+        $query->joinWith('aloFkubucacion.ubiFkpais');   
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -67,7 +71,9 @@ class AlojamientoSearch extends Alojamiento
 
         $query->andFilterWhere(['like', 'alo_nombre', $this->alo_nombre])
             ->andFilterWhere(['like', 'alo_direccion', $this->alo_direccion])
-            ->andFilterWhere(['like', 'alo_url', $this->alo_url]);
+            ->andFilterWhere(['like', 'alo_url', $this->alo_url])
+            ->andFilterWhere(['like', 'ubi_capital', $this->capitalNombre])
+            ->andFilterWhere(['like', 'pai_pais', $this->nombrePais]);;
 
         return $dataProvider;
     }
