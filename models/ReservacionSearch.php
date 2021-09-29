@@ -44,6 +44,7 @@ class ReservacionSearch extends Reservacion
         $query = Reservacion::find();
 
         // add conditions that should always apply here
+        $query->joinWith('resFkpersona');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -63,6 +64,19 @@ class ReservacionSearch extends Reservacion
             'res_creacion' => $this->res_creacion,
             'res_subtotal' => $this->res_subtotal,
             'res_fkpersona' => $this->res_fkpersona,
+        ]);
+        $dataProvider->setSort([
+            'attributes' => [
+                'res_id',
+                'res_creacion',
+                'res_estatus',
+                'res_subtotal',
+                'clienteNombre' => [
+                    'asc' => ['per_nombre' => SORT_ASC],
+                    'desc' => ['per_nombre' => SORT_DESC],
+                    'default' => ['per_nombre' => SORT_ASC]
+                ],
+            ]
         ]);
 
         $query->andFilterWhere(['like', 'res_estatus', $this->res_estatus]);
