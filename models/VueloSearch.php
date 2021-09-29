@@ -11,6 +11,9 @@ use app\models\Vuelo;
  */
 class VueloSearch extends Vuelo
 {
+    public $aerolineaNombre;
+    public $origenVuelo;
+    public $destinoVuelo;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class VueloSearch extends Vuelo
     {
         return [
             [['vue_id', 'vue_capacidad', 'vue_fkaerolinea', 'vue_fkaeroorigen', 'vue_fkaerodestino'], 'integer'],
-            [['vue_tipo', 'vue_salida', 'vue_llegada', 'vue_fecha', 'vue_estatus'], 'safe'],
+            [['vue_tipo', 'vue_salida', 'vue_llegada', 'vue_fecha', 'vue_estatus', 'aerolineaNombre', 'origenVuelo', 'destinoVuelo'], 'safe'],
             [['vue_precio'], 'number'],
         ];
     }
@@ -44,6 +47,9 @@ class VueloSearch extends Vuelo
         $query = Vuelo::find();
 
         // add conditions that should always apply here
+        $query->joinWith('vueFkaerolinea');
+        $query->joinWith('vueFkaeroorigen');
+        $query->joinWith('vueFkaerodestino');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -71,7 +77,10 @@ class VueloSearch extends Vuelo
         ]);
 
         $query->andFilterWhere(['like', 'vue_tipo', $this->vue_tipo])
-            ->andFilterWhere(['like', 'vue_estatus', $this->vue_estatus]);
+            ->andFilterWhere(['like', 'vue_estatus', $this->vue_estatus])
+            ->andFilterWhere(['like', 'aer_nombre', $this->aerolineaNombre])
+            ->andFilterWhere(['like', 'aero_nombre', $this->origenVuelo])
+            ->andFilterWhere(['like', 'aero_nombre', $this->destinoVuelo]);
 
         return $dataProvider;
     }
