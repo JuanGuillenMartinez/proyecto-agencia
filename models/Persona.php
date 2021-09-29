@@ -99,6 +99,6 @@ class Persona extends \yii\db\ActiveRecord
     }
 
     public function getNombrePersona() {
-        return $this->per_nombre . ' ' . per_paterno . ' ' . per_materno;
+        return $this->per_nombre . ' ' . $this->per_paterno . ' ' . $this->per_materno;
     }
 }

@@ -72,7 +72,7 @@ class EmpleadoController extends Controller
         }
 
         $sucursal = ArrayHelper::map(CatSucursal::find()->all(),'suc_id', 'suc_nombre');
-        $persona = ArrayHelper::map(Persona::find()->all(),'per_id', 'per_nombre');
+        $persona = ArrayHelper::map(Persona::find()->all(),'per_id', 'NombrePersona');
         $puesto = ArrayHelper::map(CatPuesto::find()->all(),'pue_id', 'pue_puesto');
 
         return $this->render('create', [
