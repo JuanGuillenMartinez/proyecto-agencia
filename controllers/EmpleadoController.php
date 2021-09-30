@@ -65,7 +65,7 @@ class EmpleadoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'emp_id' => $model->emp_id]);
+                return $this->redirect(['view', 'id' => $model->emp_id]);
             }
         } else {
             $model->loadDefaultValues();

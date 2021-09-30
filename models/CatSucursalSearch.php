@@ -48,6 +48,22 @@ class CatSucursalSearch extends CatSucursal
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' => [
+                'suc_id' => [
+                    'asc' => ['suc_id' => SORT_ASC],
+                    'desc' => ['suc_id' => SORT_DESC],
+                    'default' => SORT_ASC,
+                ],
+                'suc_nombre',
+                'suc_direccion',
+                'suc_correo',
+                'suc_telefono',
+                ]
+       
+        ]);
+
+
         $this->load($params);
 
         if (!$this->validate()) {
