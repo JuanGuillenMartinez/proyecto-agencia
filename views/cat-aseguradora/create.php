@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CatAseguradora */
 
-$this->title = 'Create Cat Aseguradora';
-$this->params['breadcrumbs'][] = ['label' => 'Cat Aseguradoras', 'url' => ['index']];
+$this->title = 'Crear Aseguradora';
+$this->params['breadcrumbs'][] = ['label' => 'Aseguradoras', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-aseguradora-create">

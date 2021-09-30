@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CatAseguradoraSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cat Aseguradoras';
+$this->title = 'Aseguradoras';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-aseguradora-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cat Aseguradora', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Aseguradora', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
