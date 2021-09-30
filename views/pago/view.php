@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'pag_expiracion',
             'pag_estatus',
             'pag_fkreservacion',
+            'reservacion',
         ],
     ]) ?>
 

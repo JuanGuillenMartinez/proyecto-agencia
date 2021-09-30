@@ -81,4 +81,8 @@ class Pago extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Reservacion::className(), ['res_id' => 'pag_fkreservacion']);
     }
+    public function getReservacion()
+    {
+        return $this->pagFkreservacion->res_estatus;
+    }
 }
