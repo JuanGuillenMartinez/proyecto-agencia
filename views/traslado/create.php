@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Traslado */
 
-$this->title = 'Create Traslado';
+$this->title = 'Crear Traslado';
 $this->params['breadcrumbs'][] = ['label' => 'Traslados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
