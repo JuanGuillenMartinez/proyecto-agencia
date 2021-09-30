@@ -48,6 +48,18 @@ class CatPuestoSearch extends CatPuesto
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' => [
+                'pue_id' => [
+                    'asc' => ['pue_id' => SORT_ASC],
+                    'desc' => ['pue_id' => SORT_DESC],
+                    'default' => SORT_ASC,
+                ],
+                'pue_puesto',
+                ]
+       
+        ]);
+
         $this->load($params);
 
         if (!$this->validate()) {
