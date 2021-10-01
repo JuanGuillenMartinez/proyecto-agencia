@@ -58,7 +58,7 @@ class Pago extends \yii\db\ActiveRecord
             'pag_tarjeta' => 'Tarjeta',
             'pag_expiracion' => 'Expiración',
             'pag_estatus' => 'Estatus',
-            'pag_fkreservacion' => 'Reservación',
+            'pag_fkreservacion' => 'Reservación', /* ? */
         ];
     }
 

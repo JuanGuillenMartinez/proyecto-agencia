@@ -51,6 +51,24 @@ class PagoSearch extends Pago
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        /* ordenamiento */
+        $dataProvider->setSort([
+            'attributes' =>[
+                'pag_id',
+                'pag_direccion',
+                'pag_tipo',
+                'pag_entidad',
+                'pag_tarjeta',
+                'pag_expiracion',
+                'pag_estatus',
+                'pag_fkreservacion',
+                'reservacion' => [
+                    'asc' => ['res_estatus' => SORT_ASC],
+                    'desc' => ['res_estatus' => SORT_DESC],
+                    'default' => SORT_ASC
+                ]
+            ]
+        ]);
 
         $this->load($params);
 
@@ -72,8 +90,8 @@ class PagoSearch extends Pago
             ->andFilterWhere(['like', 'pag_entidad', $this->pag_entidad])
             ->andFilterWhere(['like', 'pag_tarjeta', $this->pag_tarjeta])
             ->andFilterWhere(['like', 'pag_expiracion', $this->pag_expiracion])
-            ->andFilterWhere(['like', 'pag_estatus', $this->reservacion])  //search creado
-            ->andFilterWhere(['like', 'res_estatus', $this->pag_estatus]);
+            ->andFilterWhere(['like', 'pag_estatus', $this->pag_estatus])  
+            ->andFilterWhere(['like', 'res_estatus', $this->reservacion]); //search creado
 
         return $dataProvider;
     }
