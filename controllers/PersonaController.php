@@ -2,13 +2,14 @@
 
 namespace app\controllers;
 
-use app\models\User;
 use app\models\Persona;
 use app\models\PersonaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use webvimark\modules\UserManagement\models\User;
+  
 
 /**
  * PersonaController implements the CRUD actions for Persona model.
@@ -127,8 +128,9 @@ class PersonaController extends Controller
     }
 
     public function actionRegistrarPersona(){
+        $persona = new Persona();
+        $user = new User();
 
-
-        return $this->render('registrar'); 
+        return $this->render('registrar', compact('persona', 'user'));      
     }
 }
