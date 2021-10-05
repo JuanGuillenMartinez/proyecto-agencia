@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
-use app\models\CatUbicacion;
-use app\models\CatUbicacionSearch;
+use app\models\CatPais;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\CatUbicacion;
+use yii\helpers\ArrayHelper;
+use yii\db\pgsql\ArrayParser;
+use app\models\CatUbicacionSearch;
+use yii\web\NotFoundHttpException;
 
 /**
  * CatUbicacionController implements the CRUD actions for CatUbicacion model.
@@ -70,8 +73,11 @@ class CatUbicacionController extends Controller
             $model->loadDefaultValues();
         }
 
+        $paises = ArrayHelper::map (CatPais::find()->all(),'pai_id', 'pai_pais');
+
         return $this->render('create', [
             'model' => $model,
+            'paises' => $paises,
         ]);
     }
 
