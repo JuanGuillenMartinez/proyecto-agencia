@@ -52,6 +52,28 @@ class CatAeropuertoSearch extends CatAeropuerto
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' =>[
+                'aero_id',
+                'aero_nombre',
+                'aero_direccion',
+                'aero_pagina',
+                'aero_url',
+                'capitalNombre' =>[
+                    'asc' => ['ubi_capital' => SORT_ASC],
+                    'desc' => ['ubi_capital' => SORT_DESC],
+                    'default' => SORT_ASC,
+
+                ],
+                'nombrePais' =>[
+                    'asc' => ['pai_pais' => SORT_ASC],
+                    'desc' => ['pai_pais' => SORT_DESC],
+                    'default' => SORT_ASC,
+
+                ]
+            ]
+        ]);
+
         $this->load($params);
 
         if (!$this->validate()) {
