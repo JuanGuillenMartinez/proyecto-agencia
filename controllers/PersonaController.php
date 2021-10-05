@@ -130,6 +130,13 @@ class PersonaController extends Controller
     public function actionRegistrarPersona(){
         $persona = new Persona();
         $user = new User();
+        
+        if ($this->request->isPost && $persona->load($this->request->post()) && $user->load($this->request->post())) {
+           $user->save(false);
+           $persona->per_fkuser = $user->id;
+           $persona->save();
+            return $this->redirect(['view', 'id' => $persona->per_id]);
+        }
 
         return $this->render('registrar', compact('persona', 'user'));      
     }
