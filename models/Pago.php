@@ -58,7 +58,7 @@ class Pago extends \yii\db\ActiveRecord
             'pag_tarjeta' => 'Tarjeta',
             'pag_expiracion' => 'Expiración',
             'pag_estatus' => 'Estatus',
-            'pag_fkreservacion' => 'Reservación',
+            'pag_fkreservacion' => 'Reservación', /* ? */
         ];
     }
 
@@ -80,5 +80,9 @@ class Pago extends \yii\db\ActiveRecord
     public function getPagFkreservacion()
     {
         return $this->hasOne(Reservacion::className(), ['res_id' => 'pag_fkreservacion']);
+    }
+    public function getReservacion()
+    {
+        return $this->pagFkreservacion->res_estatus;
     }
 }

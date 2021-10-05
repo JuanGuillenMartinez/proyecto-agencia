@@ -47,6 +47,20 @@ class EmpleadoSearch extends Empleado
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' => [
+                'emp_id' => [
+                    'asc' => ['emp_id' => SORT_ASC],
+                    'desc' => ['emp_id' => SORT_DESC],
+                    'default' => SORT_ASC,
+                ],
+                'emp_fksucursal',
+                'emp_fkpersona',
+                'emp_fkpuesto',
+                ]
+       
+        ]);
+
         $this->load($params);
 
         if (!$this->validate()) {

@@ -11,6 +11,7 @@ use app\models\Pago;
  */
 class PagoSearch extends Pago
 {
+    public $reservacion; //search creado
     /**
      * {@inheritdoc}
      */
@@ -18,7 +19,7 @@ class PagoSearch extends Pago
     {
         return [
             [['pag_id', 'pag_fkreservacion'], 'integer'],
-            [['pag_direccion', 'pag_tipo', 'pag_entidad', 'pag_tarjeta', 'pag_expiracion', 'pag_estatus'], 'safe'],
+            [['pag_direccion', 'pag_tipo', 'pag_entidad', 'pag_tarjeta', 'pag_expiracion', 'pag_estatus', 'reservacion'], 'safe'],  //search creado
         ];
     }
 
@@ -41,11 +42,32 @@ class PagoSearch extends Pago
     public function search($params)
     {
         $query = Pago::find();
-
+        
+        /* search personal */
+        $query->joinWith('pagFkreservacion');
+        
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+        ]);
+        /* ordenamiento */
+        $dataProvider->setSort([
+            'attributes' =>[
+                'pag_id',
+                'pag_direccion',
+                'pag_tipo',
+                'pag_entidad',
+                'pag_tarjeta',
+                'pag_expiracion',
+                'pag_estatus',
+                'pag_fkreservacion',
+                'reservacion' => [
+                    'asc' => ['res_estatus' => SORT_ASC],
+                    'desc' => ['res_estatus' => SORT_DESC],
+                    'default' => SORT_ASC
+                ]
+            ]
         ]);
 
         $this->load($params);
@@ -55,6 +77,7 @@ class PagoSearch extends Pago
             // $query->where('0=1');
             return $dataProvider;
         }
+
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -67,7 +90,8 @@ class PagoSearch extends Pago
             ->andFilterWhere(['like', 'pag_entidad', $this->pag_entidad])
             ->andFilterWhere(['like', 'pag_tarjeta', $this->pag_tarjeta])
             ->andFilterWhere(['like', 'pag_expiracion', $this->pag_expiracion])
-            ->andFilterWhere(['like', 'pag_estatus', $this->pag_estatus]);
+            ->andFilterWhere(['like', 'pag_estatus', $this->pag_estatus])  
+            ->andFilterWhere(['like', 'res_estatus', $this->reservacion]); //search creado
 
         return $dataProvider;
     }

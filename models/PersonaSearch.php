@@ -48,6 +48,26 @@ class PersonaSearch extends Persona
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' => [
+                'per_id' => [
+                    'asc' => ['per_id' => SORT_ASC],
+                    'desc' => ['per_id' => SORT_DESC],
+                    'default' => SORT_ASC,
+                ],
+                'per_nombre',
+                'per_paterno',
+                'per_materno',
+                'per_nacimiento',
+                'per_direccion',
+                'per_correo',
+                'per_telefono',
+                'per_url',
+                'per_fkuser',
+                ]
+       
+        ]);
+
         $this->load($params);
 
         if (!$this->validate()) {

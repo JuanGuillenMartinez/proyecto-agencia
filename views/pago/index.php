@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Pago', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear pago', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'pag_expiracion',
             'pag_estatus',
             'pag_fkreservacion',
+            'reservacion',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
