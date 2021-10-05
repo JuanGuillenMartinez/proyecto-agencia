@@ -55,6 +55,37 @@ class VueloSearch extends Vuelo
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' =>[
+                'vue_id',
+                'vue_tipo',
+                'vue_salida',
+                'vue_llegada',
+                'vue_fecha',
+                'vue_capacidad',
+                'vue_precio',
+                'vue_estatus',
+                'aerolineaNombre' =>[
+                    'asc' => ['aer_nombre' => SORT_ASC],
+                    'desc' => ['aer_nombre' => SORT_DESC],
+                    'default' => SORT_ASC,
+
+                ],
+                'origenVuelo' =>[
+                    'asc' => ['aero_nombre' => SORT_ASC],
+                    'desc' => ['aero_nombre' => SORT_DESC],
+                    'default' => SORT_ASC,
+
+                ],
+                'destinoVuelo' =>[
+                    'asc' => ['aero_nombre' => SORT_ASC],
+                    'desc' => ['aero_nombre' => SORT_DESC],
+                    'default' => SORT_ASC,
+
+                ]
+            ]
+        ]);
+
         $this->load($params);
 
         if (!$this->validate()) {

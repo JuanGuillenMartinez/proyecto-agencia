@@ -50,6 +50,19 @@ class CatUbicacionSearch extends CatUbicacion
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' =>[
+                'ubi_id',
+                'ubi_capital',
+                'paisNombre' =>[
+                    'asc' => ['pai_pais' => SORT_ASC],
+                    'desc' => ['pai_pais' => SORT_DESC],
+                    'default' => SORT_ASC,
+
+                ]
+            ]
+        ]);
+
         $this->load($params);
 
         if (!$this->validate()) {
