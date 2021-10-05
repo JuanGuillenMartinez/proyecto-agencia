@@ -37,7 +37,6 @@ use kartik\select2\Select2;
             <?= $form->field($user, 'email_confirmed')->checkbox() ?>
         </div>
         
-
         <div class="col-md-2">
             <?= $form->field($persona, 'per_nombre')->textInput(['maxlength' => true]) ?>
         </div>
@@ -70,16 +69,8 @@ use kartik\select2\Select2;
             <?= $form->field($persona, 'per_url')->textInput(['maxlength' => true]) ?>
         </div>
 
-        <?php /*= $form->field($model, 'per_fkuser')->textInput() */?>
         <div class="col-md-3">
-            <?= $form->field($persona, 'per_fkuser')->widget(Select2::classname(), [
-            'data' => $users,
-            'language' => 'es', 
-            'options' => ['placeholder' => 'Seleccione un usuario...'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-            ]); ?>
+            <?= $form->field($persona, 'per_fkuser')->textInput()?>
         </div>
         
     </div>
