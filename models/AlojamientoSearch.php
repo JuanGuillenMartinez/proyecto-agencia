@@ -53,6 +53,30 @@ class AlojamientoSearch extends Alojamiento
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'attributes' =>[
+                'alo_id',
+                'alo_nombre', 
+                'alo_habitacion',
+                'alo_direccion',
+                'alo_precio',
+                'alo_url',
+                'capitalNombre'=>[
+                    'asc' => ['ubi_capital' => SORT_ASC],
+                    'desc' => ['ubi_capital' => SORT_DESC],
+                    'default' => SORT_ASC,
+
+                ],
+                'nombrePais' =>[
+                    'asc' => ['pai_pais' => SORT_ASC],
+                    'desc' => ['pai_pais' => SORT_DESC],
+                    'default' => SORT_ASC,
+
+                ]
+
+            ]
+            ]);
+
         $this->load($params);
 
         if (!$this->validate()) {
