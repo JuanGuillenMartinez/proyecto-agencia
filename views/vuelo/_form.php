@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\widgets\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Vuelo */
@@ -26,11 +27,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'vue_estatus')->dropDownList([ 'Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'vue_fkaerolinea')->textInput() ?>
+    <?php //= $form->field($model, 'vue_fkaerolinea')->textInput() ?>
 
     <?= $form->field($model, 'vue_fkaeroorigen')->textInput() ?>
 
     <?= $form->field($model, 'vue_fkaerodestino')->textInput() ?>
+
+    <?=$form->field($model, 'vue_fkaerolinea')->widget(Select2::classname(), [
+    'data' => $aerolineas,
+    'language' => 'es',
+    'options' => ['placeholder' => 'Selecciona una aerolinea...'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+    ]);?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

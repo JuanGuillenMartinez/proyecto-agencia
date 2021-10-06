@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\CatAerolinea;
 use app\models\Vuelo;
-use app\models\VueloSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use app\models\VueloSearch;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use app\models\CatAeropuerto;
+use yii\web\NotFoundHttpException;
 
 /**
  * VueloController implements the CRUD actions for Vuelo model.
@@ -70,8 +73,12 @@ class VueloController extends Controller
             $model->loadDefaultValues();
         }
 
+        $aerolineas = ArrayHelper :: map(CatAerolinea::find()->all(), 'aer_id', 'aer_nombre');
+
+
         return $this->render('create', [
             'model' => $model,
+            'aerolineas' => $aerolineas,
         ]);
     }
 
