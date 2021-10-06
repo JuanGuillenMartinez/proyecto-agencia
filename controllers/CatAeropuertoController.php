@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
-use app\models\CatAeropuerto;
-use app\models\CatAeropuertoSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\CatUbicacion;
+use yii\helpers\ArrayHelper;
+use app\models\CatAeropuerto;
+use yii\web\NotFoundHttpException;
+use app\models\CatAeropuertoSearch;
 
 /**
  * CatAeropuertoController implements the CRUD actions for CatAeropuerto model.
@@ -70,8 +72,11 @@ class CatAeropuertoController extends Controller
             $model->loadDefaultValues();
         }
 
+        $ubicaciones = ArrayHelper:: map(CatUbicacion::find()->all(), 'ubi_id', 'ubi_capital');
+
         return $this->render('create', [
             'model' => $model,
+            'ubicaciones' => $ubicaciones,
         ]);
     }
 

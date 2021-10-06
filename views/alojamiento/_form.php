@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
     <?=$form->field($model, 'alo_fkubucacion')->widget(Select2::classname(), [
     'data' => $ubicaciones,
     'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona un ciudad...'],
+    'options' => ['placeholder' => 'Selecciona una ciudad...'],
     'pluginOptions' => [
         'allowClear' => true
     ],
