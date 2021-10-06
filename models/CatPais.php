@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cat_pais".
@@ -53,4 +54,10 @@ class CatPais extends \yii\db\ActiveRecord
     {
         return $this->hasMany(CatUbicacion::className(), ['ubi_fkpais' => 'pai_id']);
     }
+
+public static function map() 
+{
+   return ArrayHelper::map (CatPais::find()->all(),'pai_id', 'pai_pais');
+}
+
 }

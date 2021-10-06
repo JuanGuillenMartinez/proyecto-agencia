@@ -1,8 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use app\models\CatPais;
 use kartik\select2\Select2;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CatUbicacion */
@@ -18,7 +19,7 @@ use kartik\select2\Select2;
     <?php //$form->field($model, 'ubi_fkpais')->textInput() ?>
 
     <?=$form->field($model, 'ubi_fkpais')->widget(Select2::classname(), [
-    'data' => $paises,
+    'data' => CatPais:: map(),
     'language' => 'es',
     'options' => ['placeholder' => 'Selecciona un país...'],
     'pluginOptions' => [

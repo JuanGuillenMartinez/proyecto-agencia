@@ -73,11 +73,9 @@ class CatUbicacionController extends Controller
             $model->loadDefaultValues();
         }
 
-        $paises = ArrayHelper::map (CatPais::find()->all(),'pai_id', 'pai_pais');
-
         return $this->render('create', [
             'model' => $model,
-            'paises' => $paises,
+    
         ]);
     }
 
