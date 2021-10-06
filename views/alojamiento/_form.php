@@ -1,8 +1,10 @@
 <?php
 
+use app\models\CatUbicacion;
 use yii\helpers\Html;
 use kartik\widgets\Select2;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Alojamiento */
@@ -26,7 +28,7 @@ use yii\widgets\ActiveForm;
     <?php //$form->field($model, 'alo_fkubucacion')->textInput() ?>
 
     <?=$form->field($model, 'alo_fkubucacion')->widget(Select2::classname(), [
-    'data' => $ubicaciones,
+    'data' => CatUbicacion :: map(),
     'language' => 'es',
     'options' => ['placeholder' => 'Selecciona una ciudad...'],
     'pluginOptions' => [

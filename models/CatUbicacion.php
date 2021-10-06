@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cat_ubicacion".
@@ -83,5 +84,15 @@ class CatUbicacion extends \yii\db\ActiveRecord
     public function getPaisNombre()
     {
         return $this->ubiFkpais->pai_pais;
+    }
+
+    public static function map()
+    {
+        return ArrayHelper::map(CatUbicacion::find()->all(), 'ubi_id', 'paisCapital');
+    }
+
+    public function getPaisCapital()
+    {
+        return $this->ubi_capital . ' - ' . $this->paisNombre;
     }
 }

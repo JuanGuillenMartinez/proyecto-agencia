@@ -70,11 +70,9 @@ class AlojamientoController extends Controller
         } else {
             $model->loadDefaultValues();
         }
-        $ubicaciones = ArrayHelper :: map(CatUbicacion::find()->all(), 'ubi_id', 'ubi_capital');
 
         return $this->render('create', [
             'model' => $model,
-            'ubicaciones' => $ubicaciones,
     
         ]);
     }

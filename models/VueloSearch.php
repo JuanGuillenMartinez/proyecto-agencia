@@ -47,9 +47,7 @@ class VueloSearch extends Vuelo
         $query = Vuelo::find();
 
         // add conditions that should always apply here
-        $query->joinWith('vueFkaerolinea');
-        $query->joinWith('vueFkaeroorigen');
-        $query->joinWith('vueFkaerodestino');
+        $query->joinWith(['vueFkaerolinea', 'vueFkaeroorigen as ori', 'vueFkaerodestino as des']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -72,14 +70,14 @@ class VueloSearch extends Vuelo
 
                 ],
                 'origenVuelo' =>[
-                    'asc' => ['aero_nombre' => SORT_ASC],
-                    'desc' => ['aero_nombre' => SORT_DESC],
+                    'asc' => ['ori.aero_nombre' => SORT_ASC],
+                    'desc' => ['ori.aero_nombre' => SORT_DESC],
                     'default' => SORT_ASC,
 
                 ],
                 'destinoVuelo' =>[
-                    'asc' => ['aero_nombre' => SORT_ASC],
-                    'desc' => ['aero_nombre' => SORT_DESC],
+                    'asc' => ['des.aero_nombre' => SORT_ASC],
+                    'desc' => ['des.aero_nombre' => SORT_DESC],
                     'default' => SORT_ASC,
 
                 ]
@@ -110,8 +108,8 @@ class VueloSearch extends Vuelo
         $query->andFilterWhere(['like', 'vue_tipo', $this->vue_tipo])
             ->andFilterWhere(['like', 'vue_estatus', $this->vue_estatus])
             ->andFilterWhere(['like', 'aer_nombre', $this->aerolineaNombre])
-            ->andFilterWhere(['like', 'aero_nombre', $this->origenVuelo])
-            ->andFilterWhere(['like', 'aero_nombre', $this->destinoVuelo]);
+            ->andFilterWhere(['like', 'ori.aero_nombre', $this->origenVuelo])
+            ->andFilterWhere(['like', 'des.aero_nombre', $this->destinoVuelo]);
 
         return $dataProvider;
     }
