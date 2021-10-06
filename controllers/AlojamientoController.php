@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
-use app\models\Alojamiento;
-use app\models\AlojamientoSearch;
+use app\models\CatPais;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use app\models\Alojamiento;
 use yii\filters\VerbFilter;
+use app\models\CatUbicacion;
+use yii\helpers\ArrayHelper;
+use app\models\AlojamientoSearch;
+use yii\web\NotFoundHttpException;
 
 
 /**
@@ -67,9 +70,12 @@ class AlojamientoController extends Controller
         } else {
             $model->loadDefaultValues();
         }
+        $ubicaciones = ArrayHelper :: map(CatUbicacion::find()->all(), 'ubi_id', 'ubi_capital');
 
         return $this->render('create', [
             'model' => $model,
+            'ubicaciones' => $ubicaciones,
+    
         ]);
     }
 

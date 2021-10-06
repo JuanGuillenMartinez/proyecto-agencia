@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use kartik\widgets\Select2;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -22,7 +23,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'alo_url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'alo_fkubucacion')->textInput() ?>
+    <?php //$form->field($model, 'alo_fkubucacion')->textInput() ?>
+
+    <?=$form->field($model, 'alo_fkubucacion')->widget(Select2::classname(), [
+    'data' => $ubicaciones,
+    'language' => 'es',
+    'options' => ['placeholder' => 'Selecciona un ciudad...'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+    ]);?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
