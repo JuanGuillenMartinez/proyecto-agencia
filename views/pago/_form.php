@@ -1,8 +1,9 @@
 <?php
 
+use app\models\Pago;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pago */
@@ -30,11 +31,11 @@ use kartik\select2\Select2;
 
     <?=
     $form->field($model, 'pag_fkreservacion')->widget(Select2::classname(), [
-        'data' => $reservaciones,
+        'data' => Pago::mapReservaciones(),
         'language' => 'es',
         'options' => ['placeholder' => 'Selecciona una reservacion ...'],
         'pluginOptions' => [
-            'allowClear' => true
+            'allowClear' => true    
         ],
     ]);
     ?>

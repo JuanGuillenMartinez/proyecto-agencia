@@ -77,11 +77,11 @@ class PagoController extends Controller
             $model->loadDefaultValues();
         }
 
-        $reservaciones=Pago::mapReservaciones();
+        
 
         return $this->render('create', [
             'model' => $model,
-            'reservaciones' => $reservaciones,
+            
         ]);
     }
 
