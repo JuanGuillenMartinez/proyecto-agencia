@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "traslado".
@@ -52,5 +53,11 @@ class Traslado extends \yii\db\ActiveRecord
     public function getPaquetes()
     {
         return $this->hasMany(Paquete::className(), ['paq_fktraslado' => 'tra_id']);
+    }
+    public static function getPrecioTraslado($id)
+    {
+        
+        return ArrayHelper::map((array)Traslado::find()->where(['tra_id'=>$id])->one(),'tra_id','tra_precio')[$id]; ;
+    
     }
 }
