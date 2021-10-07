@@ -32,9 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'seg_id',
             'seg_nombre',
             'seg_precio',
-            'seg_fkaseguradora',
             'nombreAseguradora',
-            'seg_fkregion',
             'nombreRegion'
         ],
     ]) ?>
