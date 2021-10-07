@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pago */
@@ -24,7 +25,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'pag_estatus')->dropDownList([ 'pagado' => 'Pagado', 'en proceso' => 'En proceso', 'rechazado' => 'Rechazado', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'pag_fkreservacion')->textInput() ?>
+    <?php /* $form->field($model, 'pag_fkreservacion')->textInput() */ ?>
+    
+
+    <?=
+    $form->field($model, 'pag_fkreservacion')->widget(Select2::classname(), [
+        'data' => $reservaciones,
+        'language' => 'es',
+        'options' => ['placeholder' => 'Selecciona una reservacion ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
