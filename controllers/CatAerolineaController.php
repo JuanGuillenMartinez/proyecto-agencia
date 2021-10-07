@@ -18,6 +18,14 @@ class CatAerolineaController extends Controller
      */
     public function behaviors()
     {
+	return [
+		'ghost-access'=> [
+			'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+		],
+	];
+    }
+    /* public function behaviors()
+    {
         return array_merge(
             parent::behaviors(),
             [
@@ -29,7 +37,7 @@ class CatAerolineaController extends Controller
                 ],
             ]
         );
-    }
+    } */
 
     /**
      * Lists all CatAerolinea models.
