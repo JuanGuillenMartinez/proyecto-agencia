@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
@@ -15,6 +15,7 @@ use kartik\select2\Select2;
 
     <?php /*= $form->field($model, 'emp_fksucursal')->textInput() */?>
 
+    <div class="col-md-3">
     <?= $form->field($model, 'emp_fksucursal')->widget(Select2::classname(), [
     'data' => $sucursal,
     'language' => 'es', 
@@ -23,10 +24,11 @@ use kartik\select2\Select2;
         'allowClear' => true
     ],
     ]); ?>
+    </div>
 
 
     <?php /*= $form->field($model, 'emp_fkpersona')->textInput() */?>
-
+    <div class="col-md-3">
     <?= $form->field($model, 'emp_fkpersona')->widget(Select2::classname(), [
     'data' => $persona,
     'language' => 'es', 
@@ -35,10 +37,12 @@ use kartik\select2\Select2;
         'allowClear' => true
     ],
     ]); ?>
+    </div>
     
 
     <?php /*= $form->field($model, 'emp_fkpuesto')->textInput() */?>
 
+    <div class="col-md-3">
     <?= $form->field($model, 'emp_fkpuesto')->widget(Select2::classname(), [
     'data' => $puesto,
     'language' => 'es', 
@@ -47,6 +51,7 @@ use kartik\select2\Select2;
         'allowClear' => true
     ],
     ]); ?>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
