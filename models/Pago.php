@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "pago".
@@ -85,4 +86,11 @@ class Pago extends \yii\db\ActiveRecord
     {
         return $this->pagFkreservacion->res_estatus;
     }
+    public static function mapReservaciones()
+    {
+        return ArrayHelper::map(Reservacion::find()->all(),'res_id','res_id'); /* Consulta para traer todas las reservaciones */
+        
+    }
+
+
 }

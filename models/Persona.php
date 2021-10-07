@@ -24,6 +24,7 @@ use Yii;
  */
 class Persona extends \yii\db\ActiveRecord
 {
+ 
     /**
      * {@inheritdoc}
      */
@@ -64,7 +65,8 @@ class Persona extends \yii\db\ActiveRecord
             'per_correo' => 'Correo',
             'per_telefono' => 'Teléfono',
             'per_url' => 'Foto de perfil',
-            'per_fkuser' => 'User',
+            'per_fkuser'        => 'User',
+            'nombreCompleto'    => 'Nombre Completo',
         ];
     }
 
@@ -100,5 +102,9 @@ class Persona extends \yii\db\ActiveRecord
 
     public function getNombrePersona() {
         return $this->per_nombre . ' ' . $this->per_paterno . ' ' . $this->per_materno;
+    }
+
+    public function getNombreCompleto() {
+        return $this->nombrePersona;
     }
 }

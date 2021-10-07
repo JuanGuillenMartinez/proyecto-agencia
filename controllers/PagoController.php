@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * PagoController implements the CRUD actions for Pago model.
  */
@@ -16,7 +17,7 @@ class PagoController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
+    /* public function behaviors()
     {
         return array_merge(
             parent::behaviors(),
@@ -29,6 +30,14 @@ class PagoController extends Controller
                 ],
             ]
         );
+    } */
+    public function behaviors()
+    {
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     /**
@@ -67,7 +76,7 @@ class PagoController extends Controller
     public function actionCreate()
     {
         $model = new Pago();
-
+        
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->pag_id]);
@@ -76,8 +85,11 @@ class PagoController extends Controller
             $model->loadDefaultValues();
         }
 
+        
+
         return $this->render('create', [
             'model' => $model,
+            
         ]);
     }
 
