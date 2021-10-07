@@ -72,6 +72,7 @@ use kartik\select2\Select2;
         <div class="col-md-3">
             <?= $form->field($persona, 'per_fkuser')->textInput()?>
         </div>
+
         
     </div>
 
