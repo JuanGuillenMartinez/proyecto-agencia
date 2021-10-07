@@ -16,7 +16,7 @@ class CatAseguradoraController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
+    /* public function behaviors()
     {
         return array_merge(
             parent::behaviors(),
@@ -29,6 +29,14 @@ class CatAseguradoraController extends Controller
                 ],
             ]
         );
+    } */
+    public function behaviors()
+    {
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     /**
