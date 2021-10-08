@@ -153,7 +153,7 @@ class Paquete extends \yii\db\ActiveRecord
     }
 
     public static function getAlojamientosMap() {
-        return ArrayHelper::map(Alojamiento::find()->all(), 'alo_id', 'alo_habitacion');
+        return ArrayHelper::map(Alojamiento::find()->all(), 'alo_id', 'alojamientoInfo');
     }
 
     public static function getSegurosMap() {

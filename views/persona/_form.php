@@ -1,8 +1,7 @@
 <?php
 
-use app\controllers\PersonaController;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
