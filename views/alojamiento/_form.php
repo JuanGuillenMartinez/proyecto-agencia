@@ -3,7 +3,7 @@
 use app\models\CatUbicacion;
 use yii\helpers\Html;
 use kartik\widgets\Select2;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
@@ -15,31 +15,47 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'alo_nombre')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        
+        <div class="col-md-3">
+        <?= $form->field($model, 'alo_nombre')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'alo_habitacion')->textInput() ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'alo_habitacion')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'alo_direccion')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'alo_direccion')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'alo_precio')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'alo_precio')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'alo_url')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'alo_url')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?php //$form->field($model, 'alo_fkubucacion')->textInput() ?>
-
-    <?=$form->field($model, 'alo_fkubucacion')->widget(Select2::classname(), [
-    'data' => CatUbicacion :: map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona una ciudad...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    ]);?>
-
+        <?php //$form->field($model, 'alo_fkubucacion')->textInput() 
+        ?>
+        
+        <div class="col-md-3">
+        <?= $form->field($model, 'alo_fkubucacion')->widget(Select2::classname(), [
+            'data' => CatUbicacion::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona una ciudad...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
+
 
     <?php ActiveForm::end(); ?>
 
