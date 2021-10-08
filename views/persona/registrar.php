@@ -8,7 +8,7 @@ use yii\bootstrap4\ActiveForm;
 ?>
 
 <div>
-    <h1>Registrar persona</h1>
+    <h1>Registrar</h1>
 
     <div class="registrar-persona">
 
