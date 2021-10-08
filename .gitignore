@@ -39,3 +39,7 @@ tests/_support/_generated
 /vendor
 /tests
 /vagrant
+
+#config composer
+composer.json
+composer.lock
