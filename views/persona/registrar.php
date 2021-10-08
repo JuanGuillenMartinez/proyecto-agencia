@@ -15,7 +15,6 @@ use yii\bootstrap4\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-       
         <div class="col-md-3">
             <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>
         </div>

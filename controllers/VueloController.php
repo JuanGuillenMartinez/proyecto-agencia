@@ -73,12 +73,8 @@ class VueloController extends Controller
             $model->loadDefaultValues();
         }
 
-        $aerolineas = ArrayHelper :: map(CatAerolinea::find()->all(), 'aer_id', 'aer_nombre');
-
-
         return $this->render('create', [
             'model' => $model,
-            'aerolineas' => $aerolineas,
         ]);
     }
 

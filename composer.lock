@@ -961,6 +961,7 @@
                 "kartik-v/bootstrap-fileinput": ">=5.0.0",
                 "kartik-v/yii2-krajee-base": ">=3.0.1"
             },
+            "default-branch": true,
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
@@ -996,6 +997,19 @@
                 "widget",
                 "yii2"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/kartik-v/yii2-widget-fileinput/issues",
+                "source": "https://github.com/kartik-v/yii2-widget-fileinput/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/yii2-widget-fileinput",
+                    "type": "open_collective"
+                }
+            ],
+>>>>>>> 331754aedeff7b4b0166989875f551f128afb532
             "time": "2021-09-03T10:14:31+00:00"
         },
         {
