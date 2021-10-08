@@ -110,9 +110,10 @@ class CatRegionController extends Controller
                 // //Genera la ruta de la imagen
                 $path = Yii::$app->basePath . '/web/img/region/' . $model->reg_url;
                 //Valida si la imagen fue guardada y el model creado correctamente
-                if ($image->saveAs($path) && $model->save()) {
-                    return $this->redirect(['view', 'id' => $model->reg_id]);
-                }
+                $image->saveAs($path);
+            }
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->reg_id]);
             }
         }
         return $this->render('update', [

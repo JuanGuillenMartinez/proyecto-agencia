@@ -18,8 +18,12 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-12">
             <?= $form->field($model, 'img')->widget(FileInput::className(), [
-                'options' => ['accept' => 'image/*'], 
-                'pluginOptions' => ['allowedExtensions' => ['jpg', 'png']]
+                'options'       => ['accept' => 'image/*'], 
+                'pluginOptions' => [
+                    'allowedExtensions'    => ['jpg', 'png'],
+                    'initialPreview'       => [$model->url],
+                    'initialPreviewAsData' => true,
+                ],
             ]); ?>          
         </div>
     </div>

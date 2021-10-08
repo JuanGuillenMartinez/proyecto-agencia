@@ -65,6 +65,9 @@ class CatRegion extends \yii\db\ActiveRecord
     
     //Devuelve la ruta de la imagen en el servidor
     public function getImagen() {
-        return Html::img("/img/" . (empty($this->reg_url) ? 'reg_default.png' : "region/{$this->reg_url}"), ['width' => '160', 'height' => '120']);
+        return Html::img($this->url, ['width' => '160', 'height' => '120']);
+    }
+    public function getUrl() {
+        return "/img/" . (empty($this->reg_url) ? 'reg_default.png' : "region/{$this->reg_url}");
     }
 }
