@@ -88,4 +88,8 @@ class Alojamiento extends \yii\db\ActiveRecord
     {
         return $this->aloFkubucacion->ubiFkpais->pai_pais;
     }
+    public function getAlojamientoInfo()
+    {
+        return $this->alo_nombre . ' - Habitación #' . $this->alo_habitacion;
+    }
 }
