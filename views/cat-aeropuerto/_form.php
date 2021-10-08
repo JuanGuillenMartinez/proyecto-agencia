@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
+use app\models\CatUbicacion;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CatAeropuerto */
@@ -24,7 +25,7 @@ use yii\widgets\ActiveForm;
     <?php //$form->field($model, 'aero_fkubicacion')->textInput() ?>
 
     <?=$form->field($model, 'aero_fkubicacion')->widget(Select2::classname(), [
-    'data' => $ubicaciones,
+    'data' => CatUbicacion:: map(),
     'language' => 'es',
     'options' => ['placeholder' => 'Selecciona una ciudad...'],
     'pluginOptions' => [
