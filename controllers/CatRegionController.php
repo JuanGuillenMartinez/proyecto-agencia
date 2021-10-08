@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
-use app\models\CatRegion;
-use app\models\CatRegionSearch;
+use Yii;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use app\models\CatRegion;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
+use app\models\CatRegionSearch;
+use yii\web\NotFoundHttpException;
 
 /**
  * CatRegionController implements the CRUD actions for CatRegion model.
@@ -63,8 +65,25 @@ class CatRegionController extends Controller
         $model = new CatRegion();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->reg_id]);
+            //Recibe parametros POST
+            if ($model->load($this->request->post())) {
+                //Obtiene la imagen traida desde el formulario
+                $image = UploadedFile::getInstance($model, 'img');
+                //Valida si la imagen no es nula
+                if (!is_null($image)) {
+                    //Obtiene la extension del archivo antes de renombrarla
+                    $tmp = explode('.', $image->name);
+                    $ext = end($tmp);
+                    // $ext = end((explode(".", $image->name)));
+                    //Genera el nuevo nombre del archivo
+                    $model->reg_url = $model->reg_id . '_' . Yii::$app->security->generateRandomString() . ".{$ext}";
+                    //Genera la ruta de la imagen
+                    $path = Yii::$app->basePath . '/web/img/region/' . $model->reg_url;
+                    //Valida si la imagen fue guardada y el model creado correctamente
+                    if ($image->saveAs($path) && $model->save()) {
+                        return $this->redirect(['view', 'id' => $model->reg_id]);
+                    }
+                }
             }
         } else {
             $model->loadDefaultValues();

@@ -28,8 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'reg_id',
             'reg_region',
-            'reg_url:url',
-
+            [
+                'attribute' => 'imagen',
+                'format' => 'raw',
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
