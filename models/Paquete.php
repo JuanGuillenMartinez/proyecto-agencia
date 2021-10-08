@@ -149,7 +149,7 @@ class Paquete extends \yii\db\ActiveRecord
     }
 
     public static function getVuelosMap() {
-        return ArrayHelper::map(Vuelo::find()->all(), 'vue_id', 'vue_fkaeroorigen');
+        return ArrayHelper::map(Vuelo::find()->all(), 'vue_id', 'vueloInfo');
     }
 
     public static function getAlojamientosMap() {
