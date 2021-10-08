@@ -15,23 +15,34 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'res_creacion')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'res_creacion')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'res_estatus')->dropDownList([ 'Pagado' => 'Pagado', 'En cobro' => 'En cobro', 'Cancelado' => 'Cancelado', ], ['prompt' => '']) ?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'res_estatus')->dropDownList(['Pagado' => 'Pagado', 'En cobro' => 'En cobro', 'Cancelado' => 'Cancelado',], ['prompt' => '']) ?>
+        </div>
 
-    <?= $form->field($model, 'res_subtotal')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'res_subtotal')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'res_fkpersona')->widget(Select2::classname(), [
-        'data' => Reservacion::getClientesNombresMap(),
-        'options' => ['placeholder' => 'Selecciona el cliente ...'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-        ]);
-    ?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'res_fkpersona')->widget(Select2::classname(), [
+                'data' => Reservacion::getClientesNombresMap(),
+                'options' => ['placeholder' => 'Selecciona el cliente ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
+        </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <div class="form-group">
+            <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        </div>
+
     </div>
 
     <?php ActiveForm::end(); ?>
