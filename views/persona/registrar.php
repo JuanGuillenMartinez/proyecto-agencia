@@ -1,7 +1,8 @@
 <?php
+use yii\helpers\Url;
 use yii\helpers\Html;
+use kartik\file\FileInput;
 use yii\bootstrap4\ActiveForm;
-use kartik\select2\Select2;
 
 
 ?>
@@ -65,9 +66,33 @@ use kartik\select2\Select2;
             <?= $form->field($persona, 'per_telefono')->textInput(['maxlength' => true]) ?>
         </div>
 
-        <div class="col-md-3">
-            <?= $form->field($persona, 'per_url')->textInput(['maxlength' => true]) ?>
-        </div>
+        
+        <div class="col-md-4">
+                    <?= $form->field($persona, 'per_url')->widget(
+                            FileInput::classname(),
+                            [
+                                'options' => [
+                                    'accept' => 'images/*',
+                                ],
+                                'pluginOptions' => [
+                                    'showPreview'    => true,
+                                    'showRemove'     => false,
+                                    'showUpload'     => false,
+                                    'browseClass'    => 'btn btn-success',
+                                    'uploadClass'    => 'btn btn-info',
+                                    'removeClass'    => 'btn btn-danger',
+                                    'removeIcon'     => '<i class="glyphicon glyphicon-trash"></i>',
+                                    'allowedFileExtensions' => ["png", "jpg", "jpeg"],
+                                    'initialPreview' => [
+                                    Url::home(true) . 'img/perfil.png'
+                                    ],
+                                    'initialPreviewAsData' => true,
+                                ]
+                            ]
+                        );
+                        ?>
+                    </div>
+        
 
         <div class="col-md-3">
             <?= $form->field($persona, 'per_fkuser')->textInput()?>
