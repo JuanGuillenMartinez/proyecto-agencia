@@ -24,7 +24,8 @@ use Yii;
  */
 class Persona extends \yii\db\ActiveRecord
 {
- 
+
+    public $img;
     /**
      * {@inheritdoc}
      */
@@ -40,12 +41,14 @@ class Persona extends \yii\db\ActiveRecord
     {
         return [
             [['per_nombre', 'per_paterno', 'per_materno', 'per_nacimiento', 'per_direccion', 'per_correo', 'per_telefono', 'per_url', 'per_fkuser'], 'required'],
-            [['per_nacimiento'], 'safe'],
+            [['per_nacimiento', 'img'], 'safe'],
             [['per_fkuser'], 'integer'],
             [['per_nombre', 'per_paterno', 'per_materno'], 'string', 'max' => 35],
             [['per_direccion', 'per_url'], 'string', 'max' => 100],
             [['per_correo'], 'string', 'max' => 55],
             [['per_telefono'], 'string', 'max' => 10],
+            [['img'], 'file', 'extensions' => 'jpg, gif, png'],
+            [['img'], 'file', 'maxSize' => '100000'],
             [['per_fkuser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['per_fkuser' => 'id']],
         ];
     }
@@ -56,17 +59,18 @@ class Persona extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'per_id' => 'Id',
-            'per_nombre' => 'Nombre persona',
-            'per_paterno' => 'Apellido paterno',
-            'per_materno' => 'Apellido materno',
+            'per_id'         => 'Id',
+            'per_nombre'     => 'Nombre persona',
+            'per_paterno'    => 'Apellido paterno',
+            'per_materno'    => 'Apellido materno',
             'per_nacimiento' => 'Nacimiento',
-            'per_direccion' => 'Dirección',
-            'per_correo' => 'Correo',
-            'per_telefono' => 'Teléfono',
-            'per_url' => 'Foto de perfil',
-            'per_fkuser'        => 'User',
-            'nombreCompleto'    => 'Nombre Completo',
+            'per_direccion'  => 'Dirección',
+            'per_correo'     => 'Correo',
+            'per_telefono'   => 'Teléfono',
+            'per_url'        => 'Foto de perfil',
+            'per_fkuser'     => 'User',
+            'img'            => 'Imagen',
+            'nombreCompleto' => 'Nombre Completo',
         ];
     }
 

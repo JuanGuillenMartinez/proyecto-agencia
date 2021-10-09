@@ -12,7 +12,7 @@ use yii\bootstrap4\ActiveForm;
 
     <div class="registrar-persona">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="row">
         <div class="col-md-3">
@@ -29,12 +29,6 @@ use yii\bootstrap4\ActiveForm;
 
         <div class="col-md-4">
             <?= $form->field($user, 'email')->textInput(['maxlength' => 255]) ?>
-        </div>
-
-        <div class="col-md-9">
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($user, 'email_confirmed')->checkbox() ?>
         </div>
         
         <div class="col-md-2">
@@ -67,34 +61,26 @@ use yii\bootstrap4\ActiveForm;
 
         
         <div class="col-md-4">
-                    <?= $form->field($persona, 'per_url')->widget(
+                    <?= $form->field($persona, 'img')->widget(
                             FileInput::classname(),
                             [
                                 'options' => [
-                                    'accept' => 'images/*',
+                                'accept' => 'image/*',
                                 ],
                                 'pluginOptions' => [
                                     'showPreview'    => true,
                                     'showRemove'     => false,
                                     'showUpload'     => false,
                                     'browseClass'    => 'btn btn-success',
-                                    'uploadClass'    => 'btn btn-info',
-                                    'removeClass'    => 'btn btn-danger',
-                                    'removeIcon'     => '<i class="glyphicon glyphicon-trash"></i>',
                                     'allowedFileExtensions' => ["png", "jpg", "jpeg"],
                                     'initialPreview' => [
-                                    Url::home(true) . 'img/perfil.png'
+                                    Url::home(true) . 'img/fecha.png'
                                     ],
                                     'initialPreviewAsData' => true,
                                 ]
                             ]
                         );
-                        ?>
-                    </div>
-        
-
-        <div class="col-md-3">
-            <?= $form->field($persona, 'per_fkuser')->textInput()?>
+                    ?>
         </div>
 
         
