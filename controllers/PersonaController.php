@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Persona;
 use yii\web\Controller;
 use yii\web\UploadedFile;
@@ -64,7 +65,7 @@ class PersonaController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $image = UploadFile::getInstance($model, 'img');
+                $image = UploadedFile::getInstance($model, 'img');
                 if(!is_null($image)){
                     $ext = end((explode(".", $image->name)));
                     $model->per_url = $model->per_fkuser.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
@@ -143,15 +144,16 @@ class PersonaController extends Controller
         die;*/
         if ($this->request->isPost && $persona->load($this->request->post()) && $user->load($this->request->post())) {
             $image = UploadedFile::getInstance($persona, 'img');
-            echo '<pre>';
-        var_dump($image);
-        echo '</pre>';
-        die;
+        //     echo '<pre>';
+        // var_dump($image);
+        // echo '</pre>';
+        //die;
             if(!is_null($image)){
-                $ext = end((explode(".", $image->name)));
+                $tmp = explode('.', $image->name);
+                $ext = end($tmp);
                 $persona->per_url = $persona->per_fkuser.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
-                $path = Yii::$app->basePath.'web/img/persona' . $persona->per_url;
-                if($image->saveAs($path) && $user->save(false)){
+                $path = Yii::$app->basePath.'/web/img/persona/' . $persona->per_url;
+                if($image->saveAs($path) && $user->save()){
                     $persona->per_fkuser = $user->id;
                     $persona->save();
                     return $this->redirect(['view', 'id' => $persona->per_id]);                }
