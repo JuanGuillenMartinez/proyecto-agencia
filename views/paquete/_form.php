@@ -66,8 +66,8 @@ use yii\widgets\ActiveForm;
                 'options'       => ['accept' => 'image/*'], 
                 'pluginOptions' => [
                     'allowedExtensions'    => ['jpg', 'png'],
-                    // 'initialPreview'       => [$model->url],
-                    // 'initialPreviewAsData' => true,
+                    'initialPreview'       => [$model->url],
+                    'initialPreviewAsData' => true,
                 ],
             ]); ?>          
         </div>
