@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cat_aerolinea".
@@ -59,4 +60,14 @@ class CatAerolinea extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Vuelo::className(), ['vue_fkaerolinea' => 'aer_id']);
     }
+
+    public static function map(){
+        return ArrayHelper::map(catAerolinea::find()->all(),'aer_id','aer_nombre');
+    }
+
+    
+    
+    
+
+    
 }
