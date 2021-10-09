@@ -56,8 +56,12 @@ class Traslado extends \yii\db\ActiveRecord
     }
     public static function getPrecioTraslado($id)
     {
-        
-        return ArrayHelper::map((array)Traslado::find()->where(['tra_id'=>$id])->one(),'tra_id','tra_precio')[$id]; ;
-    
+        /* return ArrayHelper::map((array)Traslado::find()->where(['tra_id'=>$id])->one(),'tra_id','tra_precio')[$id]; ; */
+        return Traslado::find()->where(['tra_id'=>$id])->one()->tra_precio;
+        /* return Traslado::find()->select(['tra_precio'])->where(['tra_id'=>$id])->one(); */
+    }
+    public function getPrecioOrigenDestino()
+    {
+        /* ??????????????????????????? */
     }
 }

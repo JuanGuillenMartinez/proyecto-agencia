@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PagoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pagos';
+$this->title = 'Metodo de Pago';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pago-index">
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'pag_expiracion',
             'pag_estatus',
             'pag_fkreservacion',
-            'reservacion',
+            'reservacionFolio',/* llamando folio */
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

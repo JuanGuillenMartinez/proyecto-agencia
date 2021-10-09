@@ -91,6 +91,10 @@ class Pago extends \yii\db\ActiveRecord
         return ArrayHelper::map(Reservacion::find()->all(),'res_id','res_id'); /* Consulta para traer todas las reservaciones */
         
     }
+    public function getReservacionFolio()
+    {
+        return 'RES_'.str_pad($this->pagFkreservacion->res_id,5,'0',STR_PAD_LEFT);
+    }
 
 
 }
