@@ -76,7 +76,6 @@ class CatAeropuertoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'ubicaciones' => $ubicaciones,
         ]);
     }
 

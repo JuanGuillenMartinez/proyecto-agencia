@@ -1,20 +1,20 @@
 <?php
+use yii\helpers\Url;
 use yii\helpers\Html;
+use kartik\file\FileInput;
 use yii\bootstrap4\ActiveForm;
-use kartik\select2\Select2;
 
 
 ?>
 
 <div>
-    <h1>Registrar persona</h1>
+    <h1>Registrar</h1>
 
     <div class="registrar-persona">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="row">
-       
         <div class="col-md-3">
             <?= $form->field($user, 'username')->textInput(['maxlength' => 255, 'autocomplete'=>'off']) ?>
         </div>
@@ -29,12 +29,6 @@ use kartik\select2\Select2;
 
         <div class="col-md-4">
             <?= $form->field($user, 'email')->textInput(['maxlength' => 255]) ?>
-        </div>
-
-        <div class="col-md-9">
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($user, 'email_confirmed')->checkbox() ?>
         </div>
         
         <div class="col-md-2">
@@ -65,12 +59,28 @@ use kartik\select2\Select2;
             <?= $form->field($persona, 'per_telefono')->textInput(['maxlength' => true]) ?>
         </div>
 
-        <div class="col-md-3">
-            <?= $form->field($persona, 'per_url')->textInput(['maxlength' => true]) ?>
-        </div>
-
-        <div class="col-md-3">
-            <?= $form->field($persona, 'per_fkuser')->textInput()?>
+        
+        <div class="col-md-4">
+                    <?= $form->field($persona, 'img')->widget(
+                            FileInput::classname(),
+                            [
+                                'options' => [
+                                'accept' => 'image/*',
+                                ],
+                                'pluginOptions' => [
+                                    'showPreview'    => true,
+                                    'showRemove'     => false,
+                                    'showUpload'     => false,
+                                    'browseClass'    => 'btn btn-success',
+                                    'allowedFileExtensions' => ["png", "jpg", "jpeg"],
+                                    'initialPreview' => [
+                                    Url::home(true) . 'img/fecha.png'
+                                    ],
+                                    'initialPreviewAsData' => true,
+                                ]
+                            ]
+                        );
+                    ?>
         </div>
 
         

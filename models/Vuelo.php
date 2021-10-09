@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "vuelo".
@@ -124,5 +125,9 @@ class Vuelo extends \yii\db\ActiveRecord
     public function getDestinoVuelo()
     {
         return $this->vueFkaerodestino->aero_nombre;
+    }
+    public function getVueloInfo()
+    {
+        return $this->vue_tipo . ' - ' . $this->vueFkaeroorigen->aero_nombre . ' - ' . $this->vueFkaerodestino->aero_nombre;
     }
 }

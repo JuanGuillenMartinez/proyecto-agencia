@@ -3,10 +3,11 @@
 namespace app\controllers;
 
 use app\models\Paquete;
-use app\models\PaqueteSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
+use app\models\PaqueteSearch;
+use yii\web\NotFoundHttpException;
 
 /**
  * PaqueteController implements the CRUD actions for Paquete model.
@@ -63,7 +64,8 @@ class PaqueteController extends Controller
         $model = new Paquete();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $image = UploadedFile::getInstance($model, 'img');
                 return $this->redirect(['view', 'id' => $model->paq_id]);
             }
         } else {

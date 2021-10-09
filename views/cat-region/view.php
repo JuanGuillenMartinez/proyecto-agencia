@@ -31,7 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'reg_id',
             'reg_region',
-            'reg_url:url',
+            [
+                'attribute' => 'imagen',
+                'format' => 'raw',
+            ],
         ],
     ]) ?>
 

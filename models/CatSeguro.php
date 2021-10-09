@@ -52,8 +52,8 @@ class CatSeguro extends \yii\db\ActiveRecord
             'seg_id' => 'Id',
             'seg_nombre' => 'Nombre',
             'seg_precio' => 'Precio ',
-            'seg_fkregion' => 'ID de región',
-            'seg_fkaseguradora' => 'ID de aseguradora',
+            'seg_fkregion' => 'Región',
+            'seg_fkaseguradora' => 'Aseguradora',
             'nombreRegion' => 'Región',
             'nombreAseguradora' => 'Aseguradora'
         ];

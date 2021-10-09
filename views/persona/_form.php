@@ -1,9 +1,9 @@
 <?php
 
-use app\controllers\PersonaController;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
+use kartik\widgets\FileInput;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Persona */
@@ -12,12 +12,12 @@ use kartik\select2\Select2;
 
 <div class="persona-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     
     <div class="row">
         <div class="col-md-3">
             <?= $form->field($model, 'per_nombre')->textInput(['maxlength' => true]) ?>
-        </div>
+        </div> 
     
         <div class="col-md-3">
             <?= $form->field($model, 'per_paterno')->textInput(['maxlength' => true]) ?>
@@ -44,7 +44,10 @@ use kartik\select2\Select2;
         </div>
     
         <div class="col-md-3">
-            <?= $form->field($model, 'per_url')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'img')->widget(FileInput::classname(), [
+                'options' =>['accept' => 'image/*'],
+                'pluginOptions' => ['allowedFileExtensions' => ['jpg', 'gif', 'png']]
+            ]) ?>
         </div>
     
         <div class="col-md-3">

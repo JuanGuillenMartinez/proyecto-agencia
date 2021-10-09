@@ -1,8 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
+use yii\widgets\ActiveForm;
+use app\models\CatAerolinea;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Vuelo */
@@ -34,7 +35,7 @@ use kartik\widgets\Select2;
     <?= $form->field($model, 'vue_fkaerodestino')->textInput() ?>
 
     <?=$form->field($model, 'vue_fkaerolinea')->widget(Select2::classname(), [
-    'data' => $aerolineas,
+    'data' => CatAerolinea::map(),
     'language' => 'es',
     'options' => ['placeholder' => 'Selecciona una aerolinea...'],
     'pluginOptions' => [

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -25,6 +26,7 @@ use yii\helpers\ArrayHelper;
  */
 class Paquete extends \yii\db\ActiveRecord
 {
+    public $img;
     /**
      * {@inheritdoc}
      */
@@ -149,11 +151,11 @@ class Paquete extends \yii\db\ActiveRecord
     }
 
     public static function getVuelosMap() {
-        return ArrayHelper::map(Vuelo::find()->all(), 'vue_id', 'vue_fkaeroorigen');
+        return ArrayHelper::map(Vuelo::find()->all(), 'vue_id', 'vueloInfo');
     }
 
     public static function getAlojamientosMap() {
-        return ArrayHelper::map(Alojamiento::find()->all(), 'alo_id', 'alo_habitacion');
+        return ArrayHelper::map(Alojamiento::find()->all(), 'alo_id', 'alojamientoInfo');
     }
 
     public static function getSegurosMap() {
@@ -162,5 +164,11 @@ class Paquete extends \yii\db\ActiveRecord
 
     public static function getTrasladosMap() {
         return ArrayHelper::map(Traslado::find()->all(), 'tra_id', 'tra_precio');
+    }
+    public function getUrl() {
+        return "/img/" . (empty($this->paq_url) ? 'reg_default.png' : "region/{$this->paq_url}");
+    }
+    public function getImagen() {
+        return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
 }

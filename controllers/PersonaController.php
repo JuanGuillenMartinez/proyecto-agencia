@@ -2,12 +2,13 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Persona;
-use app\models\PersonaSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
+use app\models\PersonaSearch;
+use yii\web\NotFoundHttpException;
 use webvimark\modules\UserManagement\models\User;
   
 
@@ -63,8 +64,16 @@ class PersonaController extends Controller
         $model = new Persona();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->per_id]);
+            if ($model->load($this->request->post())) {
+                $image = UploadedFile::getInstance($model, 'img');
+                if(!is_null($image)){
+                    $ext = end((explode(".", $image->name)));
+                    $model->per_url = $model->per_fkuser.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
+                    $path = Yii::$app->basePath.'web/img/persona' . $model->per_url;
+                    if($image->saveAs($path) && $model->save()){
+                        return $this->redirect(['view', 'id' => $model->per_id]);
+                    }
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -73,7 +82,6 @@ class PersonaController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'users' => $users,
         ]);
     }
 
@@ -130,12 +138,26 @@ class PersonaController extends Controller
     public function actionRegistrarPersona(){
         $persona = new Persona();
         $user = new User();
-        
+        /*echo '<pre>';
+        var_dump("hola");
+        echo '</pre>';
+        die;*/
         if ($this->request->isPost && $persona->load($this->request->post()) && $user->load($this->request->post())) {
-           $user->save(false);
-           $persona->per_fkuser = $user->id;
-           $persona->save();
-            return $this->redirect(['view', 'id' => $persona->per_id]);
+            $image = UploadedFile::getInstance($persona, 'img');
+        //     echo '<pre>';
+        // var_dump($image);
+        // echo '</pre>';
+        //die;
+            if(!is_null($image)){
+                $tmp = explode('.', $image->name);
+                $ext = end($tmp);
+                $persona->per_url = $persona->per_fkuser.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
+                $path = Yii::$app->basePath.'/web/img/persona/' . $persona->per_url;
+                if($image->saveAs($path) && $user->save()){
+                    $persona->per_fkuser = $user->id;
+                    $persona->save();
+                    return $this->redirect(['view', 'id' => $persona->per_id]);                }
+            }
         }
 
         return $this->render('registrar', compact('persona', 'user'));      
