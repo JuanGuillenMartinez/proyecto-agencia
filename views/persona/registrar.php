@@ -2,6 +2,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use kartik\file\FileInput;
+use kartik\widgets\DatePicker;
 use yii\bootstrap4\ActiveForm;
 
 
@@ -44,7 +45,17 @@ use yii\bootstrap4\ActiveForm;
         </div>
 
         <div class="col-md-3">
-            <?= $form->field($persona, 'per_nacimiento')->textInput() ?>
+            <?= $form->field($persona, 'per_nacimiento')->widget(
+                DatePicker::className(),
+                [
+                    'type' => DatePicker::TYPE_INPUT,
+                    'value' => date('Y-m-d'),
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd'
+                    ]
+                ]
+            ) ?>
         </div>
 
         <div class="col-md-6">

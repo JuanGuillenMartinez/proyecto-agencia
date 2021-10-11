@@ -138,22 +138,13 @@ class PersonaController extends Controller
     public function actionRegistrarPersona(){
         $persona = new Persona();
         $user = new User();
-        /*echo '<pre>';
-        var_dump("hola");
-        echo '</pre>';
-        die;*/
         if ($this->request->isPost && $persona->load($this->request->post()) && $user->load($this->request->post())) {
             $image = UploadedFile::getInstance($persona, 'img');
-        //     echo '<pre>';
-        // var_dump($image);
-        // echo '</pre>';
-        //die;
             if(!is_null($image)){
-                $tmp = explode('.', $image->name);
-                $ext = end($tmp);
+                $ext = end((explode('.', $image->name)));
                 $persona->per_url = $persona->per_fkuser.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
                 $path = Yii::$app->basePath.'/web/img/persona/' . $persona->per_url;
-                if($image->saveAs($path) && $user->save()){
+                if($image->saveAs($path) && $user->save(false)){
                     $persona->per_fkuser = $user->id;
                     $persona->save();
                     return $this->redirect(['view', 'id' => $persona->per_id]);                }
