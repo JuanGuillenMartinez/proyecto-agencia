@@ -1,3 +1,7 @@
+<?php
+
+use yii\bootstrap4\Html;
+?>
 <!DOCTYPE html>
 <html lang="en" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;);">
 
@@ -16,47 +20,62 @@
             <h1 class="text-uppercase" style="text-align: center;padding-bottom: 8px;font-size: 50px;font-family: Poppins, sans-serif;padding-top: 8px;font-weight: bold;">Agencia de viajes</h1>
         </div>
         <div class="row" style="margin-top: 36px;font-family: Roboto, sans-serif;font-size: 14px;">
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded-circle img-fluid" src="/web/img/icons/reservacion.png" width="40%">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/reservacion.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
+                <!-- <img class="rounded-circle img-fluid" src="/web/img/icons/reservacion.png" width="40%"> -->
                 <h2 style="margin-top: 8px;">Reservacion</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="img-fluid" data-bss-hover-animate="pulse" src="/web/img/icons/vuelo.png" width="40%">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Paquete</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" width="40%" src="/web/img/icons/seguro.png">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/seguro.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Seguro</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" width="40%" src="/web/img/icons/region.png">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/region.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Región</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" src="/web/img/icons/alojamiento.png" width="40%">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/alojamiento.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Alojamiento</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" src="/web/img/icons/aeropuerto.png" width="40%">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/aeropuerto.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Aeropuerto</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" width="40%" src="/web/img/icons/pais.png">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/pais.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">País</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" src="/web/img/icons/ubicación.png" width="40%">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/ubicacion.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Ubicación</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" src="/web/img/icons/vuelo.png" width="40%">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Vuelo</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" width="40%" src="/web/img/icons/puesto.png">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Puesto</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" src="/web/img/icons/sucursal.png" width="40%">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/sucursal.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Sucursal</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" width="40%" src="/web/img/icons/empleado.png">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/empleado.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Empleado</h2>
             </div>
             <div class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"></div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" width="40%" src="/web/img/icons/factura.png">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/factura.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Factura</h2>
             </div>
-            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"><img class="rounded img-fluid" data-bss-hover-animate="pulse" src="/web/img/icons/persona.png" width="40%">
+            <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <?php echo Html::img('@web/img/icons/persona.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Persona</h2>
             </div>
             <div class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"></div>
