@@ -21,20 +21,27 @@ use yii\bootstrap4\Html;
         </div>
         <div class="row" style="margin-top: 36px;font-family: Roboto, sans-serif;font-size: 14px;">
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/reservacion">
                 <?php echo Html::img('@web/img/icons/reservacion.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
-                <!-- <img class="rounded-circle img-fluid" src="/web/img/icons/reservacion.png" width="40%"> -->
-                <h2 style="margin-top: 8px;">Reservacion</h2>
+                </a>
+                <h2 style="margin-top: 8px;">Reservación</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
-                <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+            <a href="/paquete">    
+            <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+            </a>
                 <h2 style="margin-top: 8px;">Paquete</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/cat-seguro">
                 <?php echo Html::img('@web/img/icons/seguro.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Seguro</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/cat-region">
                 <?php echo Html::img('@web/img/icons/region.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Región</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
