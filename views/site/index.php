@@ -84,12 +84,16 @@ use yii\bootstrap4\Html;
             </div>
 
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/cat-puesto">
                 <?php echo Html::img('@web/img/icons/puesto.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Puesto</h2>
             </div>
 
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/cat-sucursal">
                 <?php echo Html::img('@web/img/icons/sucursal.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Sucursal</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
@@ -98,11 +102,15 @@ use yii\bootstrap4\Html;
             </div>
             <div class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"></div>
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/factura">
                 <?php echo Html::img('@web/img/icons/factura.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Factura</h2>
             </div>
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/persona">
                 <?php echo Html::img('@web/img/icons/persona.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Persona</h2>
             </div>
             <div class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"></div>

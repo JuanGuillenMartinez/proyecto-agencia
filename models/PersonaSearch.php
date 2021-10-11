@@ -71,7 +71,6 @@ class PersonaSearch extends Persona
                 'per_url',
                 'per_fkuser',
             ]
-       
         ]);
 
         $this->load($params);

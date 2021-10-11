@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "persona".
@@ -110,5 +109,9 @@ class Persona extends \yii\db\ActiveRecord
 
     public function getNombreCompleto() {
         return $this->nombrePersona;
+    }
+
+    public function getImagen() {
+        return Html::img("/img/".(empty($this->per_url) ? 'fecha.png' : "img/{$this->per_url}"));
     }
 }
