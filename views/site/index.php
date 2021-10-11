@@ -116,23 +116,31 @@ use yii\bootstrap4\Html;
             
             
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+            <a style="text-decoration: none;" href="/cat-aerolinea">
                 <?php echo Html::img('@web/img/icons/aerolinea.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Aerolinea</h2>
+            </a>
             </div>
             
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+            <a style="text-decoration: none;" href="/cat-aseguradora">
                 <?php echo Html::img('@web/img/icons/aseguradora.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Aseguradora</h2>
+            </a>
             </div>
 
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
-                <?php echo Html::img('@web/img/icons/pagoo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+            <a style="text-decoration: none;" href="/pago">
+                <?php echo Html::img('@web/img/icons/pago.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Pago</h2>
+            </a>
             </div>
             
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
-                <?php echo Html::img('@web/img/icons/traslado.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
-                <h2 style="margin-top: 8px;">Traslado</h2>
+                <a style="text-decoration: none;" href="/traslado">
+                    <?php echo Html::img('@web/img/icons/traslado.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                    <h2 style="margin-top: 8px;">Traslado</h2>
+                </a>
             </div>
             
             <div class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;"></div>
