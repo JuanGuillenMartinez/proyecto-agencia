@@ -22,52 +22,72 @@ use yii\bootstrap4\Html;
         <div class="row" style="margin-top: 36px;font-family: Roboto, sans-serif;font-size: 14px;">
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
                 <a href="/reservacion">
-                <?php echo Html::img('@web/img/icons/reservacion.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
+                    <?php echo Html::img('@web/img/icons/reservacion.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%']) ?>
                 </a>
                 <h2 style="margin-top: 8px;">Reservación</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
-            <a href="/paquete">    
-            <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
-            </a>
+                <a href="/paquete">
+                    <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Paquete</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
                 <a href="/cat-seguro">
-                <?php echo Html::img('@web/img/icons/seguro.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                    <?php echo Html::img('@web/img/icons/seguro.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 </a>
                 <h2 style="margin-top: 8px;">Seguro</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
                 <a href="/cat-region">
-                <?php echo Html::img('@web/img/icons/region.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                    <?php echo Html::img('@web/img/icons/region.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 </a>
                 <h2 style="margin-top: 8px;">Región</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
-                <?php echo Html::img('@web/img/icons/alojamiento.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
-                <h2 style="margin-top: 8px;">Alojamiento</h2>
+                <a href="/alojamiento">
+                    <?php echo Html::img('@web/img/icons/alojamiento.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                    </a>
+                    <h2 style="margin-top: 8px;">Alojamiento</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/cat-aeropuerto">
                 <?php echo Html::img('@web/img/icons/aeropuerto.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Aeropuerto</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/cat-pais">
                 <?php echo Html::img('@web/img/icons/pais.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">País</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/cat-ubicacion">
                 <?php echo Html::img('@web/img/icons/ubicacion.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Ubicación</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
+                <a href="/vuelo">
                 <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                </a>
                 <h2 style="margin-top: 8px;">Vuelo</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
-                <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                <?php echo Html::img('@web/img/icons/puesto.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Puesto</h2>
             </div>
+
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
                 <?php echo Html::img('@web/img/icons/sucursal.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 <h2 style="margin-top: 8px;">Sucursal</h2>
