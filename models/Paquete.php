@@ -41,7 +41,7 @@ class Paquete extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['paq_nombre', 'paq_subtotal', 'paq_url', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado'], 'required'],
+            [['paq_nombre', 'paq_url', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado'], 'required'],
             [['paq_subtotal'], 'number'],
             [['paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado'], 'integer'],
             [['paq_nombre'], 'string', 'max' => 45],
