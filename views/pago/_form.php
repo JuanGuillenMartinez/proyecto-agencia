@@ -15,16 +15,53 @@ use yii\bootstrap4\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'pag_direccion')->textInput(['maxlength' => true]) ?>
+    <?php  
+    /* $form->field($model, 'pag_tipo')->dropDownList([ 'debito' => 'Debito', 'credito' => 'Credito', '' => '', ], ['prompt' => '']) */
+    ?>
 
-    <?= $form->field($model, 'pag_tipo')->dropDownList([ 'debito' => 'Debito', 'credito' => 'Credito', '' => '', ], ['prompt' => '']) ?>
+    <?=
+    $form->field($model, 'pag_tipo')->widget(Select2::classname(), [
+        'data' => [ 'debito' => 'Debito', 'credito' => 'Credito',],
+        'language' => 'es',
+        'options' => ['placeholder' => 'Selecciona un tipo ...'],
+        'pluginOptions' => [
+            'allowClear' => true    
+        ],
+    ]);
+    ?>
+    <?php 
+    /* $form->field($model, 'pag_entidad')->dropDownList([ 'mastercard' => 'Mastercard', 'visa' => 'Visa', 'american express' => 'American express', ], ['prompt' => '']) */
+    ?>
 
-    <?= $form->field($model, 'pag_entidad')->dropDownList([ 'mastercard' => 'Mastercard', 'visa' => 'Visa', 'american express' => 'American express', ], ['prompt' => '']) ?>
+    <?=
+    $form->field($model, 'pag_entidad')->widget(Select2::classname(), [
+        'data' => [ 'mastercard' => 'Mastercard', 'visa' => 'Visa', 'american express' => 'American express', ],
+        'language' => 'es',
+        'options' => ['placeholder' => 'Selecciona una entidad ...'],
+        'pluginOptions' => [
+            'allowClear' => true    
+        ],
+    ]);
+    ?>
 
     <?= $form->field($model, 'pag_tarjeta')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'pag_expiracion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pag_estatus')->dropDownList([ 'pagado' => 'Pagado', 'en proceso' => 'En proceso', 'rechazado' => 'Rechazado', ], ['prompt' => '']) ?>
+    <?php 
+    /* $form->field($model, 'pag_estatus')->dropDownList([ 'pagado' => 'Pagado', 'en proceso' => 'En proceso', 'rechazado' => 'Rechazado', ], ['prompt' => '']) */
+    ?>
+
+    <?=
+    $form->field($model, 'pag_estatus')->widget(Select2::classname(), [
+        'data' => [ 'pagado' => 'Pagado', 'en proceso' => 'En proceso', 'rechazado' => 'Rechazado', ],
+        'language' => 'es',
+        'options' => ['placeholder' => 'Selecciona un estatus ...'],
+        'pluginOptions' => [
+            'allowClear' => true    
+        ],
+    ]);
+    ?>
 
     <?php /* $form->field($model, 'pag_fkreservacion')->textInput() */ ?>
     
