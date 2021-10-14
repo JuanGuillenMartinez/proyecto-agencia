@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use kartik\select2\Select2;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -13,8 +14,18 @@ use yii\bootstrap4\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'aer_nombre')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'aer_tipo')->dropDownList([ 'regional' => 'Regional', 'red' => 'Red', 'gran escala' => 'Gran escala', ], ['prompt' => '']) ?>
+      
+    <?php /* $form->field($model, 'aer_tipo')->dropDownList(['regional' => 'Regional', 'red' => 'Red', 'gran escala' => 'Gran escala',  ], ['prompt' => '']) */?>
+    <?=
+    $form->field($model, 'aer_tipo')->widget(Select2::classname(), [
+        'data' => ['regional' => 'Regional', 'red' => 'Red', 'gran escala' => 'Gran escala',],
+        'language' => 'es',
+        'options' => ['placeholder' => 'Selecciona un tipo ...'],
+        'pluginOptions' => [
+            'allowClear' => true    
+        ],
+    ]);
+    ?>
 
     <?= $form->field($model, 'aer_pagina')->textInput(['maxlength' => true]) ?>
 
