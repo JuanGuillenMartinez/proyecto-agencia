@@ -12,7 +12,11 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tra_precio')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md">
+            <?= $form->field($model, 'tra_precio')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
