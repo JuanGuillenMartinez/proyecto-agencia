@@ -11,12 +11,21 @@ use yii\bootstrap4\ActiveForm;
 <div class="cat-aseguradora-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'ase_nombre')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'ase_nombre')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'ase_telefono')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'ase_telefono')->textInput() ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'ase_correo')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'ase_correo')->textInput(['maxlength' => true]) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
