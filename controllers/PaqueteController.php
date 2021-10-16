@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Alojamiento;
 use Yii;
+use app\models\Vuelo;
 use app\models\Paquete;
 use yii\web\Controller;
 use yii\web\UploadedFile;
@@ -118,6 +120,27 @@ class PaqueteController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionSubtotal()
+    {
+        $subtotal = Yii::$app->request->post('sub');
+        $vueloId = Yii::$app->request->post('vuelo');
+        $aloId = Yii::$app->request->post('alo');
+        if (isset($vueloId)) {
+            $vuelo = Vuelo::findOne(['vue_id' => $vueloId]);
+            if (isset($vuelo)) {
+                $subtotal = $subtotal + $vuelo->vue_precio;
+            }
+        }
+        if (isset($aloId)) {
+            $alojamiento = Alojamiento::findOne(['alo_id' => $aloId]);
+            if (isset($alojamiento)) {
+                $subtotal = $subtotal + $alojamiento->alo_precio;
+            }
+        }
+
+        return $subtotal;
     }
 
     /**

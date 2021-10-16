@@ -63,19 +63,59 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-12">
             <?= $form->field($model, 'img')->widget(FileInput::className(), [
-                'options'       => ['accept' => 'image/*'], 
+                'options'       => ['accept' => 'image/*'],
                 'pluginOptions' => [
                     'allowedExtensions'    => ['jpg', 'png'],
                     'initialPreview'       => [$model->url],
                     'initialPreviewAsData' => true,
                 ],
-            ]); ?>          
+            ]); ?>
         </div>
-        
+
     </div>
     <div class="form-group">
-                <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
-            </div>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+    </div>
     <?php ActiveForm::end(); ?>
 
 </div>
+<script>
+
+</script>
+<?php
+$js = <<<JAVASCRIPT
+    $("#paquete-paq_fkvuelo").on("change", function(e) {
+        var sub = $("#paquete-paq_subtotal").val();
+        console.log(sub);
+        var vuelo = $("#paquete-paq_fkvuelo").val();
+        if (sub==undefined || sub=='') {
+            sub = 0;
+        }
+        $.post( "/paquete/subtotal", 
+        {
+            vuelo : vuelo,
+            sub : sub,
+        },
+        function(data) {
+            $("#paquete-paq_subtotal").val(data);
+        });
+    });
+    $("#paquete-paq_fkalojamiento").on("change", function(e) {
+        var sub = $("#paquete-paq_subtotal").val();
+        console.log(sub);
+        var alo = $("#paquete-paq_fkalojamiento").val();
+        if (sub==undefined || sub=='') {
+            sub = 0;
+        }
+        $.post( "/paquete/subtotal", 
+        {
+            alo : alo,
+            sub : sub,
+        },
+        function(data) {
+            $("#paquete-paq_subtotal").val(data);
+        });
+    });
+JAVASCRIPT;
+$this->registerJs($js);
+?>
