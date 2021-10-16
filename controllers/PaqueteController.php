@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Alojamiento;
+use app\models\CatSeguro;
 use Yii;
 use app\models\Vuelo;
 use app\models\Paquete;
@@ -10,6 +11,7 @@ use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use app\models\PaqueteSearch;
+use app\models\Traslado;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -126,7 +128,9 @@ class PaqueteController extends Controller
     {
         $subtotal = Yii::$app->request->post('sub');
         $vueloId = Yii::$app->request->post('vuelo');
+        $segId = Yii::$app->request->post('seg');
         $aloId = Yii::$app->request->post('alo');
+        $trasId = Yii::$app->request->post('tras');
         if (isset($vueloId)) {
             $vuelo = Vuelo::findOne(['vue_id' => $vueloId]);
             if (isset($vuelo)) {
@@ -139,7 +143,18 @@ class PaqueteController extends Controller
                 $subtotal = $subtotal + $alojamiento->alo_precio;
             }
         }
-
+        if (isset($segId)) {
+            $seguro = CatSeguro::findOne(['seg_id' => $segId]);
+            if (isset($seguro)) {
+                $subtotal = $subtotal + $seguro->seg_precio;
+            }
+        }
+        if (isset($trasId)) {
+            $traslado = Traslado::findOne(['tra_id' => $trasId]);
+            if (isset($traslado)) {
+                $subtotal = $subtotal + $traslado->tra_precio;
+            }
+        }
         return $subtotal;
     }
 
