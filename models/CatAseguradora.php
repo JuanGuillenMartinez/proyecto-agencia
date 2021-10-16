@@ -31,7 +31,7 @@ class CatAseguradora extends \yii\db\ActiveRecord
     {
         return [
             [['ase_nombre', 'ase_telefono', 'ase_correo'], 'required'],
-            [['ase_telefono'], 'integer'],
+            [['ase_telefono'], 'string','max'=>12],
             [['ase_nombre'], 'string', 'max' => 50],
             [['ase_correo'], 'string', 'max' => 35],
         ];
