@@ -2,8 +2,8 @@
 
 use app\models\Pago;
 use yii\helpers\Html;
+use kartik\form\ActiveForm;
 use kartik\select2\Select2;
-use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pago */
@@ -42,10 +42,28 @@ use yii\bootstrap4\ActiveForm;
             ?>
         </div>
         <div class="col-md-3">
-            <?= $form->field($model, 'pag_tarjeta')->textInput(['maxlength' => true]) ?>
+            
+            <?=$form->field($model, 'pag_tarjeta',[
+                'feedbackIcon'=>[
+                    'prefix'=>'fas fa-',
+                    'default'=>'credit-card',
+                    'success'=>'check-circle',
+                    'error'=>'exclamation-circle',
+                ]
+            ])->widget('yii\widgets\MaskedInput',['mask'=>'9999 9999 9999 9999']); ?>
+            
+            
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'pag_expiracion')->textInput(['maxlength' => true]) ?>        
+        <?=$form->field($model, 'pag_expiracion',[
+                'feedbackIcon'=>[
+                    'prefix'=>'fas fa-',
+                    'default'=>'credit-card',
+                    'success'=>'check-circle',
+                    'error'=>'exclamation-circle',
+                ]
+            ])->widget('yii\widgets\MaskedInput',['mask'=>'99/99']); ?>
+                    
         </div>
         <div class="col-md-4">
             <?=
