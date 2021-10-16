@@ -21,8 +21,28 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'plantilla/css/animate.css',
+        'plantilla/css/icomoon.css',
+        'plantilla/css/superfish.css',
+        'plantilla/css/magnific-popup.css',
+        'plantilla/css/bootstrap-datepicker.min.css',
+        'plantilla/css/cs-select.css',
+        'plantilla/css/cs-skin-border.css',
+        'plantilla/css/style.css',        
     ];
     public $js = [
+        'plantilla/js/jquery.easing.1.3.js',
+        'plantilla/js/jquery.waypoints.min.js',
+        'plantilla/js/sticky.js',
+        'plantilla/js/jquery.stellar.min.js',
+        'plantilla/js/hoverIntent.js',
+        'plantilla/js/superfish.js',
+        'plantilla/js/jquery.magnific-popup.min.js',
+        'plantilla/js/magnific-popup-options.js',
+        'plantilla/js/bootstrap-datepicker.min.js',
+        'plantilla/js/classie.js',
+        'plantilla/js/selectFx.js',
+        'plantilla/js/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
