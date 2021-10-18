@@ -15,52 +15,76 @@ use app\models\CatUbicacion;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'vue_tipo')->dropDownList([ 'Directo' => 'Directo', 'Escala' => 'Escala', ], ['prompt' => '']) ?>
+    <div class="row">
 
-    <?= $form->field($model, 'vue_salida')->textInput() ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_salida')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'vue_llegada')->textInput() ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_llegada')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'vue_fecha')->textInput() ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_fecha')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'vue_capacidad')->textInput() ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_capacidad')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'vue_precio')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_precio')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'vue_estatus')->dropDownList([ 'Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado', ], ['prompt' => '']) ?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_estatus')->dropDownList(['Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado',], ['prompt' => '']) ?>
+        </div>
 
-    <?php //= $form->field($model, 'vue_fkaerolinea')->textInput() ?>
+        <?php //= $form->field($model, 'vue_fkaerolinea')->textInput() 
+        ?>
 
-    <?php //= $form->field($model, 'vue_fkaeroorigen')->textInput() ?>
+        <?php //= $form->field($model, 'vue_fkaeroorigen')->textInput() 
+        ?>
 
-    <?php //= $form->field($model, 'vue_fkaerodestino')->textInput() ?>
+        <?php //= $form->field($model, 'vue_fkaerodestino')->textInput() 
+        ?>
 
-    <?=$form->field($model, 'vue_fkaerolinea')->widget(Select2::classname(), [
-    'data' => CatAerolinea::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona una aerolinea...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    ]);?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_fkaerolinea')->widget(Select2::classname(), [
+            'data' => CatAerolinea::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona una aerolinea...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
 
-<?=$form->field($model, 'vue_fkaeroorigen')->widget(Select2::classname(), [
-    'data' => CatUbicacion::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona el aeropuerto de origen...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    ]);?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_fkaeroorigen')->widget(Select2::classname(), [
+            'data' => CatUbicacion::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona el aeropuerto de origen...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
 
-<?=$form->field($model, 'vue_fkaerodestino')->widget(Select2::classname(), [
-    'data' => CatUbicacion::map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona el aeropuerto de destino...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    ]);?>
+        <div class="col-md-3">
+        <?= $form->field($model, 'vue_fkaerodestino')->widget(Select2::classname(), [
+            'data' => CatUbicacion::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona el aeropuerto de destino...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
+
+
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
