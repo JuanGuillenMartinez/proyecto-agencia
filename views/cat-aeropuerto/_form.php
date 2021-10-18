@@ -14,24 +14,43 @@ use app\models\CatUbicacion;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'aero_nombre')->textInput(['maxlength' => true]) ?>
+    <div class="row">
 
-    <?= $form->field($model, 'aero_direccion')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'aero_nombre')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'aero_pagina')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'aero_direccion')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'aero_url')->textInput(['maxlength' => true]) ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'aero_pagina')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?php //$form->field($model, 'aero_fkubicacion')->textInput() ?>
 
-    <?=$form->field($model, 'aero_fkubicacion')->widget(Select2::classname(), [
-    'data' => CatUbicacion:: map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona una ciudad...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    ]);?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'aero_url')->textInput(['maxlength' => true]) ?>
+        </div>
+
+
+        <?php //$form->field($model, 'aero_fkubicacion')->textInput() 
+        ?>
+
+        <div class="col-md-3">
+        <?= $form->field($model, 'aero_fkubicacion')->widget(Select2::classname(), [
+            'data' => CatUbicacion::map(),
+            'language' => 'es',
+            'options' => ['placeholder' => 'Selecciona una ciudad...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]); ?>
+        </div>
+
+
+    </div>
+
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
