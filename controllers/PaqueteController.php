@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Alojamiento;
+use app\models\CatSeguro;
 use Yii;
 use app\models\Vuelo;
 use app\models\Paquete;
@@ -10,6 +11,7 @@ use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use app\models\PaqueteSearch;
+use app\models\Traslado;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -124,22 +126,93 @@ class PaqueteController extends Controller
 
     public function actionSubtotal()
     {
-        $subtotal = Yii::$app->request->post('sub');
         $vueloId = Yii::$app->request->post('vuelo');
+        $segId = Yii::$app->request->post('seg');
         $aloId = Yii::$app->request->post('alo');
+        $trasId = Yii::$app->request->post('tras');
+        $subtotal = 0;
         if (isset($vueloId)) {
             $vuelo = Vuelo::findOne(['vue_id' => $vueloId]);
             if (isset($vuelo)) {
-                $subtotal = $subtotal + $vuelo->vue_precio;
+                $subtotal += $vuelo->vue_precio;
             }
         }
         if (isset($aloId)) {
             $alojamiento = Alojamiento::findOne(['alo_id' => $aloId]);
             if (isset($alojamiento)) {
-                $subtotal = $subtotal + $alojamiento->alo_precio;
+                $subtotal += $alojamiento->alo_precio;
             }
         }
+        if (isset($segId)) {
+            $seguro = CatSeguro::findOne(['seg_id' => $segId]);
+            if (isset($seguro)) {
+                $subtotal += $seguro->seg_precio;
+            }
+        }
+        if (isset($trasId)) {
+            $traslado = Traslado::findOne(['tra_id' => $trasId]);
+            if (isset($traslado)) {
+                $subtotal += $traslado->tra_precio;
+            }
+        }
+        return $subtotal;
+    }
 
+    public function actionSubtotal2()
+    {
+        $subtotal = Yii::$app->request->post('sub');
+        $vueloId = Yii::$app->request->post('vuelo');
+        $vueloAnteriorId = Yii::$app->request->post('idVueloAnterior');
+        $segId = Yii::$app->request->post('seg');
+        $seguroAnteriorId = Yii::$app->request->post('idSeguroAnterior');
+        $aloId = Yii::$app->request->post('alo');
+        $alojamientoAnteriorId = Yii::$app->request->post('idAlojamientoAnterior');
+        $trasId = Yii::$app->request->post('tras');
+        $trasladoAnteriorId = Yii::$app->request->post('idTrasladoAnterior');
+        if (isset($vueloId)) {
+            $vuelo = Vuelo::findOne(['vue_id' => $vueloId]);
+            if (isset($vuelo)) {
+                if ($vueloAnteriorId == 0) {
+                    $subtotal = $subtotal + $vuelo->vue_precio;
+                } else {
+                    $vueloAnterior = Vuelo::findOne(['vue_id' => $vueloAnteriorId]);
+                    $subtotal = $subtotal - $vueloAnterior->vue_precio + $vuelo->vue_precio;
+                }
+            }
+        }
+        if (isset($aloId)) {
+            $alojamiento = Alojamiento::findOne(['alo_id' => $aloId]);
+            if (isset($alojamiento)) {
+                if ($alojamientoAnteriorId == 0) {
+                    $subtotal = $subtotal + $alojamiento->alo_precio;
+                } else {
+                    $alojamientoAnterior = Alojamiento::findOne(['alo_id' => $alojamientoAnteriorId]);
+                    $subtotal = $subtotal - $alojamientoAnterior->alo_precio + $alojamiento->alo_precio;
+                }
+            }
+        }
+        if (isset($segId)) {
+            $seguro = CatSeguro::findOne(['seg_id' => $segId]);
+            if (isset($seguro)) {
+                if ($seguroAnteriorId == 0) {
+                    $subtotal = $subtotal + $seguro->seg_precio;
+                } else {
+                    $seguroAnterior = CatSeguro::findOne(['seg_id' => $seguroAnteriorId]);
+                    $subtotal = $subtotal - $seguroAnterior->seg_precio + $seguro->seg_precio;
+                }
+            }
+        }
+        if (isset($trasId)) {
+            $traslado = Traslado::findOne(['tra_id' => $trasId]);
+            if (isset($traslado)) {
+                if ($trasladoAnteriorId == 0) {
+                    $subtotal = $subtotal + $traslado->tra_precio;
+                } else {
+                    $trasladoAnterior = Traslado::findOne(['tra_id' => $trasladoAnteriorId]);
+                    $subtotal = $subtotal - $trasladoAnterior->tra_precio + $traslado->tra_precio;
+                }
+            }
+        }
         return $subtotal;
     }
 

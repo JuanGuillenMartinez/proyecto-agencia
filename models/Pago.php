@@ -40,7 +40,7 @@ class Pago extends \yii\db\ActiveRecord
             [['pag_tipo', 'pag_entidad', 'pag_estatus'], 'string'],
             [['pag_fkreservacion'], 'integer'],
             [['pag_direccion'], 'string', 'max' => 100],
-            [['pag_tarjeta'], 'string', 'max' => 16],
+            [['pag_tarjeta'], 'string', 'max' => 19],
             [['pag_expiracion'], 'string', 'max' => 5],
             [['pag_fkreservacion'], 'exist', 'skipOnError' => true, 'targetClass' => Reservacion::className(), 'targetAttribute' => ['pag_fkreservacion' => 'res_id']],
         ];

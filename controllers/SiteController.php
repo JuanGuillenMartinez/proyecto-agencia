@@ -116,6 +116,10 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionPlantilla() {
+        return $this->render('plantilla');
+    }
+
     /**
      * Displays about page.
      *
