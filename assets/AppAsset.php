@@ -43,7 +43,8 @@ class AppAsset extends AssetBundle
         'plantilla/js/classie.js',
         'plantilla/js/selectFx.js',
         'plantilla/js/main.js',
-        '/js/paquete.js'
+        '/js/paquete.js',
+        '/js/bs-init.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
