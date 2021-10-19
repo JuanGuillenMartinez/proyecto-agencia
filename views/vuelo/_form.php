@@ -18,27 +18,31 @@ use yii\bootstrap4\ActiveForm;
     <div class="row">
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_salida')->textInput() ?>
+            <?= $form->field($model, 'vue_tipo')->dropDownList(['Directo' => 'Directo', 'Escala' => 'Escala',], ['prompt' => '']) ?>
         </div>
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_llegada')->textInput() ?>
+            <?= $form->field($model, 'vue_salida')->textInput() ?>
         </div>
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_fecha')->textInput() ?>
+            <?= $form->field($model, 'vue_llegada')->textInput() ?>
         </div>
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_capacidad')->textInput() ?>
+            <?= $form->field($model, 'vue_fecha')->textInput() ?>
         </div>
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_precio')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'vue_capacidad')->textInput() ?>
         </div>
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_estatus')->dropDownList(['Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado',], ['prompt' => '']) ?>
+            <?= $form->field($model, 'vue_precio')->textInput(['maxlength' => true]) ?>
+        </div>
+
+        <div class="col-md-3">
+            <?= $form->field($model, 'vue_estatus')->dropDownList(['Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado',], ['prompt' => '']) ?>
         </div>
 
         <?php //= $form->field($model, 'vue_fkaerolinea')->textInput() 
@@ -51,36 +55,36 @@ use yii\bootstrap4\ActiveForm;
         ?>
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_fkaerolinea')->widget(Select2::classname(), [
-            'data' => CatAerolinea::map(),
-            'language' => 'es',
-            'options' => ['placeholder' => 'Selecciona una aerolinea...'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
+            <?= $form->field($model, 'vue_fkaerolinea')->widget(Select2::classname(), [
+                'data' => CatAerolinea::map(),
+                'language' => 'es',
+                'options' => ['placeholder' => 'Selecciona una aerolinea...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
         </div>
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_fkaeroorigen')->widget(Select2::classname(), [
-            'data' => CatUbicacion::map(),
-            'language' => 'es',
-            'options' => ['placeholder' => 'Selecciona el aeropuerto de origen...'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
+            <?= $form->field($model, 'vue_fkaeroorigen')->widget(Select2::classname(), [
+                'data' => CatUbicacion::map(),
+                'language' => 'es',
+                'options' => ['placeholder' => 'Selecciona el aeropuerto de origen...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
         </div>
 
         <div class="col-md-3">
-        <?= $form->field($model, 'vue_fkaerodestino')->widget(Select2::classname(), [
-            'data' => CatUbicacion::map(),
-            'language' => 'es',
-            'options' => ['placeholder' => 'Selecciona el aeropuerto de destino...'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
+            <?= $form->field($model, 'vue_fkaerodestino')->widget(Select2::classname(), [
+                'data' => CatUbicacion::map(),
+                'language' => 'es',
+                'options' => ['placeholder' => 'Selecciona el aeropuerto de destino...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
         </div>
 
 
