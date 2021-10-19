@@ -150,6 +150,10 @@ class Paquete extends \yii\db\ActiveRecord
         return $this->paqFktraslado->tra_precio;
     }
 
+    public function getTrasladoInfo() {
+        return $this->paqFkvuelo->vueFkaerodestino->aero_nombre . " - " . $this->paqFkalojamiento->alo_nombre . " Ubicado en " . $this->paqFkalojamiento->alo_direccion;
+    }
+
     public static function getVuelosMap() {
         return ArrayHelper::map(Vuelo::find()->all(), 'vue_id', 'vueloInfo');
     }
@@ -163,7 +167,7 @@ class Paquete extends \yii\db\ActiveRecord
     }
 
     public static function getTrasladosMap() {
-        return ArrayHelper::map(Traslado::find()->all(), 'tra_id', 'tra_precio');
+        return ArrayHelper::map(Traslado::find()->all(), 'tra_id', 'trasladoInfo');
     }
     public function getUrl() {
         return "/img/" . (empty($this->paq_url) ? 'reg_default.png' : "paquete/{$this->paq_url}");
