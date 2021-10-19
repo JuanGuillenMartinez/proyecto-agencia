@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\CatPais;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use app\models\Alojamiento;
 use yii\filters\VerbFilter;
 use app\models\CatUbicacion;
@@ -64,8 +66,17 @@ class AlojamientoController extends Controller
         $model = new Alojamiento();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->alo_id]);
+            if ($model->load($this->request->post())) {
+                $image = UploadedFile::getInstance($model, 'img');
+                if (!is_null($image)) {
+                    $tmp = explode('.', $image->name);
+                    $ext = end($tmp);
+                    $model->alo_url = $model->alo_id . '_' . Yii::$app->security->generateRandomString() . ".{$ext}";
+                    $path = Yii::$app->basePath . '/web/img/alojamiento/' . $model->alo_url;
+                    if ($image->saveAs($path) && $model->save()) {
+                        return $this->redirect(['view', 'id' => $model->alo_id]);
+                    }
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -73,7 +84,6 @@ class AlojamientoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-    
         ]);
     }
 

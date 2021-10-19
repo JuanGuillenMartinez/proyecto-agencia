@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use app\models\CatPais;
 use kartik\select2\Select2;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CatUbicacion */
@@ -14,18 +14,26 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ubi_capital')->textInput(['maxlength' => true]) ?>
+    <div class="row">
 
-    <?php //$form->field($model, 'ubi_fkpais')->textInput() ?>
+        <div class="col-md-3">
+            <?= $form->field($model, 'ubi_capital')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?=$form->field($model, 'ubi_fkpais')->widget(Select2::classname(), [
-    'data' => CatPais:: map(),
-    'language' => 'es',
-    'options' => ['placeholder' => 'Selecciona un país...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    ]);?>
+        <?php //$form->field($model, 'ubi_fkpais')->textInput() 
+        ?>
+
+        <div class="col-md-3">
+            <?= $form->field($model, 'ubi_fkpais')->widget(Select2::classname(), [
+                'data' => CatPais::map(),
+                'language' => 'es',
+                'options' => ['placeholder' => 'Selecciona un país...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
+        </div>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

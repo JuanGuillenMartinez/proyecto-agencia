@@ -15,11 +15,11 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-9">
             <?= $form->field($model, 'paq_nombre')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-3">
-            <?= $form->field($model, 'paq_subtotal')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'paq_subtotal')->textInput(['maxlength' => true, 'readonly' => true, 'value' => 0]) ?>
         </div>
         <div class="col-md-6">
             <?= $form->field($model, 'paq_fkvuelo')->widget(Select2::classname(), [
@@ -83,39 +83,5 @@ use yii\widgets\ActiveForm;
 
 </script>
 <?php
-$js = <<<JAVASCRIPT
-    $("#paquete-paq_fkvuelo").on("change", function(e) {
-        var sub = $("#paquete-paq_subtotal").val();
-        console.log(sub);
-        var vuelo = $("#paquete-paq_fkvuelo").val();
-        if (sub==undefined || sub=='') {
-            sub = 0;
-        }
-        $.post( "/paquete/subtotal", 
-        {
-            vuelo : vuelo,
-            sub : sub,
-        },
-        function(data) {
-            $("#paquete-paq_subtotal").val(data);
-        });
-    });
-    $("#paquete-paq_fkalojamiento").on("change", function(e) {
-        var sub = $("#paquete-paq_subtotal").val();
-        console.log(sub);
-        var alo = $("#paquete-paq_fkalojamiento").val();
-        if (sub==undefined || sub=='') {
-            sub = 0;
-        }
-        $.post( "/paquete/subtotal", 
-        {
-            alo : alo,
-            sub : sub,
-        },
-        function(data) {
-            $("#paquete-paq_subtotal").val(data);
-        });
-    });
-JAVASCRIPT;
-$this->registerJs($js);
+
 ?>

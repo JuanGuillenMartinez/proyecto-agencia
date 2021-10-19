@@ -17,10 +17,6 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'res_creacion')->textInput(['maxlength' => true]) ?>
-        </div>
-
-        <div class="col-md-6">
             <?= $form->field($model, 'res_estatus')->dropDownList(['Pagado' => 'Pagado', 'En cobro' => 'En cobro', 'Cancelado' => 'Cancelado',], ['prompt' => '']) ?>
         </div>
 
@@ -28,7 +24,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'res_subtotal')->textInput(['maxlength' => true]) ?>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-12">
             <?= $form->field($model, 'res_fkpersona')->widget(Select2::classname(), [
                 'data' => Reservacion::getClientesNombresMap(),
                 'options' => ['placeholder' => 'Selecciona el cliente ...'],
@@ -38,11 +34,9 @@ use yii\widgets\ActiveForm;
             ]);
             ?>
         </div>
-
-        <div class="form-group">
-            <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
-        </div>
-
+    </div>
+    <div class="form-group">
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

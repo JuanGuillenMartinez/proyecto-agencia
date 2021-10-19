@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use app\models\CatUbicacion;
 use yii\helpers\ArrayHelper;
@@ -65,14 +67,21 @@ class CatAeropuertoController extends Controller
         $model = new CatAeropuerto();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->aero_id]);
+            if ($model->load($this->request->post())) {
+                $image = UploadedFile::getInstance($model, 'img');
+                if (!is_null($image)) {
+                    $tmp = explode('.', $image->name);
+                    $ext = end($tmp);
+                    $model->aero_url = $model->aero_id . '_' . Yii::$app->security->generateRandomString() . ".{$ext}";
+                    $path = Yii::$app->basePath . '/web/img/aeropuerto/' . $model->aero_url;
+                    if ($image->saveAs($path) && $model->save()) {
+                        return $this->redirect(['view', 'id' => $model->aero_id]);
+                    }
+                }
             }
         } else {
             $model->loadDefaultValues();
         }
-
-        $ubicaciones = ArrayHelper:: map(CatUbicacion::find()->all(), 'ubi_id', 'ubi_capital');
 
         return $this->render('create', [
             'model' => $model,

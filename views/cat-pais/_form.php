@@ -12,7 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'pai_pais')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+
+        <div class="col-md-4">
+            <?= $form->field($model, 'pai_pais')->textInput(['maxlength' => true]) ?>
+        </div>
+
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

@@ -106,6 +106,6 @@ class CatSeguro extends \yii\db\ActiveRecord
     }
 
     public function getSeguroInfo() {
-        return $this->seg_nombre . ' - ' . $this->nombreAseguradora;
+        return $this->seg_nombre . ' - ' . $this->nombreAseguradora . ' - $' . $this->seg_precio;
     }
 }

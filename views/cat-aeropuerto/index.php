@@ -30,7 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'aero_nombre',
             'aero_direccion',
             'aero_pagina',
-            'aero_url:url',
+            [
+                'attribute' => 'imagen',
+                'format' => 'raw',
+            ],
             //'aero_fkubicacion',
             'capitalNombre',
             'nombrePais',

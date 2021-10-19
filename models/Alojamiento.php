@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "alojamiento".
@@ -20,6 +21,8 @@ use Yii;
  */
 class Alojamiento extends \yii\db\ActiveRecord
 {
+
+    public $img;
     /**
      * {@inheritdoc}
      */
@@ -34,6 +37,9 @@ class Alojamiento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['img', 'alo_url'], 'safe'],
+            [['img'], 'file', 'extensions'      => 'jpg, png' ],
+            [['img'], 'file', 'maxSize'         => '1000000'],
             [['alo_nombre', 'alo_habitacion', 'alo_direccion', 'alo_precio', 'alo_url', 'alo_fkubucacion'], 'required'],
             [['alo_habitacion', 'alo_fkubucacion'], 'integer'],
             [['alo_precio'], 'number'],
@@ -58,6 +64,7 @@ class Alojamiento extends \yii\db\ActiveRecord
             'alo_fkubucacion' => 'Ubicación',
             'capitalNombre' => 'Capital',
             'nombrePais' => 'País',
+            'img' => 'Imagen del Hotel'
         ];
     }
 
@@ -91,5 +98,11 @@ class Alojamiento extends \yii\db\ActiveRecord
     public function getAlojamientoInfo()
     {
         return $this->alo_nombre . ' - Habitación #' . $this->alo_habitacion;
+    }
+    public function getUrl() {
+        return "/img/" . (empty($this->alo_url) ? 'alo_default.png' : "alojamiento/{$this->alo_url}");
+    }
+    public function getImagen() {
+        return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
 }

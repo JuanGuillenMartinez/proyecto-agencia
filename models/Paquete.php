@@ -41,7 +41,10 @@ class Paquete extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['paq_nombre', 'paq_url', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado'], 'required'],
+            [['img', 'paq_url'], 'safe'],
+            [['paq_nombre', 'paq_url', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'paq_subtotal'], 'required'],
+            [['img'], 'file', 'extensions'      => 'jpg, png' ],
+            [['img'], 'file', 'maxSize'         => '1000000'],
             [['paq_subtotal'], 'number'],
             [['paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado'], 'integer'],
             [['paq_nombre'], 'string', 'max' => 45],
@@ -73,6 +76,7 @@ class Paquete extends \yii\db\ActiveRecord
             'paq_fkalojamiento' => 'Alojamiento',
             'paq_fkseguro' => 'Seguro',
             'paq_fktraslado' => 'Traslado',
+            'img' => 'Imagen del paquete'
         ];
     }
 

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "cat_aeropuerto".
@@ -20,6 +21,7 @@ use Yii;
  */
 class CatAeropuerto extends \yii\db\ActiveRecord
 {
+    public $img;
     /**
      * {@inheritdoc}
      */
@@ -34,6 +36,9 @@ class CatAeropuerto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['img', 'aero_url'], 'safe'],
+            [['img'], 'file', 'extensions'      => 'jpg, png' ],
+            [['img'], 'file', 'maxSize'         => '1000000'],
             [['aero_nombre', 'aero_direccion', 'aero_pagina', 'aero_url', 'aero_fkubicacion'], 'required'],
             [['aero_fkubicacion'], 'integer'],
             [['aero_nombre', 'aero_direccion', 'aero_url'], 'string', 'max' => 100],
@@ -56,6 +61,7 @@ class CatAeropuerto extends \yii\db\ActiveRecord
             'aero_fkubicacion' => 'Ubicación',
             'capitalNombre' => 'Capital',
             'nombrePais' => 'País',
+            'img' => 'Imagen del Aeropuerto'
         ];
     }
 
@@ -95,5 +101,11 @@ class CatAeropuerto extends \yii\db\ActiveRecord
     public function getNombrePais()
     {
         return $this->aeroFkubicacion->ubiFkpais->pai_pais;
+    }
+    public function getUrl() {
+        return "/img/" . (empty($this->aero_url) ? 'aero_default.png' : "aeropuerto/{$this->aero_url}");
+    }
+    public function getImagen() {
+        return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
 }
