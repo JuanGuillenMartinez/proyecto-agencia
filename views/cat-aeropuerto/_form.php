@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use kartik\file\FileInput;
 use kartik\select2\Select2;
 use app\models\CatUbicacion;
 use yii\bootstrap4\ActiveForm;
@@ -28,12 +29,6 @@ use yii\bootstrap4\ActiveForm;
             <?= $form->field($model, 'aero_pagina')->textInput(['maxlength' => true]) ?>
         </div>
 
-
-        <div class="col-md-3">
-            <?= $form->field($model, 'aero_url')->textInput(['maxlength' => true]) ?>
-        </div>
-
-
         <?php //$form->field($model, 'aero_fkubicacion')->textInput() 
         ?>
 
@@ -48,6 +43,16 @@ use yii\bootstrap4\ActiveForm;
         ]); ?>
         </div>
 
+        <div class="col-md-12">
+            <?= $form->field($model, 'img')->widget(FileInput::className(), [
+                'options'       => ['accept' => 'image/*'],
+                'pluginOptions' => [
+                    'allowedExtensions'    => ['jpg', 'png'],
+                    'initialPreview'       => [$model->url],
+                    'initialPreviewAsData' => true,
+                ],
+            ]); ?>
+        </div>
 
     </div>
 

@@ -100,7 +100,7 @@ class Alojamiento extends \yii\db\ActiveRecord
         return $this->alo_nombre . ' - Habitación #' . $this->alo_habitacion;
     }
     public function getUrl() {
-        return "/img/" . (empty($this->alo_url) ? 'reg_default.png' : "alojamiento/{$this->alo_url}");
+        return "/img/" . (empty($this->alo_url) ? 'alo_default.png' : "alojamiento/{$this->alo_url}");
     }
     public function getImagen() {
         return Html::img($this->url, ['width' => '160', 'height' => '120']);
