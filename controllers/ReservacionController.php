@@ -69,7 +69,9 @@ class ReservacionController extends Controller
         $model = new Reservacion();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->res_creacion = date('Y-m-d h:i:s', time()); 
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->res_id]);
             }
         } else {
