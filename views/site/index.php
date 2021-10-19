@@ -31,7 +31,7 @@ use yii\bootstrap4\Html;
 
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
                 <a href="/paquete">
-                    <?php echo Html::img('@web/img/icons/vuelo.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
+                    <?php echo Html::img('@web/img/icons/paquete.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 </a>
                 <h2 style="margin-top: 8px;">Paquete</h2>
             </div>
