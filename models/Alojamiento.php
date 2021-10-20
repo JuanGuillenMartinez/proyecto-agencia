@@ -64,7 +64,8 @@ class Alojamiento extends \yii\db\ActiveRecord
             'alo_fkubucacion' => 'Ubicación',
             'capitalNombre' => 'Capital',
             'nombrePais' => 'País',
-            'img' => 'Imagen del Hotel'
+            'img' => 'Imagen del Hotel',
+            'ubicacionInfo' => 'Ubicación'
         ];
     }
 
@@ -105,4 +106,8 @@ class Alojamiento extends \yii\db\ActiveRecord
     public function getImagen() {
         return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
+    public function getUbicacionInfo()
+    {
+        return $this->aloFkubucacion->ubi_capital . ' - ' . $this->aloFkubucacion->ubiFkpais->pai_pais; 
+    }   
 }

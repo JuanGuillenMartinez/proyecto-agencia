@@ -38,7 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'imagen',
                 'format' => 'raw',
             ],
-            'alo_fkubucacion',
+            //'alo_fkubucacion',
+            'ubicacionInfo',
         ],
     ]) ?>
 
