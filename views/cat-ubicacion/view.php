@@ -31,7 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'ubi_id',
             'ubi_capital',
-            'ubi_fkpais',
+            //'ubi_fkpais',
+            'paisNombre'
         ],
     ]) ?>
 

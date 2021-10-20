@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Editar Aeropuerto: ' . $model->aero_id;
 $this->params['breadcrumbs'][] = ['label' => 'Aeropuertos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->aero_id, 'url' => ['view', 'aero_id' => $model->aero_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->aero_id, 'url' => ['view', 'id' => $model->aero_id]];
 $this->params['breadcrumbs'][] = 'Editar';
 ?>
 <div class="cat-aeropuerto-update">

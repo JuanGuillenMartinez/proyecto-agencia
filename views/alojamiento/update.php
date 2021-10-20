@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Editar Alojamiento: ' . $model->alo_id;
 $this->params['breadcrumbs'][] = ['label' => 'Alojamientos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->alo_id, 'url' => ['view', 'alo_id' => $model->alo_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->alo_id, 'url' => ['view', 'id' => $model->alo_id]];
 $this->params['breadcrumbs'][] = 'Editar';
 ?>
 <div class="alojamiento-update">

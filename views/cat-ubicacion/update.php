@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Editar Ubicacion: ' . $model->ubi_id;
 $this->params['breadcrumbs'][] = ['label' => 'Ubicaciones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->ubi_id, 'url' => ['view', 'ubi_id' => $model->ubi_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->ubi_id, 'url' => ['view', 'id' => $model->ubi_id]];
 $this->params['breadcrumbs'][] = 'Editar';
 ?>
 <div class="cat-ubicacion-update">

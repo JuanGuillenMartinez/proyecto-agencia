@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Editar Vuelo: ' . $model->vue_id;
 $this->params['breadcrumbs'][] = ['label' => 'Vuelos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->vue_id, 'url' => ['view', 'vue_id' => $model->vue_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->vue_id, 'url' => ['view', 'id' => $model->vue_id]];
 $this->params['breadcrumbs'][] = 'Editar';
 ?>
 <div class="vuelo-update">
