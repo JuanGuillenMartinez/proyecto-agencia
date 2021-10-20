@@ -61,7 +61,8 @@ class CatAeropuerto extends \yii\db\ActiveRecord
             'aero_fkubicacion' => 'Ubicación',
             'capitalNombre' => 'Capital',
             'nombrePais' => 'País',
-            'img' => 'Imagen del Aeropuerto'
+            'img' => 'Imagen del Aeropuerto',
+            'ubicacionInfo' => 'Ubicación'
         ];
     }
 
@@ -108,4 +109,8 @@ class CatAeropuerto extends \yii\db\ActiveRecord
     public function getImagen() {
         return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
+    public function getUbicacionInfo()
+    {
+        return $this->aeroFkubicacion->ubi_capital . ' - ' . $this->aeroFkubicacion->ubiFkpais->pai_pais; 
+    }  
 }

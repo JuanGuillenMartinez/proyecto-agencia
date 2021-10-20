@@ -37,7 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'imagen',
                 'format' => 'raw',
             ],
-            'aero_fkubicacion',
+            //'aero_fkubicacion',
+            'ubicacionInfo',
         ],
     ]) ?>
 
