@@ -72,6 +72,9 @@ class Vuelo extends \yii\db\ActiveRecord
             'origenVuelo' => 'Origen',
             'vue_fkaerodestino' => 'Destino',
             'destinoVuelo' => 'Destino',
+            'aerolineaNombre' => 'Aerolínea',
+            'vueOrigen' => 'Aeropuerto de Origen',
+            'vueDestino' => 'Aeropuerto de Destino'
         ];
     }
 
@@ -129,5 +132,13 @@ class Vuelo extends \yii\db\ActiveRecord
     public function getVueloInfo()
     {
         return $this->vue_tipo . ' - ' . $this->vueFkaeroorigen->aero_nombre . ' - ' . $this->vueFkaerodestino->aero_nombre;
+    }
+    public function getVueOrigen()
+    {
+        return $this->vueFkaeroorigen->aero_nombre;
+    }
+    public function getVueDestino()
+    {
+        return $this->vueFkaerodestino->aero_nombre;
     }
 }

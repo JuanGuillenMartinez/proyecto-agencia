@@ -37,9 +37,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'vue_capacidad',
             'vue_precio',
             'vue_estatus',
-            'vue_fkaerolinea',
-            'vue_fkaeroorigen',
-            'vue_fkaerodestino',
+            //'vue_fkaerolinea',
+            'aerolineaNombre',
+            //'vue_fkaeroorigen',
+            'vueOrigen',
+            //'vue_fkaerodestino',
+            'vueDestino',
         ],
     ]) ?>
 
