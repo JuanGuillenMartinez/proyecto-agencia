@@ -45,4 +45,7 @@ composer.json
 composer.lock
 
 #Yii2
-/web
+/web/.saas-cache
+/web/assets
+/web/img
+/web/plantilla/images
