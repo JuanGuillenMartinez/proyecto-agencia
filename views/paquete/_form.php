@@ -1,8 +1,10 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use app\models\Paquete;
 use kartik\file\FileInput;
+use kartik\depdrop\DepDrop;
 use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
 
@@ -24,7 +26,7 @@ use yii\widgets\ActiveForm;
         <div class="col-md-6">
             <?= $form->field($model, 'paq_fkvuelo')->widget(Select2::classname(), [
                 'data' => Paquete::getVuelosMap(),
-                'options' => ['placeholder' => 'Selecciona un vuelo ...'],
+                'options' => ['placeholder' => 'Selecciona un vuelo ...', 'id' => 'vueloId'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],
@@ -32,12 +34,22 @@ use yii\widgets\ActiveForm;
             ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'paq_fkalojamiento')->widget(Select2::classname(), [
-                'data' => Paquete::getAlojamientosMap(),
-                'options' => ['placeholder' => 'Selecciona un alojamiento ...'],
+            <?= $form->field($model, 'paq_fkalojamiento')->widget(DepDrop::classname(), [
+                'options' => ['id' => 'alojamientoId'],
                 'pluginOptions' => [
-                    'allowClear' => true
-                ],
+                    'depends' => ['vueloId'],
+                    'placeholder' => 'Selecciona un alojamiento ...',
+                    'url' => Url::to(['/paquete/alojamiento'])
+                ]
+            ]); ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'paq_fktraslado')->widget(DepDrop::classname(), [
+                'pluginOptions' => [
+                    'depends' => ['vueloId', 'alojamientoId'],
+                    'placeholder' => 'Selecciona un traslado ...',
+                    'url' => Url::to(['/paquete/traslado'])
+                ]
             ]);
             ?>
         </div>
@@ -45,16 +57,6 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'paq_fkseguro')->widget(Select2::classname(), [
                 'data' => Paquete::getSegurosMap(),
                 'options' => ['placeholder' => 'Selecciona un seguro ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]);
-            ?>
-        </div>
-        <div class="col-md-6">
-            <?= $form->field($model, 'paq_fktraslado')->widget(Select2::classname(), [
-                'data' => Paquete::getTrasladosMap(),
-                'options' => ['placeholder' => 'Selecciona un traslado ...'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],

@@ -9,7 +9,6 @@ use app\models\Vuelo;
 use app\models\Paquete;
 use yii\web\Controller;
 use yii\web\UploadedFile;
-use yii\filters\VerbFilter;
 use app\models\PaqueteSearch;
 use app\models\Traslado;
 use yii\web\NotFoundHttpException;
@@ -156,6 +155,37 @@ class PaqueteController extends Controller
             }
         }
         return $subtotal;
+    }
+
+    public function actionAlojamiento() {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $vueloId = $parents[0];
+                $out = Paquete::alojamiento($vueloId);
+                return ['output'=>$out, 'selected'=>''];
+            }
+        }
+        return ['output'=>'', 'selected'=>''];
+    }
+    
+    public function actionTraslado() {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $ids = $_POST['depdrop_parents'];
+            $vueloId = empty($ids[0]) ? null : $ids[0];
+            $alojamientoId = empty($ids[1]) ? null : $ids[1];
+            if ($vueloId != null && $alojamientoId != null) {
+               $out = Paquete::traslado($alojamientoId);
+               if(count($out)>0) {
+                   return ['output'=>$out, 'selected'=>''];
+               }              
+            }
+        }
+        return ['output'=>'', 'selected'=>''];
     }
 
     /**

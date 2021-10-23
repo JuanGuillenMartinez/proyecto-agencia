@@ -43,7 +43,7 @@ class Paquete extends \yii\db\ActiveRecord
         return [
             [['img', 'paq_url'], 'safe'],
             [['paq_nombre', 'paq_url', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'paq_subtotal'], 'required'],
-            [['img'], 'file', 'extensions'      => 'jpg, png' ],
+            [['img'], 'file', 'extensions'      => 'jpg, png'],
             [['img'], 'file', 'maxSize'         => '1000000'],
             [['paq_subtotal'], 'number'],
             [['paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado'], 'integer'],
@@ -130,49 +130,87 @@ class Paquete extends \yii\db\ActiveRecord
         return $this->hasMany(Reservacionpaquete::className(), ['recpaq_fkpaquete' => 'paq_id']);
     }
 
-    public function getTipoVuelo() {
+    public function getTipoVuelo()
+    {
         return $this->paqFkvuelo->vue_tipo;
     }
 
-    public function getDestinoVuelo() {
+    public function getDestinoVuelo()
+    {
         return $this->paqFkvuelo->vueFkaerodestino->aero_nombre;
     }
 
-    public function getOrigenVuelo() {
+    public function getOrigenVuelo()
+    {
         return $this->paqFkvuelo->vueFkaeroorigen->aero_nombre;
     }
 
-    public function getNumeroHabitacion() {
+    public function getNumeroHabitacion()
+    {
         return $this->paqFkalojamiento->alo_habitacion;
     }
 
-    public function getNombreSeguro() {
+    public function getNombreSeguro()
+    {
         return $this->paqFkseguro->seg_nombre;
     }
-    
-    public function getPrecioTraslado() {
+
+    public function getPrecioTraslado()
+    {
         return $this->paqFktraslado->tra_precio;
     }
 
-    public static function getVuelosMap() {
+    public static function getVuelosMap()
+    {
         return ArrayHelper::map(Vuelo::find()->all(), 'vue_id', 'vueloInfo');
     }
 
-    public static function getAlojamientosMap() {
+    public static function getAlojamientosMap()
+    {
         return ArrayHelper::map(Alojamiento::find()->all(), 'alo_id', 'alojamientoInfo');
     }
 
-    public static function getSegurosMap() {
+    public static function getSegurosMap()
+    {
         return ArrayHelper::map(CatSeguro::find()->all(), 'seg_id', 'seguroInfo');
     }
 
-    public static function getTrasladosMap() {
+    public static function getTrasladosMap()
+    {
         return ArrayHelper::map(Traslado::find()->all(), 'tra_id', 'tra_precio');
     }
-    public function getUrl() {
+    public function getUrl()
+    {
         return "/img/" . (empty($this->paq_url) ? 'reg_default.png' : "paquete/{$this->paq_url}");
     }
-    public function getImagen() {
+    public function getImagen()
+    {
         return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
+    public static function alojamiento($vueloId)
+    {
+        $out = [];
+        $vuelo = Vuelo::findOne(['vue_id' => $vueloId]);
+        if (isset($vuelo)) {
+            $alojamientos = Alojamiento::find()->where(['alo_fkubucacion' => $vuelo->vueFkaerodestino->aero_fkubicacion])->all();
+            foreach ($alojamientos as $alojamiento) {
+                $out[] = ['id' => $alojamiento->alo_id, 'name' => $alojamiento->alo_nombre];
+            }
+        }
+        return $out;
+    }
+
+    public static function traslado($alojamientoId)
+    {
+        $out = [];
+        $alojamiento = Alojamiento::findOne(['alo_id' => $alojamientoId]);
+        if (isset($alojamiento)) {
+            $traslados = Traslado::find()->where(['tra_fkubicacion' => $alojamiento->alo_fkubucacion])->all();
+            foreach ($traslados as $traslado) {
+                $out[] = ['id' => $traslado->tra_id, 'name' => $traslado->tra_nombre];
+            }
+        }
+        return $out;
+    }
+    
 }
