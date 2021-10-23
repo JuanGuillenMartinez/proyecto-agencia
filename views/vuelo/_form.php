@@ -21,8 +21,19 @@ use app\models\CatAeropuerto;
 
     <div class="row">
 
+        <!--div class="col-md-3">
+            <?php //= $form->field($model, 'vue_tipo')->dropDownList(['Directo' => 'Directo', 'Escala' => 'Escala',], ['prompt' => '']) ?>
+        </div-->
+        
         <div class="col-md-3">
-            <?= $form->field($model, 'vue_tipo')->dropDownList(['Directo' => 'Directo', 'Escala' => 'Escala',], ['prompt' => '']) ?>
+            <?= $form->field($model, 'vue_tipo')->widget(Select2::classname(), [
+                'data' => Vuelo::mapTipo(),
+                'language' => 'es',
+                'options' => ['placeholder' => 'Selecciona el tipo de vuelo...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
         </div>
 
         <div class="col-md-3">
@@ -69,8 +80,19 @@ use app\models\CatAeropuerto;
             <?= $form->field($model, 'vue_precio')->textInput(['maxlength' => true]) ?>
         </div>
 
+        <!--div class="col-md-3">
+            <?php //= $form->field($model, 'vue_estatus')->dropDownList(['Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado',], ['prompt' => '']) ?>
+        </div-->
+
         <div class="col-md-3">
-            <?= $form->field($model, 'vue_estatus')->dropDownList(['Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado',], ['prompt' => '']) ?>
+            <?= $form->field($model, 'vue_estatus')->widget(Select2::classname(), [
+                'data' => Vuelo::mapEstatus(),
+                'language' => 'es',
+                'options' => ['placeholder' => 'Selecciona el tipo de vuelo...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
         </div>
 
         <?php //= $form->field($model, 'vue_fkaerolinea')->textInput() 

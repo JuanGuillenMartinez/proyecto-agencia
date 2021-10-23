@@ -141,4 +141,11 @@ class Vuelo extends \yii\db\ActiveRecord
     {
         return $this->vueFkaerodestino->aero_nombre;
     }
+    public static function mapTipo(){
+        return ['Directo' => 'Directo', 'Escala' => 'Escala'];
+    }
+    public static function mapEstatus(){
+        return ['Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado'];
+    }
+
 }
