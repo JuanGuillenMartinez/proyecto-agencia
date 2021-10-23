@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Vuelo;
 use yii\helpers\Html;
 use kartik\date\DatePicker;
 use kartik\form\ActiveForm;
@@ -7,6 +8,7 @@ use kartik\time\TimePicker;
 use kartik\widgets\Select2;
 use app\models\CatAerolinea;
 use app\models\CatUbicacion;
+use app\models\CatAeropuerto;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Vuelo */
@@ -93,7 +95,7 @@ use app\models\CatUbicacion;
 
         <div class="col-md-3">
             <?= $form->field($model, 'vue_fkaeroorigen')->widget(Select2::classname(), [
-                'data' => CatUbicacion::map(),
+                'data' => CatAeropuerto::map(),
                 'language' => 'es',
                 'options' => ['placeholder' => 'Selecciona el aeropuerto de origen...'],
                 'pluginOptions' => [
@@ -104,7 +106,7 @@ use app\models\CatUbicacion;
 
         <div class="col-md-3">
             <?= $form->field($model, 'vue_fkaerodestino')->widget(Select2::classname(), [
-                'data' => CatUbicacion::map(),
+                'data' => CatAeropuerto::map(),
                 'language' => 'es',
                 'options' => ['placeholder' => 'Selecciona el aeropuerto de destino...'],
                 'pluginOptions' => [

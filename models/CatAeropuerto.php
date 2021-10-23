@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cat_aeropuerto".
@@ -113,4 +114,7 @@ class CatAeropuerto extends \yii\db\ActiveRecord
     {
         return $this->aeroFkubicacion->ubi_capital . ' - ' . $this->aeroFkubicacion->ubiFkpais->pai_pais; 
     }  
+    public static function map(){
+        return ArrayHelper::map(CatAeropuerto::find()->all(),'aero_id','aero_nombre');
+    }
 }

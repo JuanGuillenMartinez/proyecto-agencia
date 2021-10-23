@@ -62,7 +62,7 @@ class CatAerolinea extends \yii\db\ActiveRecord
     }
 
     public static function map(){
-        return ArrayHelper::map(catAerolinea::find()->all(),'aer_id','aer_nombre');
+        return ArrayHelper::map(CatAerolinea::find()->all(),'aer_id','aer_nombre');
     }
 
     
