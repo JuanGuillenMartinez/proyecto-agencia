@@ -101,8 +101,17 @@ class PaqueteController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->paq_id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $image = UploadedFile::getInstance($model, 'img');
+            if (!is_null($image)) {
+                // //Genera la ruta de la imagen
+                $path = Yii::$app->basePath . '/web/img/paquete/' . $model->paq_url;
+                //Valida si la imagen fue guardada y el model creado correctamente
+                $image->saveAs($path);
+            }
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->paq_id]);
+            }
         }
 
         return $this->render('update', [
