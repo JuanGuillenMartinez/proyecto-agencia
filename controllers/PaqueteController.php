@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Alojamiento;
+use app\models\CatDistancia;
 use app\models\CatSeguro;
 use Yii;
 use app\models\Vuelo;
@@ -150,8 +151,15 @@ class PaqueteController extends Controller
         }
         if (isset($trasId)) {
             $traslado = Traslado::findOne(['tra_id' => $trasId]);
-            if (isset($traslado)) {
-                $subtotal += $traslado->tra_precio;
+            if (isset($vueloId) && isset($aloId)) {
+                $vuelo = Vuelo::findOne(['vue_id' => $vueloId]);
+                if (isset($vuelo)) {
+                    $distancia = CatDistancia::findOne(['dis_fkaeropuerto' => $vuelo->vueFkaerodestino->aero_id, 'dis_fkalojamiento' => $aloId]);
+                }
+            }
+            if (isset($traslado) && isset($distancia)) {
+
+                $subtotal += $traslado->tra_precio * $distancia->dis_distancia;
             }
         }
         return $subtotal;

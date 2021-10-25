@@ -20,7 +20,6 @@ function iniciarVariables() {
     alo = $("#alojamientoId").val();
     seg = $("#paquete-paq_fkseguro").val();
     tras = $("#paquete-paq_fktraslado").val();
-    console.log(vuelo);
     $.post(
         "/paquete/subtotal",
         {
