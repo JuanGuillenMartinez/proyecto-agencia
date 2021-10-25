@@ -156,82 +156,82 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul id="fh5co-destination-list" class="animate-box">
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-1.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/mexico.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Los Angeles</h2>
+                                        <h2>México</h2>
                                     </div>
                                 </a>
                             </li>
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-2.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/bogota.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Hongkong</h2>
+                                        <h2>Colombia</h2>
                                     </div>
                                 </a>
                             </li>
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-3.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/peru.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Italy</h2>
+                                        <h2>Perú</h2>
                                     </div>
                                 </a>
                             </li>
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-4.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/argentina.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Philippines</h2>
+                                        <h2>Argentina</h2>
                                     </div>
                                 </a>
                             </li>
 
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-5.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/japon.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Japan</h2>
+                                        <h2>Japón</h2>
                                     </div>
                                 </a>
                             </li>
                             <li class="one-half text-center">
                                 <div class="title-bg">
                                     <div class="case-studies-summary">
-                                        <h2>Most Popular Destinations</h2>
-                                        <span><a href="#">View All Destinations</a></span>
+                                        <h2>Destinos más populares</h2>
+                                        <span><a href="#">Ver todos los destinos</a></span>
                                     </div>
                                 </div>
                             </li>
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-6.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/angeles.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Paris</h2>
+                                        <h2>Los Angeles</h2>
                                     </div>
                                 </a>
                             </li>
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-7.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/vegas.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Singapore</h2>
+                                        <h2>Las Vegas</h2>
                                     </div>
                                 </a>
                             </li>
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-8.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/miami.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Madagascar</h2>
+                                        <h2>Miami</h2>
                                     </div>
                                 </a>
                             </li>
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-9.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/york.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Egypt</h2>
+                                        <h2>New York</h2>
                                     </div>
                                 </a>
                             </li>
-                            <li class="one-forth text-center" style="background-image: url(/plantilla/images/place-10.jpg); ">
+                            <li class="one-forth text-center" style="background-image: url(/img/destino/londres.jpg); ">
                                 <a href="#">
                                     <div class="case-studies-summary">
-                                        <h2>Indonesia</h2>
+                                        <h2>Londres</h2>
                                     </div>
                                 </a>
                             </li>
