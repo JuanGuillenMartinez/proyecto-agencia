@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Paquete;
 use yii\helpers\Html;
 ?>
 <div class="container">
@@ -13,47 +14,31 @@ use yii\helpers\Html;
 <div class="container">
     <div class="row row-bottom-padded-md">
         <?php
-            
+        $paquetes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(12)->all();
+        foreach ($paquetes as $paquete) {
+            $urlImagen = '@web/img/paquete/' . $paquete->paq_url;
+            echo "
+                    <div class='col-lg-4 col-md-4 col-sm-6'>
+                        <div class='fh5co-blog animate-box'>
+                        <a href='#'> ";
+                        echo Html::img($urlImagen, ['class' => 'img-responsive', 'height' => '300px']);
+                        echo "</a>
+                        <div class='blog-text'>
+                    <div class='prod-title'>
+                        <h3><a href='#'>{$paquete->paq_nombre}</a></h3>
+                        <h3><a href='#'>{$paquete->paqFkvuelo->getVueloInfo()}</a></h3>
+                        <p><a href='#'>Leer más...</a></p>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                ";
+        }
         ?>
-        <div class="col-lg-4 col-md-4 col-sm-6">
-            <div class="fh5co-blog animate-box">
-                <a href="#"><img class="img-responsive" src="/plantilla/images/place-1.jpg" alt=""></a>
-                <div class="blog-text">
-                    <div class="prod-title">
-                        <h3><a href="#">30% Discount to Travel All Around the World</a></h3>
-                        <p><a href="#">Learn More...</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6">
-            <div class="fh5co-blog animate-box">
-                <a href="#"><img class="img-responsive" src="/plantilla/images/place-2.jpg" alt=""></a>
-                <div class="blog-text">
-                    <div class="prod-title">
-                        <h3><a href="#">Planning for Vacation</a></h3>
-                        <p><a href="#">Learn More...</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix visible-sm-block"></div>
-        <div class="col-lg-4 col-md-4 col-sm-6">
-            <div class="fh5co-blog animate-box">
-                <a href="#"><img class="img-responsive" src="/plantilla/images/place-3.jpg" alt=""></a>
-                <div class="blog-text">
-                    <div class="prod-title">
-                        <h3><a href="#">Visit Tokyo Japan</a></h3>
-                        <p><a href="#">Learn More...</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix visible-md-block"></div>
     </div>
 
     <div class="col-md-12 text-center animate-box">
-        <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Post <i class="icon-arrow-right22"></i></a></p>
+        <p><a class="btn btn-primary btn-outline btn-lg" href="#">Ver todos <i class="icon-arrow-right22"></i></a></p>
     </div>
 
 </div>
