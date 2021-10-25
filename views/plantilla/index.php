@@ -48,15 +48,15 @@
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-md-8 text-center heading-section animate-box">
-                        <h3>Hot Tours</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <h3>Ofertas</h3>
+                        <p>Encuentra las mejores ofertas con paquetes que incluyen los boletos de viaje, traslado del aeropuerto a tu hotel y seguro de viaje.</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <?= $this->render('/plantilla/paquetes'); ?>
+                    <?= $this->render('/plantilla/paquetes_populares'); ?>
                     <div class="col-md-12 text-center animate-box">
-                        <p><a class="btn btn-primary btn-outline btn-lg" href="#">Ver todas las ofertas <i class="icon-arrow-right22"></i></a></p>
+                        <p><a class="btn btn-primary btn-outline btn-lg" href="/paquete">Ver todas las ofertas <i class="icon-arrow-right22"></i></a></p>
                     </div>
                 </div>
             </div>
@@ -245,7 +245,7 @@
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-md-8 text-center heading-section animate-box">
-                        <h3>Recent From Blog</h3>
+                        <h3>Paquetes recientes</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
                     </div>
                 </div>

@@ -21,11 +21,11 @@ use webvimark\modules\UserManagement\UserManagementModule;
         'encodeLabels' => false,
         'items' => [
             ['label' => 'Inicio', 'url' => ['/plantilla/index']],
-            ['label' => 'Paquetes', 'url' => ['/site/contact']],
+            ['label' => 'Paquetes', 'url' => ['/paquete']],
             ['label' => 'Vuelos', 'url' => ['/site/index']],
             ['label' => 'Hoteles', 'url' => ['/site/about']],
             ['label' => 'Traslados', 'url' => ['/site/contact']],
-            ['label' => 'Seguros', 'url' => ['/site/contact']],
+            ['label' => 'Seguros', 'url' => ['/cat-seguro']],
             [
                 'label' => 'Administrador', 
                 'items'=>UserManagementModule::menuItems(), 

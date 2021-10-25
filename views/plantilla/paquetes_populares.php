@@ -14,8 +14,8 @@ foreach ($paquetes as $paquete) {
     <div class='desc'>
             <span></span>
             <h3>{$paquete->paq_nombre}</h3>
-            <span>{$paquete->getNombreSeguro()}</span>
-            <span class='price'>{$paquete->paq_subtotal}</span>
+            <span>{$paquete->paqFkvuelo->getVueloInfo()}</span>
+            <span class='price'>$ {$paquete->paq_subtotal}</span>
             <a class='btn btn-primary btn-outline' href='#'>Comprar ahora</a>
     </div>
     ";
