@@ -9,7 +9,6 @@
 
 
             <!-- end:header-top -->
-
             <div class="fh5co-hero">
                 <div class="fh5co-overlay"></div>
                 <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/plantilla/images/cover_bg_1.jpg);">
@@ -57,7 +56,7 @@
                 <div class="row">
                     <?= $this->render('/plantilla/paquetes'); ?>
                     <div class="col-md-12 text-center animate-box">
-                        <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Offers <i class="icon-arrow-right22"></i></a></p>
+                        <p><a class="btn btn-primary btn-outline btn-lg" href="#">Ver todas las ofertas <i class="icon-arrow-right22"></i></a></p>
                     </div>
                 </div>
             </div>

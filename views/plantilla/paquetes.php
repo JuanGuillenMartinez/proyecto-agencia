@@ -1,5 +1,27 @@
 <?php
-    
+
+use app\models\Paquete;
+use yii\helpers\Html;
+
+$paquetes = Paquete::find()->limit(3)->all();
+
+foreach ($paquetes as $paquete) {
+    $urlImagen = '@web/img/paquete/' . $paquete->paq_url;
+    echo '<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">';
+    echo "<div>";
+    echo Html::img($urlImagen, ['class' => 'img-responsive', 'width' => '100%']);
+    echo "
+    <div class='desc'>
+            <span></span>
+            <h3>{$paquete->paq_nombre}</h3>
+            <span>{$paquete->getNombreSeguro()}</span>
+            <span class='price'>{$paquete->paq_subtotal}</span>
+            <a class='btn btn-primary btn-outline' href='#'>Comprar ahora</a>
+    </div>
+    ";
+    echo "</div>";
+    echo '</div>';
+}
 ?>
 
 <!-- <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
