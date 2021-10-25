@@ -20,6 +20,7 @@ use webvimark\modules\UserManagement\UserManagementModule;
         'options' => ['class' => 'navbar-nav sf-menu', 'id' => "fh5co-primary-menu"],
         'encodeLabels' => false,
         'items' => [
+            ['label' => 'Inicio', 'url' => ['/site/plantilla']],
             ['label' => 'Paquetes', 'url' => ['/site/contact']],
             ['label' => 'Vuelos', 'url' => ['/site/index']],
             ['label' => 'Hoteles', 'url' => ['/site/about']],
