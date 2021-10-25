@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="row">
-                    <?= $this->render('/site/paquetes'); ?>
+                    <?= $this->render('/plantilla/paquetes'); ?>
                     <div class="col-md-12 text-center animate-box">
                         <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Offers <i class="icon-arrow-right22"></i></a></p>
                     </div>
