@@ -40,13 +40,13 @@
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-md-8 text-center heading-section animate-box">
-                        <h3>Paquetes populares</h3>
+                        <h3>Mejores ofertas</h3>
                         <p>Encuentra las mejores ofertas con paquetes que incluyen los boletos de viaje, traslado del aeropuerto a tu hotel y seguro de viaje.</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <?= $this->render('/paquete/populares'); ?>
+                    <?= $this->render('/paquete/ofertas'); ?>
                     <div class="col-md-12 text-center animate-box">
                         <p><a class="btn btn-primary btn-outline btn-lg" href="/paquete">Ver todas las ofertas <i class="icon-arrow-right22"></i></a></p>
                     </div>

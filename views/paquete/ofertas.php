@@ -3,7 +3,7 @@
 use app\models\Paquete;
 use yii\helpers\Html;
 
-$paquetes = Paquete::find()->limit(3)->all();
+$paquetes = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
 
 foreach ($paquetes as $paquete) {
     $urlImagen = '@web/img/paquete/' . $paquete->paq_url;
@@ -16,6 +16,7 @@ foreach ($paquetes as $paquete) {
             <h3>{$paquete->paq_nombre}</h3>
             <span>{$paquete->paqFkvuelo->getVueloInfo()}</span>
             <span class='price'>$ {$paquete->paq_subtotal}</span>
+            <span class='descuento'>Hasta {$paquete->paq_descuento}%</span>
             <a class='btn btn-primary btn-outline' href='#'>Comprar ahora</a>
     </div>
     ";
