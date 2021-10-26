@@ -23,7 +23,7 @@ class PaqueteSearch extends Paquete
     public function rules()
     {
         return [
-            [['paq_id', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'numeroHabitacion', 'precioTraslado'], 'integer'],
+            [['paq_id', 'paq_descuento', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'numeroHabitacion', 'precioTraslado'], 'integer'],
             [['paq_nombre', 'paq_url', 'tipoVuelo', 'destinoVuelo', 'origenVuelo', 'nombre', 'nombreSeguro'], 'safe'],
             [['paq_subtotal'], 'number'],
         ];
@@ -65,6 +65,7 @@ class PaqueteSearch extends Paquete
             'attributes' => [
                 'paq_id',
                 'paq_nombre',
+                'paq_descuento',
                 'paq_subtotal',
                 'paq_url',
                 'nombreSeguro' => [
@@ -111,6 +112,7 @@ class PaqueteSearch extends Paquete
         // grid filtering conditions
         $query->andFilterWhere([
             'paq_id' => $this->paq_id,
+            'paq_descuento' => $this->paq_descuento,
             'paq_subtotal' => $this->paq_subtotal,
             'paq_fkvuelo' => $this->paq_fkvuelo,
             'paq_fkalojamiento' => $this->paq_fkalojamiento,
