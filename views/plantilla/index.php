@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="row">
-                    <?= $this->render('/plantilla/paquetes-populares'); ?>
+                    <?= $this->render('/paquete/populares'); ?>
                     <div class="col-md-12 text-center animate-box">
                         <p><a class="btn btn-primary btn-outline btn-lg" href="/paquete">Ver todas las ofertas <i class="icon-arrow-right22"></i></a></p>
                     </div>
@@ -242,7 +242,7 @@
         </div>
 
         <div id="fh5co-blog-section" class="fh5co-section-gray">
-            <?= $this->render('paquetes-recientes'); ?>
+            <?= $this->render('/paquete/recientes'); ?>
         </div>
         <!-- fh5co-blog-section -->
         <div id="fh5co-testimonial" style="background-image:url(/plantilla/images/img_bg_1.jpg);">
