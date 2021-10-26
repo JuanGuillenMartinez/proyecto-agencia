@@ -17,8 +17,11 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
 
-        <div class="col-md-9">
+        <div class="col-md-12">
             <?= $form->field($model, 'paq_nombre')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'paq_descuento')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-3">
             <?= $form->field($model, 'paq_subtotal')->textInput(['maxlength' => true, 'readonly' => true, 'value' => 0]) ?>

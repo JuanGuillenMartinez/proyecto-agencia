@@ -6,33 +6,25 @@
     <div id="fh5co-wrapper">
         <div id="fh5co-page">
 
-
-
-            <!-- end:header-top -->
             <div class="fh5co-hero">
                 <div class="fh5co-overlay"></div>
                 <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/plantilla/images/cover_bg_1.jpg);">
                     <div class="desc">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="form-paquete col-md-6">
                                     <div class="tabulation animate-box">
-
                                         <div class="containter" style="background-color: white;">
-
+                                            <h1>Aqui va el form</h1>
                                         </div>
-
                                     </div>
-
-
                                 </div>
                                 <div class="col-md-6 desc2 animate-box">
 
-                                    <p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p>
-                                    <h2>Exclusive Limited Time Offer</h2>
-                                    <h3>Fly to Hong Kong via Los Angeles, USA</h3>
+                                    <h2>Oferta exclusiva</h2>
+                                    <h3>Vuelo de Hong Kong via Los Angeles, USA</h3>
                                     <span class="price">$599</span>
-                                    <!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
+                                    <p><a class="btn btn-primary btn-lg" href="#">Conocer más</a></p>
 
                                 </div>
                             </div>
@@ -48,7 +40,7 @@
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-md-8 text-center heading-section animate-box">
-                        <h3>Ofertas</h3>
+                        <h3>Paquetes populares</h3>
                         <p>Encuentra las mejores ofertas con paquetes que incluyen los boletos de viaje, traslado del aeropuerto a tu hotel y seguro de viaje.</p>
                     </div>
                 </div>

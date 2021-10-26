@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'paq_nombre',
+            'paq_descuento',
             'paq_subtotal',
             [
                 'attribute' => 'imagen',

@@ -45,7 +45,7 @@ class Paquete extends \yii\db\ActiveRecord
             [['paq_nombre', 'paq_url', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'paq_subtotal'], 'required'],
             [['img'], 'file', 'extensions'      => 'jpg, png'],
             [['img'], 'file', 'maxSize'         => '1000000'],
-            [['paq_subtotal'], 'number'],
+            [['paq_subtotal', 'paq_descuento'], 'number'],
             [['paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado'], 'integer'],
             [['paq_nombre'], 'string', 'max' => 45],
             [['paq_url'], 'string', 'max' => 100],
@@ -64,6 +64,7 @@ class Paquete extends \yii\db\ActiveRecord
         return [
             'paq_id' => 'Id',
             'paq_nombre' => 'Nombre',
+            'paq_descuento' => 'Descuento',
             'paq_subtotal' => 'Subtotal',
             'paq_url' => 'Imagen',
             'paq_fkvuelo' => 'Vuelo',

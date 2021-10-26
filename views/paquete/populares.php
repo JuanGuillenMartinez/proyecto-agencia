@@ -9,7 +9,7 @@ foreach ($paquetes as $paquete) {
     $urlImagen = '@web/img/paquete/' . $paquete->paq_url;
     echo '<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">';
     echo "<div>";
-    echo Html::img($urlImagen, ['class' => 'img-responsive', 'width' => '100%']);
+    echo Html::img($urlImagen, ['class' => 'img-responsive', 'width' => '125%']);
     echo "
     <div class='desc'>
             <span></span>
