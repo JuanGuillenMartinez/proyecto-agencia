@@ -4,36 +4,29 @@
 
 <body>
     <div id="fh5co-wrapper">
-        <div id="fh5co-page">
 
-            <div class="fh5co-hero">
-                <div class="fh5co-overlay"></div>
-                <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/plantilla/images/cover_bg_1.jpg);">
-                    <div class="desc">
-                        <div class="container">
-                            <div class="row">
-                                <div class="form-paquete col-md-6">
-                                    <div class="tabulation animate-box">
-                                        <div class="containter" style="background-color: white;">
-                                            <h1>Aqui va el form</h1>
-                                        </div>
+        <div id="fh5co-page">
+            <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/plantilla/images/cover_bg_1.jpg);">
+                <div class="desc">
+                    <div class="container">
+                        <div class="row">
+                            <div class="form-paquete col-md-6">
+                                <div class="tabulation animate-box">
+                                    <div class="containter" style="background-color: white;">
+                                        <h1>Aqui va el form</h1>
                                     </div>
                                 </div>
-                                <div class="col-md-6 desc2 animate-box">
-
-                                    <h2>Oferta exclusiva</h2>
-                                    <h3>Vuelo de Hong Kong via Los Angeles, USA</h3>
-                                    <span class="price">$599</span>
-                                    <p><a class="btn btn-primary btn-lg" href="#">Conocer más</a></p>
-
-                                </div>
                             </div>
-
+                            <div class="col-md-6 desc2 animate-box">
+                                <h2>Oferta exclusiva</h2>
+                                <h3>Vuelo de Hong Kong via Los Angeles, USA</h3>
+                                <span class="price">$599</span>
+                                <p><a class="btn btn-primary btn-lg" href="#">Conocer más</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div id="fh5co-tours" class="fh5co-section-gray">
@@ -44,12 +37,8 @@
                         <p>Encuentra las mejores ofertas con paquetes que incluyen los boletos de viaje, traslado del aeropuerto a tu hotel y seguro de viaje.</p>
                     </div>
                 </div>
-
                 <div class="row">
                     <?= $this->render('/paquete/ofertas'); ?>
-                    <div class="col-md-12 text-center animate-box">
-                        <p><a class="btn btn-primary btn-outline btn-lg" href="/paquete">Ver todas las ofertas <i class="icon-arrow-right22"></i></a></p>
-                    </div>
                 </div>
             </div>
         </div>

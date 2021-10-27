@@ -44,7 +44,7 @@ a:hover {
 }
 
 p, ul, ol {
-  margin-bottom: 1.5em;
+  /* margin-bottom: 1.5em; */
   font-size: 16px;
   color: #848484;
   font-family: "Open Sans", Arial, sans-serif;
@@ -144,7 +144,7 @@ figure {
 .fh5co-cover,
 .fh5co-hero {
   position: relative;
-  height: 800px;
+  /* height: 800px; */
 }
 @media screen and (max-width: 768px) {
   .fh5co-cover,
@@ -154,13 +154,16 @@ figure {
 }
 .fh5co-cover .fh5co-overlay,
 .fh5co-hero .fh5co-overlay {
-  position: absolute !important;
+  /* position: absolute !important;
   width: 100%;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 1;
+  z-index: 1; */
+  /* position: relative; */
+  width: 100%;
+  /* height: 500px; */
   background: rgba(255, 62, 28, 0.5);
   background: -moz-linear-gradient(left, rgba(255, 62, 28, 0.5) 0%, rgba(255, 140, 0, 0.5) 100%);
   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 62, 28, 0.5)), color-stop(100%, rgba(255, 140, 0, 0.5)));
@@ -172,6 +175,9 @@ figure {
 }
 
 .fh5co-cover {
+  /* display: flex;
+  flex-direction: column; */
+  /* flex: 1; */
   background-size: cover;
   position: relative;
 }
@@ -195,11 +201,13 @@ figure {
   }
 }
 .fh5co-cover .desc {
-  top: 40%;
-  position: absolute;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  /* top: 40%; */
+  /* position: absolute; */
   width: 100%;
-  margin-top: -80px;
-  z-index: 2;
+  /* margin-top: -80px; */
+  /* z-index: 2; */
   color: #fff;
 }
 @media screen and (max-width: 768px) {
@@ -224,7 +232,7 @@ figure {
 }
 .fh5co-cover .desc p {
   display: block;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   font-size: 16px;
   letter-spacing: 1px;
   color: rgba(255, 255, 255, 0.7);
@@ -537,68 +545,6 @@ figure {
 }
 #fh5co-primary-menu .fh5co-sub-menu a:hover {
   color: #F78536 !important;
-}
-
-.tabulation {
-  width: 100%;
-  float: left;
-  margin-top: -7em;
-  background: rgba(255, 255, 255, 0.95);
-  -webkit-box-shadow: 0px 43px 83px -20px rgba(0, 0, 0, 0.41);
-  -moz-box-shadow: 0px 43px 83px -20px rgba(0, 0, 0, 0.41);
-  -ms-box-shadow: 0px 43px 83px -20px rgba(0, 0, 0, 0.41);
-  -o-box-shadow: 0px 43px 83px -20px rgba(0, 0, 0, 0.41);
-  box-shadow: 0px 43px 83px -20px rgba(0, 0, 0, 0.41);
-}
-.tabulation label {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 14px;
-}
-@media screen and (max-width: 480px) {
-  .tabulation label {
-    width: 40%;
-  }
-}
-.tabulation input[type="text"] {
-  background: rgba(0, 0, 0, 0.05);
-  border: none;
-  box-shadow: none;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 5px 10px !important;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  border-radius: 0;
-  color: #F78536 !important;
-}
-.tabulation input[type="text"]::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: #F78536 !important;
-}
-.tabulation input[type="text"]::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #F78536 !important;
-}
-.tabulation input[type="text"]:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #F78536 !important;
-}
-.tabulation input[type="text"]:-moz-placeholder {
-  /* Firefox 18- */
-  color: #F78536 !important;
-}
-@media screen and (max-width: 480px) {
-  .tabulation input[type="text"] {
-    width: 55%;
-    float: right;
-  }
-}
-@media screen and (max-width: 480px) {
-  .tabulation .cs-select {
-    width: 55%;
-    float: right;
-  }
 }
 
 .tab-content {
@@ -1725,6 +1671,8 @@ div.cs-select span {
 }
 
 #fh5co-page {
+  /* display: flex;
+  flex-direction: column; */
   position: relative;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;

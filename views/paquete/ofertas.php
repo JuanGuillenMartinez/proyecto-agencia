@@ -26,3 +26,6 @@ foreach ($paquetes as $paquete) {
     echo '</div>';
 }
 ?>
+<div class="col-md-12 text-center animate-box">
+    <p><a class="btn btn-primary btn-outline btn-lg" href="/paquete">Ver todas las ofertas <i class="icon-arrow-right22"></i></a></p>
+</div>
