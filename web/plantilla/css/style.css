@@ -208,7 +208,7 @@ figure {
   width: 100%;
   /* margin-top: -80px; */
   /* z-index: 2; */
-  color: #fff;
+  color: #706651;
 }
 @media screen and (max-width: 768px) {
   .fh5co-cover .desc {
@@ -217,7 +217,7 @@ figure {
   }
 }
 .fh5co-cover .desc h2 {
-  color: #fff;
+  color: black;
   font-size: 60px;
   margin-bottom: 10px;
   font-weight: 400 !important;
@@ -228,7 +228,7 @@ figure {
   }
 }
 .fh5co-cover .desc h3 {
-  color: #fff;
+  color: #414749;
 }
 .fh5co-cover .desc p {
   display: block;
@@ -1933,6 +1933,84 @@ div.cs-select span {
   height: 100%;
   z-index: 9999;
   background: url(../images/hourglass.svg) center no-repeat #222222;
+}
+.containter {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.card-mejor-oferta {
+  background-color: white;
+  width: 24rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 2px 2px 16px 8px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  border-style: none;
+  max-width: 100%;
+  margin: 16px;
+}
+.img-modal {
+  width: 100%;
+  height: 230px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  position: relative;
+}
+.fondo {
+  width: 100%;
+  -webkit-filter: grayscale(60%);
+   -moz-filter: grayscale(60%);
+   -o-filter: grayscale(60%);
+   -ms-filter: grayscale(60%);
+   filter: grayscale(60%);
+}
+.div-mejor-oferta {
+  margin-top: 10%;
+}
+.card-body-paquete {
+  padding-bottom: 20px;
+  height: 320px;
+}
+.precio-card {
+  color: #fbfbfb;
+  font-size: 20px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-left: -20px;
+  padding-left: 20px;
+  padding-right: 8px;
+  padding-bottom: 2px;
+  background: #dc895e;
+  padding-top: 2px;
+}
+.titulo-card {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  color: rgb(255, 160, 0);
+  margin-bottom: 8px;
+  margin-top: 22px;
+}
+.descripcion-card {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #212121;
+}
+.btn-add {
+  margin-top: 20px;
+  background: #128c7e;
+  border-style: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  box-shadow: 2px 2px 8px rgba(117, 117, 117, 0.71);
+}
+.btn-add i {
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+  margin-right: 16px;
 }
 
 /*# sourceMappingURL=style.css.map */

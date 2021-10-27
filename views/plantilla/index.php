@@ -6,27 +6,7 @@
     <div id="fh5co-wrapper">
 
         <div id="fh5co-page">
-            <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/plantilla/images/cover_bg_1.jpg);">
-                <div class="desc">
-                    <div class="container">
-                        <div class="row">
-                            <div class="form-paquete col-md-6">
-                                <div class="tabulation animate-box">
-                                    <div class="containter" style="background-color: white;">
-                                        <h1>Aqui va el form</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 desc2 animate-box">
-                                <h2>Oferta exclusiva</h2>
-                                <h3>Vuelo de Hong Kong via Los Angeles, USA</h3>
-                                <span class="price">$599</span>
-                                <p><a class="btn btn-primary btn-lg" href="#">Conocer más</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?= $this->render("/paquete/mejor_oferta.php"); ?>
         </div>
         <div id="fh5co-tours" class="fh5co-section-gray">
             <?= $this->render("/paquete/ofertas.php"); ?>
