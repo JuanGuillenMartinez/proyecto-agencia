@@ -24,7 +24,7 @@ $paquete = Paquete::findOne(['paq_descuento' => $row["max_descuento"]]);
                             <div>
                                 <div class="card-mejor-oferta">
                                     <div>
-                                        <?= Html::img("@web/img/paquete/{$paquete->paq_url}", ['class' => 'img-modal']); ?>
+                                        <?= Html::img("@web/img/paquete/{$paquete->paq_url}", ['class' => 'img-modal animate-box']); ?>
                                     </div>
                                     <div class="card-body-paquete card-body d-flex flex-column justify-content-between">
                                         <div>
