@@ -28,19 +28,8 @@
                 </div>
             </div>
         </div>
-
         <div id="fh5co-tours" class="fh5co-section-gray">
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-8 text-center heading-section animate-box">
-                        <h3>Mejores ofertas</h3>
-                        <p>Encuentra las mejores ofertas con paquetes que incluyen los boletos de viaje, traslado del aeropuerto a tu hotel y seguro de viaje.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <?= $this->render('/paquete/ofertas'); ?>
-                </div>
-            </div>
+            <?= $this->render("/paquete/ofertas.php"); ?>
         </div>
 
         <div id="fh5co-features">
