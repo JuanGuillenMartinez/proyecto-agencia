@@ -14,14 +14,14 @@ use yii\helpers\Html;
 <div class="container">
     <div class="row row-bottom-padded-md">
         <?php
-        $paquetes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(12)->all();
+        $paquetes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
         foreach ($paquetes as $paquete) {
             $urlImagen = '@web/img/paquete/' . $paquete->paq_url;
             echo "
-                    <div class='col-lg-4 col-md-4 col-sm-6'>
+                    <div class='col-lg-3 col-md-3 col-sm-6'>
                         <div class='fh5co-blog animate-box'>
                         <a href='#'> ";
-                        echo Html::img($urlImagen, ['class' => 'img-responsive', 'height' => '300px']);
+                        echo Html::img($urlImagen, ['class' => 'img-responsive', 'height' => '180px']);
                         echo "</a>
                         <div class='blog-text'>
                     <div class='prod-title'>
