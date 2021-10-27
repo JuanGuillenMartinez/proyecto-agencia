@@ -25,7 +25,7 @@ use yii\helpers\Html;
                                         <div class'ofertas-description'>
                                             <h3>{$paquete->paq_nombre}</h3>
                                             <span>{$paquete->paqFkvuelo->getVueloInfo()}</span>
-                                            <span style='text-decoration-line: line-through;' class='price'>$ {$paquete->paq_subtotal}</span>
+                                            <span style='text-decoration-line: line-through;' class='price'>&#36;{$paquete->paq_subtotal}</span>
                                             <span class='descuento'>Hasta {$paquete->paq_descuento}%</span>
                                             <a class='btn btn-primary btn-outline' href='#'>Comprar ahora</a>
                                         </div>

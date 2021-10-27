@@ -1,7 +1,18 @@
 <?php
 
+use yii\db\Query;
 use yii\helpers\Html;
+use app\models\Paquete;
 
+$paquete = null;
+
+?>
+<?php
+$row = (new \yii\db\Query())
+    ->select(['MAX(paq_descuento) as max_descuento'])
+    ->from('paquete')
+    ->one();
+$paquete = Paquete::findOne(['paq_descuento' => $row["max_descuento"]]);
 ?>
 <div class="fh5co-cover" style="background-image: url(/plantilla/images/fondo.jpg);">
     <div class="desc">
@@ -13,15 +24,14 @@ use yii\helpers\Html;
                             <div>
                                 <div class="card-mejor-oferta">
                                     <div>
-                                        <?= Html::img("@web/img/paquete/default.jpg", ['class' => 'img-modal']); ?>
+                                        <?= Html::img("@web/img/paquete/{$paquete->paq_url}", ['class' => 'img-modal']); ?>
                                     </div>
                                     <div class="card-body-paquete card-body d-flex flex-column justify-content-between">
                                         <div>
                                             <h6 class="precio-card d-inline mb-2">
-                                                $8500 a&nbsp; $4500</h6>
-                                            <h4 class="titulo-card">
-                                            Hong Kong via Los Angeles, USA</h4>
-                                            <span class="descripcion-card">Vuelo con 45% de descuento<br>Traslado incluido
+                                                <?= $paquete->paq_subtotal ?> a&nbsp; <?= $paquete->getSubtotalDescuento()?></h6>
+                                            <h4 class="titulo-card"><?= $paquete->paqFkvuelo->getVueloInfo() ?></h4>
+                                            <span class="descripcion-card">Vuelo <?= $paquete->paqFkvuelo->vue_tipo ?><br>Vuelo con <?= $paquete->paq_descuento ?>% de descuento<br>Traslado incluido<br>
                                             </span>
                                         </div>
                                         <a class="btn-add btn btn-primary d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" role="button" data-bss-hover-animate="pulse" target="_blank"><i class="fas fa-cart-plus"></i>Agregar al carrito</a>
@@ -33,8 +43,8 @@ use yii\helpers\Html;
                 </div>
                 <div class="div-mejor-oferta col-md-6 desc2 animate-box">
                     <h2>Oferta exclusiva</h2>
-                    <h3>Vuelo de Hong Kong via Los Angeles, USA</h3>
-                    <span class="price">$599</span>
+                    <h3>Vuelo de <?= $paquete->paqFkvuelo->vueFkaeroorigen->aeroFkubicacion->ubi_capital ?> hasta  <?= $paquete->paqFkvuelo->vueFkaerodestino->aeroFkubicacion->ubi_capital ?></h3>
+                    <span class="price">&#36;<?= $paquete->getSubtotalDescuento() ?> MXN</span>
                     <p><a class="btn btn-primary btn-lg" href="#">Conocer más</a></p>
                 </div>
             </div>

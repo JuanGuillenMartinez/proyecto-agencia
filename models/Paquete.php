@@ -213,5 +213,8 @@ class Paquete extends \yii\db\ActiveRecord
         }
         return $out;
     }
+    public function getSubtotalDescuento() {
+        return $this->paq_subtotal - (($this->paq_subtotal * $this->paq_descuento) / 100);
+    }
     
 }

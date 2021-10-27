@@ -208,7 +208,7 @@ figure {
   width: 100%;
   /* margin-top: -80px; */
   /* z-index: 2; */
-  color: #706651;
+  color: #ff793a;
 }
 @media screen and (max-width: 768px) {
   .fh5co-cover .desc {
@@ -245,7 +245,7 @@ figure {
 }
 .fh5co-cover .desc p a:hover.btn, .fh5co-cover .desc p a:focus.btn {
   border: 2px solid #fff !important;
-  background: transparent !important;
+  /* background: transparent !important; */
 }
 .fh5co-cover .desc p a.fh5co-site-name {
   padding-bottom: 2px;
@@ -1626,7 +1626,7 @@ div.cs-select span {
 }
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
   box-shadow: none;
-  background: #F78536;
+  background: #854416;
   color: #fff !important;
 }
 .btn:hover, .btn:active, .btn:focus {
@@ -1972,7 +1972,7 @@ div.cs-select span {
 }
 .card-body-paquete {
   padding-bottom: 20px;
-  height: 320px;
+  /* height: 320px; */
 }
 .precio-card {
   color: #fbfbfb;
