@@ -40,10 +40,7 @@ AppAsset::register($this);
 </main>
 
 <footer class="footer mt-auto py-3 text-muted">
-    <div class="container">
-        <p class="float-left">&copy; Agencia de viaje <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
-    </div>
+    <?= $this->render("footer"); ?>
 </footer>
 
 <?php $this->endBody() ?>
