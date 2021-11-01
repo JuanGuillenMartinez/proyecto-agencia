@@ -1,18 +1,34 @@
+<?php
+
+use app\models\Paquete;
+use yii\helpers\Html;
+
+?>
 <?= $this->render("/paquete/mejor_oferta"); ?>
 
 <div class="container">
     <div class="main-card-paquetes">
         <ul class="cards">
-            <li class="cards_item">
-                <div class="card-paquete">
-                    <div class="card_image"><img class="image-card" src="https://picsum.photos/500/300/?image=10"></div>
-                    <div class="card_content">
-                        <h2 class="card_title">Card Grid Layout</h2>
-                        <p class="card_text">Demo of pixel perfect adasdasd asdasd asdasdsadasd awdsa pure CSS simple responsive card grid layout</p>
-                        <button class="btn-card-paquetes card_btn">Read More</button>
-                    </div>
+            <?php 
+                $paquetes = Paquete::find()->all();
+                foreach($paquetes as $paquete) {
+                    echo '<li class="cards_item">
+                    <div class="card-paquete">
+                    <div class="card_image">';
+                    $urlImagen = '@web/img/paquete/' . $paquete->paq_url;
+                    echo Html::img($urlImagen, ['class' => 'image-card']);
+                    echo '</div>';
+                    echo "
+                    <div class='card_content'>
+                    <h2 class='card_title'>{$paquete->getDestinoVuelo()}</h2>
+                    <p class='card_text'>{$paquete->paqFkvuelo->getVueloInfo()}</p>
+                    <button class='btn-card-paquetes card_btn'>Leer más</button>
                 </div>
-            </li>
+                    ";
+                    echo '</div>
+                    </li>';
+                }
+            ?>
         </ul>
     </div>
 </div>
