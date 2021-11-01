@@ -12,4 +12,7 @@ class PlantillaController extends \yii\web\Controller
         return $this->render('index');
     }
     
+    public function actionPaquetes() {
+        return $this->render("paquetes");
+    }
 }

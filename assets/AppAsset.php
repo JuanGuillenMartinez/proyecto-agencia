@@ -28,7 +28,8 @@ class AppAsset extends AssetBundle
         'plantilla/css/bootstrap-datepicker.min.css',
         'plantilla/css/cs-select.css',
         'plantilla/css/cs-skin-border.css',
-        'plantilla/css/style.css',        
+        'plantilla/css/style.css',
+        'plantilla/css/style-card-paquetes.css'        
     ];
     public $js = [
         'plantilla/js/jquery.easing.1.3.js',
