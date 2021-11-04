@@ -37,5 +37,5 @@ use yii\helpers\Html;
         </div>
     </div>
     <div class="col-md-12 text-center animate-box">
-        <p><a class="btn btn-primary btn-outline btn-lg" href="/paquete">Ver todas las ofertas</a></p>
+        <p><a class="btn btn-primary btn-outline btn-lg" href="/plantilla/paquetes">Ver todas las ofertas</a></p>
     </div>

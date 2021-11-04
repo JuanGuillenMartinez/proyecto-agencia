@@ -21,7 +21,7 @@ use webvimark\modules\UserManagement\UserManagementModule;
         'encodeLabels' => false,
         'items' => [
             ['label' => 'Inicio', 'url' => ['/plantilla/index']],
-            ['label' => 'Paquetes', 'url' => ['/paquete']],
+            ['label' => 'Paquetes', 'url' => ['/plantilla/paquetes']],
             ['label' => 'Vuelos', 'url' => ['/site/index']],
             ['label' => 'Hoteles', 'url' => ['/site/about']],
             ['label' => 'Traslados', 'url' => ['/site/contact']],
