@@ -26,16 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'pag_id',
+            /* 'pag_id', */
             'pag_direccion',
             'pag_tipo',
             'pag_entidad',
             'pag_tarjeta',
             'pag_expiracion',
             'pag_estatus',
-            'pag_fkreservacion',
+           /*  'pag_fkreservacion', */
             'reservacionFolio',/* llamando folio */
-            'res_estatus',
+            'estatusReservacion', /* Campo extra */
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

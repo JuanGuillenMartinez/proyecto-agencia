@@ -12,7 +12,8 @@ use yii\data\ActiveDataProvider;
  */
 class PagoSearch extends Pago
 {
-    public $reservacion; //search creado
+    public $estatusReservacion; //search creado
+    public $reservacionFolio; //search creado
     /**
      * {@inheritdoc}
      */
@@ -20,7 +21,7 @@ class PagoSearch extends Pago
     {
         return [
             [['pag_id', 'pag_fkreservacion'], 'integer'],
-            [['pag_direccion', 'pag_tipo', 'pag_entidad', 'pag_tarjeta', 'pag_expiracion', 'pag_estatus', 'reservacion'], 'safe'],  //search creado
+            [['pag_direccion', 'pag_tipo', 'pag_entidad', 'pag_tarjeta', 'pag_expiracion', 'pag_estatus', 'estatusReservacion','reservacionFolio'], 'safe'],  //search creado
         ];
     }
 
@@ -45,9 +46,9 @@ class PagoSearch extends Pago
         $query = Pago::find();
         
         /* search personal */
-        $query->joinWith('pagFkreservacion');
+        $query->joinWith('pagFkreservacion'); /* Join con la otra tabla */
 
-        if (!Yii::$app->user->isSuperAdmin){
+        if (Yii::$app->user->isSuperAdmin){
             $query->joinWith(['pagFkreservacion.resFkpersona.perFkuser'])->where(['id'=>Yii::$app->user->id]);
         }
         
@@ -67,11 +68,17 @@ class PagoSearch extends Pago
                 'pag_expiracion',
                 'pag_estatus',
                 'pag_fkreservacion',
-                'reservacion' => [
+                'estatusReservacion' => [
                     'asc' => ['res_estatus' => SORT_ASC],
                     'desc' => ['res_estatus' => SORT_DESC],
                     'default' => SORT_ASC
-                ]
+                ],
+                'reservacionFolio' => [
+                    'asc' => ['reservacionFolio' => SORT_ASC],
+                    'desc' => ['reservacionFolio' => SORT_DESC],
+                    'default' => SORT_ASC
+                ],
+
             ]
         ]);
 
@@ -96,7 +103,8 @@ class PagoSearch extends Pago
             ->andFilterWhere(['like', 'pag_tarjeta', $this->pag_tarjeta])
             ->andFilterWhere(['like', 'pag_expiracion', $this->pag_expiracion])
             ->andFilterWhere(['like', 'pag_estatus', $this->pag_estatus])  
-            ->andFilterWhere(['like', 'res_estatus', $this->reservacion]); //search creado
+            ->andFilterWhere(['like', 'res_estatus', $this->estatusReservacion]) //search creado
+            ->andFilterWhere(['like', 'reservacionFolio', $this->reservacionFolio]); //search creado
 
         return $dataProvider;
     }
