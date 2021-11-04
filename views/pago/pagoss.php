@@ -7,18 +7,12 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PagoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Metodo de Pago';
+$this->title = 'Cartera de Pagos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pago-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Crear pago', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -35,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'pag_estatus',
             'pag_fkreservacion',
             'reservacionFolio',/* llamando folio */
-            'res_estatus',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

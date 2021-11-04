@@ -97,4 +97,5 @@ class Pago extends \yii\db\ActiveRecord
     }
 
 
+
 }
