@@ -25,8 +25,8 @@ class AppAsset extends AssetBundle
         'plantilla/css/icomoon.css',
         'plantilla/css/superfish.css',
         'plantilla/css/magnific-popup.css',
-        'plantilla/css/bootstrap-datepicker.min.css',
-        'plantilla/css/cs-select.css',
+        //'plantilla/css/bootstrap-datepicker.min.css',
+        //'plantilla/css/cs-select.css',
         'plantilla/css/cs-skin-border.css',
         'plantilla/css/style.css',
         'plantilla/css/style-card-paquetes.css'        
