@@ -74,8 +74,8 @@ class PagoSearch extends Pago
                     'default' => SORT_ASC
                 ],
                 'reservacionFolio' => [
-                    'asc' => ['reservacionFolio' => SORT_ASC],
-                    'desc' => ['reservacionFolio' => SORT_DESC],
+                    'asc' => ['concat("RES_",lpad(res_id,5,0))' => SORT_ASC],
+                    'desc' => ['concat("RES_",lpad(res_id,5,0))' => SORT_DESC],
                     'default' => SORT_ASC
                 ],
 
@@ -104,7 +104,7 @@ class PagoSearch extends Pago
             ->andFilterWhere(['like', 'pag_expiracion', $this->pag_expiracion])
             ->andFilterWhere(['like', 'pag_estatus', $this->pag_estatus])  
             ->andFilterWhere(['like', 'res_estatus', $this->estatusReservacion]) //search creado
-            ->andFilterWhere(['like', 'reservacionFolio', $this->reservacionFolio]); //search creado
+            ->andFilterWhere(['like', 'concat("RES_",lpad(res_id,5,0))', $this->reservacionFolio]); //search creado
 
         return $dataProvider;
     }
