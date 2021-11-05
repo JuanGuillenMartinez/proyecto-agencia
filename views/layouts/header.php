@@ -22,8 +22,8 @@ use webvimark\modules\UserManagement\UserManagementModule;
         'items' => [
             ['label' => 'Inicio', 'url' => ['/plantilla/index']],
             ['label' => 'Paquetes', 'url' => ['/plantilla/paquetes']],
-            ['label' => 'Vuelos', 'url' => ['/site/index']],
-            ['label' => 'Hoteles', 'url' => ['/site/about']],
+            ['label' => 'Vuelos', 'url' => ['/plantilla/vuelos']],
+            ['label' => 'Hoteles', 'url' => ['/plantilla/hoteles']],
             ['label' => 'Traslados', 'url' => ['/site/contact']],
             ['label' => 'Seguros', 'url' => ['/cat-seguro']],
             [
