@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Paquete;
+use app\models\Vuelo;
+use app\models\Alojamiento;
 
 class PlantillaController extends \yii\web\Controller
 {
@@ -16,7 +18,12 @@ class PlantillaController extends \yii\web\Controller
     {
         return $this->render("paquetes");
     }
-    public function actionModal() {
-        return $this->render("/paquete/modal");
+
+    public function actionVuelos() {
+        return $this->render("vuelos");
+    }
+
+    public function actionHoteles() {
+        return $this->render("hoteles");
     }
 }

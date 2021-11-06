@@ -60,6 +60,7 @@ class Pago extends \yii\db\ActiveRecord
             'pag_expiracion' => 'Expiración',
             'pag_estatus' => 'Estatus',
             'pag_fkreservacion' => 'Reservación', /* ? */
+            'estatusReservacion'=>'Estatus Reservacion', /* Con esto le cambiamos el nombre que no lleve exactamente el del metodo */
         ];
     }
 
@@ -82,7 +83,7 @@ class Pago extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Reservacion::className(), ['res_id' => 'pag_fkreservacion']);
     }
-    public function getReservacion()
+    public function getEstatusReservacion()
     {
         return $this->pagFkreservacion->res_estatus;
     }
@@ -95,6 +96,7 @@ class Pago extends \yii\db\ActiveRecord
     {
         return 'RES_'.str_pad($this->pagFkreservacion->res_id,5,'0',STR_PAD_LEFT);
     }
+
 
 
 }
