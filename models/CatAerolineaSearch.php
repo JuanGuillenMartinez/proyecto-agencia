@@ -18,7 +18,7 @@ class CatAerolineaSearch extends CatAerolinea
     {
         return [
             [['aer_id'], 'integer'],
-            [['aer_nombre', 'aer_tipo', 'aer_pagina'], 'safe'],
+            [['aer_nombre', 'aer_tipo', 'aer_pagina', 'aer_url'], 'safe'],
         ];
     }
 
@@ -63,7 +63,8 @@ class CatAerolineaSearch extends CatAerolinea
 
         $query->andFilterWhere(['like', 'aer_nombre', $this->aer_nombre])
             ->andFilterWhere(['like', 'aer_tipo', $this->aer_tipo])
-            ->andFilterWhere(['like', 'aer_pagina', $this->aer_pagina]);
+            ->andFilterWhere(['like', 'aer_pagina', $this->aer_pagina])
+            ->andFilterWhere(['like', 'aer_url', $this->aer_url]);
 
         return $dataProvider;
     }

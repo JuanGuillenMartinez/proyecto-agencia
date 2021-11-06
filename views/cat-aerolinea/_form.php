@@ -35,6 +35,10 @@ use yii\bootstrap4\ActiveForm;
         <div class="col-md-4">
             <?= $form->field($model, 'aer_pagina')->textInput(['maxlength' => true]) ?>
         </div>
+        
+        <div class="col-md-4">
+            <?= $form->field($model, 'aer_url')->textInput(['maxlength' => true]) ?>
+        </div>
 
     </div>
       

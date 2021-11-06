@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'aer_nombre',
             'aer_tipo',
             'aer_pagina',
+            'aer_url',
         ],
     ]) ?>
 

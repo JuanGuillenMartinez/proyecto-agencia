@@ -31,10 +31,11 @@ class CatAerolinea extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['aer_nombre', 'aer_tipo', 'aer_pagina'], 'required'],
+            [['aer_nombre', 'aer_tipo', 'aer_pagina', 'aer_url'], 'required'],
             [['aer_tipo'], 'string'],
             [['aer_nombre'], 'string', 'max' => 45],
             [['aer_pagina'], 'string', 'max' => 55],
+            [['aer_url'], 'string', 'max' => 100],
         ];
     }
 
@@ -48,6 +49,7 @@ class CatAerolinea extends \yii\db\ActiveRecord
             'aer_nombre' => 'Aerolínea',
             'aer_tipo' => 'Tipo',
             'aer_pagina' => 'Página',
+            'aer_url' => 'Url',
         ];
     }
 
