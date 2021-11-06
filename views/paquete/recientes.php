@@ -13,28 +13,25 @@ use yii\helpers\Html;
 </div>
 <div class="container">
     <div class="row row-bottom-padded-md">
+
         <?php
-        $paquetes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
-        foreach ($paquetes as $paquete) {
-            $urlImagen = '@web/img/paquete/' . $paquete->paq_url;
-            echo "
-                    <div class='col-lg-3 col-md-3 col-sm-6'>
-                        <div class='fh5co-blog animate-box'>
-                        <a href='#'> ";
-                        echo Html::img($urlImagen, ['class' => 'img-responsive', 'height' => '180px']);
-                        echo "</a>
-                        <div class='blog-text'>
-                    <div class='prod-title'>
-                        <h3><a href='#'>{$paquete->paq_nombre}</a></h3>
-                        <h3><a href='#'>{$paquete->paqFkvuelo->getVueloInfo()}</a></h3>
-                        <p><a href='#'>Leer más...</a></p>
+        foreach ($paquetesRecientes as $paquete) {
+            $urlImagen = '@web/img/paquete/' . $paquete->paq_url; ?>
+            <div class='col-lg-3 col-md-3 col-sm-6'>
+                <div class='fh5co-blog animate-box'>
+                    <a href='#'><?= Html::img($urlImagen, ['class' => 'img-responsive', 'height' => '180px']) ?></a>
+                    <div class='blog-text'>
+                        <div class='prod-title'>
+                            <h3><?= $paquete->paq_nombre ?></h3>
+                            <h3><?= $paquete->paqFkvuelo->getVueloInfo() ?></h3>
+                            <p><a href='#'>Leer más...</a></p>
+                        </div>
                     </div>
-                    </div>
-                    </div>
-                    </div>
-                ";
-        }
-        ?>
+                </div>
+            </div>
+        <?php } ?>
+
+
     </div>
 
     <div class="col-md-12 text-center animate-box">

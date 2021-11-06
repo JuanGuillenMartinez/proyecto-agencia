@@ -12,16 +12,14 @@ use yii\helpers\Html;
     </div>
     <div class="row">
         <?php
-        $paquetes = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
-
-        foreach ($paquetes as $paquete) {
+        foreach ($paquetesOfertas as $paquete) {
             $urlImagen = '@web/img/paquete/' . $paquete->paq_url; ?>
             <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
                 <div>;
                     <?= Html::img($urlImagen, ['class' => 'img-responsive', 'width' => '125%']); ?>
                     <div class='desc'>
                         <span></span>
-                        <div class'ofertas-description'>
+                        <div class='ofertas-description'>
                             <h3><?= $paquete->paq_nombre ?></h3>
                             <span><?= $paquete->paqFkvuelo->getVueloInfo() ?></span>
                             <span style='text-decoration-line: line-through;' class='price'>&#36;<?= $paquete->paq_subtotal ?></span>

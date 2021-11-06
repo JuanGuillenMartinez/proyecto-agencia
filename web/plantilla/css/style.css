@@ -32,6 +32,24 @@ body.fh5co-offcanvas {
   overflow: hidden;
 }
 
+.button-ver {
+  color: #F78536;
+  -webkit-transition: 0.5s, ease;
+  -o-transition: 0.5s, ease;
+  transition: 0.5s, ease;
+}
+.button-ver:hover {
+  text-decoration: none;
+  color: #F78536;
+}
+
+.border-button-ver {
+  /* margin-bottom: 1.5em; */
+  font-size: 16px;
+  color: #848484;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
 a {
   color: #F78536;
   -webkit-transition: 0.5s, ease;
