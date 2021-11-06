@@ -30,7 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'aer_nombre',
             'aer_tipo',
             'aer_pagina',
-            'aer_url',
+            /* 'aer_url', */
+            [
+            'attribute' => 'imagen',
+            'format' => 'raw',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

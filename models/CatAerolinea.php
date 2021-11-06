@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\bootstrap4\Html;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -17,6 +18,7 @@ use yii\helpers\ArrayHelper;
  */
 class CatAerolinea extends \yii\db\ActiveRecord
 {
+    public $img;
     /**
      * {@inheritdoc}
      */
@@ -31,6 +33,10 @@ class CatAerolinea extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['img', 'aer_url'], 'safe'],
+            [['img'], 'file', 'extensions'      => 'jpg, png' ],
+            [['img'], 'file', 'maxSize'         => '1000000'],
+
             [['aer_nombre', 'aer_tipo', 'aer_pagina', 'aer_url'], 'required'],
             [['aer_tipo'], 'string'],
             [['aer_nombre'], 'string', 'max' => 45],
@@ -49,7 +55,8 @@ class CatAerolinea extends \yii\db\ActiveRecord
             'aer_nombre' => 'Aerolínea',
             'aer_tipo' => 'Tipo',
             'aer_pagina' => 'Página',
-            'aer_url' => 'Url',
+            'aer_url' => 'Imagen',
+            'img' => 'Imagen de la Aerolinea', /* ????? */
         ];
     }
 
@@ -65,6 +72,14 @@ class CatAerolinea extends \yii\db\ActiveRecord
 
     public static function map(){
         return ArrayHelper::map(CatAerolinea::find()->all(),'aer_id','aer_nombre');
+    }
+
+    public function getUrl() {
+        return "/img/" . (empty($this->aer_url) ? 'aer_default.png' : "aerolinea/{$this->aer_url}");
+    }
+
+    public function getImagen() {
+        return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
 
     
