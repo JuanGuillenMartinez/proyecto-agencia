@@ -14,6 +14,10 @@ class PlantillaController extends \yii\web\Controller
         return $this->render('index', compact("paquete"));
     }
 
+    public function actionModal() {
+        return $this->render("/paquete/modal");
+    }
+
     public function actionPaquetes()
     {
         return $this->render("paquetes");
