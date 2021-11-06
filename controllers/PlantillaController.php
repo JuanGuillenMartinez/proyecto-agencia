@@ -27,7 +27,8 @@ class PlantillaController extends \yii\web\Controller
     }
 
     public function actionVuelos() {
-        return $this->render("vuelos");
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        return $this->render("vuelos", compact("paquete"));
     }
 
     public function actionHoteles() {

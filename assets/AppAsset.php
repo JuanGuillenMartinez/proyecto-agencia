@@ -30,7 +30,9 @@ class AppAsset extends AssetBundle
         'plantilla/css/cs-skin-border.css',
         'plantilla/css/style.css',
         'plantilla/css/style-card-paquetes.css',
-        'css/package-card.css'        
+        'css/package-card.css',
+        //'css/vuelos.css',
+
     ];
     public $js = [
         'plantilla/js/jquery.easing.1.3.js',
