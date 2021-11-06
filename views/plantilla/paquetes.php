@@ -4,7 +4,7 @@ use app\models\Paquete;
 use yii\helpers\Html;
 
 ?>
-<?= $this->render("/paquete/mejor_oferta"); ?>
+<?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
 
 <div class="container">
     <div class="main-card-paquetes">

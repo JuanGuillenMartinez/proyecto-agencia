@@ -22,7 +22,8 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionPaquetes()
     {
-        return $this->render("paquetes");
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        return $this->render("paquetes", compact("paquete"));
     }
 
     public function actionVuelos() {
