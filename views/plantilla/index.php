@@ -9,7 +9,7 @@
             <?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
         </div>
         <div id="fh5co-tours" class="fh5co-section-gray">
-            <?= $this->render("/paquete/ofertas.php"); ?>
+            <?= $this->render("/paquete/ofertas", compact("paquetesOfertas")); ?>
         </div>
 
         <div id="fh5co-features">
@@ -192,7 +192,7 @@
         </div>
 
         <div id="fh5co-blog-section" class="fh5co-section-gray">
-            <?= $this->render('/paquete/recientes'); ?>
+            <?= $this->render('/paquete/recientes', compact("paquetesRecientes")); ?>
         </div>
         <!-- fh5co-blog-section -->
         <div id="fh5co-testimonial" style="background-image:url(/plantilla/images/img_bg_1.jpg);">
