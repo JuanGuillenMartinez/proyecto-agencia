@@ -29,7 +29,8 @@ class AppAsset extends AssetBundle
         'plantilla/css/cs-select.css',
         'plantilla/css/cs-skin-border.css',
         'plantilla/css/style.css',
-        'plantilla/css/style-card-paquetes.css'        
+        'plantilla/css/style-card-paquetes.css',
+        'css/package-card.css'        
     ];
     public $js = [
         'plantilla/js/jquery.easing.1.3.js',
@@ -45,7 +46,10 @@ class AppAsset extends AssetBundle
         'plantilla/js/selectFx.js',
         'plantilla/js/main.js',
         '/js/paquete.js',
-        '/js/bs-init.js'
+        '/js/bs-init.js',
+        '/js/modal-paquete.js',
+        '/js/bootbox.all.min.js',
+        'https://kit.fontawesome.com/d9a399c640.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

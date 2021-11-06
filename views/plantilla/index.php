@@ -6,7 +6,7 @@
     <div id="fh5co-wrapper">
 
         <div id="fh5co-page">
-            <?= $this->render("/paquete/mejor_oferta.php"); ?>
+            <?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
         </div>
         <div id="fh5co-tours" class="fh5co-section-gray">
             <?= $this->render("/paquete/ofertas.php"); ?>

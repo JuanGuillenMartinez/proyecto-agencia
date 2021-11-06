@@ -33,3 +33,15 @@ function iniciarVariables() {
         }
     );
 }
+function modal(id) {
+    $.get("/paquete/modal",{ id: id })
+    .done(function (d) {
+        bootbox.dialog({
+            title: "modal",
+            size: "md",
+            message: d,
+        });
+    }).fail(function (f){
+        console.log(f.responseText);
+    });
+}
