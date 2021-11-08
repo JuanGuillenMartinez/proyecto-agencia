@@ -145,6 +145,7 @@ class PersonaController extends Controller
                 $persona->per_url = $persona->per_fkuser.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
                 $path = Yii::$app->basePath.'/web/img/persona/' . $persona->per_url;
                 if($image->saveAs($path) && $user->save(false)){
+                    User::assignRole($user->id, "Cliente");
                     $persona->per_fkuser = $user->id;
                     $persona->save();
                     return $this->redirect(['view', 'id' => $persona->per_id]);                }
