@@ -12,7 +12,7 @@ use yii\helpers\Html;
         <div class="text row justify-content-md-center">
             <div class="col-md-8 text-center heading-section animate-box">
                 <h3>Vuelos </h3>
-                <p>Vuelos</p>
+                <p>Le ofrecemos una amplia variedad de vuelos con una gran cantidad de destinos y lugares</p>
             </div>
         </div>
     </div>
