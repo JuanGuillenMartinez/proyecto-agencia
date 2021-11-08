@@ -16,7 +16,8 @@ class PlantillaController extends \yii\web\Controller
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
     }
 
-    public function actionModal() {
+    public function actionModal()
+    {
         return $this->render("/paquete/modal");
     }
 
@@ -26,15 +27,17 @@ class PlantillaController extends \yii\web\Controller
         return $this->render("paquetes", compact("paquete"));
     }
 
-    public function actionVuelos() {
+    public function actionVuelos()
+    {
         $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
         $vuelos = Vuelo::find()->all();
         return $this->render("vuelos", compact("paquete", "vuelos"));
-       
-        
     }
 
-    public function actionHoteles() {
-        return $this->render("hoteles");
+    public function actionHoteles()
+    {
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $hoteles = Alojamiento::find()->all();
+        return $this->render("hoteles", compact("paquete", "hoteles"));
     }
 }
