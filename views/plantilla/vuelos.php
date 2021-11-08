@@ -25,7 +25,9 @@ use yii\helpers\Html;
         foreach ($vuelos as $vuelo) { ?>
             <div class="card">
                 <div class="card-one">
-                    <?= Html::img('@web/img/aeropuerto/' . $vuelo->vueFkaerodestino->aero_url, ['class' => 'card-img']) ?>
+                    <div class="div-img">
+                        <?= Html::img('@web/img/aeropuerto/' . $vuelo->vueFkaerodestino->aero_url, ['class' => 'card-img']) ?>
+                    </div>
                     <h6 class="guided titulo-h6-vuelo"><?= $vuelo->vue_tipo ?></h6>
                     <h2 class="titulo-h2-vuelo"><?= $vuelo->getVueloDestino() ?></h2>
                     <h5 class="titulo-h5-vuelo"><?= $vuelo->vue_estatus ?></h5>
