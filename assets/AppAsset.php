@@ -31,7 +31,7 @@ class AppAsset extends AssetBundle
         'plantilla/css/style.css',
         'plantilla/css/style-card-paquetes.css',
         'css/package-card.css',
-        //'css/vuelos.css',
+        'css/vuelos.css',
 
     ];
     public $js = [

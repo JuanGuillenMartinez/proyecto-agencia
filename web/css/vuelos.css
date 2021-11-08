@@ -1,14 +1,9 @@
-* {
+/** {
     box-sizing: border-box;
-}
+}*/
 
-body {
+.body-vuelo {
     margin: 0;
-}
-
-html {
-    font-family: 'Raleway', sans-serif;
-    font-size: 100%;
 }
 
 /* Colors */
@@ -41,40 +36,47 @@ html {
 }
 
 /* tittle style */
-h2,
-h5,
-h6 {
+.titulo-h2-vuelo,
+.titulo-h5-vuelo,
+.titulo-h6-vuelo {
     margin-left: 1rem;
+    margin-right: 1rem;
 }
 
-h2 {
+.row-vuelo {
+    margin: 0;
+    font-size: 16px;
+}
+
+.titulo-h2-vuelo {
     font-weight: 600;
 }
 
-h5 {
+.titulo-h5-vuelo {
     font-weight: 500;
     opacity: .9;
 }
 
 /* h2 style */
-h2 {
+.titulo-h2-vuelo {
     position: relative;
-    top: -1em;
-    font-size: 25px;
+    /*top: -1em;*/
+    font-size: 23px;
     font-weight: 700;
     letter-spacing: 1.1px;
+    /*margin-top: 5%;*/
 }
 
-h5 {
+.titulo-h5-vuelo {
     position: relative;
-    top: -2.7em;
+    /*top: -2.7em;*/
     font-size: 16px;
     font-weight: 500;
     opacity: .8;
 }
 
 /* h6 style */
-h6 {
+.titulo-h6-vuelo {
     position: relative;
     display: inline;
     top: -1em;
@@ -121,7 +123,7 @@ h6 {
     font-size: 1rem;
 }
 
-span {
+.span-vuelo{
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
     font-size: .9rem;
@@ -154,6 +156,15 @@ span {
     opacity: .5;
 }
 
+.text-prices{
+    text-align:end;
+}
+
+.precio{
+    font-size: 16px;
+    font-weight: bold;
+}
+
 /* Media Queries */
 @media (min-width: 1499px) {
 
@@ -162,7 +173,7 @@ span {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-area: 20px;
-        margin-left: 1rem;
+        margin-left: 5%;
     }
 }
 

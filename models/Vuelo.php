@@ -141,6 +141,10 @@ class Vuelo extends \yii\db\ActiveRecord
     {
         return $this->vueFkaerodestino->aero_nombre;
     }
+    public function getVueloDestino()
+    {
+        return $this->vueFkaerodestino->aeroFkubicacion->ubi_capital . ', ' . $this->vueFkaerodestino->aeroFkubicacion->ubiFkpais->pai_pais;
+    }
     public static function mapTipo(){
         return ['Directo' => 'Directo', 'Escala' => 'Escala'];
     }
