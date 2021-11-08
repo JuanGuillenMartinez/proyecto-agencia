@@ -10,12 +10,12 @@ use yii\helpers\Html;
             <p>Encuentra las mejores ofertas con paquetes que incluyen los boletos de viaje, traslado del aeropuerto a tu hotel y seguro de viaje.</p>
         </div>
     </div>
-    <div class="row">
+    <div class="row row-paquete">
         <?php
         foreach ($paquetesOfertas as $paquete) {
             $urlImagen = '@web/img/paquete/' . $paquete->paq_url; ?>
             <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-                <div>;
+                <div>
                     <?= Html::img($urlImagen, ['class' => 'img-responsive', 'width' => '125%']); ?>
                     <div class='desc'>
                         <span></span>
@@ -26,7 +26,7 @@ use yii\helpers\Html;
                             <span class='descuento'>Hasta <?= $paquete->paq_descuento ?>%</span>
                             <?= Html::button('Comprar ahora', ['class' => 'btn btn-primary btn-outline', 'onClick' => "modal({$paquete->paq_id})"]) ?>
                         </div>
-                    </div>";
+                    </div>
                 </div>
             </div>
         <?php } ?>

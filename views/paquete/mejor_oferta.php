@@ -13,8 +13,8 @@ use yii\helpers\Html;
                         <div class="containter">
                             <div>
                                 <div class="card-mejor-oferta">
-                                    <div>
-                                        <?= Html::img("@web/img/paquete/{$paquete->paq_url}", ['class' => 'img-modal animate-box']); ?>
+                                    <div class="div-img-responsive">
+                                        <?= Html::img("@web/img/paquete/{$paquete->paq_url}", ['class' => 'img-modal animate-box img-responsive']); ?>
                                     </div>
                                     <div class="card-body-paquete card-body d-flex flex-column justify-content-between">
                                         <div>

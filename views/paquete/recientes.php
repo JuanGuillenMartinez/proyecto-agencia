@@ -12,14 +12,16 @@ use yii\helpers\Html;
     </div>
 </div>
 <div class="container">
-    <div class="row row-bottom-padded-md">
+    <div class="row row-paquete row-bottom-padded-md">
 
         <?php
         foreach ($paquetesRecientes as $paquete) {
             $urlImagen = '@web/img/paquete/' . $paquete->paq_url; ?>
             <div class='col-lg-3 col-md-3 col-sm-6'>
                 <div class='fh5co-blog animate-box'>
-                    <a href='#'><?= Html::img($urlImagen, ['class' => 'img-responsive', 'height' => '180px']) ?></a>
+                    <div class="div-img-responsive">
+                        <a href='#'><?= Html::img($urlImagen, ['class' => 'img-responsive', 'height' => '180px']) ?></a>
+                    </div>
                     <div class='blog-text'>
                         <div class='prod-title'>
                             <h3><?= $paquete->paq_nombre ?></h3>
