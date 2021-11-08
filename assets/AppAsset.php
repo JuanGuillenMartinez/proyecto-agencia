@@ -32,20 +32,20 @@ class AppAsset extends AssetBundle
         'plantilla/css/style-card-paquetes.css'        
     ];
     public $js = [
-        'plantilla/js/jquery.easing.1.3.js',
-        'plantilla/js/jquery.waypoints.min.js',
-        'plantilla/js/sticky.js',
-        'plantilla/js/jquery.stellar.min.js',
-        'plantilla/js/hoverIntent.js',
-        'plantilla/js/superfish.js',
-        'plantilla/js/jquery.magnific-popup.min.js',
-        'plantilla/js/magnific-popup-options.js',
-        'plantilla/js/bootstrap-datepicker.min.js',
-        'plantilla/js/classie.js',
-        'plantilla/js/selectFx.js',
-        'plantilla/js/main.js',
-        '/js/paquete.js',
-        '/js/bs-init.js'
+        //'plantilla/js/jquery.easing.1.3.js',
+        //'plantilla/js/jquery.waypoints.min.js',
+        //'plantilla/js/sticky.js',
+        //'plantilla/js/jquery.stellar.min.js',
+        //'plantilla/js/hoverIntent.js',
+        //'plantilla/js/superfish.js',
+        //'plantilla/js/jquery.magnific-popup.min.js',
+        //'plantilla/js/magnific-popup-options.js',
+        //'plantilla/js/bootstrap-datepicker.min.js',
+        //'plantilla/js/classie.js',
+        //'plantilla/js/selectFx.js',
+        //'plantilla/js/main.js',
+        //'/js/paquete.js',
+        //'/js/bs-init.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
