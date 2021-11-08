@@ -2,17 +2,39 @@
 
 namespace app\controllers;
 
-use yii\helpers\Html;
 use app\models\Paquete;
+use app\models\Vuelo;
+use app\models\Alojamiento;
 
 class PlantillaController extends \yii\web\Controller
 {
     public function actionIndex()
-    {        
-        return $this->render('index');
+    {
+        $paquetesRecientes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
+        $paquetesOfertas = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
     }
-    
-    public function actionPaquetes() {
-        return $this->render("paquetes");
+
+    public function actionModal() {
+        return $this->render("/paquete/modal");
+    }
+
+    public function actionPaquetes()
+    {
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        return $this->render("paquetes", compact("paquete"));
+    }
+
+    public function actionVuelos() {
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $vuelos = Vuelo::find()->all();
+        return $this->render("vuelos", compact("paquete", "vuelos"));
+       
+        
+    }
+
+    public function actionHoteles() {
+        return $this->render("hoteles");
     }
 }

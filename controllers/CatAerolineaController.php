@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
+use Yii;
+use yii\web\Controller;
+use yii\web\UploadedFile;
+use yii\filters\VerbFilter;
 use app\models\CatAerolinea;
 use app\models\CatAerolineaSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CatAerolineaController implements the CRUD actions for CatAerolinea model.
@@ -77,8 +79,17 @@ class CatAerolineaController extends Controller
         $model = new CatAerolinea();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->aer_id]);
+            if ($model->load($this->request->post())) {
+                $image = UploadedFile::getInstance($model, 'img');
+                if (!is_null($image)) {
+                    $tmp = explode('.', $image->name);
+                    $ext = end($tmp);
+                    $model->aer_url = $model->aer_id . '_' . Yii::$app->security->generateRandomString() . ".{$ext}";
+                    $path = Yii::$app->basePath . '/web/img/aerolinea/' . $model->aer_url;
+                    if ($image->saveAs($path) && $model->save()) {
+                        return $this->redirect(['view', 'id' => $model->aer_id]);
+                    }
+                }
             }
         } else {
             $model->loadDefaultValues();

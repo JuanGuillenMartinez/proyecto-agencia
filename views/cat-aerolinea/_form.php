@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use kartik\file\FileInput;
 use kartik\select2\Select2;
 use yii\bootstrap4\ActiveForm;
 
@@ -35,9 +36,21 @@ use yii\bootstrap4\ActiveForm;
         <div class="col-md-4">
             <?= $form->field($model, 'aer_pagina')->textInput(['maxlength' => true]) ?>
         </div>
+        
+        
+
+        <div class="col-md-12">
+            <?= $form->field($model, 'img')->widget(FileInput::className(), [
+                'options'       => ['accept' => 'image/*'],
+                'pluginOptions' => [
+                    'allowedExtensions'    => ['jpg', 'png'],
+                    'initialPreview'       => [$model->url],
+                    'initialPreviewAsData' => true,
+                ],
+            ]); ?>
+        </div>
 
     </div>
-      
     <?php /* $form->field($model, 'aer_tipo')->dropDownList(['regional' => 'Regional', 'red' => 'Red', 'gran escala' => 'Gran escala',  ], ['prompt' => '']) */?>
 
 

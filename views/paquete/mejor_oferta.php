@@ -1,19 +1,9 @@
 <?php
 
-use yii\db\Query;
 use yii\helpers\Html;
-use app\models\Paquete;
-
-$paquete = null;
 
 ?>
-<?php
-$row = (new \yii\db\Query())
-    ->select(['MAX(paq_descuento) as max_descuento'])
-    ->from('paquete')
-    ->one();
-$paquete = Paquete::findOne(['paq_descuento' => $row["max_descuento"]]);
-?>
+
 <div class="fh5co-cover" style="background-image: url(/plantilla/images/fondo.jpg);">
     <div class="desc">
         <div class="container">
