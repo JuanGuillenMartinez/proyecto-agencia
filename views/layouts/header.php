@@ -33,6 +33,8 @@ use webvimark\modules\UserManagement\UserManagementModule;
             ],
             ['label'=>'Login', 'url'=>['/user-management/auth/login'], 'visible' => Yii::$app->user->isGuest],
 			['label'=>'Logout', 'url'=>['/user-management/auth/logout'], 'visible' => !Yii::$app->user->isGuest],
+            ['label'=>'<i class="fas fa-shopping-cart"></i>', 'url'=>['#'], 'visible' => !Yii::$app->user->isGuest],
+            
         ],
     ]);
     NavBar::end();
