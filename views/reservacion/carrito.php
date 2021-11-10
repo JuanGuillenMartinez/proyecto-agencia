@@ -3,7 +3,7 @@
 use yii\bootstrap4\Html;
 
 $precioFinalReservacion = 0;
-$numeroPaquetes = count($paquetesCarrito);
+$numeroPaquetes = count($reservacion->reservacionpaquetes);
 $ahorroTotal = 0;
 
 ?>
@@ -17,10 +17,9 @@ $ahorroTotal = 0;
         </div>
         <div class="cart">
             <div class="products">
-
                 <?php
-                foreach ($paquetesCarrito as $reservacion) { 
-                    $paquete = $reservacion->recpaqFkpaquete; 
+                foreach ($reservacion->reservacionpaquetes as $reservacionPaquete) { 
+                    $paquete = $reservacionPaquete->recpaqFkpaquete; 
                     $precioFinalReservacion += $paquete->getPrecioDescuento();
                     $ahorroTotal += $paquete->getPrecioDescontado();
                     ?>

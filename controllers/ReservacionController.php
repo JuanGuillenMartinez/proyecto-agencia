@@ -2,8 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Persona;
 use app\models\Reservacion;
+use app\models\Reservacionpaquete;
 use app\models\ReservacionSearch;
+use webvimark\modules\UserManagement\models\User;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -115,6 +118,11 @@ class ReservacionController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    public function actionAgregarCarrito() {
+        $idPersona = (Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one())->per_id;
+        $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
+        $reservacionPaquetes = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id])->all();
     }
 
     /**

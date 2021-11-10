@@ -1,23 +1,8 @@
-function mostrarCarrito(idPersona) {
+function agregarCarrito(idPaquete) {
     $.post(
-        "/reservacion/obtenerReservacion",
+        "/reservacion/agregarCarrito",
         {
-            idPersona: idPersona
-        },
-        function (data) {
-            alert(data);
-        }
-    );
-}
-
-function agregarCarrito(id) {
-    $.post(
-        "/paquete/subtotal",
-        {
-            vuelo: vuelo,
-            alo: alo,
-            seg: seg,
-            tras: tras,
+            idPaquete: idPaquete
         },
         function (data) {
             $("#paquete-paq_subtotal").val(data);
