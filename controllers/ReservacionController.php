@@ -2,14 +2,15 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Persona;
-use app\models\Reservacion;
-use app\models\Reservacionpaquete;
-use app\models\ReservacionSearch;
-use webvimark\modules\UserManagement\models\User;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use app\models\Reservacion;
 use yii\filters\VerbFilter;
+use app\models\ReservacionSearch;
+use app\models\Reservacionpaquete;
+use yii\web\NotFoundHttpException;
+use webvimark\modules\UserManagement\models\User;
 
 /**
  * ReservacionController implements the CRUD actions for Reservacion model.
@@ -119,10 +120,22 @@ class ReservacionController extends Controller
 
         return $this->redirect(['index']);
     }
-    public function actionAgregarCarrito() {
+    public function actionAgregar() {
+        $reservacionPaquete = new Reservacionpaquete();
+        $idPaquete = Yii::$app->request->post('idPaquete');
         $idPersona = (Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one())->per_id;
-        $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
-        $reservacionPaquetes = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id])->all();
+        
+        if(isset($idPersona) && isset($idPaquete)) {
+            $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
+            if(isset($reservacion) && $reservacion != null) {
+                $reservacionPaquete->recpaq_fkreservacion = $reservacion->res_id;
+                $reservacionPaquete->recpaq_fkpaquete = $idPaquete;
+                return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
+            } else {
+                $reservacion = null;
+                return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
+            }
+        }
     }
 
     /**

@@ -46,6 +46,7 @@ class PlantillaController extends \yii\web\Controller
     }
     public function actionCarrito() {
         $persona = Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one() ;
+        // $reservacion = $persona->reservacions[0];
         $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
         return $this->render('/reservacion/carrito', compact('reservacion'));
     }

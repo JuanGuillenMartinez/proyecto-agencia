@@ -20,7 +20,6 @@ class ReservacionSearch extends Reservacion
         return [
             [['res_id', 'res_fkpersona'], 'integer'],
             [['res_creacion', 'res_estatus', 'clienteNombre'], 'safe'],
-            [['res_subtotal'], 'number'],
         ];
     }
 
@@ -63,7 +62,6 @@ class ReservacionSearch extends Reservacion
         $query->andFilterWhere([
             'res_id' => $this->res_id,
             'res_creacion' => $this->res_creacion,
-            'res_subtotal' => $this->res_subtotal,
             'res_fkpersona' => $this->res_fkpersona,
         ]);
         $dataProvider->setSort([
@@ -71,7 +69,6 @@ class ReservacionSearch extends Reservacion
                 'res_id',
                 'res_creacion',
                 'res_estatus',
-                'res_subtotal',
                 'clienteNombre' => [
                     'asc' => ['per_nombre' => SORT_ASC],
                     'desc' => ['per_nombre' => SORT_DESC],

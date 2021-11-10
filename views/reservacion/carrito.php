@@ -29,7 +29,7 @@ $ahorroTotal = 0;
                             <h3 class="product-name"><?= $paquete->paq_nombre . ' - ' . $paquete->paqFkvuelo->getVueloDestino() ?></h3>
                             <h4 class="product-price"><?= '$' . $paquete->paq_subtotal ?></h4>
                             <h4 class="product-offer"><?= $paquete->paq_descuento . '%'?></h4>
-                            <p class="product-quantity">Cantidad: <input value="1" name="">
+                            <p class="product-quantity">Cantidad: <input readonly value="1" name="">
                             <p class="product-remove">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                 <span class="remove">Eliminar</span>
@@ -49,7 +49,7 @@ $ahorroTotal = 0;
                 </p>
                 <p>
                     <span>Ahorras</span>
-                    <span><?= $ahorroTotal ?></span>
+                    <span><?='$' . $ahorroTotal ?></span>
                 </p>
                 <a href="#">Pagar</a>
             </div>

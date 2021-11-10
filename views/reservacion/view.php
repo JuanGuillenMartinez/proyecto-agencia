@@ -32,7 +32,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'res_id',
             'res_creacion',
             'res_estatus',
-            'res_subtotal',
             'res_fkpersona',
             'clienteNombre',
         ],

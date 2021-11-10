@@ -1,12 +1,11 @@
 function agregarCarrito(idPaquete) {
     $.post(
-        "/reservacion/agregarCarrito",
+        "/reservacion/agregar",
         {
             idPaquete: idPaquete
         },
         function (data) {
-            $("#paquete-paq_subtotal").val(data);
+            alert(data);
         }
     );
-    alert("Hola" + id);
 }
