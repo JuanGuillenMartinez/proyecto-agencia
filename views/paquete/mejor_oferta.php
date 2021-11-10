@@ -13,8 +13,8 @@ use yii\helpers\Html;
                         <div class="containter">
                             <div>
                                 <div class="card-mejor-oferta">
-                                    <div>
-                                        <?= Html::img("@web/img/paquete/{$paquete->paq_url}", ['class' => 'img-modal animate-box']); ?>
+                                    <div class="div-img-responsive">
+                                        <?= Html::img("@web/img/paquete/{$paquete->paq_url}", ['class' => 'img-modal animate-box img-responsive']); ?>
                                     </div>
                                     <div class="card-body-paquete card-body d-flex flex-column justify-content-between">
                                         <div>
@@ -24,7 +24,8 @@ use yii\helpers\Html;
                                             <span class="descripcion-card">Vuelo <?= $paquete->paqFkvuelo->vue_tipo ?><br>Vuelo con <?= $paquete->paq_descuento ?>% de descuento<br>Traslado incluido<br>
                                             </span>
                                         </div>
-                                        <a class="btn-add btn btn-primary d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" role="button" data-bss-hover-animate="pulse" target="_blank"><i class="fas fa-cart-plus"></i>Agregar al carrito</a>
+                                        <?= Html::button('<i class="fas fa-cart-plus"></i>Agregar al carrito', ['class' => 'btn-add btn btn-primary d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center', 'role' => 'button', 'data-bss-hover-animate' => 'pulse', 'target' => 'blank', 'onclick' => "agregarCarrito({$paquete->paq_id})"]) ?>
+                                        <!-- <a class="btn-add btn btn-primary d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" role="button" data-bss-hover-animate="pulse" target="_blank"><i class="fas fa-cart-plus"></i>Agregar al carrito</a> -->
                                     </div>
                                 </div>
                             </div>

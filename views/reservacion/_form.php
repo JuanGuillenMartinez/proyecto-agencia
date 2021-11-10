@@ -17,11 +17,7 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'res_estatus')->dropDownList(['Pagado' => 'Pagado', 'En cobro' => 'En cobro', 'Cancelado' => 'Cancelado',], ['prompt' => '']) ?>
-        </div>
-
-        <div class="col-md-6">
-            <?= $form->field($model, 'res_subtotal')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'res_estatus')->dropDownList(['Pagado' => 'Pagado', 'En cobro' => 'En cobro', 'Cancelado' => 'Cancelado', 'En carrito' => 'En carrito'], ['prompt' => '']) ?>
         </div>
 
         <div class="col-md-12">

@@ -10,7 +10,8 @@ use Yii;
  * @property int $recpaq_id Id
  * @property int $recpaq_fkreservacion Reservación
  * @property int $recpaq_fkpaquete Paquete
- *
+ * @property string $recpaq_estatus Estatus
+ * 
  * @property Paquete $recpaqFkpaquete
  * @property Reservacion $recpaqFkreservacion
  */
@@ -32,6 +33,7 @@ class Reservacionpaquete extends \yii\db\ActiveRecord
         return [
             [['recpaq_fkreservacion', 'recpaq_fkpaquete'], 'required'],
             [['recpaq_fkreservacion', 'recpaq_fkpaquete'], 'integer'],
+            [['recpaq_estatus'], 'safe'],
             [['recpaq_fkreservacion'], 'exist', 'skipOnError' => true, 'targetClass' => Reservacion::className(), 'targetAttribute' => ['recpaq_fkreservacion' => 'res_id']],
             [['recpaq_fkpaquete'], 'exist', 'skipOnError' => true, 'targetClass' => Paquete::className(), 'targetAttribute' => ['recpaq_fkpaquete' => 'paq_id']],
         ];
@@ -45,6 +47,7 @@ class Reservacionpaquete extends \yii\db\ActiveRecord
         return [
             'recpaq_id' => 'Id',
             'recpaq_fkreservacion' => 'Reservación',
+            'recpaq_estatus' => 'Estatus',
             'recpaq_fkpaquete' => 'Paquete',
         ];
     }

@@ -11,7 +11,6 @@ use yii\helpers\ArrayHelper;
  * @property int $res_id Id
  * @property string $res_creacion Creación
  * @property string $res_estatus Estatus
- * @property float $res_subtotal Subtotal
  * @property int $res_fkpersona Persona
  *
  * @property Pago[] $pagos
@@ -35,9 +34,8 @@ class Reservacion extends \yii\db\ActiveRecord
     {
         return [
             [['res_creacion'], 'safe'],
-            [['res_estatus', 'res_subtotal', 'res_fkpersona'], 'required'],
+            [['res_estatus', 'res_fkpersona'], 'required'],
             [['res_estatus'], 'string'],
-            [['res_subtotal'], 'number'],
             [['res_fkpersona'], 'integer'],
             [['res_fkpersona'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::className(), 'targetAttribute' => ['res_fkpersona' => 'per_id']],
         ];
@@ -52,7 +50,6 @@ class Reservacion extends \yii\db\ActiveRecord
             'res_id' => 'Id',
             'res_creacion' => 'Creación',
             'res_estatus' => 'Estatus',
-            'res_subtotal' => 'Subtotal',
             'res_fkpersona' => 'Cliente',
             'clienteNombre' => 'Nombre del cliente'
         ];

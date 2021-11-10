@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'res_creacion',
             'res_estatus',
-            'res_subtotal',
             'clienteNombre',
 
             ['class' => 'yii\grid\ActionColumn'],

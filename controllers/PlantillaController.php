@@ -4,6 +4,10 @@ namespace app\controllers;
 
 use app\models\Vuelo;
 use app\models\Paquete;
+use app\models\Alojamiento;
+use app\models\Persona;
+use app\models\Reservacion;
+use app\models\Reservacionpaquete;
 use webvimark\modules\UserManagement\models\User;
 
 class PlantillaController extends \yii\web\Controller
@@ -16,9 +20,12 @@ class PlantillaController extends \yii\web\Controller
         $user = new User();
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user"));
 
+        $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
     }
 
-    public function actionModal() {
+    public function actionModal()
+    {
         return $this->render("/paquete/modal");
     }
 
@@ -28,16 +35,24 @@ class PlantillaController extends \yii\web\Controller
         return $this->render("paquetes", compact("paquete"));
     }
 
-    public function actionVuelos() {
+    public function actionVuelos()
+    {
         $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
         $vuelos = Vuelo::find()->all();
         return $this->render("vuelos", compact("paquete", "vuelos"));
-       
-        
     }
 
-    public function actionHoteles() {
-        return $this->render("hoteles");
+    public function actionHoteles()
+    {
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $hoteles = Alojamiento::find()->all();
+        return $this->render("hoteles", compact("paquete", "hoteles"));
+    }
+    public function actionCarrito() {
+        $persona = Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one() ;
+        // $reservacion = $persona->reservacions[0];
+        $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
+        return $this->render('/reservacion/carrito', compact('reservacion'));
     }
 
     public function actionLogin() {

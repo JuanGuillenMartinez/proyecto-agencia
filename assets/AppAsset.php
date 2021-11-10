@@ -33,6 +33,7 @@ class AppAsset extends AssetBundle
         'css/package-card.css',
         'css/vuelos.css',
         'css/modal-login.css',
+        'css/carrito.css'
 
     ];
     public $js = [
@@ -52,7 +53,8 @@ class AppAsset extends AssetBundle
         '/js/bs-init.js',
         '/js/modal-paquete.js',
         '/js/bootbox.all.min.js',
-        'https://kit.fontawesome.com/d9a399c640.js'
+        'https://kit.fontawesome.com/d9a399c640.js',
+        'js/paquete-view.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

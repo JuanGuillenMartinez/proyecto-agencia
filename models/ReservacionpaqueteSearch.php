@@ -18,6 +18,9 @@ class ReservacionpaqueteSearch extends Reservacionpaquete
     {
         return [
             [['recpaq_id', 'recpaq_fkreservacion', 'recpaq_fkpaquete'], 'integer'],
+            [['recpaq_estatus'], 'safe'],
+
+            
         ];
     }
 
@@ -55,12 +58,20 @@ class ReservacionpaqueteSearch extends Reservacionpaquete
             return $dataProvider;
         }
 
+        $dataProvider->setSort([
+            'attributes' => [
+                'res_estatus',
+            ]
+        ]);
+
         // grid filtering conditions
         $query->andFilterWhere([
             'recpaq_id' => $this->recpaq_id,
             'recpaq_fkreservacion' => $this->recpaq_fkreservacion,
             'recpaq_fkpaquete' => $this->recpaq_fkpaquete,
         ]);
+
+        $query->andFilterWhere(['like', 'recpaq_estatus', $this->recpaq_estatus]);
 
         return $dataProvider;
     }

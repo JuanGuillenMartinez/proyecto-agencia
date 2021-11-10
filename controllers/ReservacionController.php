@@ -2,11 +2,15 @@
 
 namespace app\controllers;
 
-use app\models\Reservacion;
-use app\models\ReservacionSearch;
+use Yii;
+use app\models\Persona;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use app\models\Reservacion;
 use yii\filters\VerbFilter;
+use app\models\ReservacionSearch;
+use app\models\Reservacionpaquete;
+use yii\web\NotFoundHttpException;
+use webvimark\modules\UserManagement\models\User;
 
 /**
  * ReservacionController implements the CRUD actions for Reservacion model.
@@ -115,6 +119,36 @@ class ReservacionController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    public function actionAgregar() {
+        $idPaquete = Yii::$app->request->post('idPaquete');
+        $idPersona = (Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one())->per_id;
+        
+        if(isset($idPersona) && isset($idPaquete)) {
+            $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
+            if(isset($reservacion) && $reservacion != null) {
+                $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
+                return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
+            } else {
+                $reservacion = new Reservacion();
+                $reservacion->res_creacion = date("Y-m-d H:i:s");
+                $reservacion->res_estatus = "En carrito";
+                $reservacion->res_fkpersona = $idPersona;
+                if($reservacion->save()) {
+                    $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
+                    $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
+                    return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
+                }
+            }
+        }
+    }
+
+    protected function llenarPaqueteReservacion($reservacion, $idPaquete) {
+        $reservacionPaquete = new Reservacionpaquete();
+        $reservacionPaquete->recpaq_fkreservacion = $reservacion->res_id;
+        $reservacionPaquete->recpaq_fkpaquete = $idPaquete;
+        $reservacionPaquete->recpaq_estatus = "Seleccionado";
+        return $reservacionPaquete;
     }
 
     /**
