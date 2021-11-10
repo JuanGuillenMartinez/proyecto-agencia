@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\Paquete;
 use app\models\Vuelo;
-use app\models\Alojamiento;
+use app\models\Paquete;
+use webvimark\modules\UserManagement\models\User;
 
 class PlantillaController extends \yii\web\Controller
 {
@@ -13,7 +13,9 @@ class PlantillaController extends \yii\web\Controller
         $paquetesRecientes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
         $paquetesOfertas = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
         $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
-        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
+        $user = new User();
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user"));
+
     }
 
     public function actionModal() {
@@ -36,5 +38,9 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionHoteles() {
         return $this->render("hoteles");
+    }
+
+    public function actionLogin() {
+        return $this->render("login");
     }
 }

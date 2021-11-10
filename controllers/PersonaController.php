@@ -135,7 +135,7 @@ class PersonaController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionRegistrarPersona(){
+    public function actionRegistrar(){
         $persona = new Persona();
         $user = new User();
         if ($this->request->isPost && $persona->load($this->request->post()) && $user->load($this->request->post())) {
@@ -154,4 +154,25 @@ class PersonaController extends Controller
 
         return $this->render('registrar', compact('persona', 'user'));      
     }
+
+   /* public function actionRegistrarPersona(){
+        $persona = new Persona();
+        $user = new User();
+        if ($this->request->isPost && $persona->load($this->request->post()) && $user->load($this->request->post())) {
+            $image = UploadedFile::getInstance($persona, 'img');
+            if(!is_null($image)){
+                $ext = end((explode('.', $image->name)));
+                $persona->per_url = $persona->per_fkuser.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
+                $path = Yii::$app->basePath.'/web/img/persona/' . $persona->per_url;
+                if($image->saveAs($path) && $user->save(false)){
+                    User::assignRole($user->id, "Cliente");
+                    $persona->per_fkuser = $user->id;
+                    $persona->save();
+                    return $this->redirect(['view', 'id' => $persona->per_id]);                }
+            }
+        }
+
+        return $this->render('registrar', compact('persona', 'user'));      
+    }*/
+
 }
