@@ -121,21 +121,34 @@ class ReservacionController extends Controller
         return $this->redirect(['index']);
     }
     public function actionAgregar() {
-        $reservacionPaquete = new Reservacionpaquete();
         $idPaquete = Yii::$app->request->post('idPaquete');
         $idPersona = (Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one())->per_id;
         
         if(isset($idPersona) && isset($idPaquete)) {
             $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
             if(isset($reservacion) && $reservacion != null) {
-                $reservacionPaquete->recpaq_fkreservacion = $reservacion->res_id;
-                $reservacionPaquete->recpaq_fkpaquete = $idPaquete;
+                $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
                 return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
             } else {
-                $reservacion = null;
-                return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
+                $reservacion = new Reservacion();
+                $reservacion->res_creacion = date("Y-m-d H:i:s");
+                $reservacion->res_estatus = "En carrito";
+                $reservacion->res_fkpersona = $idPersona;
+                if($reservacion->save()) {
+                    $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
+                    $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
+                    return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
+                }
             }
         }
+    }
+
+    protected function llenarPaqueteReservacion($reservacion, $idPaquete) {
+        $reservacionPaquete = new Reservacionpaquete();
+        $reservacionPaquete->recpaq_fkreservacion = $reservacion->res_id;
+        $reservacionPaquete->recpaq_fkpaquete = $idPaquete;
+        $reservacionPaquete->recpaq_estatus = "Seleccionado";
+        return $reservacionPaquete;
     }
 
     /**

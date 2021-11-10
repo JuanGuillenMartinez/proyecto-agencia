@@ -34,7 +34,7 @@ class Reservacion extends \yii\db\ActiveRecord
     {
         return [
             [['res_creacion'], 'safe'],
-            [['res_estatus', 'res_subtotal', 'res_fkpersona'], 'required'],
+            [['res_estatus', 'res_fkpersona'], 'required'],
             [['res_estatus'], 'string'],
             [['res_fkpersona'], 'integer'],
             [['res_fkpersona'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::className(), 'targetAttribute' => ['res_fkpersona' => 'per_id']],

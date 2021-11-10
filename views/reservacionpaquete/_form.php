@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'recpaq_estatus')->dropDownList(['Seleccionado' => 'Seleccionado', 'Descartado' => 'Descartado'], ['prompt' => '']) ?>
+
     <?= $form->field($model, 'recpaq_fkreservacion')->textInput() ?>
 
     <?= $form->field($model, 'recpaq_fkpaquete')->textInput() ?>

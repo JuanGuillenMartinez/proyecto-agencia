@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'recpaq_id',
+            'recpaq_estatus',
             'recpaq_fkreservacion',
             'recpaq_fkpaquete',
 
