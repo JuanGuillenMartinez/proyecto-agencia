@@ -4,9 +4,10 @@ namespace app\controllers;
 
 use app\models\Vuelo;
 use app\models\Paquete;
-use app\models\Alojamiento;
 use app\models\Persona;
+use app\models\Alojamiento;
 use app\models\Reservacion;
+use app\models\Reservacionpaquete;
 use webvimark\modules\UserManagement\models\User;
 
 class PlantillaController extends \yii\web\Controller
