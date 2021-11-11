@@ -32,6 +32,7 @@ class AppAsset extends AssetBundle
         'plantilla/css/style-card-paquetes.css',
         'css/package-card.css',
         'css/vuelos.css',
+        'css/modal-login.css',
         'css/carrito.css'
 
     ];

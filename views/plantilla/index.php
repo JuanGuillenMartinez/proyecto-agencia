@@ -12,6 +12,19 @@
             <?= $this->render("/paquete/ofertas", compact("paquetesOfertas")); ?>
         </div>
 
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Login</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <?=$this->render("/persona/login", compact("user", "persona"))?>
+      </div>
+    </div>
+  </div>
+</div>
+
         <div id="fh5co-features">
             <div class="container">
                 <div class="row">
