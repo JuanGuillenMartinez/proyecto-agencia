@@ -1,4 +1,8 @@
-<?php use yii\bootstrap4\ActiveForm; ?>
+<?php 
+use yii\bootstrap4\ActiveForm; 
+use yii\bootstrap4\Html;
+?>
+
 <div class="body-login">
 <div class="login-wrap">
 	<div class="login-html">
@@ -28,7 +32,7 @@
 					</div>
 				<?php ActiveForm::end(); ?>
 			</div>
-			<div class="sign-up-htm">
+			<div class="sign-up-htm" style="overflow-y: auto; height:320px;">
 			<?php $form = ActiveForm::begin(['action' => ["/persona/registrar"], 'options' => ['enctype' => 'multipart/form-data']]); ?>
 				<div class="group">
 					<?= $form->field($user, 'username')->textInput(['maxlength' => true])->label("Nombre de usuario")?>
@@ -40,40 +44,41 @@
 					<?= $form->field($user, 'confirmation_token')->textInput(['maxlength' => true])->label("Repetir contraseña")?>
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Correo electrónico</label>
-					<?/*= $form->field($user, 'email')->textInput(['maxlength' => true]) */?>
+					<!--<label for="pass" class="label">Correo electrónico</label> -->
+					<?= $form->field($user, 'email')->textInput(['maxlength' => true])->label("Correo")?>
 				</div>
                 <div class="group">
-					<label for="pass" class="label">Nombre</label>
-					<?/*= $form->field($persona, 'per_nombre')->textInput(['maxlength' => true]) */?>
+					<!--<label for="pass" class="label">Nombre</label>-->
+					<?= $form->field($persona, 'per_nombre')->textInput(['maxlength' => true])->label("Nombre")?>
 				</div>
                 <div class="group">
-					<label for="pass" class="label">Apellido paterno</label>
-					<?/*= $form->field($persona, 'per_paterno')->textInput(['maxlength' => true])*/ ?>
+					<!--<label for="pass" class="label">Apellido paterno</label>-->
+					<?= $form->field($persona, 'per_paterno')->textInput(['maxlength' => true])->label("Apellido paterno")?>
 				</div>
                 <div class="group">
-					<label for="pass" class="label">Apellido materno</label>
-					<?/*= $form->field($persona, 'per_materno')->textInput(['maxlength' => true]) */?>
+					<!--<label for="pass" class="label">Apellido materno</label>-->
+					<?= $form->field($persona, 'per_materno')->textInput(['maxlength' => true])->label("Apellido materno")?>
 				</div>
                 <div class="group">
-					<label for="pass" class="label">Fecha de nacimiento</label>
-					<?/*= $form->field($persona, 'per_nacimiento')->textInput(['maxlength' => true]) */?>
+					<!--<label for="pass" class="label">Fecha de nacimiento</label>-->
+					<?= $form->field($persona, 'per_nacimiento')->textInput(['maxlength' => true])->label("Fecha de nacimiento")?>
 				</div>
                 <div class="group">
-					<label for="pass" class="label">Dirección</label>
-					<?/*= $form->field($persona, 'per_direccion')->textInput(['maxlength' => true]) */?>
+					<!--<label for="pass" class="label">Dirección</label>-->
+					<?= $form->field($persona, 'per_direccion')->textInput(['maxlength' => true])->label("Dirección")?>
 				</div>
                 <div class="group">
-					<label for="pass" class="label">Teléfono</label>
-					<?/*= $form->field($persona, 'per_telefono')->textInput(['maxlength' => true]) */?>
+					<!--<label for="pass" class="label">Teléfono</label>-->
+					<?= $form->field($persona, 'per_telefono')->textInput(['maxlength' => true])->label("Teléfono")?>
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="Registrar">
-				</div>
-				<div class="hr"></div>
-				<div class="foot-lnk">
-					<label for="tab-1">¿Ya tienes una cuenta?</a>
-				</div>
+				<!--<input type="submit" class="button" value="Registrar">-->
+				<?= Html::submitButton('Registrar', ['class' => 'btn btn-success']) ?>
+			</div>
+			<div class="hr"></div>
+			<div class="foot-lnk">
+				<label for="tab-1">¿Ya tienes una cuenta?</a>
+			</div>
 				<?php ActiveForm::end(); ?>
 			</div>
 		</div>

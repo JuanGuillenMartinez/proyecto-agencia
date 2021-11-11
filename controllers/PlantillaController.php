@@ -7,7 +7,6 @@ use app\models\Paquete;
 use app\models\Alojamiento;
 use app\models\Persona;
 use app\models\Reservacion;
-use app\models\Reservacionpaquete;
 use webvimark\modules\UserManagement\models\User;
 
 class PlantillaController extends \yii\web\Controller
@@ -18,7 +17,8 @@ class PlantillaController extends \yii\web\Controller
         $paquetesOfertas = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
         $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
         $user = new User();
-        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user"));
+        $persona = new Persona();
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona"));
 
         $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
