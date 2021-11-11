@@ -20,9 +20,6 @@ class PlantillaController extends \yii\web\Controller
         $user = new User();
         $persona = new Persona();
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona"));
-
-        $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
-        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
     }
 
     public function actionModal()
@@ -49,15 +46,19 @@ class PlantillaController extends \yii\web\Controller
         $hoteles = Alojamiento::find()->all();
         return $this->render("hoteles", compact("paquete", "hoteles"));
     }
-    public function actionCarrito() {
-        $persona = Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one() ;
-        // $reservacion = $persona->reservacions[0];
+    public function actionCarrito()
+    {
+        $paquetesReservacion = null;
+        $persona = Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one();
         $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
-        $paquetesReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all();
+        if (isset($reservacion)) {
+            $paquetesReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all();
+        }
         return $this->render('/reservacion/carrito', compact('paquetesReservacion'));
     }
 
-    public function actionLogin() {
+    public function actionLogin()
+    {
         return $this->render("login");
     }
 }
