@@ -3,7 +3,7 @@
 use yii\bootstrap4\Html;
 
 $precioFinalReservacion = 0;
-$numeroPaquetes = count($reservacion->reservacionpaquetes);
+$numeroPaquetes = count($paquetesReservacion);
 $ahorroTotal = 0;
 
 ?>
@@ -18,22 +18,25 @@ $ahorroTotal = 0;
         <div class="cart">
             <div class="products">
                 <?php
-                foreach ($reservacion->reservacionpaquetes as $reservacionPaquete) { 
+                foreach ($paquetesReservacion as $reservacionPaquete) { 
                     $paquete = $reservacionPaquete->recpaqFkpaquete; 
                     $precioFinalReservacion += $paquete->getPrecioDescuento();
                     $ahorroTotal += $paquete->getPrecioDescontado();
                     ?>
                     <div class="product">
-                        <?= Html::img("@web/img/paquete/" . $paquete->paq_url) ?>
+                        <div class="div-product-cart">
+                            <?= Html::img("@web/img/paquete/" . $paquete->paq_url, ['class' => 'img-product-cart']) ?>
+                        </div>
                         <div class="product-info">
                             <h3 class="product-name"><?= $paquete->paq_nombre . ' - ' . $paquete->paqFkvuelo->getVueloDestino() ?></h3>
-                            <h4 class="product-price"><?= '$' . $paquete->paq_subtotal ?></h4>
-                            <h4 class="product-offer"><?= $paquete->paq_descuento . '%'?></h4>
+                            <h4 class="product-price"><span><?= ' Llevatelo por tan solo $' . $paquete->getPrecioDescuento() ?></span><span class="span-precio"><?= '$' . $paquete->paq_subtotal ?></span></h4>
+                            
+                            <h4 class="product-offer"><?= $paquete->paq_descuento . '% de descuento!'?></h4>
                             <p class="product-quantity">Cantidad: <input readonly value="1" name="">
-                            <p class="product-remove">
+                            <button class="product-remove" onclick="eliminarPaqueteCarrito(<?= $reservacionPaquete->recpaq_id ?>)">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                 <span class="remove">Eliminar</span>
-                            </p>
+                            </button>
                         </div>
                     </div>
                 <?php } ?>

@@ -143,6 +143,19 @@ class ReservacionController extends Controller
         }
     }
 
+    public function actionEliminar() {
+        $idPaqueteReservacion = Yii::$app->request->post('idPaqueteReservacion');
+        $idPersona = (Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one())->per_id;
+        if(isset($idPersona) && isset($idPaqueteReservacion)) {
+            $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
+            if(isset($reservacion) && $reservacion != null) {
+                $paqueteReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_id' => $idPaqueteReservacion])->one();
+                $paqueteReservacion->recpaq_estatus = "Descartado";
+                return ($paqueteReservacion->save()) ? 'Producto eliminado del carrito exitosamente' : 'Algo salio mal';
+            }
+        }
+    }
+
     protected function llenarPaqueteReservacion($reservacion, $idPaquete) {
         $reservacionPaquete = new Reservacionpaquete();
         $reservacionPaquete->recpaq_fkreservacion = $reservacion->res_id;
