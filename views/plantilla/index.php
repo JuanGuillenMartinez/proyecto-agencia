@@ -19,7 +19,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <?=$this->render("/persona/login", compact("user", "persona"))?>
+        <?=$this->render("/persona/login", compact("user", "persona", "login"))?>
       </div>
     </div>
   </div>

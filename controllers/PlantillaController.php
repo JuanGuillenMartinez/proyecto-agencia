@@ -4,10 +4,11 @@ namespace app\controllers;
 
 use app\models\Vuelo;
 use app\models\Paquete;
-use app\models\Alojamiento;
 use app\models\Persona;
+use app\models\Alojamiento;
 use app\models\Reservacion;
 use webvimark\modules\UserManagement\models\User;
+use webvimark\modules\UserManagement\models\forms\LoginForm;
 
 class PlantillaController extends \yii\web\Controller
 {
@@ -18,7 +19,8 @@ class PlantillaController extends \yii\web\Controller
         $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
         $user = new User();
         $persona = new Persona();
-        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona"));
+        $login = new LoginForm();
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona", "login"));
 
         $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
