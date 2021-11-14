@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 ?>
 
-<div class="fh5co-cover" style="background-image: url(/plantilla/images/fondo.jpg);">
+<div class="fh5co-cover" style="background-image: url(/img/fondo.jpg);">
     <div class="desc">
         <div class="container">
             <div class="row">

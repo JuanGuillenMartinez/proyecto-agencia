@@ -9,3 +9,15 @@ function agregarCarrito(idPaquete) {
         }
     );
 }
+function eliminarPaqueteCarrito(idPaqueteReservacion) {
+    $.post(
+        "/reservacion/eliminar",
+        {
+            idPaqueteReservacion: idPaqueteReservacion
+        },
+        function (data) {
+            alert(data);
+            window.location.reload();
+        }
+    );
+}
