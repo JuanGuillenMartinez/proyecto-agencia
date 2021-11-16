@@ -1,9 +1,5 @@
 <?php
-
-use app\models\Paquete;
-use yii\bootstrap4\Html as Bootstrap4Html;
 use yii\helpers\Html;
-
 ?>
 <?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
 

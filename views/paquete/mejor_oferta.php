@@ -36,7 +36,10 @@ use yii\helpers\Html;
                     <h2>Oferta exclusiva</h2>
                     <h3>Vuelo de <?= $paquete->paqFkvuelo->vueFkaeroorigen->aeroFkubicacion->ubi_capital ?> hasta  <?= $paquete->paqFkvuelo->vueFkaerodestino->aeroFkubicacion->ubi_capital ?></h3>
                     <span class="price">&#36;<?= $paquete->getSubtotalDescuento() ?> MXN</span>
-                    <p><a class="btn btn-primary btn-lg" href="#">Conocer más</a></p>
+                    <p>
+                        <?= Html::a('Conocer más', ['/plantilla/paquete?id=' . $paquete->paq_id], ['class' => 'btn btn-primary btn-lg']) ?>
+                        <!-- <a class="btn btn-primary btn-lg" href="#">Conocer más</a> -->
+                    </p>
                 </div>
             </div>
         </div>
