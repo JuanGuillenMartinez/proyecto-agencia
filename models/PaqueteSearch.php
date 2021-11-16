@@ -24,7 +24,7 @@ class PaqueteSearch extends Paquete
     {
         return [
             [['paq_id', 'paq_descuento', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'numeroHabitacion', 'precioTraslado'], 'integer'],
-            [['paq_nombre', 'paq_url', 'tipoVuelo', 'destinoVuelo', 'origenVuelo', 'nombre', 'nombreSeguro'], 'safe'],
+            [['paq_nombre', 'paq_url', 'tipoVuelo', 'destinoVuelo', 'origenVuelo', 'nombre', 'nombreSeguro', 'paq_descripcion'], 'safe'],
             [['paq_subtotal'], 'number'],
         ];
     }
@@ -50,12 +50,12 @@ class PaqueteSearch extends Paquete
         $query = Paquete::find();
 
         // add conditions that should always apply here
-            $query->joinWith('paqFkseguro');
-            $query->joinWith('paqFkvuelo');
-            $query->joinWith('paqFkalojamiento');
-            $query->joinWith('paqFktraslado');
-            $query->joinWith(['paqFkvuelo.vueFkaerodestino']);
-            $query->joinWith(['paqFkvuelo.vueFkaeroorigen']);
+        $query->joinWith('paqFkseguro');
+        $query->joinWith('paqFkvuelo');
+        $query->joinWith('paqFkalojamiento');
+        $query->joinWith('paqFktraslado');
+        $query->joinWith(['paqFkvuelo.vueFkaerodestino']);
+        $query->joinWith(['paqFkvuelo.vueFkaeroorigen']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -65,6 +65,7 @@ class PaqueteSearch extends Paquete
             'attributes' => [
                 'paq_id',
                 'paq_nombre',
+                'paq_descripcion',
                 'paq_descuento',
                 'paq_subtotal',
                 'paq_url',
@@ -122,6 +123,7 @@ class PaqueteSearch extends Paquete
         ]);
 
         $query->andFilterWhere(['like', 'paq_nombre', $this->paq_nombre])
+            ->andFilterWhere(['like', 'paq_descripcion', $this->paq_descripcion])
             ->andFilterWhere(['like', 'paq_url', $this->paq_url])
             ->andFilterWhere(['like', 'vue_tipo', $this->tipoVuelo])
             ->andFilterWhere(['like', 'aero_nombre', $this->destinoVuelo])

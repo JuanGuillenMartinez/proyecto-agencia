@@ -20,6 +20,9 @@ use yii\widgets\ActiveForm;
         <div class="col-md-12">
             <?= $form->field($model, 'paq_nombre')->textInput(['maxlength' => true]) ?>
         </div>
+        <div class="col-md-12">
+            <?= $form->field($model, 'paq_descripcion')->textInput(['maxlength' => true]) ?>
+        </div>
         <div class="col-md-3">
             <?= $form->field($model, 'paq_descuento')->textInput(['maxlength' => true]) ?>
         </div>

@@ -45,13 +45,9 @@ use yii\helpers\Html;
                 <h1 class="title-descripcion-paquete"><?= $paquete->paq_nombre ?></h1>
                 <h2 class="precio-descripcion-paquete"><?= '$' . $paquete->paq_subtotal ?></h2>
                 <div class="description">
-                    <p class="p-descripcion-paquete">The purposes of bonsai are primarily contemplation for the viewer, and the pleasant exercise of effort and
-                        ingenuity for the grower.</p>
-                    <p class="p-descripcion-paquete">By contrast with other plant cultivation practices, bonsai is not intended for production of food or for
-                        medicine. Instead, bonsai practice focuses on long-term cultivation and shaping of one or more small trees
-                        growing in a container.</p>
+                    <p class="p-descripcion-paquete"><?= $paquete->paq_descripcion ?></p>
                 </div>
-                <?= Html::button(' Añadir al carro', ['class' => 'add-to-cart', 'id' => 'button-add']) ?>
+                <?= Html::button(' Añadir al carro', ['class' => 'add-to-cart', 'id' => 'button-add', 'onclick' => "agregarCarrito({$paquete->paq_id})"]) ?>
             </div>
         </div>
     </div>

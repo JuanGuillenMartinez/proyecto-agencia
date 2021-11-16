@@ -70,7 +70,9 @@ use yii\helpers\Html;
                                         <span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
                                     </span>
                                     <span class="post-read-more"><a class="a-add"><i class="fas fa-cart-plus" onclick="agregarCarrito(<?= $paquete->paq_id ?>)" title="Agregar"></i></a></span>
-                                    <span class="post-read-more" style="margin-right: 12px;"><a class="a-add" onclick="mostrarPaquete(<?= $paquete->paq_id ?>)" title="Mostrar"><i class="far fa-eye"></i></a></span>
+                                    <span class="post-read-more" style="margin-right: 12px;">
+                                    <?= Html::a('<i class="far fa-eye"></i>', ["/plantilla/paquete?id={$paquete->paq_id}"], ['class' => 'a-add']) ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
