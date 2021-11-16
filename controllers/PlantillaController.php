@@ -9,6 +9,7 @@ use app\models\Alojamiento;
 use app\models\Reservacion;
 use app\models\Reservacionpaquete;
 use webvimark\modules\UserManagement\models\User;
+use webvimark\modules\UserManagement\models\forms\LoginForm;
 
 class PlantillaController extends \yii\web\Controller
 {
@@ -19,7 +20,15 @@ class PlantillaController extends \yii\web\Controller
         $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
         $user = new User();
         $persona = new Persona();
+<<<<<<< HEAD
+        $login = new LoginForm();
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona", "login"));
+
+        $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
+=======
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona"));
+>>>>>>> 779985d2c5e5b6db5c8bde4cd529fa4ecc693ef3
     }
 
     public function actionModal()

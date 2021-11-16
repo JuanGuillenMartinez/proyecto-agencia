@@ -13,11 +13,11 @@ use yii\bootstrap4\Html;
 				<?php $form = ActiveForm::begin(['action' => ["/user-management/auth/login"], 'options' => ['enctype' => 'multipart/form-data']]); ?>
 					<div class="group">
 						<!--<label for="user" class="label">Nombre de usuario</label> -->
-						<?= $form->field($user, 'username')->textInput(['maxlength' => true])->label("Nombre de usuario")?>
+						<?= $form->field($login, 'username')->textInput(['maxlength' => true])->label("Nombre de usuario")?>
 					</div>
 					<div class="group">
 						<!--<label for="pass" class="label">Contraseña</label> -->
-						<?= $form->field($user, 'password_hash')->textInput(['maxlength' => true])->label("Contraseña")?>
+						<?= $form->field($login, 'password')->textInput(['maxlength' => true])->label("Contraseña")?>
 					</div>
 					<div class="group">
 						<input id="check" type="checkbox" class="check" checked> 
@@ -25,6 +25,7 @@ use yii\bootstrap4\Html;
 					</div>
 					<div class="group">
 						<input type="submit" class="button" value="Entrar">
+
 					</div>
 					<div class="hr"></div>
 					<div class="foot-lnk">
@@ -77,8 +78,8 @@ use yii\bootstrap4\Html;
 			</div>
 			<div class="hr"></div>
 			<div class="foot-lnk">
-				<label for="tab-1">¿Ya tienes una cuenta?</a>
-			</div>
+				<label for="tab-1"><a>¿Ya tienes una cuenta?</a>
+			</div>	
 				<?php ActiveForm::end(); ?>
 			</div>
 		</div>
