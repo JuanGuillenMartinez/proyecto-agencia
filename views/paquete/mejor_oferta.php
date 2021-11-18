@@ -19,7 +19,7 @@ use yii\helpers\Html;
                                     <div class="card-body-paquete card-body d-flex flex-column justify-content-between">
                                         <div>
                                             <h6 class="precio-card d-inline mb-2">
-                                                <?= $paquete->paq_subtotal ?> a&nbsp; <?= $paquete->getSubtotalDescuento()?></h6>
+                                            <?= "De $" . $paquete->paq_subtotal . " a $" . $paquete->getPrecioDescuento() ?></h6>
                                             <h4 class="titulo-card"><?= $paquete->paqFkvuelo->getVueloInfo() ?></h4>
                                             <span class="descripcion-card">Vuelo <?= $paquete->paqFkvuelo->vue_tipo ?><br>Vuelo con <?= $paquete->paq_descuento ?>% de descuento<br>Traslado incluido<br>
                                             </span>

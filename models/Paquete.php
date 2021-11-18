@@ -223,5 +223,17 @@ class Paquete extends \yii\db\ActiveRecord
     public function getSubtotalDescuento() {
         return $this->paq_subtotal - (($this->paq_subtotal * $this->paq_descuento) / 100);
     }
-    
+
+    public function getPaisOrigen() {
+        return $this->paqFkvuelo->vueFkaeroorigen->aeroFkubicacion->ubiFkpais->pai_pais;
+    }
+    public function getPaisDestino() {
+        return $this->paqFkvuelo->vueFkaerodestino->aeroFkubicacion->ubiFkpais->pai_pais;
+    }
+    public function getAlojamientoNombre() {
+        return $this->paqFkalojamiento->alo_nombre;
+    }
+    public function getAerolineaNombre() {
+        return $this->paqFkvuelo->vueFkaerolinea->aer_nombre;
+    }
 }

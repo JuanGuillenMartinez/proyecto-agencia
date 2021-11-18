@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 ?>
 <?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
@@ -61,17 +62,13 @@ use yii\helpers\Html;
                                 </div>
                             </div>
                             <div class="metafooter">
+                                <div class="wrapfooter" style="bottom: 13%;">
+                                    <h6 class="precio-card d-inline mb-2" style="padding-bottom: 4px;margin-left: 0;padding-right: 12px;"><?= "De $" . $paquete->paq_subtotal . " a $" . $paquete->getPrecioDescuento() ?></h6>
+                                </div>
                                 <div class="wrapfooter">
-                                    <span class="meta-footer-thumb">
-                                        <a href="author.html"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal"></a>
-                                    </span>
-                                    <span class="author-meta">
-                                        <span class="post-name"><a href="author.html">Sal</a></span><br />
-                                        <span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
-                                    </span>
                                     <span class="post-read-more"><a class="a-add"><i class="fas fa-cart-plus" onclick="agregarCarrito(<?= $paquete->paq_id ?>)" title="Agregar"></i></a></span>
                                     <span class="post-read-more" style="margin-right: 12px;">
-                                    <?= Html::a('<i class="far fa-eye"></i>', ["/plantilla/paquete?id={$paquete->paq_id}"], ['class' => 'a-add']) ?>
+                                        <?= Html::a('<i class="far fa-eye"></i>', ["/plantilla/paquete?id={$paquete->paq_id}"], ['class' => 'a-add']) ?>
                                     </span>
                                 </div>
                             </div>
