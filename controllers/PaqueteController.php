@@ -204,10 +204,6 @@ class PaqueteController extends Controller
         }
         return ['output'=>'', 'selected'=>''];
     }
-    public function actionModal($id) {
-        $model = Paquete::findOne(['paq_id' => $id]);
-        return $this->renderAjax("modal", compact('model'));
-    }
     /**
      * Finds the Paquete model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
