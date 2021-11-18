@@ -128,11 +128,12 @@
     transform-origin: 0 50%;
     transition: transform 0.3s ease-out;
 }
-.container {
+.container-mostrar {
     margin: auto;
     padding: 0 1rem;
     max-width: 75rem;
     width: 100%;
+    padding-top: 2%;
 }
 .grid > [class*="column-"] {
     padding: 1rem;
@@ -165,7 +166,7 @@
     height: 280px;
 }
 .contenedor-informacion-paquete {
-    margin-top: 24px;
+    margin-top: 5%;
     margin-bottom: 5%;
 }
 .banner-descripcion-paquete {

@@ -76,10 +76,10 @@
 
 .product-remove {
     position: absolute;
-    bottom: 10px;
+    bottom: 12px;
     right: 20px;
     padding: 10px 25px;
-    background-color: green;
+    background-color: #514747;
     color: white;
     cursor: pointer;
     border-radius: 5px;

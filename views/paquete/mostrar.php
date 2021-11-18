@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 ?>
-<div class="container">
+<div class="container-mostrar">
     <div class="grid second-nav">
         <div class="column-xs-12">
             <nav>
