@@ -74,15 +74,26 @@
     float: right;
 }
 
-.product-remove {
+.product-remove, .product-show {
     position: absolute;
-    bottom: 10px;
+    bottom: 12px;
     right: 20px;
     padding: 10px 25px;
-    background-color: green;
+    background-color: #514747;
     color: white;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.product-show {
+    background-color: green;
+}
+
+.product-show:hover {
+    background-color: white;
+    color: green;
+    font-weight: 600;
+    border: 1px solid green;
 }
 
 .product-remove:hover {

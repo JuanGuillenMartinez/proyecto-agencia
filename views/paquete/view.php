@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'paq_id',
             'paq_nombre',
+            'paq_descripcion',
             'paq_descuento',
             'paq_subtotal',
             [

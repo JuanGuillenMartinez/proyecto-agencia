@@ -63,6 +63,10 @@ class PlantillaController extends \yii\web\Controller
         }
         return $this->render('/reservacion/carrito', compact('paquetesReservacion'));
     }
+    public function actionPaquete($id) {
+        $paquete = Paquete::find()->where(['paq_id' => $id])->one();
+        return $this->render("/paquete/mostrar", compact('paquete'));
+    }
 
     public function actionLogin()
     {

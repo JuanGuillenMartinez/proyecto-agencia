@@ -1,4 +1,4 @@
-function agregarCarrito(idPaquete) {
+function agregarCarrito(cantidad = 1, idPaquete) {
     $.post(
         "/reservacion/agregar",
         {

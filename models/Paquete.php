@@ -41,7 +41,7 @@ class Paquete extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['img', 'paq_url'], 'safe'],
+            [['img', 'paq_url', 'paq_descripcion'], 'safe'],
             [['paq_nombre', 'paq_url', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'paq_subtotal'], 'required'],
             [['img'], 'file', 'extensions'      => 'jpg, png'],
             [['img'], 'file', 'maxSize'         => '1000000'],
@@ -64,6 +64,7 @@ class Paquete extends \yii\db\ActiveRecord
         return [
             'paq_id' => 'Id',
             'paq_nombre' => 'Nombre',
+            'paq_descripcion' => 'Descripción',
             'paq_descuento' => 'Descuento',
             'paq_subtotal' => 'Subtotal',
             'paq_url' => 'Imagen',
@@ -222,5 +223,17 @@ class Paquete extends \yii\db\ActiveRecord
     public function getSubtotalDescuento() {
         return $this->paq_subtotal - (($this->paq_subtotal * $this->paq_descuento) / 100);
     }
-    
+
+    public function getPaisOrigen() {
+        return $this->paqFkvuelo->vueFkaeroorigen->aeroFkubicacion->ubiFkpais->pai_pais;
+    }
+    public function getPaisDestino() {
+        return $this->paqFkvuelo->vueFkaerodestino->aeroFkubicacion->ubiFkpais->pai_pais;
+    }
+    public function getAlojamientoNombre() {
+        return $this->paqFkalojamiento->alo_nombre;
+    }
+    public function getAerolineaNombre() {
+        return $this->paqFkvuelo->vueFkaerolinea->aer_nombre;
+    }
 }
