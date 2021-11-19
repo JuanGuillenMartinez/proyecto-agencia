@@ -38,7 +38,7 @@ $ahorroTotal = 0;
                                         <p class="product-quantity">Cantidad: <input readonly value="1" name=""></p>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="/plantilla/paquete?id=<?= $paquete->paq_id ?>"><button class="product-remove" style="background-color: green;">
+                                        <a href="/plantilla/paquete?id=<?= $paquete->paq_id ?>"><button class="product-show">
                                             <i class="far fa-eye"></i>
                                             <span class="remove">Ver</span>
                                         </button></a>
