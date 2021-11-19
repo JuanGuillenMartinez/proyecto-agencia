@@ -52,7 +52,7 @@ class PlantillaController extends \yii\web\Controller
         if (isset($reservacion)) {
             $paquetesReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all();
         }
-        return $this->render('/reservacion/carrito', compact('paquetesReservacion'));
+        return $this->render('/reservacion/carrito', compact('reservacion', 'paquetesReservacion'));
     }
     public function actionPaquete($id) {
         $paquete = Paquete::find()->where(['paq_id' => $id])->one();

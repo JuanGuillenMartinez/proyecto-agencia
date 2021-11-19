@@ -190,7 +190,7 @@ class Paquete extends \yii\db\ActiveRecord
         return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
     public function getPrecioDescontado() {
-        return ($this->paq_subtotal * $this->paq_descuento)/100;
+        return ($this->paq_subtotal * $this->paq_descuento)/100.0;
     }
     public function getPrecioDescuento() {
         return $this->paq_subtotal - $this->getPrecioDescontado();

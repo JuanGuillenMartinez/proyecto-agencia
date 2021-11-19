@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+setlocale(LC_MONETARY, 'en_US.UTF-8');
+
 ?>
 <?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
 
@@ -63,7 +65,7 @@ use yii\helpers\Html;
                             </div>
                             <div class="metafooter">
                                 <div class="wrapfooter" style="bottom: 13%;">
-                                    <h6 class="precio-card d-inline mb-2" style="padding-bottom: 4px;margin-left: 0;padding-right: 12px;"><?= "De $" . $paquete->paq_subtotal . " a $" . $paquete->getPrecioDescuento() ?></h6>
+                                    <h6 class="precio-card d-inline mb-2" style="padding-bottom: 4px;margin-left: 0;padding-right: 12px;"><?= "De $" . number_format($paquete->paq_subtotal, 2, '.', ',') . " a " . money_format('%1.2n', $paquete->getPrecioDescuento()) ?></h6>
                                 </div>
                                 <div class="wrapfooter">
                                     <span class="post-read-more"><a class="a-add"><i class="fas fa-cart-plus" onclick="agregarCarrito(<?= $paquete->paq_id ?>)" title="Agregar"></i></a></span>
