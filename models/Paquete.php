@@ -244,4 +244,8 @@ class Paquete extends \yii\db\ActiveRecord
     public function getAerolineaNombre() {
         return $this->paqFkvuelo->vueFkaerolinea->aer_nombre;
     }
+    public static function getPaquetes() {
+        $paquetes = Paquete::find()->all();
+        return isset($paquetes) ? $paquetes : [];
+    }
 }

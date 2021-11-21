@@ -6,6 +6,7 @@ use app\models\Vuelo;
 use app\models\Paquete;
 use app\models\Persona;
 use app\models\Alojamiento;
+use app\models\CatSeguro;
 use app\models\Reservacion;
 use app\models\Reservacionpaquete;
 use webvimark\modules\UserManagement\models\User;
@@ -62,5 +63,11 @@ class PlantillaController extends \yii\web\Controller
     public function actionLogin()
     {
         return $this->render("login");
+    }
+    public function actionSeguros() {
+        $paquetes = Paquete::getPaquetes();
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $seguros = CatSeguro::find()->all();
+        return $this->render('seguros', compact('paquete', 'seguros', 'paquetes'));
     }
 }
