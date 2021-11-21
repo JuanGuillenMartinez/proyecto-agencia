@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+
 ?>
 <div class="container-mostrar">
     <div class="grid second-nav">
@@ -45,7 +46,10 @@ use yii\helpers\Html;
         <div class="col-md-6">
             <div class="">
                 <h1 class="title-descripcion-paquete"><?= $paquete->paq_nombre ?></h1>
-                <h2 class="precio-descripcion-paquete"><?= '$' . $paquete->paq_subtotal ?></h2>
+                <div class="div-precios-paquete row"> 
+                    <h2 class="precio-descripcion-paquete col-md-6"><?= $paquete->getFormatedSubtotal() ?></h2>
+                    <h2 class="precio-final-paquete col-md-6"><?= $paquete->getFormatedPrecioDescuento() ?></h2>
+                </div>
                 <div class="description">
                     <p class="p-descripcion-paquete"><?= $paquete->paq_descripcion ?></p>
                 </div>
@@ -95,7 +99,7 @@ use yii\helpers\Html;
                         <div class="elemento-informacion-paquete row">
                             <div class="icono-informacion-paquete col-md-3"><i class="fas fa-money-bill-wave"></i></div>
                             <div class="descripcion-elemento-informacion col-md-9">
-                                <p><?= "De $" . $paquete->paq_subtotal . " a $" . $paquete->getPrecioDescuento() . " pesos, con un increíble " . $paquete->paq_descuento . "% de descuento" ?></p>
+                                <p><?= "De " . $paquete->getFormatedSubtotal() . " a " . $paquete->getFormatedPrecioDescuento() . " pesos, con un increíble " . $paquete->paq_descuento . "% de descuento" ?></p>
                             </div>
                         </div>
 

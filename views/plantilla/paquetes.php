@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-setlocale(LC_MONETARY, 'en_US.UTF-8');
 
 ?>
 <?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
@@ -16,10 +15,10 @@ setlocale(LC_MONETARY, 'en_US.UTF-8');
         </div>
 
         <section class="recent-posts section-paquetes">
-            <div class="card-columns listrecent row">
+            <div class="card-columns listrecent">
                 <?php
                 foreach ($paquetes as $paquete) { ?>
-                    <div class="card col-md-4">
+                    <div class="card">
                         <a href="post.html">
                             <div class="container-image-paquete row justify-content-center">
                                 <?= Html::img("@web/img/paquete/" . $paquete->paq_url, ['class' => 'img-paquete img-fluid']) ?>
@@ -65,7 +64,7 @@ setlocale(LC_MONETARY, 'en_US.UTF-8');
                             </div>
                             <div class="metafooter">
                                 <div class="wrapfooter" style="bottom: 13%;">
-                                    <h6 class="precio-card d-inline mb-2" style="padding-bottom: 4px;margin-left: 0;padding-right: 12px;"><?= "De $" . number_format($paquete->paq_subtotal, 2, '.', ',') . " a " . money_format('%1.2n', $paquete->getPrecioDescuento()) ?></h6>
+                                    <h6 class="precio-card d-inline mb-2" style="padding-bottom: 4px;margin-left: 0;padding-right: 12px;"><?= "De " . $paquete->getFormatedSubtotal() . " a " . $paquete->getFormatedPrecioDescuento() ?></h6>
                                 </div>
                                 <div class="wrapfooter">
                                     <span class="post-read-more"><a class="a-add"><i class="fas fa-cart-plus" onclick="agregarCarrito(<?= $paquete->paq_id ?>)" title="Agregar"></i></a></span>

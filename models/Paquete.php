@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+setlocale(LC_MONETARY, 'en_US.UTF-8');
 
 /**
  * This is the model class for table "paquete".
@@ -26,6 +27,7 @@ use yii\helpers\ArrayHelper;
  */
 class Paquete extends \yii\db\ActiveRecord
 {
+    
     public $img;
     /**
      * {@inheritdoc}
@@ -194,6 +196,12 @@ class Paquete extends \yii\db\ActiveRecord
     }
     public function getPrecioDescuento() {
         return $this->paq_subtotal - $this->getPrecioDescontado();
+    }
+    public function getFormatedSubtotal() {
+        return money_format('%1.2n', $this->paq_subtotal);
+    }
+    public function getFormatedPrecioDescuento() {
+        return money_format('%1.2n', $this->getPrecioDescuento());
     }
     public static function alojamiento($vueloId)
     {
