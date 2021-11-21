@@ -27,6 +27,9 @@ use yii\helpers\ArrayHelper;
  */
 class Vuelo extends \yii\db\ActiveRecord
 {
+    public $ciudadOrigen;
+    public $ciudadDestino;
+
     /**
      * {@inheritdoc}
      */
@@ -67,14 +70,19 @@ class Vuelo extends \yii\db\ActiveRecord
             'vue_precio' => 'Precio',
             'vue_estatus' => 'Estatus',
             'vue_fkaerolinea' => 'Aerolínea',
-            'aerolineaNombre' => 'Aerolinea',
+            'aerolineaNombre' => 'Aerolínea',
             'vue_fkaeroorigen' => 'Origen',
             'origenVuelo' => 'Origen',
             'vue_fkaerodestino' => 'Destino',
             'destinoVuelo' => 'Destino',
             'aerolineaNombre' => 'Aerolínea',
             'vueOrigen' => 'Aeropuerto de Origen',
-            'vueDestino' => 'Aeropuerto de Destino'
+            'vueDestino' => 'Aeropuerto de Destino',
+            'origen' => 'Aeropuerto de Origen',
+            'destino' => 'Aeropuerto de Destino',
+            'ciudadOrigen' => 'Ciudad de Origen',
+            'ciudadDestino' => 'Ciudad de Destino',
+            
         ];
     }
 
@@ -117,6 +125,22 @@ class Vuelo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(CatAeropuerto::className(), ['aero_id' => 'vue_fkaeroorigen']);
     }
+    public function getVueFkciudadorigen()
+    { 
+        return $this->hasOne(CatUbicacion::className(), ['ubi_id' => 'aero_fkubicacion'])
+        ->viaTable('cat_aeropuerto aeroori', ['aero_id' => 'vue_fkaeroorigen']);
+    }
+    public function getVueFkciudaddestino()
+    {
+        return $this->hasOne(CatUbicacion::className(), ['ubi_id' => 'aero_fkubicacion'])
+        ->viaTable('cat_aeropuerto aerodes', ['aero_id' => 'vue_fkaerodestino']);
+    }
+    public function getVueFkpaisdestino()
+    {
+        return $this->hasOne(CatPais::className(), ['pai_id' => 'ubi_fkpais'])
+        ->viaTable('cat_aeropuerto aerodes', ['aero_id' => 'vue_fkaerodestino'])
+        ->viaTable('cat_ubicacion ubides', ['ubi_id' => 'ubi_fkpais']);
+    }
     public function getAerolineaNombre()
     {
         return $this->vueFkaerolinea->aer_nombre;
@@ -141,9 +165,13 @@ class Vuelo extends \yii\db\ActiveRecord
     {
         return $this->vueFkaerodestino->aero_nombre;
     }
-    public function getVueloDestino()
+    public function getVueloDestino1()
     {
         return $this->vueFkaerodestino->aeroFkubicacion->ubi_capital . ', ' . $this->vueFkaerodestino->aeroFkubicacion->ubiFkpais->pai_pais;
+    }
+    public function getVueloDestino()
+    {
+        return $this->vueFkciudaddestino->ubi_capital . ', ' . $this->vueFkciudaddestino->ubiFkpais->pai_pais;
     }
     public static function mapTipo(){
         return ['Directo' => 'Directo', 'Escala' => 'Escala'];
