@@ -23,6 +23,15 @@ class PlantillaController extends \yii\web\Controller
         $persona = new Persona();
         $login = new LoginForm();
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona", "login"));
+
+        $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
+        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona"));
+    }
+
+    public function actionModal()
+    {
+        return $this->render("/paquete/modal");
     }
 
     public function actionPaquetes()
