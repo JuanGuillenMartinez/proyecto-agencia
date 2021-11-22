@@ -16,17 +16,13 @@ class PlantillaController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $paquetesRecientes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
-        $paquetesOfertas = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquetesRecientes = Paquete::getPaquetesRecientes();
+        $paquetesOfertas = Paquete::getOfertas();
+        $paquete = Paquete::getMejorOferta();
         $user = new User();
         $persona = new Persona();
         $login = new LoginForm();
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona", "login"));
-
-        $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
-        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes"));
-        return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona"));
     }
 
     public function actionModal()
@@ -36,14 +32,14 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionPaquetes()
     {
-        $paquetes = Paquete::find()->all();
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquetes = Paquete::getPaquetes();
+        $paquete = Paquete::getMejorOferta();
         return $this->render("paquetes", compact("paquete", "paquetes"));
     }
 
     public function actionVuelos()
     {
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquete = Paquete::getMejorOferta();
         $vuelos = Vuelo::find();
         $params = $this->request->queryParams;
         if (isset($params['Vuelo']['ciudadOrigen']) && trim($params['Vuelo']['ciudadOrigen']) != '') {
@@ -65,7 +61,7 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionHoteles()
     {
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquete = Paquete::getMejorOferta();
         $hoteles = Alojamiento::find()->all();
         return $this->render("hoteles", compact("paquete", "hoteles"));
     }
@@ -91,7 +87,7 @@ class PlantillaController extends \yii\web\Controller
     }
     public function actionSeguros() {
         $paquetes = Paquete::getPaquetes();
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquete = Paquete::getMejorOferta();
         $seguros = CatSeguro::find()->all();
         return $this->render('seguros', compact('paquete', 'seguros', 'paquetes'));
     }
