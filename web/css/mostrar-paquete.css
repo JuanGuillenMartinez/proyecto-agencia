@@ -33,9 +33,12 @@
     margin: 1.75rem 0 1rem 0;
 }
 .title-descripcion-paquete {
+    margin-bottom: 0;
     font-size: 2.5rem;
 }
 .precio-descripcion-paquete {
+    text-decoration: line-through;
+    color: #53514e;
     font-size: 2.125rem;
     margin: 0;
 }
@@ -190,4 +193,13 @@
 }
 .img-vista-paquete, .div-image {
     overflow: hidden;
+}
+.div-precios-paquete {
+    align-items: baseline;
+}
+.precio-final-paquete {
+    color: black;
+    font-size: 48px;
+    padding: 0;
+    margin: 0;
 }

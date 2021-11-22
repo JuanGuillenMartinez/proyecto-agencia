@@ -3,7 +3,7 @@
 use yii\bootstrap4\Html;
 
 $precioFinalReservacion = 0;
-$numeroPaquetes = isset($paquetesReservacion) ? count($paquetesReservacion) : 0;
+$numeroPaquetes = 0;
 $ahorroTotal = 0;
 
 ?>
@@ -21,8 +21,10 @@ $ahorroTotal = 0;
                 if (isset($paquetesReservacion)) {
                     foreach ($paquetesReservacion as $reservacionPaquete) {
                         $paquete = $reservacionPaquete->recpaqFkpaquete;
-                        $precioFinalReservacion += $paquete->getPrecioDescuento();
-                        $ahorroTotal += $paquete->getPrecioDescontado();
+
+                        $numeroPaquetes += $reservacionPaquete->recpaq_cantidad;
+                        $precioFinalReservacion += $reservacionPaquete->getSubtotalGrupoPaquetes();
+                        $ahorroTotal += $reservacionPaquete->getDescuentoGrupoPaquetes();
                 ?>
                         <div class="product">
                             <div class="div-product-cart">
@@ -35,7 +37,7 @@ $ahorroTotal = 0;
                                 <h4 class="product-offer"><?= $paquete->paq_descuento . '% de descuento!' ?></h4>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <p class="product-quantity">Cantidad: <input readonly value="1" name=""></p>
+                                        <p class="product-quantity">Cantidad: <input readonly value="<?= $reservacionPaquete->recpaq_cantidad ?>" name=""></p>
                                     </div>
                                     <div class="col-md-4">
                                         <a href="/plantilla/paquete?id=<?= $paquete->paq_id ?>"><button class="product-show">
@@ -71,7 +73,14 @@ $ahorroTotal = 0;
                     <span>Ahorras</span>
                     <span><?= '$' . $ahorroTotal ?></span>
                 </p>
-                <a href="#">Pagar</a>
+                
+                <?php
+                    if(isset($reservacion)) {
+                        echo Html::button('Pagar', ['onclick' => "validarReservacion(1, {$reservacion->res_id})"]);
+                    } else {
+                        echo Html::button('Pagar', ['']);
+                    }
+                ?>
             </div>
         </div>
     </div>

@@ -74,7 +74,7 @@ class ReservacionController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $model->res_creacion = date('Y-m-d h:i:s', time()); 
+                $model->res_creacion = date('Y-m-d h:i:s', time());
                 $model->save();
                 return $this->redirect(['view', 'id' => $model->res_id]);
             }
@@ -120,21 +120,21 @@ class ReservacionController extends Controller
 
         return $this->redirect(['index']);
     }
-    public function actionAgregar() {
+    public function actionAgregar()
+    {
         $idPaquete = Yii::$app->request->post('idPaquete');
         $idPersona = (Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one())->per_id;
-        
-        if(isset($idPersona) && isset($idPaquete)) {
+        if (isset($idPersona) && isset($idPaquete)) {
             $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
-            if(isset($reservacion) && $reservacion != null) {
+            if (isset($reservacion) && $reservacion != null) {
                 $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
                 return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
-            } else {
+            } else if($reservacion == null) {
                 $reservacion = new Reservacion();
                 $reservacion->res_creacion = date("Y-m-d H:i:s");
                 $reservacion->res_estatus = "En carrito";
                 $reservacion->res_fkpersona = $idPersona;
-                if($reservacion->save()) {
+                if ($reservacion->save()) {
                     $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
                     $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
                     return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
@@ -143,25 +143,53 @@ class ReservacionController extends Controller
         }
     }
 
-    public function actionEliminar() {
+    public function actionEliminar()
+    {
         $idPaqueteReservacion = Yii::$app->request->post('idPaqueteReservacion');
         $idPersona = (Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one())->per_id;
-        if(isset($idPersona) && isset($idPaqueteReservacion)) {
+        if (isset($idPersona) && isset($idPaqueteReservacion)) {
             $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
-            if(isset($reservacion) && $reservacion != null) {
+            if (isset($reservacion) && $reservacion != null) {
                 $paqueteReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_id' => $idPaqueteReservacion])->one();
                 $paqueteReservacion->recpaq_estatus = "Descartado";
-                return ($paqueteReservacion->save()) ? 'Producto eliminado del carrito exitosamente' : 'Algo salio mal';
+                return ($paqueteReservacion->save()) ? 'Producto eliminado del carrito exitosamente' : 'Algo salió mal';
             }
         }
     }
 
-    protected function llenarPaqueteReservacion($reservacion, $idPaquete) {
-        $reservacionPaquete = new Reservacionpaquete();
-        $reservacionPaquete->recpaq_fkreservacion = $reservacion->res_id;
-        $reservacionPaquete->recpaq_fkpaquete = $idPaquete;
-        $reservacionPaquete->recpaq_estatus = "Seleccionado";
+    protected function llenarPaqueteReservacion($reservacion, $idPaquete)
+    {
+        $reservacionPaquete = Reservacionpaquete::find()->where(["recpaq_fkreservacion" => $reservacion->res_id, "recpaq_fkpaquete" => $idPaquete])->one();
+        if(!isset($reservacionPaquete)) {
+            $reservacionPaquete = new Reservacionpaquete();
+            $reservacionPaquete->recpaq_fkreservacion = $reservacion->res_id;
+            $reservacionPaquete->recpaq_fkpaquete = $idPaquete;
+            $reservacionPaquete->recpaq_cantidad = 1;
+            $reservacionPaquete->recpaq_estatus = "Seleccionado";
+        } else {
+            $reservacionPaquete->recpaq_cantidad++;
+        }
+        
         return $reservacionPaquete;
+    }
+
+    public function actionPagado()
+    {
+        //estatus aceptados = 1: Pagado, 2: En cobro, 3: Cancelado, 4: En carrito
+        $idReservacion = Yii::$app->request->post('idReservacion');
+        $estatus = intval(Yii::$app->request->post('estatus'));
+        $persona = Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one();
+        if (isset($idReservacion) && $estatus != 4) {
+            if ($estatus == 1) {
+                $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
+                $reservacion->res_estatus = 'Pagado';
+                return ($reservacion->save()) ? 'Reservación pagada exitosamente' : 'Algo salió mal';
+            } else if ($estatus == 2) {
+            } else if ($estatus == 3) {
+            }
+        } else {
+            return "No hay reservaciones para pagar";
+        }
     }
 
     /**

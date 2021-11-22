@@ -19,8 +19,8 @@ use yii\helpers\Html;
                                     <div class="card-body-paquete card-body d-flex flex-column justify-content-between">
                                         <div>
                                             <h6 class="precio-card d-inline mb-2">
-                                            <?= "De $" . $paquete->paq_subtotal . " a $" . $paquete->getPrecioDescuento() ?></h6>
-                                            <h4 class="titulo-card"><?= $paquete->paqFkvuelo->getVueloInfo() ?></h4>
+                                            <?= "De " . $paquete->getFormatedSubtotal() . " a " . $paquete->getFormatedPrecioDescuento() ?></h6>
+                                            <h4 class="titulo-card"><?= $paquete->paqFkvuelo !== null ? $paquete->paqFkvuelo->getVueloInfo() : "No hay vuelos registrados" ?></h4>
                                             <span class="descripcion-card">Vuelo <?= $paquete->paqFkvuelo->vue_tipo ?><br>Vuelo con <?= $paquete->paq_descuento ?>% de descuento<br>Traslado incluido<br>
                                             </span>
                                         </div>
@@ -35,7 +35,7 @@ use yii\helpers\Html;
                 <div class="div-mejor-oferta col-md-6 desc2 animate-box">
                     <h2>Oferta exclusiva</h2>
                     <h3>Vuelo de <?= $paquete->paqFkvuelo->vueFkaeroorigen->aeroFkubicacion->ubi_capital ?> hasta  <?= $paquete->paqFkvuelo->vueFkaerodestino->aeroFkubicacion->ubi_capital ?></h3>
-                    <span class="price">&#36;<?= $paquete->getSubtotalDescuento() ?> MXN</span>
+                    <span class="price"><?= $paquete->getFormatedPrecioDescuento() ?> MXN</span>
                     <p>
                         <?= Html::a('Conocer más', ['/plantilla/paquete?id=' . $paquete->paq_id], ['class' => 'btn btn-primary btn-lg']) ?>
                         <!-- <a class="btn btn-primary btn-lg" href="#">Conocer más</a> -->
