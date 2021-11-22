@@ -20,7 +20,7 @@ use yii\helpers\Html;
                                         <div>
                                             <h6 class="precio-card d-inline mb-2">
                                             <?= "De " . $paquete->getFormatedSubtotal() . " a " . $paquete->getFormatedPrecioDescuento() ?></h6>
-                                            <h4 class="titulo-card"><?= $paquete->paqFkvuelo->getVueloInfo() ?></h4>
+                                            <h4 class="titulo-card"><?= $paquete->paqFkvuelo !== null ? $paquete->paqFkvuelo->getVueloInfo() : "No hay vuelos registrados" ?></h4>
                                             <span class="descripcion-card">Vuelo <?= $paquete->paqFkvuelo->vue_tipo ?><br>Vuelo con <?= $paquete->paq_descuento ?>% de descuento<br>Traslado incluido<br>
                                             </span>
                                         </div>
