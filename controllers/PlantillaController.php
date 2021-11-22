@@ -6,6 +6,7 @@ use app\models\Vuelo;
 use app\models\Paquete;
 use app\models\Persona;
 use app\models\Alojamiento;
+use app\models\CatSeguro;
 use app\models\Reservacion;
 use app\models\Reservacionpaquete;
 use webvimark\modules\UserManagement\models\User;
@@ -15,25 +16,30 @@ class PlantillaController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $paquetesRecientes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
-        $paquetesOfertas = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquetesRecientes = Paquete::getPaquetesRecientes();
+        $paquetesOfertas = Paquete::getOfertas();
+        $paquete = Paquete::getMejorOferta();
         $user = new User();
         $persona = new Persona();
         $login = new LoginForm();
         return $this->render('index', compact("paquete", "paquetesOfertas", "paquetesRecientes", "user", "persona", "login"));
     }
 
+    public function actionModal()
+    {
+        return $this->render("/paquete/modal");
+    }
+
     public function actionPaquetes()
     {
-        $paquetes = Paquete::find()->all();
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquetes = Paquete::getPaquetes();
+        $paquete = Paquete::getMejorOferta();
         return $this->render("paquetes", compact("paquete", "paquetes"));
     }
 
     public function actionVuelos()
     {
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquete = Paquete::getMejorOferta();
         $vuelos = Vuelo::find();
         $params = $this->request->queryParams;
         if (isset($params['Vuelo']['ciudadOrigen']) && trim($params['Vuelo']['ciudadOrigen']) != '') {
@@ -55,7 +61,7 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionHoteles()
     {
-        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $paquete = Paquete::getMejorOferta();
         $hoteles = Alojamiento::find();
         $params = $this->request->queryParams;
         if (isset($params['Alojamiento']['aloDestino']) && trim($params['Alojamiento']['aloDestino']) != '') {
@@ -66,6 +72,7 @@ class PlantillaController extends \yii\web\Controller
         $model = new Alojamiento();
         $model->aloDestino = isset($params['Alojamiento']['aloDestino']) ? trim($params['Alojamiento']['aloDestino']) : '';
         return $this->render("hoteles", compact("paquete", "hoteles", "model"));
+
     }
     public function actionCarrito()
     {
@@ -75,7 +82,7 @@ class PlantillaController extends \yii\web\Controller
         if (isset($reservacion)) {
             $paquetesReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all();
         }
-        return $this->render('/reservacion/carrito', compact('paquetesReservacion'));
+        return $this->render('/reservacion/carrito', compact('reservacion', 'paquetesReservacion'));
     }
     public function actionPaquete($id)
     {
@@ -86,5 +93,11 @@ class PlantillaController extends \yii\web\Controller
     public function actionLogin()
     {
         return $this->render("login");
+    }
+    public function actionSeguros() {
+        $paquetes = Paquete::getPaquetes();
+        $paquete = Paquete::getMejorOferta();
+        $seguros = CatSeguro::find()->all();
+        return $this->render('seguros', compact('paquete', 'seguros', 'paquetes'));
     }
 }

@@ -55,7 +55,8 @@ class AppAsset extends AssetBundle
         '/js/modal-paquete.js',
         '/js/bootbox.all.min.js',
         'https://kit.fontawesome.com/d9a399c640.js',
-        'js/paquete-view.js'
+        'js/paquete-view.js',
+        'js/carrito.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

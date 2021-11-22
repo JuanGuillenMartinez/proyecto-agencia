@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
@@ -26,6 +25,7 @@ use yii\helpers\ArrayHelper;
  */
 class Paquete extends \yii\db\ActiveRecord
 {
+    
     public $img;
     /**
      * {@inheritdoc}
@@ -190,10 +190,16 @@ class Paquete extends \yii\db\ActiveRecord
         return Html::img($this->url, ['width' => '160', 'height' => '120']);
     }
     public function getPrecioDescontado() {
-        return ($this->paq_subtotal * $this->paq_descuento)/100;
+        return ($this->paq_subtotal * $this->paq_descuento)/100.0;
     }
     public function getPrecioDescuento() {
         return $this->paq_subtotal - $this->getPrecioDescontado();
+    }
+    public function getFormatedSubtotal() {
+        return "$" . number_format($this->paq_subtotal, 2,'.', ',');
+    }
+    public function getFormatedPrecioDescuento() {
+        return "$" . number_format($this->getPrecioDescuento(), 2,'.', ',');
     }
     public static function alojamiento($vueloId)
     {
@@ -235,5 +241,21 @@ class Paquete extends \yii\db\ActiveRecord
     }
     public function getAerolineaNombre() {
         return $this->paqFkvuelo->vueFkaerolinea->aer_nombre;
+    }
+    public static function getPaquetes() {
+        $paquetes = Paquete::find()->all();
+        return isset($paquetes) ? $paquetes : [];
+    }
+    public static function getPaquetesRecientes() {
+        $paquetesRecientes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
+        return isset($paquetesRecientes) ? $paquetesRecientes : [];
+    }
+    public static function getOfertas() {
+        $paquetesOfertas = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
+        return isset($paquetesOfertas) ? $paquetesOfertas : [];
+    }
+    public static function getMejorOferta() {
+        $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
+        return isset($paquete) ? $paquete : new Paquete();
     }
 }

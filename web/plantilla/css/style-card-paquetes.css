@@ -4,9 +4,6 @@ Copyright:WowThemes.net,https://www.wowthemes.net
 Version:1.0.1
 License: https://www.wowthemes.net/freebies-license/
 */
-.body-paquetes {
-	padding-top:5rem;
-}
 .mainheading {
 	padding:1rem 0rem;
 }
@@ -54,7 +51,7 @@ License: https://www.wowthemes.net/freebies-license/
 .card-columns .card {
 	/* box-shadow: none; */
     margin: 0;
-	padding-top: 12px;
+	padding: 12px;
 	height: 625px;
 	margin-bottom:20px;
 }
@@ -82,7 +79,10 @@ License: https://www.wowthemes.net/freebies-license/
 }
 .listrecent {
 	/* flex-wrap: nowrap; */
-	column-gap: 0;
+	column-gap: 12px;
+	display: grid;
+	grid-template-columns: auto auto auto;
+	align-items: center;
 }
 .listfeaturedtag h2.card-title,.listrecent h2.card-title {
     text-align: center;

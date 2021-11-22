@@ -75,6 +75,7 @@
 }
 
 .product-remove, .product-show {
+    border-style: hidden;
     position: absolute;
     bottom: 12px;
     right: 20px;
@@ -129,7 +130,9 @@
     font-size: 20px;
 }
 
-.cart-total a {
+.cart-total button {
+    width: 100%;
+    border-style: hidden;
     display: block;
     text-align: center;
     height: 40px;
@@ -139,7 +142,7 @@
     text-decoration: none;
 }
 
-.cart-total a:hover {
+.cart-total button:hover {
     background-color: red;
 }
 

@@ -32,7 +32,7 @@ class Reservacionpaquete extends \yii\db\ActiveRecord
     {
         return [
             [['recpaq_fkreservacion', 'recpaq_fkpaquete'], 'required'],
-            [['recpaq_fkreservacion', 'recpaq_fkpaquete'], 'integer'],
+            [['recpaq_fkreservacion', 'recpaq_fkpaquete', 'recpaq_cantidad'], 'integer'],
             [['recpaq_estatus'], 'safe'],
             [['recpaq_fkreservacion'], 'exist', 'skipOnError' => true, 'targetClass' => Reservacion::className(), 'targetAttribute' => ['recpaq_fkreservacion' => 'res_id']],
             [['recpaq_fkpaquete'], 'exist', 'skipOnError' => true, 'targetClass' => Paquete::className(), 'targetAttribute' => ['recpaq_fkpaquete' => 'paq_id']],
@@ -49,6 +49,7 @@ class Reservacionpaquete extends \yii\db\ActiveRecord
             'recpaq_fkreservacion' => 'Reservación',
             'recpaq_estatus' => 'Estatus',
             'recpaq_fkpaquete' => 'Paquete',
+            'recpaq_cantidad' => 'Cantidad'
         ];
     }
 
@@ -70,5 +71,11 @@ class Reservacionpaquete extends \yii\db\ActiveRecord
     public function getRecpaqFkreservacion()
     {
         return $this->hasOne(Reservacion::className(), ['res_id' => 'recpaq_fkreservacion']);
+    }
+    public function getSubtotalGrupoPaquetes() {
+        return $this->recpaqFkpaquete->getPrecioDescuento() * $this->recpaq_cantidad;
+    }
+    public function getDescuentoGrupoPaquetes() {
+        return $this->recpaqFkpaquete->getPrecioDescontado() * $this->recpaq_cantidad;
     }
 }
