@@ -2,10 +2,8 @@
 
 namespace app\models;
 
-use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-setlocale(LC_MONETARY, 'en_US.UTF-8');
 
 /**
  * This is the model class for table "paquete".
@@ -198,10 +196,10 @@ class Paquete extends \yii\db\ActiveRecord
         return $this->paq_subtotal - $this->getPrecioDescontado();
     }
     public function getFormatedSubtotal() {
-        return money_format('%1.2n', $this->paq_subtotal);
+        return "$" . number_format($this->paq_subtotal, 2,'.', ',');
     }
     public function getFormatedPrecioDescuento() {
-        return money_format('%1.2n', $this->getPrecioDescuento());
+        return "$" . number_format($this->getPrecioDescuento(), 2,'.', ',');
     }
     public static function alojamiento($vueloId)
     {
@@ -258,6 +256,6 @@ class Paquete extends \yii\db\ActiveRecord
     }
     public static function getMejorOferta() {
         $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
-        return isset($paquete) ? $paquete : null;
+        return isset($paquete) ? $paquete : new Paquete();
     }
 }
