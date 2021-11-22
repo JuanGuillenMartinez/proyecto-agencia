@@ -18,6 +18,28 @@ use yii\helpers\Html;
     </div>
 </div>
 
+<div class="col-sm-5 col-md-5">
+    <div class="tabulation animate-box">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Busca tu hotel ideal</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="flights">
+                <div class="row">
+                    <?= $this->render('_searchH', ['model' => $model]) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="body-vuelo">
     <div class="all-container">
 

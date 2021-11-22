@@ -43,13 +43,13 @@ class PlantillaController extends \yii\web\Controller
         $vuelos = Vuelo::find();
         $params = $this->request->queryParams;
         if (isset($params['Vuelo']['ciudadOrigen']) && trim($params['Vuelo']['ciudadOrigen']) != '') {
-            $vuelos = $vuelos->leftJoin('cat_aeropuerto aeroori', 'aeroori.aero_id = vue_fkaeroorigen')-> leftJoin ('cat_ubicacion ori', 'ori.ubi_id = aeroori.aero_fkubicacion');
-           // $vuelos = $vuelos->joinWith('vueFkciudadorigen');
+            $vuelos = $vuelos->leftJoin('cat_aeropuerto aeroori', 'aeroori.aero_id = vue_fkaeroorigen')->leftJoin('cat_ubicacion ori', 'ori.ubi_id = aeroori.aero_fkubicacion');
+            // $vuelos = $vuelos->joinWith('vueFkciudadorigen');
             $vuelos = $vuelos->where(['like', 'ori.ubi_capital', trim($params['Vuelo']['ciudadOrigen'])]);
         }
         if (isset($params['Vuelo']['ciudadDestino']) && trim($params['Vuelo']['ciudadDestino']) != '') {
-            $vuelos = $vuelos->leftJoin('cat_aeropuerto aerodes', 'aerodes.aero_id = vue_fkaerodestino')-> leftJoin ('cat_ubicacion des', 'des.ubi_id = aerodes.aero_fkubicacion');
-           // $vuelos = $vuelos->joinWith('vueFkciudaddestino');
+            $vuelos = $vuelos->leftJoin('cat_aeropuerto aerodes', 'aerodes.aero_id = vue_fkaerodestino')->leftJoin('cat_ubicacion des', 'des.ubi_id = aerodes.aero_fkubicacion');
+            // $vuelos = $vuelos->joinWith('vueFkciudaddestino');
             $vuelos = $vuelos->andWhere(['like', 'des.ubi_capital', trim($params['Vuelo']['ciudadDestino'])]);
         }
         $vuelos = $vuelos->all();
@@ -62,8 +62,16 @@ class PlantillaController extends \yii\web\Controller
     public function actionHoteles()
     {
         $paquete = Paquete::getMejorOferta();
-        $hoteles = Alojamiento::find()->all();
-        return $this->render("hoteles", compact("paquete", "hoteles"));
+        $hoteles = Alojamiento::find();
+        $params = $this->request->queryParams;
+        if (isset($params['Alojamiento']['aloDestino']) && trim($params['Alojamiento']['aloDestino']) != '') {
+            $hoteles = $hoteles->leftJoin('cat_ubicacion ubides', 'ubides.ubi_id = alo_fkubucacion')->leftJoin('cat_pais des', 'des.pai_id = ubides.ubi_fkpais');
+            $hoteles = $hoteles->Where(['like', 'des.pai_pais', trim($params['Alojamiento']['aloDestino'])]);
+        }
+        $hoteles = $hoteles->all();
+        $model = new Alojamiento();
+        $model->aloDestino = isset($params['Alojamiento']['aloDestino']) ? trim($params['Alojamiento']['aloDestino']) : '';
+        return $this->render("hoteles", compact("paquete", "hoteles", "model"));
     }
     public function actionCarrito()
     {
@@ -85,7 +93,8 @@ class PlantillaController extends \yii\web\Controller
     {
         return $this->render("login");
     }
-    public function actionSeguros() {
+    public function actionSeguros()
+    {
         $paquetes = Paquete::getPaquetes();
         $paquete = Paquete::getMejorOferta();
         $seguros = CatSeguro::find()->all();
