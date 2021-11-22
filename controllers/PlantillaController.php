@@ -56,8 +56,16 @@ class PlantillaController extends \yii\web\Controller
     public function actionHoteles()
     {
         $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
-        $hoteles = Alojamiento::find()->all();
-        return $this->render("hoteles", compact("paquete", "hoteles"));
+        $hoteles = Alojamiento::find();
+        $params = $this->request->queryParams;
+        if (isset($params['Alojamiento']['aloDestino']) && trim($params['Alojamiento']['aloDestino']) != '') {
+            $hoteles = $hoteles->leftJoin('cat_ubicacion ubides', 'ubides.ubi_id = alo_fkubucacion')-> leftJoin ('cat_pais des', 'des.pai_id = ubides.ubi_fkpais');
+            $hoteles = $hoteles->Where(['like', 'des.pai_pais', trim($params['Alojamiento']['aloDestino'])]);
+        }
+        $hoteles = $hoteles->all();
+        $model = new Alojamiento();
+        $model->aloDestino = isset($params['Alojamiento']['aloDestino']) ? trim($params['Alojamiento']['aloDestino']) : '';
+        return $this->render("hoteles", compact("paquete", "hoteles", "model"));
     }
     public function actionCarrito()
     {

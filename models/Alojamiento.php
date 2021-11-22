@@ -21,7 +21,7 @@ use yii\helpers\Html;
  */
 class Alojamiento extends \yii\db\ActiveRecord
 {
-
+    public $aloDestino;
     public $img;
     /**
      * {@inheritdoc}
@@ -65,7 +65,8 @@ class Alojamiento extends \yii\db\ActiveRecord
             'capitalNombre' => 'Capital',
             'nombrePais' => 'País',
             'img' => 'Imagen del Hotel',
-            'ubicacionInfo' => 'Ubicación'
+            'ubicacionInfo' => 'Ubicación',
+            'aloDestino' => 'Destino'
         ];
     }
 
@@ -77,6 +78,11 @@ class Alojamiento extends \yii\db\ActiveRecord
     public function getAloFkubucacion()
     {
         return $this->hasOne(CatUbicacion::className(), ['ubi_id' => 'alo_fkubucacion']);
+    }
+    public function getAloFkciudaddestino()
+    {
+        return $this->hasOne(CatPais::className(), ['pai_id' => 'ubi_fkpais'])
+        ->viaTable('cat_ubicacion ubides', ['ubi_id' => 'alo_fkubucaion']);
     }
 
     /**
