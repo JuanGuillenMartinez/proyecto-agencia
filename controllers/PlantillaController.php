@@ -43,8 +43,23 @@ class PlantillaController extends \yii\web\Controller
     public function actionVuelos()
     {
         $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
-        $vuelos = Vuelo::find()->all();
-        return $this->render("vuelos", compact("paquete", "vuelos"));
+        $vuelos = Vuelo::find();
+        $params = $this->request->queryParams;
+        if (isset($params['Vuelo']['ciudadOrigen']) && trim($params['Vuelo']['ciudadOrigen']) != '') {
+            $vuelos = $vuelos->leftJoin('cat_aeropuerto aeroori', 'aeroori.aero_id = vue_fkaeroorigen')-> leftJoin ('cat_ubicacion ori', 'ori.ubi_id = aeroori.aero_fkubicacion');
+           // $vuelos = $vuelos->joinWith('vueFkciudadorigen');
+            $vuelos = $vuelos->where(['like', 'ori.ubi_capital', trim($params['Vuelo']['ciudadOrigen'])]);
+        }
+        if (isset($params['Vuelo']['ciudadDestino']) && trim($params['Vuelo']['ciudadDestino']) != '') {
+            $vuelos = $vuelos->leftJoin('cat_aeropuerto aerodes', 'aerodes.aero_id = vue_fkaerodestino')-> leftJoin ('cat_ubicacion des', 'des.ubi_id = aerodes.aero_fkubicacion');
+           // $vuelos = $vuelos->joinWith('vueFkciudaddestino');
+            $vuelos = $vuelos->andWhere(['like', 'des.ubi_capital', trim($params['Vuelo']['ciudadDestino'])]);
+        }
+        $vuelos = $vuelos->all();
+        $model = new Vuelo();
+        $model->ciudadOrigen = isset($params['Vuelo']['ciudadOrigen']) ? trim($params['Vuelo']['ciudadOrigen']) : '';
+        $model->ciudadDestino = isset($params['Vuelo']['ciudadDestino']) ? trim($params['Vuelo']['ciudadDestino']) : '';
+        return $this->render("vuelos", compact("paquete", "vuelos", "model"));
     }
 
     public function actionHoteles()
@@ -63,7 +78,8 @@ class PlantillaController extends \yii\web\Controller
         }
         return $this->render('/reservacion/carrito', compact('paquetesReservacion'));
     }
-    public function actionPaquete($id) {
+    public function actionPaquete($id)
+    {
         $paquete = Paquete::find()->where(['paq_id' => $id])->one();
         return $this->render("/paquete/mostrar", compact('paquete'));
     }
