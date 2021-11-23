@@ -1,3 +1,6 @@
+<?php 
+use webvimark\modules\UserManagement\models\User; 
+?>
 <body class = "bodyProfile">
 <div class="container">
     <div class="main-body">
@@ -11,7 +14,7 @@
             </ol>
           </nav>
           <!-- /Breadcrumb -->
-    
+
           <div class="row gutters-sm" style="height: 1000px">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -103,7 +106,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="/plantilla/editar">Editar</a>
+                      <a class="btn btn-info " href="/plantilla/editar">Editar</a>
                     </div>
                   </div>
                 </div>
@@ -113,27 +116,16 @@
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Usuario</i>Reservaciones</h6>
+                      <?php 
+                        $usuario = User::getCurrentUser();
+                        $reservaciones=$persona->getReservacionesPagadas($usuario->id);
+                        foreach($reservaciones as $reservacion){ ?>
+                          <a href=""><small><?="Reservación con fecha de: ".$reservacion->res_creacion?></small></a>
+                          <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        <?php } ?>
                     </div>
                   </div>
                 </div>
@@ -165,6 +157,7 @@
                   </div>
                 </div>
               </div>
+
 
 
 
