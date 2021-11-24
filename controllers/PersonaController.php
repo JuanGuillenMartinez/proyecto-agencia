@@ -73,7 +73,7 @@ class PersonaController extends Controller
                     if($image->saveAs($path) && $model->save()){
                         return $this->redirect(['view', 'id' => $model->per_id]);
                     }
-                }
+                }   
             }
         } else {
             $model->loadDefaultValues();
@@ -95,7 +95,6 @@ class PersonaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->per_id]);
         }
@@ -174,5 +173,26 @@ class PersonaController extends Controller
 
         return $this->render('registrar', compact('persona', 'user'));      
     }*/
+
+    public function actionActualizar()
+    {
+        $id = Yii::$app->request->post('id');
+        $correo = Yii::$app->request->post('per_correo');
+        $telefono = Yii::$app->request->post('per_telefono');
+        $direccion = Yii::$app->request->post('per_direccion');
+        $nacimiento = Yii::$app->request->post('per_nacimiento');
+        
+        $model = Persona::find()->where(["per_id"=>$id])->one();
+        $model->per_correo = $correo;
+        $model->per_telefono = $telefono;
+        $model->per_direccion = $direccion;
+        $model->per_nacimiento = $nacimiento;
+        if ($model->save()) {
+            return "Se actualizó correctamente";
+        }
+        else{
+            return "Probelma";
+        }
+    }
 
 }

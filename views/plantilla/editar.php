@@ -1,3 +1,4 @@
+<?php use yii\bootstrap4\Html; ?>
 <body class = "bodyProfile">
 <div class="container">
 		<div class="main-body">
@@ -49,7 +50,7 @@
 									<h6 class="mb-0">Nombre completo</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value= "<?= $persona->getNombreCompleto()?>">
+									<input id="Nombre" type="text" class="form-control" value= "<?= $persona->getNombreCompleto()?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -57,7 +58,7 @@
 									<h6 class="mb-0">Correo</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="<?= $persona->per_correo?>">
+									<input id="correo" type="text" class="form-control" value="<?= $persona->per_correo?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -65,7 +66,7 @@
 									<h6 class="mb-0">Teléfono</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="<?= $persona->per_telefono?>">
+									<input id="telefono" type="text" class="form-control" value="<?= $persona->per_telefono?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -73,7 +74,7 @@
 									<h6 class="mb-0">Dirección</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="<?= $persona->per_direccion?>">
+									<input id="direccion" type="text" class="form-control" value="<?= $persona->per_direccion?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -81,13 +82,13 @@
 									<h6 class="mb-0">Fecha de nacimiento</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="<?= $persona->per_nacimiento?>">
+									<input id="nacimiento" type="text" class="form-control" value="<?= $persona->per_nacimiento?>">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="Save Changes">
+									<?= Html:: button("Guardar",["type" => "button", "class" => "btn btn-primary px-4", "onclick" => "actualizarUsuario({$persona->per_id})"]) ?>
 								</div>
 							</div>
 						</div>
