@@ -114,4 +114,10 @@ class Persona extends \yii\db\ActiveRecord
     public function getImagen() {
         return Html::img("/img/".(empty($this->per_url) ? 'fecha.png' : "img/{$this->per_url}"));
     }
+
+    public function getReservacionesPagadas($idUser) {
+        $persona = Persona::find()->where(["per_fkuser"=>$idUser])->one();
+        $reservaciones = Reservacion::find()->where(["res_fkpersona"=>$persona->per_id,"res_estatus"=>"Pagado"])->all();
+        return $reservaciones;
+    }
 }

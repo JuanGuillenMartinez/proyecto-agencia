@@ -39,6 +39,9 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionVuelos()
     {
+        $paquete = Paquete::find()->orderBy(['paq_id' => SORT_DESC, 'paq_descuento' => SORT_DESC])->one();
+        $vuelos = Vuelo::find()->all();
+        return $this->render("vuelos", compact("paquete", "vuelos"));
         $paquete = Paquete::getMejorOferta();
         $vuelos = Vuelo::find();
         $params = $this->request->queryParams;
@@ -83,21 +86,38 @@ class PlantillaController extends \yii\web\Controller
         }
         return $this->render('/reservacion/carrito', compact('reservacion', 'paquetesReservacion'));
     }
-    public function actionPaquete($id)
-    {
+    public function actionPaquete($id) {
         $paquete = Paquete::find()->where(['paq_id' => $id])->one();
         return $this->render("/paquete/mostrar", compact('paquete'));
     }
 
-    public function actionLogin()
-    {
-        return $this->render("login");
-    }
     public function actionSeguros()
     {
         $paquetes = Paquete::getPaquetes();
         $paquete = Paquete::getMejorOferta();
         $seguros = CatSeguro::find()->all();
         return $this->render('seguros', compact('paquete', 'seguros', 'paquetes'));
+    }
+    
+    public function actionLogin()
+    {
+        return $this->render("login");
+    }
+
+    public function actionPerfil()
+    {
+        $usuario = User::getCurrentUser();
+        $persona = Persona::find()->where(['per_fkuser' => $usuario->id])->one();
+
+        return $this->render("perfil", compact("usuario", "persona"));
+
+    }
+
+    public function actionEditar()
+    {
+        $usuario = User::getCurrentUser();
+        $persona = Persona::find()->where(['per_fkuser' => $usuario->id])->one();
+
+        return $this->render("editar", compact("usuario", "persona"));
     }
 }
