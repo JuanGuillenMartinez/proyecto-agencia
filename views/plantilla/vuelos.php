@@ -40,12 +40,12 @@ use yii\helpers\Html;
 </div>
 
 
-<div class="body-vuelo">
+<div class="body-vuelos">
     <div class="all-container">
 
         <?php
         foreach ($vuelos as $vuelo) { ?>
-            <div class="card">
+            <div class="card-vuelos">
                 <div class="card-one">
                     <div class="div-img">
                         <?= Html::img('@web/img/aeropuerto/' . $vuelo->vueFkaerodestino->aero_url, ['class' => 'card-img']) ?>
