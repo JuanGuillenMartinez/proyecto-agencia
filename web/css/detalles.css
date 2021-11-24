@@ -1,0 +1,31 @@
+.title-detalles {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin-top: 5%;
+}
+.container-detalles {   
+    border-radius: 24px;
+    background-color: #e4e8e8;
+    margin: 2%;
+    height: 100%;
+}
+.paquetes-reservacion {
+
+}
+.informacion-usuario {
+
+}
+.titulo-detalles-reservacion {
+    margin: 2%;
+}
+.contenedor-paquetes-reservacion {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+}
+.card-paquete-reservacion {
+    width: 100%;
+    height: 25rem;
+    margin: 24px;
+    border-radius: 24px;
+}
