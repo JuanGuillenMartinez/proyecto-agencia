@@ -57,7 +57,8 @@ class AppAsset extends AssetBundle
         '/js/bootbox.all.min.js',
         'https://kit.fontawesome.com/d9a399c640.js',
         'js/paquete-view.js',
-        'js/carrito.js'
+        'js/carrito.js',
+        'js/perfil.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
