@@ -97,8 +97,6 @@ class Reservacion extends \yii\db\ActiveRecord
     }
 
     public function getPaquetes() {
-        
-
         return Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $this->res_id, 'recpaq_estatus' => 'Seleccionado'])->all();
     }
 
