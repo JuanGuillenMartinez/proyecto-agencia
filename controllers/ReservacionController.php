@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Paquete;
 use app\models\Persona;
 use yii\web\Controller;
 use app\models\Reservacion;
@@ -193,7 +194,10 @@ class ReservacionController extends Controller
     }
 
     public function actionDetalles($id) {
-        return $this->render('detalles');
+        $persona = Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one();
+        $reservacion = Reservacion::find()->where(['res_fkpersona' => $persona->per_id, 'res_id' => $id, 'res_estatus' => 'Pagado'])->one();
+        $paquete = Paquete::getMejorOferta();
+        return $this->render('detalles', compact('reservacion', 'paquete', 'persona'));
     }
 
     /**

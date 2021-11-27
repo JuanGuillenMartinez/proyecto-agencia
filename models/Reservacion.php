@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use DateTime;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -19,6 +20,7 @@ use yii\helpers\ArrayHelper;
  */
 class Reservacion extends \yii\db\ActiveRecord
 {
+    public $precioFinal;
     /**
      * {@inheritdoc}
      */
@@ -95,6 +97,29 @@ class Reservacion extends \yii\db\ActiveRecord
     }
 
     public function getPaquetes() {
+        
+
         return Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $this->res_id, 'recpaq_estatus' => 'Seleccionado'])->all();
+    }
+
+    public function getDatetimeCreacion() {
+        return date_create($this->res_creacion);
+    }
+    public function getFechaFormated() {
+        return date_format($this->getDatetimeCreacion(), 'd/m/Y');
+    }
+    public function getHoraFormated() {
+        return date_format($this->getDatetimeCreacion(), 'g:ia');
+    }
+    public function getFechaHoraFormated() {
+        return date_format($this->getDatetimeCreacion(), 'g:ia \o\n l jS F Y');
+    }
+    public function getSubtotal() {
+        $subtotal = 0;
+        $paquetesReservacion = $this->getPaquetes();
+        foreach($paquetesReservacion as $paqueteReservacion) {
+            $subtotal += $paqueteReservacion->getSubtotalGrupoPaquetes();
+        }
+        return $subtotal;
     }
 }
