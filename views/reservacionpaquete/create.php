@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Reservacionpaquete */
 
-$this->title = 'Create Reservacionpaquete';
+$this->title = 'Create Reservacionpaquete container-crud';
 $this->params['breadcrumbs'][] = ['label' => 'Reservacionpaquetes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

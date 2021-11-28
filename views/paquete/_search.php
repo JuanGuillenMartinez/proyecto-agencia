@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="paquete-search">
+<div class="paquete-search container-crud">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],

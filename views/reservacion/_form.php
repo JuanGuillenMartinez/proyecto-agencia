@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="reservacion-form">
+<div class="reservacion-form container-crud">
 
     <?php $form = ActiveForm::begin(); ?>
 

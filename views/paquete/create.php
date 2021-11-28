@@ -9,7 +9,7 @@ $this->title = 'Registrar Paquete';
 $this->params['breadcrumbs'][] = ['label' => 'Paquetes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="paquete-create">
+<div class="paquete-create container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

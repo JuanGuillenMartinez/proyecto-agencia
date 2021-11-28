@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Regiones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->reg_region, 'url' => ['view', 'reg_id' => $model->reg_id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
-<div class="cat-region-update">
+<div class="cat-region-update container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

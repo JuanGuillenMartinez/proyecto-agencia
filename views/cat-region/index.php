@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Regiones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-region-index">
+<div class="cat-region-index container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

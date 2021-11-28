@@ -9,7 +9,7 @@ $this->title = 'Crear Reservación';
 $this->params['breadcrumbs'][] = ['label' => 'Reservaciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="reservacion-create">
+<div class="reservacion-create container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

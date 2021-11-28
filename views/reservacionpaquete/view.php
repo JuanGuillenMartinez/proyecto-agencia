@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Reservacionpaquetes', 'url' => ['i
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="reservacionpaquete-view">
+<div class="reservacionpaquete-view container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

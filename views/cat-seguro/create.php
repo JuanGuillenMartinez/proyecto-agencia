@@ -9,7 +9,7 @@ $this->title = 'Registrar seguro';
 $this->params['breadcrumbs'][] = ['label' => 'Seguros', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-seguro-create">
+<div class="cat-seguro-create container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
