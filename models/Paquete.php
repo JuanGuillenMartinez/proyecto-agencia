@@ -69,6 +69,7 @@ class Paquete extends \yii\db\ActiveRecord
             'paq_subtotal' => 'Subtotal',
             'paq_url' => 'Imagen',
             'paq_fkvuelo' => 'Vuelo',
+            'infoVuelo' => 'Vuelo',
             'tipoVuelo' => 'Tipo de Vuelo',
             'destinoVuelo' => 'Destino',
             'origenVuelo' => 'Origen',
@@ -160,6 +161,10 @@ class Paquete extends \yii\db\ActiveRecord
     public function getPrecioTraslado()
     {
         return $this->paqFktraslado->tra_precio;
+    }
+
+    public function getInfoVuelo() {
+        return $this->paqFkvuelo->vue_tipo . ": " . $this->getOrigenVuelo() . " - " . $this->getDestinoVuelo();
     }
 
     public static function getVuelosMap()
