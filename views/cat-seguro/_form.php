@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="cat-seguro-form">
+<div class="cat-seguro-form container-crud">
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
 

@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Reservacionpaquetes', 'url' => ['i
 $this->params['breadcrumbs'][] = ['label' => $model->recpaq_id, 'url' => ['view', 'recpaq_id' => $model->recpaq_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="reservacionpaquete-update">
+<div class="reservacionpaquete-update container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

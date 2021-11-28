@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="paquete-form">
+<div class="paquete-form container-crud">
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
 

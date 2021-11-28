@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Seguros', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->seg_nombre, 'url' => ['view', 'seg_id' => $model->seg_id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
-<div class="cat-seguro-update">
+<div class="cat-seguro-update container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

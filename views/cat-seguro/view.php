@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Seguros', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="cat-seguro-view">
+<div class="cat-seguro-view container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

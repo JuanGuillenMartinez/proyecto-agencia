@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Paquetes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="paquete-index">
+<div class="paquete-index container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
