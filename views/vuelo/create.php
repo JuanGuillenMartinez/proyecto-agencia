@@ -9,7 +9,7 @@ $this->title = 'Añadir Vuelo';
 $this->params['breadcrumbs'][] = ['label' => 'Vuelos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="vuelo-create">
+<div class="vuelo-create container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Vuelos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->vue_id, 'url' => ['view', 'id' => $model->vue_id]];
 $this->params['breadcrumbs'][] = 'Editar';
 ?>
-<div class="vuelo-update">
+<div class="vuelo-update container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -15,7 +15,7 @@ use app\models\CatAeropuerto;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="vuelo-form">
+<div class="vuelo-form container-crud">
 
     <?php $form = ActiveForm::begin(); ?>
 
