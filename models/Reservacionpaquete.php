@@ -78,4 +78,7 @@ class Reservacionpaquete extends \yii\db\ActiveRecord
     public function getDescuentoGrupoPaquetes() {
         return $this->recpaqFkpaquete->getPrecioDescontado() * $this->recpaq_cantidad;
     }
+    public function getSubtotalGrupoPaquetesFormated() {
+        return "$" . number_format($this->getSubtotalGrupoPaquetes(), 2,'.', ',');
+    }
 }

@@ -118,6 +118,6 @@ class Reservacion extends \yii\db\ActiveRecord
         foreach($paquetesReservacion as $paqueteReservacion) {
             $subtotal += $paqueteReservacion->getSubtotalGrupoPaquetes();
         }
-        return $subtotal;
+        return "$" . number_format($subtotal, 2,'.', ',');
     }
 }

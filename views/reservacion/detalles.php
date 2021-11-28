@@ -15,7 +15,7 @@ use yii\helpers\Url;
         <div class="paquetes-reservacion">
             <div class="title-detalles row justify-content-md-center">
                 <div class="col-md-8 text-center heading-section animate-box">
-                    <h3><?= "Reservación: " ?></h3>
+                    <h3><?= "Reservación " ?></h3>
                     <p>Encuentra toda la información disponible de tus reservaciones</p>
                 </div>
             </div>
@@ -62,7 +62,7 @@ use yii\helpers\Url;
                             <div class="elemento-informacion-paquete row">
                                 <div class="icono-informacion-paquete col-md-3"><i class="fas fa-money-bill-wave"></i></div>
                                 <div class="descripcion-elemento-informacion col-md-9">
-                                    <p><?= "Total pagado: $" . $reservacion->getSubtotal() ?></p>
+                                    <p><?= "Total pagado: " . $reservacion->getSubtotal() ?></p>
                                 </div>
                             </div>
 
@@ -94,9 +94,9 @@ use yii\helpers\Url;
                                 <div class="postcard__preview-txt"><?= $paquete->paq_descripcion ?></div>
                                 <ul class="postcard__tagbox">
                                     <li class="tag__item"><i class="fas fa-tag mr-2"></i><?= "Cantidad: " . $paqueteReservacion->recpaq_cantidad ?></li>
-                                    <li class="tag__item"><i class="fas fa-clock mr-2"></i><?= "Precio: $" . $paqueteReservacion->getSubtotalGrupoPaquetes() ?></li>
+                                    <li class="tag__item"><i class="fas fa-money-check-alt"></i><?= " Precio: " . $paqueteReservacion->getSubtotalGrupoPaquetesFormated() ?></li>
                                     <li class="tag__item play red">
-                                        <?= Html::a('Ver más' , ['/plantilla/paquete?id=' . $paquete->paq_id]) ?>
+                                        <?= Html::a('<i class="far fa-eye"></i> Ver más' , ['/plantilla/paquete?id=' . $paquete->paq_id]) ?>
                                         <!-- <a href="#"><i class="fas fa-play mr-2"></i>Ver más</a> -->
                                     </li>
                                 </ul>
