@@ -16,9 +16,9 @@ class PlantillaController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $paquetesRecientes = null;
+        $paquetesRecientes = Paquete::getPaquetesRecientes();
         $paquetesOfertas = Paquete::getOfertas();
-        $paquete = null;
+        $paquete = Paquete::getMejorOferta();
         $user = new User();
         $persona = new Persona();
         $login = new LoginForm();
