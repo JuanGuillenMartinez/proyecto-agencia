@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Actualizar Traslado: ' . $model->tra_id;
 $this->params['breadcrumbs'][] = ['label' => 'Traslados', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->tra_id, 'url' => ['view', 'id' => $model->tra_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->tra_id, 'url' => ['view', 'tra_id' => $model->tra_id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="traslado-update">

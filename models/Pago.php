@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Codeception\PHPUnit\ResultPrinter\HTML;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -53,6 +54,7 @@ class Pago extends \yii\db\ActiveRecord
     {
         return [
             'pag_id' => 'Id',
+            'persona' => 'Persona',
             'pag_direccion' => 'Dirección de facturación',
             'pag_tipo' => 'Tipo',
             'pag_entidad' => 'Entidad',
@@ -61,6 +63,7 @@ class Pago extends \yii\db\ActiveRecord
             'pag_estatus' => 'Estatus',
             'pag_fkreservacion' => 'Reservación', /* ? */
             'estatusReservacion'=>'Estatus Reservacion', /* Con esto le cambiamos el nombre que no lleve exactamente el del metodo */
+            'historial'=>'Historial',
         ];
     }
 
@@ -96,7 +99,31 @@ class Pago extends \yii\db\ActiveRecord
     {
         return 'RES_'.str_pad($this->pagFkreservacion->res_id,5,'0',STR_PAD_LEFT);
     }
-
-
-
+    public static function getHistorialPago()
+    {
+        $pagos=[];
+        $persona= Persona::find()->where(['per_fkuser'=>Yii::$app->user->id])->one();        
+        foreach ($persona->reservacions as $keyr => $valuer) {
+            foreach ($valuer->pagos as $keyp => $valuep) {
+                $pagos[] = $valuep;
+            }
+        }
+        return $pagos;
+    }
+    public function getPersona(){
+        return $this->pagFkreservacion->resFkpersona->nombreCompleto;
+    }
+    public function getHistorial()
+    {
+        $texto='';
+        foreach (self::getHistorialPago() as $key => $value) {
+            $texto .= <<<HTML
+                <div>
+                    Id: {$value->pag_id} Tarjeta: {$value->pag_tarjeta}
+                
+                </div>
+HTML;
+            }
+        return $texto;
+    }
 }

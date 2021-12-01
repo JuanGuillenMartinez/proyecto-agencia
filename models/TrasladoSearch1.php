@@ -17,8 +17,7 @@ class TrasladoSearch extends Traslado
     public function rules()
     {
         return [
-            [['tra_id', 'tra_fkubicacion'], 'integer'],
-            [['tra_nombre'], 'safe'],
+            [['tra_id'], 'integer'],
             [['tra_precio'], 'number'],
         ];
     }
@@ -61,10 +60,7 @@ class TrasladoSearch extends Traslado
         $query->andFilterWhere([
             'tra_id' => $this->tra_id,
             'tra_precio' => $this->tra_precio,
-            'tra_fkubicacion' => $this->tra_fkubicacion,
         ]);
-
-        $query->andFilterWhere(['like', 'tra_nombre', $this->tra_nombre]);
 
         return $dataProvider;
     }

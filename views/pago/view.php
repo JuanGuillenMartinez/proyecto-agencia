@@ -30,6 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'pag_id',
+            'persona',
+            [
+                'attribute'=>'historial',
+                'format'=>'raw',
+            ],
             'pag_direccion',
             'pag_tipo',
             'pag_entidad',

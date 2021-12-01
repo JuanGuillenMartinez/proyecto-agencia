@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap4\ActiveForm;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Traslado */
@@ -12,14 +12,14 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <div class="row">
-        <div class="col-md">
-            <?= $form->field($model, 'tra_precio')->textInput(['maxlength' => true]) ?>
-        </div>
-    </div>
+    <?= $form->field($model, 'tra_nombre')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'tra_precio')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'tra_fkubicacion')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
