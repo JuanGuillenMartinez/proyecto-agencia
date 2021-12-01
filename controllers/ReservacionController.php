@@ -130,7 +130,7 @@ class ReservacionController extends Controller
             if (isset($reservacion) && $reservacion != null) {
                 $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
                 return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
-            } else if($reservacion == null) {
+            } else if ($reservacion == null) {
                 $reservacion = new Reservacion();
                 $reservacion->res_creacion = date("Y-m-d H:i:s");
                 $reservacion->res_estatus = "En carrito";
@@ -161,7 +161,7 @@ class ReservacionController extends Controller
     protected function llenarPaqueteReservacion($reservacion, $idPaquete)
     {
         $reservacionPaquete = Reservacionpaquete::find()->where(["recpaq_fkreservacion" => $reservacion->res_id, "recpaq_fkpaquete" => $idPaquete])->one();
-        if(!isset($reservacionPaquete)) {
+        if (!isset($reservacionPaquete)) {
             $reservacionPaquete = new Reservacionpaquete();
             $reservacionPaquete->recpaq_fkreservacion = $reservacion->res_id;
             $reservacionPaquete->recpaq_fkpaquete = $idPaquete;
@@ -170,7 +170,7 @@ class ReservacionController extends Controller
         } else {
             $reservacionPaquete->recpaq_cantidad++;
         }
-        
+
         return $reservacionPaquete;
     }
 
@@ -193,11 +193,21 @@ class ReservacionController extends Controller
         }
     }
 
-    public function actionDetalles($id) {
-        $persona = Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one();
-        $reservacion = Reservacion::find()->where(['res_fkpersona' => $persona->per_id, 'res_id' => $id, 'res_estatus' => 'Pagado'])->one();
-        $paquete = Paquete::getMejorOferta();
-        return $this->render('detalles', compact('reservacion', 'paquete', 'persona'));
+    public function actionDetalles($id)
+    {
+        $user = User::getCurrentUser();
+        $persona = isset($user) ? Persona::find()->where(['per_fkuser' => $user->id])->one() : null;
+        if (isset($user)) {
+            if ($user->hasRole('Admin')) {
+                $reservacion = Reservacion::find()->where(['res_id' => $id])->one();
+                return $this->render('detalles', compact('reservacion'));
+            }
+            if(isset($persona)) {
+                $reservacion = Reservacion::find()->where(['res_fkpersona' => $persona->per_id, 'res_id' => $id, 'res_estatus' => 'Pagado'])->one();
+                return isset($reservacion) ? $this->render('detalles', compact('reservacion')) : $this->redirect('/plantilla/index');
+            }
+        }
+        return $this->redirect('/plantilla/index');
     }
 
     /**
