@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\web\Response;
 use app\models\Paquete;
 use app\models\Persona;
 use yii\web\Controller;
@@ -153,8 +154,20 @@ class ReservacionController extends Controller
             if (isset($reservacion) && $reservacion != null) {
                 $paqueteReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_id' => $idPaqueteReservacion])->one();
                 $paqueteReservacion->recpaq_estatus = "Descartado";
-                return ($paqueteReservacion->save()) ? 'Producto eliminado del carrito exitosamente' : 'Algo salió mal';
+                $paqueteReservacion->save();
             }
+        }
+        $precioFinalReservacion = $numeroPaquetes = $ahorroTotal = 0;
+        $paquetesReservacion = null;
+        $user = User::getCurrentUser();
+        $persona = isset($user) ? Persona::find()->where(['per_fkuser' => $user->id])->one() : null;
+        if (isset($user) && isset($persona)) {
+            $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
+            $paquetesReservacion = isset($reservacion) ? Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all() : null;
+            $response = Yii::$app->response;
+            $response->format=Response::FORMAT_JSON;
+            $response->data=[$this->renderPartial('paquetes-carrito', compact('paquetesReservacion', 'precioFinalReservacion', 'numeroPaquetes', 'ahorroTotal'))];
+            return $response;
         }
     }
 

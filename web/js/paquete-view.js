@@ -16,8 +16,7 @@ function eliminarPaqueteCarrito(idPaqueteReservacion) {
             idPaqueteReservacion: idPaqueteReservacion
         },
         function (data) {
-            alert(data);
-            window.location.reload();
+            $("#div-carrito").html(data);
         }
     );
 }
