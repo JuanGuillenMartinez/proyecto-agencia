@@ -1,0 +1,201 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900);
+
+/*body-hotel {
+    background: #dce1df;
+    color: #4f585e;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-rendering: optimizeLegibility;
+}*/
+
+.btn-hotel {
+    background: #0096a0;
+    border-radius: 4px;
+    box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    display: inline-block;
+    padding: 6px 30px 8px;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.1s 0s ease-out;
+}
+
+.no-touch-hotel a.btn-hotel:hover {
+    background: #00a2ad;
+    box-shadow: 0px 8px 2px 0 rgba(0, 0, 0, 0.075);
+    transform: translateY(-2px);
+    transition: all 0.25s 0s ease-out;
+}
+
+.no-touch-hotel a.btn-hotel:active,
+a.btn-hotel:active {
+    background: #008a93;
+    box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.25);
+    transform: translate3d(0, 1px, 0);
+    transition: all 0.025s 0s ease-out;
+}
+
+div.cards-hotel {
+    margin: 80px auto;
+    max-width: 1200px;
+    text-align: center;
+}
+
+div.card-hotel {
+    background: #ffffff;
+    display: inline-block;
+    margin: 8px;
+    max-width: 500px;
+    perspective: 1000;
+    position: relative;
+    text-align: left;
+    transition: all 0.3s 0s ease-in;
+    width: 400px;
+    z-index: 1;
+}
+
+div.card-hotel .img-hotel {
+    max-width: 500px;
+    width: 400px;
+    height: 310px;
+    object-fit: cover;
+}
+
+div.card-hotel .card__image-holder-hotel {
+    background: rgba(0, 0, 0, 0.1);
+    height: 0;
+    padding-bottom: 75%;
+}
+
+div.card-hotel div.card-title-hotel {
+    background: #ffffff;
+    padding: 6px 15px 10px;
+    position: relative;
+    z-index: 0;
+}
+
+div.card-hotel div.card-title-hotel a.toggle-info-hotel {
+    border-radius: 32px;
+    height: 32px;
+    padding: 0;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 32px;
+}
+
+div.card-hotel div.card-title-hotel a.toggle-info-hotel span {
+    background: #ffffff;
+    display: block;
+    height: 2px;
+    position: absolute;
+    top: 16px;
+    transition: all 0.15s 0s ease-out;
+    width: 12px;
+}
+
+div.card-hotel div.card-title-hotel a.toggle-info-hotel span.left-hotel {
+    right: 14px;
+    transform: rotate(45deg);
+}
+
+div.card-hotel div.card-title-hotel a.toggle-info-hotel span.right-hotel {
+    left: 14px;
+    transform: rotate(-45deg);
+}
+
+div.card-hotel div.card-title-hotel h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    margin: 0;
+    padding: 0;
+}
+
+div.card-hotel div.card-title-hotel h2 small {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+div.card-hotel div.card-title-hotel h4 small {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+div.card-hotel div.card-description-hotel {
+    padding: 0 15px 10px;
+    position: relative;
+    font-size: 14px;
+}
+
+div.card-hotel div.card-actions-hotel {
+    box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.075);
+    padding: 10px 15px 20px;
+    text-align: center;
+}
+
+div.card-hotel div.card-flap-hotel {
+    background: #d9d9d9;
+    position: absolute;
+    width: 100%;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+}
+
+div.card-hotel div.flap1-hotel {
+    transition: all 0.3s 0.3s ease-out;
+    z-index: -1;
+}
+
+div.card-hotel div.flap2-hotel {
+    transition: all 0.3s 0s ease-out;
+    z-index: -2;
+}
+
+div.cards-hotel.showing div.card-hotel {
+    cursor: pointer;
+    opacity: 0.6;
+    transform: scale(0.88);
+}
+
+.no-touch-hotel div.cards-hotel.showing div.card-hotel:hover {
+    opacity: 0.94;
+    transform: scale(0.92);
+}
+
+div.card-hotel.show {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+div.card-hotel.show div.card-title-hotel a.toggle-info-hotel {
+    background: #ff6666 !important;
+}
+
+div.card-hotel.show div.card-title-hotel a.toggle-info-hotel span {
+    top: 15px;
+}
+
+div.card-hotel.show div.card-title-hotel a.toggle-info-hotel span.left-hotel {
+    right: 10px;
+}
+
+div.card-hotel.show div.card-title-hotel a.toggle-info-hotel span.right-hotel {
+    left: 10px;
+}
+
+div.card-hotel.show div.card-flap-hotel {
+    background: #ffffff;
+    transform: rotateX(0deg);
+}
+
+div.card-hotel.show div.flap1-hotel {
+    transition: all 0.3s 0s ease-out;
+}
+
+div.card-hotel.show div.flap2-hotel {
+    transition: all 0.3s 0.2s ease-out;
+}
