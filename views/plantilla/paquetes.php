@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use app\models\Paquete;
 
 ?>
 <?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
