@@ -73,14 +73,7 @@ $ahorroTotal = 0;
                     <span>Ahorras</span>
                     <span><?= '$' . $ahorroTotal ?></span>
                 </p>
-                
-                <?php
-                    if(isset($reservacion)) {
-                        echo Html::button('Pagar', ['onclick' => "validarReservacion(1, {$reservacion->res_id})"]);
-                    } else {
-                        echo Html::button('Pagar', ['']);
-                    }
-                ?>
+                <?= Html::button('Pagar', (isset($reservacion) && isset($paquetesReservacion)) ? ['onclick' => "validarReservacion(1, {$reservacion->res_id})"] : ['disabled' => true]) ?>
             </div>
         </div>
     </div>

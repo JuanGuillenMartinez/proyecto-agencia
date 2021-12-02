@@ -17,11 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tra_id') ?>
 
-    <?= $form->field($model, 'tra_nombre') ?>
-
     <?= $form->field($model, 'tra_precio') ?>
-
-    <?= $form->field($model, 'tra_fkubicacion') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

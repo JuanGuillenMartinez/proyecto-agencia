@@ -76,16 +76,19 @@ class PlantillaController extends \yii\web\Controller
     public function actionCarrito()
     {
         $paquetesReservacion = null;
-        $persona = Persona::find()->where(['per_fkuser' => User::getCurrentUser()->id])->one();
-        $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
-        if (isset($reservacion)) {
-            $paquetesReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all();
+        $user = User::getCurrentUser();
+        $persona = isset($user) ? Persona::find()->where(['per_fkuser' => $user->id])->one() : null;
+        if (isset($user) && isset($persona)) {
+            $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
+            $paquetesReservacion = isset($reservacion) ? Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all() : null;
+            return $this->render('/reservacion/carrito', compact('reservacion', 'paquetesReservacion'));
         }
-        return $this->render('/reservacion/carrito', compact('reservacion', 'paquetesReservacion'));
+        return $this->redirect('index');
     }
-    public function actionPaquete($id) {
+    public function actionPaquete($id)
+    {
         $paquete = Paquete::find()->where(['paq_id' => $id])->one();
-        return $this->render("/paquete/mostrar", compact('paquete'));
+        return isset($paquete) ? $this->render("/paquete/mostrar", compact('paquete')) : $this->redirect('/plantilla/index');
     }
 
     public function actionSeguros()
@@ -95,7 +98,7 @@ class PlantillaController extends \yii\web\Controller
         $seguros = CatSeguro::find()->all();
         return $this->render('seguros', compact('paquete', 'seguros', 'paquetes'));
     }
-    
+
     public function actionLogin()
     {
         return $this->render("login");
@@ -107,7 +110,6 @@ class PlantillaController extends \yii\web\Controller
         $persona = Persona::find()->where(['per_fkuser' => $usuario->id])->one();
 
         return $this->render("perfil", compact("usuario", "persona"));
-
     }
 
     public function actionEditar()

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Pago;
+use app\models\Persona;
 use yii\web\Controller;
 use app\models\PagoSearch;
 use yii\filters\VerbFilter;
@@ -153,4 +154,6 @@ class PagoController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    
 }

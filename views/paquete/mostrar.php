@@ -46,7 +46,7 @@ use yii\helpers\Html;
         <div class="col-md-6">
             <div class="">
                 <h1 class="title-descripcion-paquete"><?= $paquete->paq_nombre ?></h1>
-                <div class="div-precios-paquete row"> 
+                <div class="div-precios-paquete row">
                     <h2 class="precio-descripcion-paquete col-md-6"><?= $paquete->getFormatedSubtotal() ?></h2>
                     <h2 class="precio-final-paquete col-md-6"><?= $paquete->getFormatedPrecioDescuento() ?></h2>
                 </div>

@@ -29,7 +29,7 @@ use yii\helpers\Url;
                             <div class="elemento-informacion-paquete row">
                                 <div class="icono-informacion-paquete col-md-3"><i class="fas fa-plane-departure"></i></div>
                                 <div class="descripcion-elemento-informacion col-md-9">
-                                    <p><?= "Propietario: " . $persona->getNombreCompleto() ?></p>
+                                    <p><?= "Propietario: " . $reservacion->getClienteNombre() ?></p>
                                 </div>
                             </div>
                             <div class="elemento-informacion-paquete row">

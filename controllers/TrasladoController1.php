@@ -16,7 +16,7 @@ class TrasladoController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
+    /* public function behaviors()
     {
         return array_merge(
             parent::behaviors(),
@@ -29,6 +29,14 @@ class TrasladoController extends Controller
                 ],
             ]
         );
+    } */
+    public function behaviors()
+    {
+        return [
+            'ghost-access' => [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     /**
@@ -48,14 +56,14 @@ class TrasladoController extends Controller
 
     /**
      * Displays a single Traslado model.
-     * @param int $tra_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($tra_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($tra_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +78,7 @@ class TrasladoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'tra_id' => $model->tra_id]);
+                return $this->redirect(['view', 'id' => $model->tra_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -84,16 +92,16 @@ class TrasladoController extends Controller
     /**
      * Updates an existing Traslado model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $tra_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($tra_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($tra_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'tra_id' => $model->tra_id]);
+            return $this->redirect(['view', 'id' => $model->tra_id]);
         }
 
         return $this->render('update', [
@@ -104,13 +112,13 @@ class TrasladoController extends Controller
     /**
      * Deletes an existing Traslado model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $tra_id Id
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($tra_id)
+    public function actionDelete($id)
     {
-        $this->findModel($tra_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -118,11 +126,11 @@ class TrasladoController extends Controller
     /**
      * Finds the Traslado model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $tra_id Id
+     * @param integer $id
      * @return Traslado the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($tra_id)
+    protected function findModel($id)
     {
         if (($model = Traslado::findOne($id)) !== null) {
             return $model;

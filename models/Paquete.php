@@ -249,18 +249,18 @@ class Paquete extends \yii\db\ActiveRecord
     }
     public static function getPaquetes() {
         $paquetes = Paquete::find()->all();
-        return isset($paquetes) ? $paquetes : [];
+        return isset($paquetes) ? $paquetes : null;
     }
     public static function getPaquetesRecientes() {
         $paquetesRecientes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
-        return isset($paquetesRecientes) ? $paquetesRecientes : [];
+        return isset($paquetesRecientes) ? $paquetesRecientes : null;
     }
     public static function getOfertas() {
         $paquetesOfertas = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->limit(3)->all();
-        return isset($paquetesOfertas) ? $paquetesOfertas : [];
+        return isset($paquetesOfertas) ? $paquetesOfertas : null;
     }
     public static function getMejorOferta() {
         $paquete = Paquete::find()->orderBy(['paq_descuento' => SORT_DESC])->one();
-        return isset($paquete) ? $paquete : new Paquete();
+        return isset($paquete) ? $paquete : null;
     }
 }
