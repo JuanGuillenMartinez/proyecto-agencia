@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tra_nombre',
             'tra_precio',
             'tra_fkubicacion',
+            'ubicacion',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

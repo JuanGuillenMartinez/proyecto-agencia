@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use app\models\Traslado;
+use kartik\form\ActiveForm;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Traslado */
@@ -12,14 +14,34 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tra_nombre')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+    <div class="col-md-4">
+        <?= $form->field($model, 'tra_nombre')->textInput(['maxlength' => true]) ?>
+    </div>
 
-    <?= $form->field($model, 'tra_precio')->textInput(['maxlength' => true]) ?>
+    <div class="col-md-4">
+        <?= $form->field($model, 'tra_precio')->textInput(['maxlength' => true]) ?>
+    </div>
 
-    <?= $form->field($model, 'tra_fkubicacion')->textInput() ?>
+    <?php /* $form->field($model, 'tra_fkubicacion')->textInput() */ ?>
+    
+
+    <div class="col-md-4">
+            <?=
+                $form->field($model, 'tra_fkubicacion')->widget(Select2::classname(), [
+                    'data' => Traslado::mapUbicacion(),
+                    'language' => 'es',
+                    'options' => ['placeholder' => 'Selecciona una ubicacion ...'],
+                    'pluginOptions' => [
+                        'allowClear' => true    
+                    ],
+                ]);
+            ?>
+    </div>
+    </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
