@@ -11,15 +11,13 @@ use app\models\Traslado;
  */
 class TrasladoSearch extends Traslado
 {
-    public $ubicacion;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['tra_id', 'tra_fkubicacion'], 'integer'],
-            [['tra_nombre', 'ubicacion'], 'safe'],
+            [['tra_id'], 'integer'],
             [['tra_precio'], 'number'],
         ];
     }
@@ -45,24 +43,10 @@ class TrasladoSearch extends Traslado
         $query = Traslado::find();
 
         // add conditions that should always apply here
-        $query->joinWith('traFkubicacion');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
-       $dataProvider->setSort([
-           'attributes'=>[
-               'tra_id',
-               'tra_precio',
-               'tra_fkubicacion',
-               'ubicacion'=>[
-                   'asc'=>['ubi_capital'=>SORT_ASC],
-                   'desc'=>['ubi_capital'=>SORT_DESC],
-                   'default'=>['ubi_capital'=>SORT_ASC],
-               ]
-           ]
-       ]); 
 
         $this->load($params);
 
@@ -76,11 +60,7 @@ class TrasladoSearch extends Traslado
         $query->andFilterWhere([
             'tra_id' => $this->tra_id,
             'tra_precio' => $this->tra_precio,
-            'tra_fkubicacion' => $this->tra_fkubicacion,
         ]);
-
-        $query->andFilterWhere(['like', 'tra_nombre', $this->tra_nombre])
-        ->andFilterWhere(['like', 'ubi_capital', $this->ubicacion]);
 
         return $dataProvider;
     }

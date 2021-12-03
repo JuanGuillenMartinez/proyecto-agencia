@@ -2,9 +2,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use app\models\Traslado;
-
-
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TrasladoSearch */
@@ -14,7 +11,7 @@ $this->title = 'Traslados';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="traslado-index">
-    
+
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -29,8 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'tra_id',
+            /* 'tra_id', */
+            'tra_nombre',
             'tra_precio',
+            /* 'tra_fkubicacion', */
+            'ubicacion',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

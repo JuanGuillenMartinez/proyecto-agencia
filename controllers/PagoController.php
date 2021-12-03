@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Pago;
+use app\models\Persona;
 use yii\web\Controller;
 use app\models\PagoSearch;
 use yii\filters\VerbFilter;
@@ -144,13 +145,7 @@ class PagoController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionGuardarPago(){
-        $searchModel = new PagoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-        
-        return $this->render('pagoss', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+    
+
+    
 }

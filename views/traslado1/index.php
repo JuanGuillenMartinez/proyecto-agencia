@@ -2,17 +2,26 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Traslado;
+
+
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PagoSearch */
+/* @var $searchModel app\models\TrasladoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cartera de Pagos';
+$this->title = 'Traslados';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pago-index">
-
+<div class="traslado-index">
+    
     <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Crear Traslado', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -20,15 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'pag_id',
-            'pag_direccion',
-            'pag_tipo',
-            'pag_entidad',
-            'pag_tarjeta',
-            'pag_expiracion',
-            'pag_estatus',
-            'pag_fkreservacion',
-            'reservacionFolio',/* llamando folio */
+            'tra_id',
+            'tra_precio',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
