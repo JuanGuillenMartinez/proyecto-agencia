@@ -32,6 +32,7 @@ class AppAsset extends AssetBundle
         'plantilla/css/style-card-paquetes.css',
         'css/package-card.css',
         'css/vuelos.css',
+        'css/hoteles.css',
         'css/modal-login.css',
         'css/carrito.css',
         'css/mostrar-paquete.css',
@@ -58,7 +59,8 @@ class AppAsset extends AssetBundle
         'https://kit.fontawesome.com/d9a399c640.js',
         'js/paquete-view.js',
         'js/carrito.js',
-        'js/perfil.js'
+        'js/perfil.js',
+        'js/hoteles.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
