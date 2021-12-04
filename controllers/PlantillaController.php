@@ -5,9 +5,10 @@ namespace app\controllers;
 use app\models\Vuelo;
 use app\models\Paquete;
 use app\models\Persona;
-use app\models\Alojamiento;
 use app\models\CatSeguro;
+use app\models\Alojamiento;
 use app\models\Reservacion;
+use app\models\PaqueteSearch;
 use app\models\Reservacionpaquete;
 use webvimark\modules\UserManagement\models\User;
 use webvimark\modules\UserManagement\models\forms\LoginForm;
@@ -32,9 +33,11 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionPaquetes()
     {
-        $paquetes = Paquete::getPaquetes();
         $paquete = Paquete::getMejorOferta();
-        return $this->render("paquetes", compact("paquete", "paquetes"));
+        $searchModel = new PaqueteSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('/paquete/paquetes', compact('paquete', 'searchModel', 'dataProvider'));
     }
 
     public function actionVuelos()

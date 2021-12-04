@@ -167,6 +167,22 @@ class Paquete extends \yii\db\ActiveRecord
         return $this->paqFkvuelo->vue_tipo . ": " . $this->getOrigenVuelo() . " - " . $this->getDestinoVuelo();
     }
 
+    public function getVueloInfoOrigen() {
+        return $this->paqFkvuelo->vueFkaeroorigen->aeroFkubicacion->ubi_capital . ' - ' . $this->paqFkvuelo->vueFkaeroorigen->aeroFkubicacion->ubiFkpais->pai_pais;
+    }
+
+    public function getVueloInfoDestino() {
+        return $this->paqFkvuelo->getVueloDestino();
+    }
+
+    public function getAlojamientoInfo() {
+        return $this->paqFkalojamiento->getAlojamientoInfo();
+    }
+
+    public function getSeguroInfo() {
+        return $this->paqFkseguro->getSeguroNombre();
+    }
+
     public static function getVuelosMap()
     {
         return ArrayHelper::map(Vuelo::find()->all(), 'vue_id', 'vueloInfo');

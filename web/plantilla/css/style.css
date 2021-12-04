@@ -2090,12 +2090,12 @@ div.cs-select span {
     font-weight: 600;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
-    margin-left: -20px;
+    /* margin-left: -20px; */
     padding-left: 20px;
     padding-right: 8px;
     padding-bottom: 2px;
     background: #dc895e;
-    padding-top: 2px;
+    /* padding-top: 2px; */
 }
 .titulo-card {
     font-family: "Source Sans Pro", sans-serif;

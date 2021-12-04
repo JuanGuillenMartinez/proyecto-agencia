@@ -50,15 +50,13 @@ class PaqueteSearch extends Paquete
         $query = Paquete::find();
 
         // add conditions that should always apply here
-        $query->joinWith('paqFkseguro');
-        $query->joinWith('paqFkvuelo');
-        $query->joinWith('paqFkalojamiento');
-        $query->joinWith('paqFktraslado');
-        $query->joinWith(['paqFkvuelo.vueFkaerodestino']);
-        $query->joinWith(['paqFkvuelo.vueFkaeroorigen']);
+        $query->joinWith(['paqFkseguro', 'paqFkvuelo', 'paqFkalojamiento', 'paqFktraslado', 'paqFkvuelo.vueFkaerodestino as destino', 'paqFkvuelo.vueFkaeroorigen as origen']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 6,
+            ]
         ]);
 
         $dataProvider->setSort([
@@ -90,14 +88,14 @@ class PaqueteSearch extends Paquete
                     'default' => ['tra_precio' => SORT_ASC]
                 ],
                 'destinoVuelo' => [
-                    'asc' => ['aero_nombre' => SORT_ASC],
-                    'desc' => ['aero_nombre' => SORT_DESC],
-                    'default' => ['aero_nombre' => SORT_ASC]
+                    'asc' => ['destino.aero_nombre' => SORT_ASC],
+                    'desc' => ['destino.aero_nombre' => SORT_DESC],
+                    'default' => ['destino.aero_nombre' => SORT_ASC]
                 ],
                 'origenVuelo' => [
-                    'asc' => ['aero_nombre' => SORT_ASC],
-                    'desc' => ['aero_nombre' => SORT_DESC],
-                    'default' => ['aero_nombre' => SORT_ASC]
+                    'asc' => ['origen.aero_nombre' => SORT_ASC],
+                    'desc' => ['origen.aero_nombre' => SORT_DESC],
+                    'default' => ['origen.aero_nombre' => SORT_ASC]
                 ],
             ]
         ]);
@@ -126,8 +124,8 @@ class PaqueteSearch extends Paquete
             ->andFilterWhere(['like', 'paq_descripcion', $this->paq_descripcion])
             ->andFilterWhere(['like', 'paq_url', $this->paq_url])
             ->andFilterWhere(['like', 'vue_tipo', $this->tipoVuelo])
-            ->andFilterWhere(['like', 'aero_nombre', $this->destinoVuelo])
-            ->andFilterWhere(['like', 'aero_nombre', $this->origenVuelo])
+            ->andFilterWhere(['like', 'destino.aero_nombre', $this->destinoVuelo])
+            ->andFilterWhere(['like', 'origen.aero_nombre', $this->origenVuelo])
             ->andFilterWhere(['like', 'seg_nombre', $this->nombreSeguro])
             ->andFilterWhere(['like', 'tra_precio', $this->precioTraslado]);
 

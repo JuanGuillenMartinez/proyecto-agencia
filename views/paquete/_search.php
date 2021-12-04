@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use app\models\Paquete;
+use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -11,29 +13,57 @@ use yii\widgets\ActiveForm;
 <div class="paquete-search container-crud">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['paquetes'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'paq_id') ?>
+    <?php //$form->field($model, 'paq_id') 
+    ?>
 
-    <?= $form->field($model, 'paq_nombre') ?>
+    <div class="row">
 
-    <?= $form->field($model, 'paq_subtotal') ?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'paq_nombre') ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'destinoVuelo') ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'origenVuelo') ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'paq_fkvuelo')->widget(Select2::classname(), [
+                'data' => Paquete::getVuelosMap(),
+                'options' => ['placeholder' => 'Selecciona un vuelo ...', 'id' => 'vueloId'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
+        </div>
 
-    <?= $form->field($model, 'paq_url') ?>
+        <?php //$form->field($model, 'paq_subtotal') 
+        ?>
 
-    <?= $form->field($model, 'paq_fkvuelo') ?>
+        <?php //$form->field($model, 'paq_url') 
+        ?>
 
-    <?php // echo $form->field($model, 'paq_fkalojamiento') ?>
+        <?php //$form->field($model, 'paq_fkvuelo') 
+        ?>
 
-    <?php // echo $form->field($model, 'paq_fkseguro') ?>
+        <?php // echo $form->field($model, 'paq_fkalojamiento') 
+        ?>
 
-    <?php // echo $form->field($model, 'paq_fktraslado') ?>
+        <?php // echo $form->field($model, 'paq_fkseguro') 
+        ?>
+
+        <?php // echo $form->field($model, 'paq_fktraslado') 
+        ?>
+    </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('<i class="fas fa-search"></i>', ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<i class="fas fa-eraser"></i>', ['paquetes'], ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
