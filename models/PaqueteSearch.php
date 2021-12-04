@@ -17,6 +17,8 @@ class PaqueteSearch extends Paquete
     public $numeroHabitacion;
     public $nombreSeguro;
     public $precioTraslado;
+    public $paisDestino;
+    public $paisOrigen;
     /**
      * {@inheritdoc}
      */
@@ -24,7 +26,7 @@ class PaqueteSearch extends Paquete
     {
         return [
             [['paq_id', 'paq_descuento', 'paq_fkvuelo', 'paq_fkalojamiento', 'paq_fkseguro', 'paq_fktraslado', 'numeroHabitacion', 'precioTraslado'], 'integer'],
-            [['paq_nombre', 'paq_url', 'tipoVuelo', 'destinoVuelo', 'origenVuelo', 'nombre', 'nombreSeguro', 'paq_descripcion'], 'safe'],
+            [['paq_nombre', 'paq_url', 'tipoVuelo', 'destinoVuelo', 'origenVuelo', 'nombre', 'nombreSeguro', 'paq_descripcion', 'paisDestino', 'paisOrigen'], 'safe'],
             [['paq_subtotal'], 'number'],
         ];
     }
@@ -50,7 +52,7 @@ class PaqueteSearch extends Paquete
         $query = Paquete::find();
 
         // add conditions that should always apply here
-        $query->joinWith(['paqFkseguro', 'paqFkvuelo', 'paqFkalojamiento', 'paqFktraslado', 'paqFkvuelo.vueFkaerodestino as destino', 'paqFkvuelo.vueFkaeroorigen as origen']);
+        $query->joinWith(['paqFkseguro', 'paqFkvuelo', 'paqFkalojamiento', 'paqFktraslado', 'paqFkvuelo.vueFkaerodestino as destino', 'paqFkvuelo.vueFkaeroorigen as origen', 'paqFkvuelo.vueFkaerodestino.aeroFkubicacion as ubiDestino', 'paqFkvuelo.vueFkaeroorigen.aeroFkubicacion as ubiOrigen', 'paqFkvuelo.vueFkaerodestino.aeroFkubicacion.ubiFkpais as paisDestino', 'paqFkvuelo.vueFkaeroorigen.aeroFkubicacion.ubiFkpais as paisOrigen']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -97,6 +99,16 @@ class PaqueteSearch extends Paquete
                     'desc' => ['origen.aero_nombre' => SORT_DESC],
                     'default' => ['origen.aero_nombre' => SORT_ASC]
                 ],
+                'paisDestino' => [
+                    'asc' => ['destino.ubiDestino.paisDestino.pai_pais' => SORT_ASC],
+                    'desc' => ['destino.ubiDestino.paisDestino.pai_pais' => SORT_DESC],
+                    'default' => ['destino.ubiDestino.paisDestino.pai_pais' => SORT_ASC]
+                ],
+                'paisOrigen' => [
+                    'asc' => ['origen.ubiOrigen.paisOrigen.pai_pais' => SORT_ASC],
+                    'desc' => ['origen.ubiOrigen.paisOrigen.pai_pais' => SORT_DESC],
+                    'default' => ['origen.ubiOrigen.paisOrigen.pai_pais' => SORT_ASC]
+                ],
             ]
         ]);
 
@@ -127,7 +139,9 @@ class PaqueteSearch extends Paquete
             ->andFilterWhere(['like', 'destino.aero_nombre', $this->destinoVuelo])
             ->andFilterWhere(['like', 'origen.aero_nombre', $this->origenVuelo])
             ->andFilterWhere(['like', 'seg_nombre', $this->nombreSeguro])
-            ->andFilterWhere(['like', 'tra_precio', $this->precioTraslado]);
+            ->andFilterWhere(['like', 'tra_precio', $this->precioTraslado])
+            ->andFilterWhere(['like', 'paisOrigen.pai_pais', $this->paisOrigen])
+            ->andFilterWhere(['like', 'paisDestino.pai_pais', $this->paisDestino]);
 
         return $dataProvider;
     }

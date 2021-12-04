@@ -26,15 +26,49 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'paq_nombre') ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'destinoVuelo') ?>
+            <?= $form->field($model, 'origenVuelo')->widget(Select2::classname(), [
+                'data' => Paquete::getAeropuertosMap(),
+                'options' => ['placeholder' => 'Selecciona el aeropuerto de origen ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'origenVuelo') ?>
+            <?= $form->field($model, 'destinoVuelo')->widget(Select2::classname(), [
+                'data' => Paquete::getAeropuertosMap(),
+                'options' => ['placeholder' => 'Selecciona el aeropuerto de destino ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'paisOrigen')->widget(Select2::classname(), [
+                'data' => Paquete::getPaisesMap(),
+                'options' => ['placeholder' => 'Selecciona el país de origen ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'paisDestino')->widget(Select2::classname(), [
+                'data' => Paquete::getPaisesMap(),
+                'options' => ['placeholder' => 'Selecciona el país de destino ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
         </div>
         <div class="col-md-6">
             <?= $form->field($model, 'paq_fkvuelo')->widget(Select2::classname(), [
                 'data' => Paquete::getVuelosMap(),
-                'options' => ['placeholder' => 'Selecciona un vuelo ...', 'id' => 'vueloId'],
+                'options' => ['placeholder' => 'Selecciona un vuelo ...'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],

@@ -63,7 +63,7 @@ class Paquete extends \yii\db\ActiveRecord
     {
         return [
             'paq_id' => 'Id',
-            'paq_nombre' => 'Nombre',
+            'paq_nombre' => 'Nombre del paquete',
             'paq_descripcion' => 'Descripción',
             'paq_descuento' => 'Descuento',
             'paq_subtotal' => 'Subtotal',
@@ -71,15 +71,17 @@ class Paquete extends \yii\db\ActiveRecord
             'paq_fkvuelo' => 'Vuelo',
             'infoVuelo' => 'Vuelo',
             'tipoVuelo' => 'Tipo de Vuelo',
-            'destinoVuelo' => 'Destino',
-            'origenVuelo' => 'Origen',
+            'destinoVuelo' => 'Aeropuerto de destino',
+            'origenVuelo' => 'Aeropuerto de origen',
             'numeroHabitacion' => '# Habitacion',
             'nombreSeguro' => 'Seguro',
             'precioTraslado' => 'Precio traslado',
             'paq_fkalojamiento' => 'Alojamiento',
             'paq_fkseguro' => 'Seguro',
             'paq_fktraslado' => 'Traslado',
-            'img' => 'Imagen del paquete'
+            'img' => 'Imagen del paquete',
+            'paisDestino' => 'País de destino', 
+            'paisOrigen' => 'País de origen'
         ];
     }
 
@@ -202,6 +204,17 @@ class Paquete extends \yii\db\ActiveRecord
     {
         return ArrayHelper::map(Traslado::find()->all(), 'tra_id', 'tra_precio');
     }
+
+    public static function getAeropuertosMap()
+    {
+        return ArrayHelper::map(CatAeropuerto::find()->all(), 'aero_nombre', 'aero_nombre');
+    }
+
+    public static function getPaisesMap()
+    {
+        return ArrayHelper::map(CatPais::find()->all(), 'pai_pais', 'pai_pais');
+    }
+
     public function getUrl()
     {
         return "/img/" . (empty($this->paq_url) ? 'reg_default.png' : "paquete/{$this->paq_url}");
