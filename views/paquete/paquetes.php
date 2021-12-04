@@ -14,20 +14,23 @@ use yii\widgets\ListView;
                 <p>Nosotros le ofrecemos el siguiente catalogo de paquetes disponibles para usted.</p>
             </div>
         </div>
-        
-        <div>
-            <?= $this->render('_search', ['model' => $searchModel]); ?>
-            <?= ListView::widget([
-                'dataProvider' => $dataProvider,
-                'options' => [
-                    'tag' => 'div',
-                    'class' => 'list-wrapper section-paquetes',
-                    'id' => 'list-wrapper'
-                ],
-                'itemView' => '_paquete',
-                'layout' => '{pager}{items}{summary}',
-            ]);
-            ?>
+        <div class="body-view-paquetes">
+            <div class="search-paquetes">
+                <?= $this->render('_search', ['model' => $searchModel]); ?>
+            </div>
+            <div class="section-cards-paquetes">
+                <?= ListView::widget([
+                    'dataProvider' => $dataProvider,
+                    'options' => [
+                        'tag' => 'div',
+                        'class' => 'list-wrapper section-paquetes',
+                        'id' => 'list-wrapper'
+                    ],
+                    'itemView' => '_paquete',
+                    'layout' => '{pager}{items}{summary}',
+                ]);
+                ?>
+            </div>
         </div>
     </div>
 </div>

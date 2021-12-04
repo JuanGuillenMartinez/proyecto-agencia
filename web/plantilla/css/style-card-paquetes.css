@@ -104,7 +104,7 @@ License: https://www.wowthemes.net/freebies-license/
 }
 .text-card-paquete {
     padding-left: 0;
-    font-size: 18px;
+    /* font-size: 18px; */
 }
 .metafooter {
 	display: grid;
