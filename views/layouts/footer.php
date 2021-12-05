@@ -1,8 +1,8 @@
 <div id="footer">
-    <div class="container">
+    <div class="container.footer">
         <div class="row row-bottom-padded-md">
             <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                <h3>About Travel</h3>
+                <h3>Acerca de LatamTravel</h3>
                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
@@ -54,11 +54,11 @@
         <div class="row justify-content-md-center">
             <div class="col-md-6 text-center">
                 <p class="fh5co-social-icons">
-                    <a href="#"><i class="icon-twitter2"></i></a>
-                    <a href="#"><i class="icon-facebook2"></i></a>
-                    <a href="#"><i class="icon-instagram"></i></a>
-                    <a href="#"><i class="icon-dribbble2"></i></a>
-                    <a href="#"><i class="icon-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </p>
                 <p>Copyright 2016 Free Html5 <a href="#">Module</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="http://freehtml5.co/" target="_blank">Freehtml5.co</a> / Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
             </div>
