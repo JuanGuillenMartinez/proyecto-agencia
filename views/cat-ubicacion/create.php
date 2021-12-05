@@ -9,7 +9,7 @@ $this->title = 'Añadir Ubicacion';
 $this->params['breadcrumbs'][] = ['label' => 'Ubicaciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-ubicacion-create">
+<div class="cat-ubicacion-create container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

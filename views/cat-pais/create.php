@@ -9,7 +9,7 @@ $this->title = 'Añadir un país';
 $this->params['breadcrumbs'][] = ['label' => 'País', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-pais-create">
+<div class="cat-pais-create container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

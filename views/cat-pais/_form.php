@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="cat-pais-form">
+<div class="cat-pais-form container-crud">
 
     <?php $form = ActiveForm::begin(); ?>
 

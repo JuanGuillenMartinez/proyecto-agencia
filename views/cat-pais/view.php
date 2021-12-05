@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'País', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="cat-pais-view">
+<div class="cat-pais-view container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Aeropuertos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="cat-aeropuerto-view">
+<div class="cat-aeropuerto-view container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

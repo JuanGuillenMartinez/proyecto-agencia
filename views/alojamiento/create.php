@@ -9,7 +9,7 @@ $this->title = 'Añadir Alojamiento';
 $this->params['breadcrumbs'][] = ['label' => 'Alojamientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="alojamiento-create">
+<div class="alojamiento-create container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
