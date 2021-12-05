@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Aeropuertos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->aero_id, 'url' => ['view', 'id' => $model->aero_id]];
 $this->params['breadcrumbs'][] = 'Editar';
 ?>
-<div class="cat-aeropuerto-update">
+<div class="cat-aeropuerto-update container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

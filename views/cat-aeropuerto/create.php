@@ -9,7 +9,7 @@ $this->title = 'Añadir Aeropuerto';
 $this->params['breadcrumbs'][] = ['label' => 'Aeropuertos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-aeropuerto-create">
+<div class="cat-aeropuerto-create container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -39,27 +39,44 @@ use yii\helpers\Html;
     </div>
 </div>
 
-
-<div class="body-vuelo">
-    <div class="all-container">
-
+<div class="body-hotel">
+    <div class="all-container-hotel">
         <?php
         foreach ($hoteles as $alojamiento) { ?>
-            <div class="card-vuelos">
-                <div class="card-one">
-                    <div class="div-img">
-                        <?= Html::img('@web/img/alojamiento/' . $alojamiento->alo_url, ['class' => 'card-img']) ?>
+            <div class="cards-hotel">
+                <div class="card-hotel">
+                    <div class="card__image-holder-hotel">
+                        <?= Html::img('@web/img/alojamiento/' . $alojamiento->alo_url, ['class' => 'img-hotel']) ?>
                     </div>
-                    <h6 class="guided titulo-h6-vuelo">Hotel</h6>
-                    <h2 class="titulo-h2-vuelo"><?= $alojamiento->alo_nombre ?></h2>
-                    <h5 class="titulo-h5-vuelo"><?= $alojamiento->alo_direccion ?></h5>
-                    <h5 class="titulo-h5-vuelo"><?= $alojamiento->getUbicacionInfo() ?></h5>
-                    <div class="row row-vuelo">
-
-                        <div class="col-md-6 text-prices">
-                            <span class="from span-vuelo">Desde</span>
-                            <span class="price span-vuelo precio"><i class="fas fa-dollar-sign"></i><?= $alojamiento->alo_precio ?></span>
-                            <span class="person span-vuelo">Por noche</span>
+                    <div class="card-title-hotel">
+                        <a href="#" class="toggle-info-hotel btn-hotel">
+                            <span class="left-hotel"></span>
+                            <span class="right-hotel"></span>
+                        </a>
+                        <h2 class="titulo-h2-hotel">
+                            <?= $alojamiento->alo_nombre ?>
+                        </h2>
+                        <h4 class="titulo-h4-hotel">
+                            <small><?= $alojamiento->getUbicacionInfo() ?></small>
+                        </h4>
+                    </div>
+                    <div class="card-flap-hotel flap1-hotel">
+                        <div class="card-description-hotel">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i class="fas fa-map-marker-alt"></i><i><span class="span-hotel"> <?= $alojamiento->alo_direccion ?></span></i><br>
+                                </div>
+                                <div class="col-md-6 text-prices">
+                                    <span class="from span-vuelo">Desde</span>
+                                    <span class="price span-vuelo precio"><i class="fas fa-dollar-sign"><?= $alojamiento->alo_precio ?></i></span><br>
+                                    <span class="person span-vuelo">La noche</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-flap-hotel flap2-hotel">
+                            <!--div class="card-actions-hotel">
+                            <a href="#" class="btn-hotel">Read more</a>
+                        </div-->
                         </div>
                     </div>
                 </div>
@@ -67,40 +84,3 @@ use yii\helpers\Html;
         <?php  }; ?>
     </div>
 </div>
-
-        </*div class="all-container-hotel"*/>
-    <?php
-    foreach ($hoteles as $alojamiento) { ?>
-        <div class="cards-hotel">
-            <div class="card-hotel">
-                <div class="card__image-holder-hotel">
-                    <?= Html::img('@web/img/alojamiento/' . $alojamiento->alo_url, ['class' => 'img-hotel']) ?>
-                </div>
-                <div class="card-title-hotel">
-                    <a href="#" class="toggle-info-hotel btn-hotel">
-                        <span class="left-hotel"></span>
-                        <span class="right-hotel"></span>
-                    </a>
-                    <h2>
-                        <?= $alojamiento->alo_nombre ?>
-                        <small><?= $alojamiento->alo_direccion ?></small>
-                    </h2>
-                    <h4>
-                        <small><?= $alojamiento->getUbicacionInfo() ?></small>
-                    </h4>
-                </div>
-                <div class="card-flap-hotel flap1-hotel">
-                    <div class="card-description-hotel">
-                        This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when
-                        they're not available etc.
-                    </div>
-                    <div class="card-flap-hotel flap2-hotel">
-                        <div class="card-actions-hotel">
-                            <!--a href="#" class="btn-hotel">Read more</a-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php  }; ?>
-</*/div*/>

@@ -8,7 +8,8 @@ main > .container {
     height: 60px;
 }
 
-.footer > .container {
+.footer > .container.footer {
+    max-width: 90%;
     padding-right: 15px;
     padding-left: 15px;
 }

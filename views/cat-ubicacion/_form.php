@@ -10,7 +10,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="cat-ubicacion-form">
+<div class="cat-ubicacion-form container-crud">
 
     <?php $form = ActiveForm::begin(); ?>
 

@@ -12,7 +12,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="alojamiento-form">
+<div class="alojamiento-form container-crud">
 
     <?php $form = ActiveForm::begin(); ?>
 

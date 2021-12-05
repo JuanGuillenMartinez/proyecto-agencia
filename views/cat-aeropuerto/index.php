@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Aeropuertos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cat-aeropuerto-index">
+<div class="cat-aeropuerto-index container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

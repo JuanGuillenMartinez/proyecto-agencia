@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Ubicaciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->ubi_id, 'url' => ['view', 'id' => $model->ubi_id]];
 $this->params['breadcrumbs'][] = 'Editar';
 ?>
-<div class="cat-ubicacion-update">
+<div class="cat-ubicacion-update container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

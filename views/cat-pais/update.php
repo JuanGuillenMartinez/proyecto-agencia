@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'País', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->pai_id, 'url' => ['view', 'id' => $model->pai_id]];
 $this->params['breadcrumbs'][] = 'Editar';
 ?>
-<div class="cat-pais-update">
+<div class="cat-pais-update container-crud">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

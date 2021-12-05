@@ -11,7 +11,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="cat-aeropuerto-form">
+<div class="cat-aeropuerto-form container-crud">
 
     <?php $form = ActiveForm::begin(); ?>
 
