@@ -1,0 +1,8 @@
+div fondo {
+    background-color: #3C3B3D;
+    border-radius: 2px solid black;
+}
+
+div.contenido {
+    padding: 12px;
+}

@@ -281,7 +281,7 @@ class Paquete extends \yii\db\ActiveRecord
         return isset($paquetes) ? $paquetes : null;
     }
     public static function getPaquetesRecientes() {
-        $paquetesRecientes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(4)->all();
+        $paquetesRecientes = Paquete::find()->orderBy(['paq_id' => SORT_DESC])->limit(3)->all();
         return isset($paquetesRecientes) ? $paquetesRecientes : null;
     }
     public static function getOfertas() {

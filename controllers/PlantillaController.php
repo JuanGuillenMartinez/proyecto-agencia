@@ -7,6 +7,7 @@ use app\models\Paquete;
 use app\models\Persona;
 use app\models\CatSeguro;
 use app\models\Alojamiento;
+use app\models\CatSeguroSearch;
 use app\models\Reservacion;
 use app\models\PaqueteSearch;
 use app\models\Reservacionpaquete;
@@ -97,10 +98,11 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionSeguros()
     {
-        $paquetes = Paquete::getPaquetes();
         $paquete = Paquete::getMejorOferta();
-        $seguros = CatSeguro::find()->all();
-        return $this->render('seguros', compact('paquete', 'seguros', 'paquetes'));
+        $searchModel = new CatSeguroSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('/cat-seguro/seguros', compact('paquete', 'searchModel', 'dataProvider'));
     }
 
     public function actionLogin()

@@ -46,8 +46,7 @@ class CatSeguroSearch extends CatSeguro
         $query = CatSeguro::find();
 
         // add conditions that should always apply here
-        $query->joinWith('segFkregion');
-        $query->joinWith('segFkaseguradora');
+        $query->joinWith(['segFkregion', 'segFkaseguradora']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
