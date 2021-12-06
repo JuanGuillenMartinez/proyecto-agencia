@@ -200,6 +200,16 @@ class Paquete extends \yii\db\ActiveRecord
         return ArrayHelper::map(CatSeguro::find()->all(), 'seg_id', 'seguroInfo');
     }
 
+    public static function getRegionMap()
+    {
+        return ArrayHelper::map(CatRegion::find()->all(), 'reg_id', 'reg_region');
+    }
+
+    public static function getAseguradoraMap()
+    {
+        return ArrayHelper::map(CatAseguradora::find()->all(), 'ase_id', 'ase_nombre');
+    }
+
     public static function getTrasladosMap()
     {
         return ArrayHelper::map(Traslado::find()->all(), 'tra_id', 'tra_precio');
