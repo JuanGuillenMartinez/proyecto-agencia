@@ -209,6 +209,14 @@ div.card-hotel.show div.flap2-hotel {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
+@media (min-width: 1100px) {
+
+    /* For a screen > 1499px, this CSS will be read */
+    .all-container-hotel {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
 
 .titulo-h2-hotel {
     font-weight: 600;
