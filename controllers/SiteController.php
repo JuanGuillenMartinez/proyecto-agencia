@@ -61,6 +61,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user->isGuest || !Yii::$app->user->isSuperAdmin){
+            return $this->redirect('/plantilla/index');
+        }
         return $this->render('index');
     }
 

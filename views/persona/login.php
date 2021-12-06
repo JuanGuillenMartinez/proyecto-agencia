@@ -17,7 +17,7 @@ use yii\bootstrap4\Html;
 					</div>
 					<div class="group">
 						<!--<label for="pass" class="label">Contraseña</label> -->
-						<?= $form->field($login, 'password')->textInput(['maxlength' => true])->label("Contraseña")?>
+						<?= $form->field($login, 'password')->passwordInput(['maxlength' => true])->label("Contraseña")?>
 					</div>
 					<div class="group">
 						<input id="check" type="checkbox" class="check" checked> 
@@ -39,10 +39,10 @@ use yii\bootstrap4\Html;
 					<?= $form->field($user, 'username')->textInput(['maxlength' => true])->label("Nombre de usuario")?>
 				</div>
 				<div class="group">
-					<?= $form->field($user, 'password_hash')->textInput(['maxlength' => true])->label("Contraseña")?>
+					<?= $form->field($user, 'password_hash')->passwordInput(['maxlength' => true])->label("Contraseña")?>
 				</div>
 				<div class="group">
-					<?= $form->field($user, 'confirmation_token')->textInput(['maxlength' => true])->label("Repetir contraseña")?>
+					<?= $form->field($user, 'confirmation_token')->passwordInput(['maxlength' => true])->label("Repetir contraseña")?>
 				</div>
 				<div class="group">
 					<!--<label for="pass" class="label">Correo electrónico</label> -->
@@ -72,14 +72,15 @@ use yii\bootstrap4\Html;
 					<!--<label for="pass" class="label">Teléfono</label>-->
 					<?= $form->field($persona, 'per_telefono')->textInput(['maxlength' => true])->label("Teléfono")?>
 				</div>
-				<div class="group">
+			<div class="hr"></div>
+			<div class="group">
 				<!--<input type="submit" class="button" value="Registrar">-->
 				<?= Html::submitButton('Registrar', ['class' => 'btn btn-success']) ?>
 			</div>
-			<div class="hr"></div>
-			<div class="foot-lnk">
 				<label for="tab-1"><a>¿Ya tienes una cuenta?</a>
 			</div>	
+			<div class="foot-lnk">
+			
 				<?php ActiveForm::end(); ?>
 			</div>
 		</div>
