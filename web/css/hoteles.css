@@ -201,7 +201,7 @@ div.card-hotel.show div.flap2-hotel {
     transition: all 0.3s 0.2s ease-out;
 }
 
-@media (min-width: 1520px) {
+@media (min-width: 1420px) {
 
     /* For a screen > 1499px, this CSS will be read */
     .all-container-hotel {
