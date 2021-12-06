@@ -87,8 +87,8 @@ class CatSeguroSearch extends CatSeguro
         ]);
 
         $query->andFilterWhere(['like', 'seg_nombre', $this->seg_nombre])
-        ->andFilterWhere(['like', 'reg_region', $this->nombreRegion])
-        ->andFilterWhere(['like', 'ase_nombre', $this->nombreAseguradora]);
+            ->andFilterWhere(['like', 'reg_region', $this->nombreRegion])
+            ->andFilterWhere(['like', 'ase_nombre', $this->nombreAseguradora]);
 
         return $dataProvider;
     }

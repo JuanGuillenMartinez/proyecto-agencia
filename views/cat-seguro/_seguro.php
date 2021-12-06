@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 ?>
-<div class="card-paquete">
-    <div class="card-text-campo card-block">
+<div class="card-paquete div-fondo-seguro">
+    <div class="card-text-campo card-block div-contenido-seguro">
         <h2 class="card-title titulo-card-paquete"><a href="post.html"><?= $model->seg_nombre ?></a></h2>
         <div>
             <div class="row">
                 <div class="icons-card-paquete col-md-2">
-                    <i class="fas fa-hotel"></i>
+                    <i class="fas fa-globe-europe"></i>
                 </div>
                 <div class="text-card-paquete col-md-10">
                     <span><?= $model->getNombreRegion() ?></span>
@@ -17,7 +17,7 @@ use yii\helpers\Html;
             </div>
             <div class="row">
                 <div class="icons-card-paquete col-md-2">
-                    <i class="fas fa-plane-departure"></i>
+                    <i class="fas fa-book-open"></i>
                 </div>
                 <div class="text-card-paquete col-md-10">
                     <span><?= $model->getNombreAseguradora() ?></span>
@@ -25,7 +25,7 @@ use yii\helpers\Html;
             </div>
             <div class="row">
                 <div class="icons-card-paquete col-md-2">
-                    <i class="fas fa-car-crash"></i>
+                    <i class="fas fa-phone-alt"></i>
                 </div>
                 <div class="text-card-paquete col-md-10">
                     <span><?= $model->getAseguradoraTelefono() ?></span>
@@ -33,7 +33,7 @@ use yii\helpers\Html;
             </div>
             <div class="row">
                 <div class="icons-card-paquete col-md-2">
-                    <i class="fas fa-plane-arrival"></i>
+                    <i class="far fa-envelope"></i>
                 </div>
                 <div class="text-card-paquete col-md-10">
                     <span><?= $model->getAseguradoraCorreo() ?></span>
