@@ -130,6 +130,9 @@ class ReservacionController extends Controller
             $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
             if (isset($reservacion) && $reservacion != null) {
                 $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
+                if($reservacionPaquete->recpaq_estatus === 'Descartado') {
+                    $reservacionPaquete->recpaq_estatus = 'Seleccionado';
+                }
                 return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
             } else if ($reservacion == null) {
                 $reservacion = new Reservacion();
