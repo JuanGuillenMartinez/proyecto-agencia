@@ -10,8 +10,8 @@ use yii\widgets\ListView;
     <div class="body-paquetes">
         <div class="text row justify-content-md-center">
             <div class="col-md-8 text-center heading-section animate-box">
-                <h3>Conoce todos nuestros paquetes</h3>
-                <p>Nosotros le ofrecemos el siguiente catalogo de paquetes disponibles para usted.</p>
+                <h3>Conoce todos nuestros seguros</h3>
+                <p>Nosotros le ofrecemos el siguiente catalogo de seguros para que nuestros clientes disfruten completamente su viaje.</p>
             </div>
         </div>
         <div class="body-view-paquetes">
@@ -26,7 +26,7 @@ use yii\widgets\ListView;
                         'class' => 'list-wrapper section-paquetes',
                         'id' => 'list-wrapper'
                     ],
-                    'itemView' => '_paquete',
+                    'itemView' => '_seguro',
                     'layout' => '{pager}{items}{summary}',
                 ]);
                 ?>

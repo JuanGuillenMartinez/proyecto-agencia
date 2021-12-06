@@ -97,6 +97,14 @@ class CatSeguro extends \yii\db\ActiveRecord
         return $this->segFkaseguradora->ase_nombre;
     }
 
+    public function getAseguradoraTelefono() {
+        return $this->segFkaseguradora->ase_telefono;
+    }
+
+    public function getAseguradoraCorreo() {
+        return $this->segFkaseguradora->ase_correo;
+    }
+
     public static function getRegionesMap() {
         return ArrayHelper::map(CatRegion::find()->all(), 'reg_id', 'reg_region');
     }
@@ -111,5 +119,8 @@ class CatSeguro extends \yii\db\ActiveRecord
 
     public function getSeguroNombre() {
         return $this->seg_nombre . ' - ' . $this->getNombreAseguradora();
+    }
+    public function getPrecioFormated() {
+        return "$" . number_format($this->seg_precio, 2,'.', ',');
     }
 }

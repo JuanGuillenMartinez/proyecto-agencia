@@ -22,30 +22,10 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
 
-        <div class="col-md-6">
-            <?= $form->field($model, 'paq_nombre') ?>
+        <div class="col-md-4">
+            <?= $form->field($model, 'paq_nombre')->textInput() ?>
         </div>
-        <div class="col-md-6">
-            <?= $form->field($model, 'origenVuelo')->widget(Select2::classname(), [
-                'data' => Paquete::getAeropuertosMap(),
-                'options' => ['placeholder' => 'Selecciona el aeropuerto de origen ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]);
-            ?>
-        </div>
-        <div class="col-md-6">
-            <?= $form->field($model, 'destinoVuelo')->widget(Select2::classname(), [
-                'data' => Paquete::getAeropuertosMap(),
-                'options' => ['placeholder' => 'Selecciona el aeropuerto de destino ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]);
-            ?>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <?= $form->field($model, 'paisOrigen')->widget(Select2::classname(), [
                 'data' => Paquete::getPaisesMap(),
                 'options' => ['placeholder' => 'Selecciona el país de origen ...'],
@@ -55,20 +35,10 @@ use yii\widgets\ActiveForm;
             ]);
             ?>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <?= $form->field($model, 'paisDestino')->widget(Select2::classname(), [
                 'data' => Paquete::getPaisesMap(),
                 'options' => ['placeholder' => 'Selecciona el país de destino ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]);
-            ?>
-        </div>
-        <div class="col-md-6">
-            <?= $form->field($model, 'paq_fkvuelo')->widget(Select2::classname(), [
-                'data' => Paquete::getVuelosMap(),
-                'options' => ['placeholder' => 'Selecciona un vuelo ...'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],
@@ -93,12 +63,12 @@ use yii\widgets\ActiveForm;
 
         <?php // echo $form->field($model, 'paq_fktraslado') 
         ?>
+        <div class="form-group col-md-12 btn-bar">
+            <?= Html::submitButton('<i class="fas fa-search"></i>', ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('<i class="fas fa-eraser"></i>', ['paquetes'], ['class' => 'btn btn-outline-secondary']) ?>
+        </div>
     </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('<i class="fas fa-search"></i>', ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('<i class="fas fa-eraser"></i>', ['paquetes'], ['class' => 'btn btn-outline-secondary']) ?>
-    </div>
 
     <?php ActiveForm::end(); ?>
 
