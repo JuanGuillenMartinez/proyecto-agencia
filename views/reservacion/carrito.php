@@ -14,7 +14,7 @@ use yii\bootstrap4\Html;
         </div>
         <div class="cart">
             <div class="products" id="div-carrito">
-                <?= $this->render('paquetes-carrito', compact('paquetesReservacion', 'precioFinalReservacion', 'numeroPaquetes', 'ahorroTotal')) ?>
+                <?= $this->render('paquetes-carrito', compact('reservacion', 'paquetesReservacion', 'precioFinalReservacion', 'numeroPaquetes', 'ahorroTotal')) ?>
             </div>
             <div class="cart-total">
                 <p>

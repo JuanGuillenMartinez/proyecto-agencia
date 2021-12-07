@@ -76,7 +76,7 @@
 
 .product-remove, .product-show {
     border-style: hidden;
-    position: absolute;
+    /* position: absolute; */
     bottom: 12px;
     right: 20px;
     padding: 10px 25px;

@@ -122,6 +122,22 @@ class ReservacionController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    public function actionActualizar()
+    {
+        $idReservacionPaquete = Yii::$app->request->post('idPaqueteReservacion');
+        $cantidad = Yii::$app->request->post('cantidad');
+        $paqueteReservacion = Reservacionpaquete::find()->where(['recpaq_id' => $idReservacionPaquete, 'recpaq_estatus' => 'Seleccionado'])->one();
+        if(isset($paqueteReservacion)) {
+            return $this->actualizarProductosReservacion($paqueteReservacion, $cantidad);
+        }
+    }
+
+    protected function actualizarProductosReservacion($paqueteReservacion, $cantidad) {
+        $paqueteReservacion->recpaq_cantidad = $cantidad;
+        return $paqueteReservacion->save() ? "Producto actualizado correctamente" : "Hubo un error";
+    }
+
     public function actionAgregar()
     {
         $idPaquete = Yii::$app->request->post('idPaquete');
@@ -130,7 +146,7 @@ class ReservacionController extends Controller
             $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
             if (isset($reservacion) && $reservacion != null) {
                 $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
-                if($reservacionPaquete->recpaq_estatus === 'Descartado') {
+                if ($reservacionPaquete->recpaq_estatus === 'Descartado') {
                     $reservacionPaquete->recpaq_estatus = 'Seleccionado';
                 }
                 return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
@@ -168,8 +184,8 @@ class ReservacionController extends Controller
             $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
             $paquetesReservacion = isset($reservacion) ? Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all() : null;
             $response = Yii::$app->response;
-            $response->format=Response::FORMAT_JSON;
-            $response->data=[$this->renderPartial('paquetes-carrito', compact('paquetesReservacion', 'precioFinalReservacion', 'numeroPaquetes', 'ahorroTotal'))];
+            $response->format = Response::FORMAT_JSON;
+            $response->data = [$this->renderPartial('paquetes-carrito', compact('paquetesReservacion', 'precioFinalReservacion', 'numeroPaquetes', 'ahorroTotal'))];
             return $response;
         }
     }
@@ -218,7 +234,7 @@ class ReservacionController extends Controller
                 $reservacion = Reservacion::find()->where(['res_id' => $id])->one();
                 return $this->render('detalles', compact('reservacion'));
             }
-            if(isset($persona)) {
+            if (isset($persona)) {
                 $reservacion = Reservacion::find()->where(['res_fkpersona' => $persona->per_id, 'res_id' => $id, 'res_estatus' => 'Pagado'])->one();
                 return isset($reservacion) ? $this->render('detalles', compact('reservacion')) : $this->redirect('/plantilla/index');
             }

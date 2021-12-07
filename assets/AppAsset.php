@@ -38,6 +38,7 @@ class AppAsset extends AssetBundle
         'css/mostrar-paquete.css',
         'css/detalles.css',
         'css/seguros.css',
+        'css/number-input.css'
 
     ];
     public $js = [
@@ -58,10 +59,10 @@ class AppAsset extends AssetBundle
         '/js/modal-paquete.js',
         '/js/bootbox.all.min.js',
         'https://kit.fontawesome.com/d9a399c640.js',
-        'js/paquete-view.js',
         'js/carrito.js',
         'js/perfil.js',
-        'js/hoteles.js'
+        'js/hoteles.js',
+        'js/number-input.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
