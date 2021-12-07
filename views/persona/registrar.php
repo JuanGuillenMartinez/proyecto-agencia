@@ -62,12 +62,11 @@ use yii\bootstrap4\ActiveForm;
             <?= $form->field($persona, 'per_direccion')->textInput(['maxlength' => true]) ?>
         </div>
 
-        <div class="col-md-3">
-            <?= $form->field($persona, 'per_correo')->textInput(['maxlength' => true]) ?>
-        </div>
-
         <div class="col-md-2">
             <?= $form->field($persona, 'per_telefono')->textInput(['maxlength' => true]) ?>
+        </div>
+        
+        <div class="col-md-3">
         </div>
 
         
