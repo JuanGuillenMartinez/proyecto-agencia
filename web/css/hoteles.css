@@ -201,12 +201,13 @@ div.card-hotel.show div.flap2-hotel {
     transition: all 0.3s 0.2s ease-out;
 }
 
-@media (min-width: 1520px) {
+@media (min-width: 1200px) {
 
     /* For a screen > 1499px, this CSS will be read */
     .all-container-hotel {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
     }
 }
 
@@ -257,13 +258,14 @@ div.card-hotel.show div.flap2-hotel {
     font-weight: 500;
 }
 
-.span-hotel{
+.span-hotel {
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
     font-size: .9rem;
     line-height: 1.2;
     opacity: .8;
 }
+
 .prices>.from {
     position: relative;
     top: -7em;
@@ -288,11 +290,11 @@ div.card-hotel.show div.flap2-hotel {
     opacity: .5;
 }
 
-.text-prices{
-    text-align:end;
+.text-prices {
+    text-align: end;
 }
 
-.precio{
+.precio {
     font-size: 16px;
     font-weight: bold;
     color: tomato;

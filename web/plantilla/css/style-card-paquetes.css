@@ -121,6 +121,7 @@ License: https://www.wowthemes.net/freebies-license/
 	grid-template-rows: 9fr 1fr;
 }
 .titulo-card-paquete {
+    margin-bottom: 30px;
 	text-align: center;
 }
 .paquete-search {

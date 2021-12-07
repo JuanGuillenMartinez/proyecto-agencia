@@ -36,7 +36,8 @@ class AppAsset extends AssetBundle
         'css/modal-login.css',
         'css/carrito.css',
         'css/mostrar-paquete.css',
-        'css/detalles.css'
+        'css/detalles.css',
+        'css/seguros.css',
 
     ];
     public $js = [

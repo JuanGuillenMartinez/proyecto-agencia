@@ -6,9 +6,10 @@ use app\models\Vuelo;
 use app\models\Paquete;
 use app\models\Persona;
 use app\models\Alojamiento;
-use app\models\CatSeguroSearch;
 use app\models\Reservacion;
 use app\models\PaqueteSearch;
+use app\models\CatSeguroSearch;
+use app\models\AlojamientoSearch;
 use app\models\Reservacionpaquete;
 use webvimark\modules\UserManagement\models\User;
 use webvimark\modules\UserManagement\models\forms\LoginForm;
@@ -76,6 +77,16 @@ class PlantillaController extends \yii\web\Controller
         $model->aloDestino = isset($params['Alojamiento']['aloDestino']) ? trim($params['Alojamiento']['aloDestino']) : '';
         return $this->render("hoteles", compact("paquete", "hoteles", "model"));
     }
+
+    /*public function actionHoteles()
+    {
+        $paquete = Paquete::getMejorOferta();
+        $searchModel = new AlojamientoSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('/alojamiento/hoteles', compact('paquete', 'searchModel', 'dataProvider'));
+    }*/
+
     public function actionCarrito()
     {
         $precioFinalReservacion = $numeroPaquetes = $ahorroTotal = 0;
