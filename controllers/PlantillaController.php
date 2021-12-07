@@ -5,7 +5,6 @@ namespace app\controllers;
 use app\models\Vuelo;
 use app\models\Paquete;
 use app\models\Persona;
-use app\models\CatSeguro;
 use app\models\Alojamiento;
 use app\models\CatSeguroSearch;
 use app\models\Reservacion;

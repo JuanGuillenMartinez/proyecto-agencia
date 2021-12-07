@@ -4,7 +4,8 @@
 
 <body>
     <div id="fh5co-wrapper">
-
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+        style="box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); width: 500px; margin: auto; position: relative; left: 40%;letter-spacing: 8px;">Login</button>    
         <div id="fh5co-page">
             <?= $this->render("/paquete/mejor_oferta", compact("paquete")); ?>
         </div>
@@ -12,7 +13,8 @@
             <?= $this->render("/paquete/ofertas", compact("paquetesOfertas")); ?>
         </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Login</button>
+
+         
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

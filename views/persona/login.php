@@ -1,6 +1,7 @@
 <?php 
-use yii\bootstrap4\ActiveForm; 
 use yii\bootstrap4\Html;
+use kartik\widgets\DatePicker;
+use yii\bootstrap4\ActiveForm; 
 ?>
 
 <div class="body-login">
@@ -62,7 +63,20 @@ use yii\bootstrap4\Html;
 				</div>
                 <div class="group">
 					<!--<label for="pass" class="label">Fecha de nacimiento</label>-->
-					<?= $form->field($persona, 'per_nacimiento')->textInput(['maxlength' => true])->label("Fecha de nacimiento")?>
+					<?/*= $form->field($persona, 'per_nacimiento')->textInput(['maxlength' => true])->label("Fecha de nacimiento")*/?>
+					<?= $form->field($persona, 'per_nacimiento')->widget(
+                DatePicker::className(),
+                [
+                    'type' => DatePicker::TYPE_INPUT,
+                    'value' => date('Y-m-d'),
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd',
+						'autocomplete' => 'off'
+
+                    ]
+                ]
+            ) ?>
 				</div>
                 <div class="group">
 					<!--<label for="pass" class="label">Dirección</label>-->

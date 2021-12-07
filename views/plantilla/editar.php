@@ -1,4 +1,7 @@
-<?php use yii\bootstrap4\Html; ?>
+<?php use yii\bootstrap4\Html;
+	use kartik\date\DatePicker; ?>
+
+
 <body class = "bodyProfile">
 <div class="container">
 		<div class="main-body">
@@ -82,8 +85,16 @@
 									<h6 class="mb-0">Fecha de nacimiento</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input id="nacimiento" type="text" class="form-control" value="<?= $persona->per_nacimiento?>">
-								</div>
+									
+									<?= DatePicker::widget([
+										'name' => 'birth_date',
+										'value' => $persona->per_nacimiento,
+										'pluginOptions' => [
+											'autoclose' => true,
+											'format' => 'mm/dd/yyyy'
+										]
+									])?>
+																	</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-3"></div>

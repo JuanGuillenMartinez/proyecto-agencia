@@ -31,7 +31,6 @@ use webvimark\modules\UserManagement\UserManagementModule;
                 'items'=>UserManagementModule::menuItems(), 
                 'visible' => Yii::$app->user->isSuperAdmin
             ],
-            ['label'=>'Login', 'url'=>['/user-management/auth/login'], 'visible' => Yii::$app->user->isGuest],
 			['label'=>'Logout', 'url'=>['/user-management/auth/logout'], 'visible' => !Yii::$app->user->isGuest],
             ['label'=>'<i class="fas fa-shopping-cart"></i>', 'url'=>['/plantilla/carrito'], 'visible' => !Yii::$app->user->isGuest],
             ['label'=>'<i class="fas fa-user"></i>', 'url'=>['/plantilla/perfil'], 'visible' => !Yii::$app->user->isGuest],
