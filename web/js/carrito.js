@@ -5,9 +5,6 @@ let formatter = new Intl.NumberFormat("en-US", {
 
 $(document).ready(function () {
     calcularInformacionCarrito();
-    $(".size-input").click(function () {
-        calcularInformacionCarrito();
-    });
 });
 
 function validarReservacion(estatus = 4, idReservacion) {

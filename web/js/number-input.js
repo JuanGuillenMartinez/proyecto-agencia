@@ -1,14 +1,17 @@
-$(document).ready(function() {
-    $(".input-increment").click(function() {
-        numberInput = $(this).parent().find('.input-number');
+$(document).ready(function () {
+    $(".input-increment").click(function () {
+        numberInput = $(this).parent().find(".input-number");
         cantidad = parseInt(numberInput.val());
-        numberInput.val(++cantidad);
+        numberInput.attr("value", ++cantidad);
+        calcularInformacionCarrito();
+        // numberInput.val(++cantidad);
     });
-    $(".input-decrement").click(function() {
-        numberInput = $(this).parent().find('.input-number');
+    $(".input-decrement").click(function () {
+        numberInput = $(this).parent().find(".input-number");
         cantidad = parseInt(numberInput.val());
-        if(cantidad!=1) {
+        if (cantidad != 1) {
             numberInput.val(--cantidad);
+            calcularInformacionCarrito();
         }
     });
 });
