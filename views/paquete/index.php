@@ -26,8 +26,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'paq_nombre',
-            'paq_descripcion',
+            [
+                'label' => 'Paquete',
+                'attribute' => 'paq_nombre',
+            ],
+            [
+                'contentOptions' => [
+                    'class' => 'lbl-descripcion'
+                ],
+                'label' => 'Descripcion',
+                'attribute' => 'paq_descripcion',
+            ],
             'paq_descuento',
             'paq_subtotal',
             [
