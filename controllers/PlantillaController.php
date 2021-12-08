@@ -89,14 +89,13 @@ class PlantillaController extends \yii\web\Controller
 
     public function actionCarrito()
     {
-        $precioFinalReservacion = $numeroPaquetes = $ahorroTotal = 0;
         $paquetesReservacion = null;
         $user = User::getCurrentUser();
         $persona = isset($user) ? Persona::find()->where(['per_fkuser' => $user->id])->one() : null;
         if (isset($user) && isset($persona)) {
             $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one();
             $paquetesReservacion = isset($reservacion) ? Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all() : null;
-            return $this->render('/reservacion/carrito', compact('reservacion', 'paquetesReservacion', 'precioFinalReservacion', 'numeroPaquetes', 'ahorroTotal'));
+            return $this->render('/reservacion/carrito', compact('reservacion', 'paquetesReservacion'));
         }
         return $this->redirect('index');
     }

@@ -1,3 +1,15 @@
+let formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+});
+
+$(document).ready(function () {
+    calcularInformacionCarrito();
+    $(".size-input").click(function () {
+        calcularInformacionCarrito();
+    });
+});
+
 function validarReservacion(estatus = 4, idReservacion) {
     $.post(
         "/reservacion/pagado",
@@ -20,6 +32,7 @@ function eliminarPaqueteCarrito(idPaqueteReservacion) {
         },
         function (data) {
             $("#div-carrito").html(data);
+            calcularInformacionCarrito();
         }
     );
 }
@@ -29,7 +42,7 @@ function agregarCarrito(idPaquete, cantidad = 1) {
         "/reservacion/agregar",
         {
             idPaquete: idPaquete,
-            cantidad: cantidad
+            cantidad: cantidad,
         },
         function (data) {
             alert(data);
@@ -39,12 +52,11 @@ function agregarCarrito(idPaquete, cantidad = 1) {
 
 function actualizarCarrito(idPaqueteReservacion) {
     let cantidad = obtenerNuevaCantidad(idPaqueteReservacion);
-    console.log(cantidad);
     $.post(
         "/reservacion/actualizar",
         {
             idPaqueteReservacion: idPaqueteReservacion,
-            cantidad: cantidad
+            cantidad: cantidad,
         },
         function (data) {
             alert(data);
@@ -53,5 +65,34 @@ function actualizarCarrito(idPaqueteReservacion) {
 }
 
 function obtenerNuevaCantidad(idPaqueteReservacion) {
-    return $("#inumber-cantidad"+idPaqueteReservacion).val();
+    return $("#inumber-cantidad" + idPaqueteReservacion).val();
+}
+
+function calcularInformacionCarrito() {
+    let numeroPaquetes = 0;
+    let precioFinal = 0;
+    let ahorroTotal = 0;
+    $(".product").each(function (index) {
+        cantidad = parseInt($(this).find(".input-number").val());
+        precio = Number($(this).find("#precioPaquete").text());
+        precioSinDescuento = Number($(this).find("#precioSinDescuento").text());
+        precioGrupo = precio * cantidad;
+        precioGrupoSinDescuento = precioSinDescuento * cantidad;
+        ahorro = precioGrupoSinDescuento - precioGrupo;
+
+        numeroPaquetes += cantidad;
+        precioFinal += precioGrupo;
+        ahorroTotal += ahorro;
+    });
+    actualizarInformacionCarrito(numeroPaquetes, precioFinal, ahorroTotal);
+}
+
+function actualizarInformacionCarrito(
+    numeroPaquetes,
+    precioFinal,
+    ahorroTotal
+) {
+    $("#span-precio-final").text(formatter.format(precioFinal));
+    $("#span-numero-paquetes").text(numeroPaquetes);
+    $("#span-ahorro").text(formatter.format(ahorroTotal));
 }

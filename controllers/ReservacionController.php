@@ -173,6 +173,7 @@ class ReservacionController extends Controller
             if (isset($reservacion) && $reservacion != null) {
                 $paqueteReservacion = Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_id' => $idPaqueteReservacion])->one();
                 $paqueteReservacion->recpaq_estatus = "Descartado";
+                $paqueteReservacion->recpaq_cantidad = 0;
                 $paqueteReservacion->save();
             }
         }

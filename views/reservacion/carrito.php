@@ -14,20 +14,20 @@ use yii\bootstrap4\Html;
         </div>
         <div class="cart">
             <div class="products" id="div-carrito">
-                <?= $this->render('paquetes-carrito', compact('reservacion', 'paquetesReservacion', 'precioFinalReservacion', 'numeroPaquetes', 'ahorroTotal')) ?>
+                <?= $this->render('paquetes-carrito', compact('reservacion', 'paquetesReservacion')) ?>
             </div>
             <div class="cart-total">
                 <p>
                     <span>Precio Final</span>
-                    <span><?= '$' . $precioFinalReservacion ?></span>
+                    <span id="span-precio-final">$0</span>
                 </p>
                 <p>
                     <span>Número de paquetes</span>
-                    <span><?= $numeroPaquetes ?></span>
+                    <span id="span-numero-paquetes">0</span>
                 </p>
                 <p>
                     <span>Ahorras</span>
-                    <span><?= '$' . $ahorroTotal ?></span>
+                    <span id="span-ahorro">$0</span>
                 </p>
                 <?= Html::button('Pagar', (isset($reservacion) && isset($paquetesReservacion)) ? ['onclick' => "validarReservacion(1, {$reservacion->res_id})"] : ['disabled' => true]) ?>
             </div>
