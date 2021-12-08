@@ -136,7 +136,7 @@ class ReservacionController extends Controller
     protected function actualizarProductosReservacion($paqueteReservacion, $cantidad)
     {
         $paqueteReservacion->recpaq_cantidad = $cantidad;
-        return $paqueteReservacion->save() ? "Producto actualizado correctamente" : "Hubo un error";
+        return $paqueteReservacion->save() ? "Paquete actualizado correctamente" : "Hubo un error";
     }
 
     public function actionAgregar()
@@ -150,7 +150,7 @@ class ReservacionController extends Controller
                 if ($reservacionPaquete->recpaq_estatus === 'Descartado') {
                     $reservacionPaquete->recpaq_estatus = 'Seleccionado';
                 }
-                return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
+                return ($reservacionPaquete->save()) ? 'Paquete agregado al carrito exitosamente' : 'Algo salio mal';
             } else if ($reservacion == null) {
                 $reservacion = new Reservacion();
                 $reservacion->res_creacion = date("Y-m-d H:i:s");
@@ -159,7 +159,7 @@ class ReservacionController extends Controller
                 if ($reservacion->save()) {
                     $reservacion = Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $idPersona])->one();
                     $reservacionPaquete = $this->llenarPaqueteReservacion($reservacion, $idPaquete);
-                    return ($reservacionPaquete->save()) ? 'Producto agregado al carrito exitosamente' : 'Algo salio mal';
+                    return ($reservacionPaquete->save()) ? 'Paquete agregado al carrito exitosamente' : 'Algo salio mal';
                 }
             }
         }
