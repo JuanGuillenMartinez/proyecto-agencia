@@ -6,7 +6,7 @@
                 <p>Somos una agencia de viajes enfocada a cubrir todas las necesidades del cliente en sus viajes al mejor precio</p>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link" style="height: 50px; width: 400px; margin: 0px auto;">
-                <h3>Creadroes</h3>
+                <h3>Desarrolladores</h3>
                 <ul>
                     <li><a href="#">Juan Guillen</a></li>
                     <li><a href="#">Emilio Cristobal</a></li>

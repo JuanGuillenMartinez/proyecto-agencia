@@ -196,7 +196,7 @@
     /* For a screen > 820px, and < 1499 this CSS will be read */
     .all-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         grid-area: 20px;
         margin: auto 2rem;
     }
