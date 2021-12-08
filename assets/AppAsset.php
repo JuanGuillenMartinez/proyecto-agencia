@@ -38,7 +38,9 @@ class AppAsset extends AssetBundle
         'css/mostrar-paquete.css',
         'css/detalles.css',
         'css/seguros.css',
-        'css/number-input.css'
+        'css/number-input.css',
+        '//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css',
+        '//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css'
 
     ];
     public $js = [
@@ -66,6 +68,7 @@ class AppAsset extends AssetBundle
         'js/header.js',
         'js/login.js',
         'js/tbl-paquete.js',
+        '//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -15,7 +15,7 @@ function validarReservacion(estatus = 4, idReservacion) {
             idReservacion: idReservacion,
         },
         function (data) {
-            alert(data);
+            alertify.message(data); 
             window.location.reload();
         }
     );
@@ -29,6 +29,7 @@ function eliminarPaqueteCarrito(idPaqueteReservacion) {
         },
         function (data) {
             $("#div-carrito").html(data);
+            alertify.message("Producto eliminado correctamente"); 
             calcularInformacionCarrito();
         }
     );
@@ -43,7 +44,7 @@ function agregarCarrito(idPaquete, cantidad = 1) {
         },
         function (data) {
             obtenerCantidadCarrito();
-            alert(data);
+            alertify.message(data); 
         }
     );
 }
@@ -59,7 +60,7 @@ function actualizarCarrito(idPaqueteReservacion) {
         function (data) {
             $("#btn-pagar-reservacion").attr("disabled", false);
             calcularInformacionCarrito();
-            alert(data);
+            alertify.message(data); 
         }
     );
 }
