@@ -63,6 +63,7 @@ class AppAsset extends AssetBundle
         'js/perfil.js',
         'js/hoteles.js',
         'js/number-input.js',
+        'js/header.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

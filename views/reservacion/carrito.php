@@ -29,7 +29,7 @@ use yii\bootstrap4\Html;
                     <span>Ahorras</span>
                     <span id="span-ahorro">$0</span>
                 </p>
-                <?= Html::button('Pagar', (isset($reservacion) && isset($paquetesReservacion)) ? ['onclick' => "validarReservacion(1, {$reservacion->res_id})"] : ['disabled' => true]) ?>
+                <?= Html::button('Pagar', (isset($reservacion) && isset($paquetesReservacion)) ? ['onclick' => "validarReservacion(1, {$reservacion->res_id})", 'id' => 'btn-pagar-reservacion'] : ['disabled' => true]) ?>
             </div>
         </div>
     </div>

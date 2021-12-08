@@ -243,6 +243,21 @@ class ReservacionController extends Controller
         return $this->redirect('/plantilla/index');
     }
 
+    public function actionCantidad() {
+        $cantidad = 0;
+        $user = Yii::$app->user->id;
+        $persona = isset($user) ? Persona::find()->where(['per_fkuser' => $user])->one() : null;
+        $reservacion = isset($persona) ? Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one() : null;
+        $paquetesReservacion = isset($reservacion) ? $reservacion->getPaquetes() : null;
+        if(isset($paquetesReservacion)) {
+            foreach($paquetesReservacion as $paqueteReservacion) {
+                $cantidad += $paqueteReservacion->recpaq_cantidad;
+            }
+            return $cantidad;
+        }
+        return $cantidad;
+    }
+
     /**
      * Finds the Reservacion model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

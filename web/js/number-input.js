@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".input-increment").click(function () {
+        desactivarPago();
         numberInput = $(this).parent().find(".input-number");
         cantidad = parseInt(numberInput.val());
         numberInput.attr("value", ++cantidad);
@@ -7,6 +8,7 @@ $(document).ready(function () {
         // numberInput.val(++cantidad);
     });
     $(".input-decrement").click(function () {
+        desactivarPago();
         numberInput = $(this).parent().find(".input-number");
         cantidad = parseInt(numberInput.val());
         if (cantidad != 1) {
@@ -15,6 +17,10 @@ $(document).ready(function () {
         }
     });
 });
+
+function desactivarPago() {
+    $("#btn-pagar-reservacion").attr("disabled", true);
+}
 
 // (function () {
 //     window.inputNumber = function (el) {

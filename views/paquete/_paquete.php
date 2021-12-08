@@ -59,7 +59,7 @@ $paquete = $model;
             <div>
                 <span class="post-read-more">
                     <a class="a-add post-buy">
-                        <i class="fas fa-cart-plus" onclick="agregarCarrito(<?= $paquete->paq_id ?>)" title="Agregar"></i>
+                        <i class="btn-agregar-carrito fas fa-cart-plus" onclick="agregarCarrito(<?= $paquete->paq_id ?>)" title="Agregar"></i>
                     </a>
                 </span>
                 <span class="post-read-more">

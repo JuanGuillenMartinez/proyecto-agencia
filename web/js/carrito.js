@@ -42,6 +42,7 @@ function agregarCarrito(idPaquete, cantidad = 1) {
             cantidad: cantidad,
         },
         function (data) {
+            obtenerCantidadCarrito();
             alert(data);
         }
     );
@@ -56,6 +57,8 @@ function actualizarCarrito(idPaqueteReservacion) {
             cantidad: cantidad,
         },
         function (data) {
+            $("#btn-pagar-reservacion").attr("disabled", false);
+            calcularInformacionCarrito();
             alert(data);
         }
     );
@@ -81,6 +84,7 @@ function calcularInformacionCarrito() {
         precioFinal += precioGrupo;
         ahorroTotal += ahorro;
     });
+    actualizarInformacionIcon(numeroPaquetes);
     actualizarInformacionCarrito(numeroPaquetes, precioFinal, ahorroTotal);
 }
 
@@ -92,4 +96,8 @@ function actualizarInformacionCarrito(
     $("#span-precio-final").text(formatter.format(precioFinal));
     $("#span-numero-paquetes").text(numeroPaquetes);
     $("#span-ahorro").text(formatter.format(ahorroTotal));
+}
+
+function actualizarInformacionIcon(cantidad) {
+    $("#label-cantidad-carrito").text(cantidad);
 }

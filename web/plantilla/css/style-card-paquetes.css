@@ -127,3 +127,7 @@ License: https://www.wowthemes.net/freebies-license/
 .paquete-search {
     margin: 2% 5% 2% 5%;
 }
+
+.btn-agregar-carrito {
+    cursor: pointer;
+}

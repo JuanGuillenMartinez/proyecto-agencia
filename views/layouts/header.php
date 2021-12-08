@@ -32,7 +32,7 @@ use webvimark\modules\UserManagement\UserManagementModule;
                 'visible' => Yii::$app->user->isSuperAdmin
             ],
 			['label'=>'Logout', 'url'=>['/user-management/auth/logout'], 'visible' => !Yii::$app->user->isGuest],
-            ['label'=>'<i class="fas fa-shopping-cart"></i>', 'url'=>['/plantilla/carrito'], 'visible' => !Yii::$app->user->isGuest],
+            ['label'=>'<i class="fas fa-shopping-cart"></i><span id="label-cantidad-carrito" class="span-cantidad-carrito"></span>', 'url'=>['/plantilla/carrito'], 'visible' => !Yii::$app->user->isGuest],
             ['label'=>'<i class="fas fa-user"></i>', 'url'=>['/plantilla/perfil'], 'visible' => !Yii::$app->user->isGuest],
             
         ],
