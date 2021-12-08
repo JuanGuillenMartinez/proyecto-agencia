@@ -25,7 +25,7 @@ if (isset($paquetesReservacion)) {
 
                 <div class="row">
                     <div class="container-inumber col-md-4">
-                        <span class="input-number-decrement size-input">–</span><input id="inumber-cantidad<?= $reservacionPaquete->recpaq_id ?>" class="input-number size-input" type="text" value=<?= $reservacionPaquete->recpaq_cantidad ?> min="1" max="10"><span class="input-number-increment size-input">+</span><span id="btn-check" onclick="actualizarCarrito(<?= $reservacionPaquete->recpaq_id ?>)" class="input-number-increment size-input">&check;</span>
+                        <span class="input-decrement input-number-decrement size-input">–</span><input id="inumber-cantidad<?= $reservacionPaquete->recpaq_id ?>" class="input-number size-input" type="text" value=<?= $reservacionPaquete->recpaq_cantidad ?> min="1" max="10"><span class="input-increment input-number-increment size-input">+</span><span id="btn-check" onclick="actualizarCarrito(<?= $reservacionPaquete->recpaq_id ?>)" class="input-number-increment size-input">&check;</span>
                     </div>
                     <div class="col-md-4">
                         <a href="/plantilla/paquete?id=<?= $paquete->paq_id ?>"><button style="float: right;" class="product-show">

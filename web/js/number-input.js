@@ -1,3 +1,18 @@
+$(document).ready(function() {
+    $(".input-increment").click(function() {
+        numberInput = $(this).parent().find('.input-number');
+        cantidad = parseInt(numberInput.val());
+        numberInput.val(++cantidad);
+    });
+    $(".input-decrement").click(function() {
+        numberInput = $(this).parent().find('.input-number');
+        cantidad = parseInt(numberInput.val());
+        if(cantidad!=1) {
+            numberInput.val(--cantidad);
+        }
+    });
+});
+
 // (function () {
 //     window.inputNumber = function (el) {
 //         var min = el.attr("min") || false;
