@@ -138,17 +138,24 @@ class PersonaController extends Controller
         $persona = new Persona();
         $user = new User();
         if ($this->request->isPost && $persona->load($this->request->post()) && $user->load($this->request->post())) {
-            $image = UploadedFile::getInstance($persona, 'img');
+            if($user->save(false)){
+                User::assignRole($user->id, "Cliente");
+                $persona->per_fkuser = $user->id;
+                $persona->per_url = "user.png";
+                $persona->per_correo = $user->email;
+                if($persona->save()){
+                    return $this->redirect(['/plantilla/index']);
+                }
+                
+                
+            }
+           /*  $image = UploadedFile::getInstance($persona, 'img');
             if(!is_null($image)){
                 $ext = end((explode('.', $image->name)));
                 $persona->per_url = $persona->per_fkuser.'_'. Yii::$app->security->generateRandomString() . ".{$ext}";
                 $path = Yii::$app->basePath.'/web/img/persona/' . $persona->per_url;
-                if($image->saveAs($path) && $user->save(false)){
-                    User::assignRole($user->id, "Cliente");
-                    $persona->per_fkuser = $user->id;
-                    $persona->save();
-                    return $this->redirect(['view', 'id' => $persona->per_id]);                }
-            }
+                
+            } */
         }
 
         return $this->render('registrar', compact('persona', 'user'));      

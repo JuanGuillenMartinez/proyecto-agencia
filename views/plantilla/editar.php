@@ -86,10 +86,11 @@
 									
 									<?= DatePicker::widget([
 										'name' => 'birth_date',
+										'id' => 'nacimiento',
 										'value' => $persona->per_nacimiento,
 										'pluginOptions' => [
 											'autoclose' => true,
-											'format' => 'mm/dd/yyyy'
+											'format' => 'yyyy-mm-dd'
 										]
 									])?>
 																	</div>

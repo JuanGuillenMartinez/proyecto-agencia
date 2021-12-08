@@ -25,14 +25,15 @@ use webvimark\modules\UserManagement\UserManagementModule;
             ['label' => 'Vuelos', 'url' => ['/plantilla/vuelos']],
             ['label' => 'Hoteles', 'url' => ['/plantilla/hoteles']],
             ['label' => 'Traslados', 'url' => ['/site/contact']],
-            ['label' => 'Seguros', 'url' => ['/plantilla/seguros']],
+            ['label' => 'Seguros', 'url' => ['/cat-seguro']],
             [
                 'label' => 'Administrador', 
                 'items'=>UserManagementModule::menuItems(), 
                 'visible' => Yii::$app->user->isSuperAdmin
             ],
-			['label'=>'Logout', 'url'=>['/user-management/auth/logout'], 'visible' => !Yii::$app->user->isGuest],
-            ['label'=>'<i class="fas fa-shopping-cart"></i><span id="label-cantidad-carrito" class="span-cantidad-carrito"></span>', 'url'=>['/plantilla/carrito'], 'visible' => !Yii::$app->user->isGuest],
+            ['label' => '<span id="btnLogin">Entrar</span>', 'url' => ['index#'], 'visible' => Yii::$app->user->isGuest],
+			['label'=>'Salir', 'url'=>['/user-management/auth/logout'], 'visible' => !Yii::$app->user->isGuest],
+            ['label'=>'<i class="fas fa-shopping-cart"></i>', 'url'=>['/plantilla/carrito'], 'visible' => !Yii::$app->user->isGuest],
             ['label'=>'<i class="fas fa-user"></i>', 'url'=>['/plantilla/perfil'], 'visible' => !Yii::$app->user->isGuest],
             
         ],

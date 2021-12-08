@@ -40,10 +40,10 @@ use yii\bootstrap4\ActiveForm;
 					<?= $form->field($user, 'username')->textInput(['maxlength' => true])->label("Nombre de usuario")?>
 				</div>
 				<div class="group">
-					<?= $form->field($user, 'password_hash')->passwordInput(['maxlength' => true])->label("Contraseña")?>
+					<?= $form->field($user, 'password')->passwordInput(['maxlength' => true])->label("Contraseña")?>
 				</div>
 				<div class="group">
-					<?= $form->field($user, 'confirmation_token')->passwordInput(['maxlength' => true])->label("Repetir contraseña")?>
+					<?= $form->field($user, 'repeat_password')->passwordInput(['maxlength' => true])->label("Repetir contraseña")?>
 				</div>
 				<div class="group">
 					<!--<label for="pass" class="label">Correo electrónico</label> -->
