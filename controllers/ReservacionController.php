@@ -128,12 +128,13 @@ class ReservacionController extends Controller
         $idReservacionPaquete = Yii::$app->request->post('idPaqueteReservacion');
         $cantidad = Yii::$app->request->post('cantidad');
         $paqueteReservacion = Reservacionpaquete::find()->where(['recpaq_id' => $idReservacionPaquete, 'recpaq_estatus' => 'Seleccionado'])->one();
-        if(isset($paqueteReservacion)) {
+        if (isset($paqueteReservacion)) {
             return $this->actualizarProductosReservacion($paqueteReservacion, $cantidad);
         }
     }
 
-    protected function actualizarProductosReservacion($paqueteReservacion, $cantidad) {
+    protected function actualizarProductosReservacion($paqueteReservacion, $cantidad)
+    {
         $paqueteReservacion->recpaq_cantidad = $cantidad;
         return $paqueteReservacion->save() ? "Producto actualizado correctamente" : "Hubo un error";
     }
@@ -177,7 +178,11 @@ class ReservacionController extends Controller
                 $paqueteReservacion->save();
             }
         }
-        $precioFinalReservacion = $numeroPaquetes = $ahorroTotal = 0;
+        return $this->renderPaquetesCarrito();
+    }
+
+    protected function renderPaquetesCarrito()
+    {
         $paquetesReservacion = null;
         $user = User::getCurrentUser();
         $persona = isset($user) ? Persona::find()->where(['per_fkuser' => $user->id])->one() : null;
@@ -186,9 +191,10 @@ class ReservacionController extends Controller
             $paquetesReservacion = isset($reservacion) ? Reservacionpaquete::find()->where(['recpaq_fkreservacion' => $reservacion->res_id, 'recpaq_estatus' => 'Seleccionado'])->all() : null;
             $response = Yii::$app->response;
             $response->format = Response::FORMAT_JSON;
-            $response->data = [$this->renderPartial('paquetes-carrito', compact('paquetesReservacion', 'precioFinalReservacion', 'numeroPaquetes', 'ahorroTotal'))];
+            $response->data = [$this->renderPartial('paquetes-carrito', compact('paquetesReservacion'))];
             return $response;
         }
+        return null;
     }
 
     protected function llenarPaqueteReservacion($reservacion, $idPaquete)
@@ -243,14 +249,15 @@ class ReservacionController extends Controller
         return $this->redirect('/plantilla/index');
     }
 
-    public function actionCantidad() {
+    public function actionCantidad()
+    {
         $cantidad = 0;
         $user = Yii::$app->user->id;
         $persona = isset($user) ? Persona::find()->where(['per_fkuser' => $user])->one() : null;
         $reservacion = isset($persona) ? Reservacion::find()->where(['res_estatus' => 'En carrito', 'res_fkpersona' => $persona->per_id])->one() : null;
         $paquetesReservacion = isset($reservacion) ? $reservacion->getPaquetes() : null;
-        if(isset($paquetesReservacion)) {
-            foreach($paquetesReservacion as $paqueteReservacion) {
+        if (isset($paquetesReservacion)) {
+            foreach ($paquetesReservacion as $paqueteReservacion) {
                 $cantidad += $paqueteReservacion->recpaq_cantidad;
             }
             return $cantidad;
