@@ -9,7 +9,7 @@
                 <h3>Desarrolladores</h3>
                 <ul>
                     <li><a href="#">Juan Guillen</a></li>
-                    <li><a href="#">Emilio Cristobal</a></li>
+                    <li><a href="#">Emilio Cristóbal</a></li>
                     <li><a href="#">Alfredo Chico</a></li>
                     <li><a href="#">Magdiel Vidal</a></li>
                 </ul>
@@ -17,10 +17,10 @@
             <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link" style="width: 400px; margin: 0px auto;">
                 <h3>Contactos</h3>
                 <ul>
-                    <li><a href="#">Boracay Hotel</a></li>
-                    <li><a href="#">Dubai Hotel</a></li>
+                    <li><a href="#">ecris1502@gmail.com</a></li>
+                    <li><a href="#">guilen@gmail.com</a></li>
                     <li><a href="#">alfredochico429@gmail.com</a></li>
-                    <li><a href="#">Manila Hotel</a></li>
+                    <li><a href="#"></a></li>
                 </ul>
             </div>
             
