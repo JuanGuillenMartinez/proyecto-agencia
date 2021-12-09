@@ -179,5 +179,9 @@ class Vuelo extends \yii\db\ActiveRecord
     public static function mapEstatus(){
         return ['Listo' => 'Listo', 'Retrasado' => 'Retrasado', 'Cancelado' => 'Cancelado'];
     }
+    public function getVueAerolinea()
+    {
+        return $this->vueFkaerolinea->aer_nombre;
+    }
 
 }

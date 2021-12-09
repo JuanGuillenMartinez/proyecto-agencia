@@ -56,8 +56,8 @@ use yii\helpers\Html;
                     <div class="row row-vuelo">
                         <div class="col-md-6">
                             <i class="far fa-clock"> <span class="span-vuelo"><?= $vuelo->vue_salida ?></span></i><br>
-                            <!--i class="fas fa-running"> <span class="span-vuelo">Skip the line</span></i><br-->
-                            <i class="fas fa-user-friends"> <span class="span-vuelo"><?= $vuelo->vue_capacidad ?></span></i>
+                            <!-- <i class="fas fa-user-friends"> <span class="span-vuelo"><?= $vuelo->vue_capacidad ?></span></i> -->
+                            <i class="fas fa-plane"> <span class="span-vuelo"><?= $vuelo->getVueAerolinea() ?></span></i>
                         </div>
                         <div class="col-md-6 text-prices">
                             <span class="from span-vuelo">Desde</span>

@@ -5,6 +5,7 @@
     color: #4f585e;
     font-family: 'Source Sans Pro', sans-serif;
     text-rendering: optimizeLegibility;
+    margin-bottom: 8%;
 }
 
 .btn-hotel {
@@ -35,7 +36,7 @@ a.btn-hotel:active {
 }
 
 div.cards-hotel {
-    margin: 80px auto;
+    /*margin: 80px auto;*/
     max-width: 1200px;
     text-align: center;
 }
@@ -69,7 +70,7 @@ div.card-hotel .card__image-holder-hotel {
 
 div.card-hotel div.card-title-hotel {
     background: #ffffff;
-    padding: 6px 15px 10px;
+    padding: 12px 15px 12px;
     position: relative;
     z-index: 0;
 }
@@ -207,7 +208,8 @@ div.card-hotel.show div.flap2-hotel {
     .all-container-hotel {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+        /*gap: 12px;*/
+        row-gap: 40px;
     }
 }
 
