@@ -145,7 +145,7 @@ use yii\bootstrap4\Html;
             </div>
             
             <div data-bss-hover-animate="pulse" class="col-md-3" style="text-align: center;padding-top: 8px;padding-bottom: 8px;margin-bottom: 12px;">
-                <a href="/persona/registrar-persona">
+                <a href="/persona/index">
                 <?php echo Html::img('@web/img/icons/persona.png', ['class' => 'rounded-circle img-fluid', 'width' => '40%', 'data-bss-hover-animate' => 'pulse']) ?>
                 </a>
                 <h2 style="margin-top: 8px;">Persona</h2>
