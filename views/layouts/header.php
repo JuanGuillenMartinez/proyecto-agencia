@@ -25,7 +25,7 @@ use webvimark\modules\UserManagement\UserManagementModule;
             ['label' => 'Vuelos', 'url' => ['/plantilla/vuelos']],
             ['label' => 'Hoteles', 'url' => ['/plantilla/hoteles']],
             ['label' => 'Traslados', 'url' => ['/site/contact']],
-            ['label' => 'Seguros', 'url' => ['/cat-seguro']],
+            ['label' => 'Seguros', 'url' => ['/plantilla/seguros']],
             [
                 'label' => 'Administrador', 
                 'items'=>UserManagementModule::menuItems(), 
