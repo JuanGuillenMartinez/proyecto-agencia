@@ -202,4 +202,40 @@ class PersonaController extends Controller
         }
     }
 
+    public function actionImage()
+    {
+        $usuario = User::getCurrentUser();
+        $persona = Persona::find()->where(['per_fkuser'=>$usuario->id])->one();
+       if ($this->request->isPost) {
+           $image = UploadedFile::getInstance($persona, 'img');
+           if($persona->load($this->request->post())){
+        
+        if($persona->per_url=='user.png'){
+            if (!is_null($image)) {
+                $tmp = explode('.', $image->name);
+                $ext = end($tmp);
+                $persona->per_url = $persona->per_id . '_' . Yii::$app->security->generateRandomString() . ".{$ext}";
+                $path = Yii::$app->basePath . '/web/img/persona/' . $persona->per_url;
+               
+                if ($image->saveAs($path) && $persona->save()) {
+                    return $this->render('/plantilla/perfil', compact('usuario', 'persona'));
+                }
+                
+            }
+            
+        }else{
+            if (!is_null($image)) {
+                // //Genera la ruta de la imagen
+                $path = Yii::$app->basePath . '/web/img/persona/' . $persona->per_url;
+                //Valida si la imagen fue guardada y el model creado correctamente
+                $image->saveAs($path);
+                return $this->render('/plantilla/perfil', compact('usuario', 'persona'));
+            }
+        }
+        
+        }
+        }
+       
+    }
+
 }
