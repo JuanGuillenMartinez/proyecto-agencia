@@ -5,10 +5,10 @@ let formatter = new Intl.NumberFormat("en-US", {
 
 $(document).ready(function () {
     calcularInformacionCarrito();
-    limitarCaracteres(".product-name", 72);
+    limitarCaracteresPaquete(".product-name", 72);
 });
 
-function limitarCaracteres(clase, cantidad) {
+function limitarCaracteresPaquete(clase, cantidad) {
     $(clase).each(function (index) {
         textoLimitar = $(this).text();
         console.log(textoLimitar.length)
