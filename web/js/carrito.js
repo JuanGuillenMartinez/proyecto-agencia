@@ -5,7 +5,21 @@ let formatter = new Intl.NumberFormat("en-US", {
 
 $(document).ready(function () {
     calcularInformacionCarrito();
+    limitarCaracteres(".product-name", 72);
 });
+
+function limitarCaracteres(clase, cantidad) {
+    $(clase).each(function (index) {
+        textoLimitar = $(this).text();
+        console.log(textoLimitar.length)
+        if (textoLimitar.length > cantidad) {
+            var str = textoLimitar;
+            var res = str.substring(0, cantidad);
+            var final = res + "...";
+            $(this).text(final);
+        }
+    });
+}
 
 function validarReservacion(estatus = 4, idReservacion) {
     $.post(
@@ -15,7 +29,7 @@ function validarReservacion(estatus = 4, idReservacion) {
             idReservacion: idReservacion,
         },
         function (data) {
-            alertify.message(data); 
+            alertify.message(data);
             window.location.reload();
         }
     );
@@ -29,7 +43,7 @@ function eliminarPaqueteCarrito(idPaqueteReservacion) {
         },
         function (data) {
             $("#div-carrito").html(data);
-            alertify.message("Producto eliminado correctamente"); 
+            alertify.message("Producto eliminado correctamente");
             calcularInformacionCarrito();
         }
     );
@@ -44,7 +58,7 @@ function agregarCarrito(idPaquete, cantidad = 1) {
         },
         function (data) {
             obtenerCantidadCarrito();
-            alertify.message(data); 
+            alertify.message(data);
         }
     );
 }
@@ -60,7 +74,7 @@ function actualizarCarrito(idPaqueteReservacion) {
         function (data) {
             $("#btn-pagar-reservacion").attr("disabled", false);
             calcularInformacionCarrito();
-            alertify.message(data); 
+            alertify.message(data);
         }
     );
 }
