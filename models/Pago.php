@@ -99,7 +99,7 @@ class Pago extends \yii\db\ActiveRecord
     {
         return 'RES_'.str_pad($this->pagFkreservacion->res_id,5,'0',STR_PAD_LEFT);
     }
-    public static function getHistorialPago()
+    public static function getHistorialPago1()
     {
         $pagos=[];
         $persona= Persona::find()->where(['per_fkuser'=>Yii::$app->user->id])->one();        
@@ -110,20 +110,16 @@ class Pago extends \yii\db\ActiveRecord
         }
         return $pagos;
     }
+
+    public static function getHistorialPago()
+    {
+        $persona= Persona::find()->where(['per_fkuser'=>Yii::$app->user->id])->one();
+        return $persona->reservacions->pagos;
+    }
+
+
+
     public function getPersona(){
         return $this->pagFkreservacion->resFkpersona->nombreCompleto;
-    }
-    public function getHistorial()
-    {
-        $texto='';
-        foreach (self::getHistorialPago() as $key => $value) {
-            $texto .= <<<HTML
-                <div>
-                    Id: {$value->pag_id} Tarjeta: {$value->pag_tarjeta}
-                
-                </div>
-HTML;
-            }
-        return $texto;
     }
 }

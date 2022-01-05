@@ -30,11 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'pag_id',
-            'persona',
+            /* 'persona',
             [
                 'attribute'=>'historial',
                 'format'=>'raw',
-            ],
+            ], */
             'pag_direccion',
             'pag_tipo',
             'pag_entidad',
@@ -42,8 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'pag_expiracion',
             'pag_estatus',
             'pag_fkreservacion',
-            'reservacion',
+            /* 'reservacion', */
         ],
     ]) ?>
+
+    
 
 </div>

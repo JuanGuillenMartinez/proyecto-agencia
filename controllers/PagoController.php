@@ -8,6 +8,7 @@ use app\models\Persona;
 use yii\web\Controller;
 use app\models\PagoSearch;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
 
@@ -55,6 +56,21 @@ class PagoController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionHistorial(){
+        /* $query= Persona::find()->where(['per_fkuser'=>Yii::$app->user->id, 'pag_estatus'=>'pagado'])->joinWith(['reservacions.pagos']);
+         */$query= Pago::find()->where(['per_fkuser'=>Yii::$app->user->id, 'pag_estatus'=>'pagado'])->joinWith(['pagFkreservacion.resFkpersona']);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            /* 'pagination' => [
+                'pageSize' => 12,
+            ], */
+        ]);
+        return $this->render('historial', ['dataProvider' => $dataProvider]);
+        /* return $this->render('historial'); */
+
+
     }
 
     /**

@@ -1,7 +1,10 @@
 <?php
 
+
+use app\models\Pago;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PagoSearch */
@@ -40,6 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
+
+    
 
 
 </div>
